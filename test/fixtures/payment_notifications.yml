@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  params: MyText
+  payer_email: MyString
+  first_name: MyString
+  transaction_id: MyString
+  create: MyString
+
+two:
+  params: MyText
+  payer_email: MyString
+  first_name: MyString
+  transaction_id: MyString
+  create: MyString

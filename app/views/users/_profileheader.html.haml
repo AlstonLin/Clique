@@ -1,0 +1,25 @@
+.user-header
+  .user-coverpicture
+    
+  .user-middleCol
+    .centerCol
+      .user-picture
+        = image_tag @user.profile_picture
+      .profile-page-name
+        = @user.username
+      .profile-page-description
+        Hi and welcome to Vday Beats Drum kit store. Come check out our kits and packs that will help you 
+
+  .user-divider
+  .user-bottomCol
+    .centerCol
+      .user-bottomCol-social
+        .user-bottomCol-social-tab
+          %i.fa.fa-globe.fa-lg   
+        .user-bottomCol-social-tab
+          %i.fa.fa-twitter.fa-lg
+        .user-bottomCol-social-tab
+          %i.fa.fa-facebook-square.fa-lg
+          
+      .user-bottomCol-section
+        = link_to "Products", root_path, class: "user-bottomCol-tab"

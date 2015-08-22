@@ -1,0 +1,20 @@
+.pin-section-title
+	New Kit Uploads
+#pins.transitions-enable
+	- @pins.each do |pin|
+		.box.panel.panel-default
+			.pin-image
+				= link_to (image_tag pin.image.url), new_order_path(pin_id: pin.id)
+			.panel-footer
+				.panel-footer-CenterCol
+					%h2= link_to pin.name, new_order_path(pin_id: pin.id)
+					.panel-user
+						.panel-user-picture
+							= link_to (image_tag pin.user.profile_picture), pin.user
+						.panel-user-name
+							= link_to pin.user.username, pin.user
+					.panel-footer-divider
+					= link_to new_order_path(pin_id: pin.id), class: "ruby" do
+						%button.pricebtn.btn #{number_to_currency(pin.price)}
+					= link_to new_order_path(pin_id: pin.id), class: "ruby" do
+						%button.btn Buy Now

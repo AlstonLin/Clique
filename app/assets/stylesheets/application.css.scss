@@ -1,0 +1,727 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require 'masonry/transitions'
+ *= require_tree .
+ *= require_self
+ */
+
+@import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+/* Repeated Classes */
+
+.primary-background {
+	background-color: #f50 !important;
+ 	color: white;
+}
+
+.gradient-background{
+	background: -webkit-linear-gradient(#f70, #f40);	
+}
+
+.floatright {
+	float:right;
+}
+
+
+
+html {
+	box-sizing: border-box;
+}
+
+
+
+body {
+	background: #E9E9E9;
+	font-family: "Open Sans";
+	margin-bottom: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 100;
+}
+
+h2 {
+	font-size: 18px;
+}
+
+.margin-left10{
+	margin-left: 10px;
+}
+
+.alert {
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.follow-btn {
+	background-color: #D7DADA;
+	outline: none;
+	color: #333;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 0px;
+
+	&:visited {
+    color: white;
+	}
+}
+
+
+.btn {
+	background-color: #D7DADA;
+	outline: none;
+	color: #333;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+}
+
+.btn-default {
+	border:none;
+}
+
+a {
+	outline: none;
+}
+
+a:visited {
+}
+
+
+a:hover {
+	background-color: none;
+	text-decoration: none;
+}
+
+.container {
+	margin-top: 90px;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
+
+
+
+
+/* Nav Bar */
+
+.navbar-fixed-top{
+	background-color: white;
+	border-bottom: 1px solid #cfd4db;
+	.container {
+		width: 940px;
+		padding-left: 0px;
+		padding-right: 0px;
+		height: 100%;
+		margin-top: 0px;
+		display: block;
+	}
+	.navbar-brand {
+		padding-left: 0px;
+		font-weight: bold;
+		a {
+			color: #f50;
+			font-weight: bold;
+ 			background: -webkit-linear-gradient(#f70, #f30);
+  			-webkit-background-clip: text;
+ 			-webkit-text-fill-color: transparent;
+
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+nav {
+	border-bottom: 1px solid #cfd4db;
+	
+	.navbar-brand {
+		a {
+			color: #BD1E23;
+			font-weight: bold;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+	.navbar-right{
+		margin-right: 0px;
+	}
+
+.login-btn {
+	color: white !important;
+	margin-top: 9px;
+	padding: 6px 16px !important;
+	font-size: 13px;
+}
+
+/* Homepage Header */
+
+.homepage-header {
+	width: 100%;
+	height: 600px;
+	background-color: #262626;
+	background-size: cover;
+	background-position: center top;
+	z-index: -1;
+	overflow:auto;
+	text-align: center;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://d300b3jgvyc6sw.cloudfront.net/media/css/images/seller-page/become-a-seller-cover.jpg);
+	background-attachment: fixed;
+	margin-bottom: 50px;
+.btn {
+	padding: 20px 40px;
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 45px;
+	color: white;
+}
+
+
+}
+
+
+.homepage-header-title {
+	font-weight: 700;
+	font-size: 34px;
+	color: white;
+	z-index: 10;
+	margin-top: 210px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 1 !important;
+	letter-spacing: -1px;
+
+}
+
+
+/* Pin Section */
+
+.pin-section-title2 {
+	height: auto;
+	font-weight: 100;
+	font-size: 28px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	letter-spacing: -1px;
+	text-align: center;
+}
+
+.pin-section-title {
+	height: auto;
+	font-weight: 100;
+	font-size: 28px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	letter-spacing: -1px;
+	text-align: center;
+	width: 940px;
+}
+
+.homepage-header-subtitle {
+	color: white;
+	font-size: 20px;
+	margin-top: 40px;
+}
+
+.box {
+	width: 300px;
+}
+
+
+.pin-image {
+	width: 100%;
+	height: 200px;
+	  overflow:hidden
+}
+
+
+.panel {
+	border: none;
+	box-shadow: 0px;
+}
+
+.panel-footer {
+	padding: 0px 15px 20px 15px;
+	background-color: white;
+	height: 143px;
+	border: 0px;
+	.btn{
+		float:right;
+	}
+	.pricebtn {
+		background-color: white !important;
+		float:left;
+		color: #333;
+		font-size: 16px;
+		padding-left: 0px;
+		padding-right: 0px;
+
+	}
+
+	p {
+		margin: 0;
+	}
+	.user {
+		padding-top: 8px;
+	}
+}
+
+.panel-footer-CenterCol{
+	width:240px;
+	margin-right: auto;
+	margin-left: auto;
+	height:auto;
+
+}
+
+
+
+.panel-user {
+	width:100%;
+	height: 25px;
+	margin-top: 10px;
+}
+
+.panel-user-picture {
+	width: 25px;
+	height: 25px;
+	border-radius: 2px;
+	float:left;
+	margin-right: 10px;
+	background-color: #333;
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+}
+
+.panel-user-name {
+	width:195px;
+	height:100%;
+	float:left;
+	line-height: 25px;
+	font-size: 14px;
+	color: #47a5d0;
+
+}
+
+
+
+
+.panel-footer-divider {
+	width: 100%;
+	height:1px;
+	margin: 18px auto;
+	border-top: 1px solid rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+
+#pins {
+  margin: 0 auto;
+  width: 100%;
+  .box {
+	  margin: 10px;
+	  width: 300px;
+	  border-radius: 7px;
+	  img {
+	  	background-size: 100%;
+	  	background-repeat: no-repeat;
+	  	height: auto;
+	  	width: 100%;
+	  	border-radius: 3px 3px 0px 0px;
+	  	background-position: cover;
+	  }
+	  h2 {
+	  	font-weight: 400;
+	  	font-size: 16px;
+	  	margin: 0;
+	  	margin-top: 20px;
+	  	a {
+				color: #474747;
+	  	}
+	  }
+	  .user {
+	  	font-size: 12px;
+	  	border-top: 1px solid #EAEAEA;
+			padding: 15px;
+			margin: 0;
+	  }
+	}
+}
+
+#edit_page {
+	.current_image {
+		img {
+			display: block;
+			margin: 20px 0;
+
+		}
+	}
+}
+
+#pin_show {
+	.panel-heading {
+		padding: 0;
+		max-height:465px;
+		overflow: hidden;
+		border: 0px;
+	}
+	.pin_image {
+		img {
+			max-width: 100%;
+			width: 100%;
+			display: block;
+			margin: 0 auto;
+			border-radius: 3px 3px 0px 0px;
+		}
+	}
+	.panel-body {
+		padding: 35px;
+		h1 {
+			margin: 0 0 10px 0;
+		}
+		.description {
+			color: #868686;
+			line-height: 1.75;
+			margin: 0;
+		}
+	}
+	.panel-footer {
+		padding: 20px 35px;
+
+	}
+
+.footer-show {
+	height: auto;
+}
+
+
+}
+
+textarea {
+	min-height: 250px;
+}
+
+
+/* Show Page */
+
+
+.centerCol {
+	width:940px;
+	margin-right: auto;
+	margin-left: auto;
+	height:100%;
+}
+
+
+
+.leftCol {
+	width: 630px;
+	height: auto;
+	float:left;
+}
+
+.rightCol {
+	width: 290px;
+	height: auto;
+	float:right;
+	background-color: white;
+	border-radius: 3px;
+	padding: 20px;
+	max-height: 490px;
+	.rightCol-description {
+		height: 324px;
+		width:100%;
+		overflow: auto;
+		margin-top: 10px;
+	&::-webkit-scrollbar {
+	    width: 9px;
+	}
+	 
+	&::-webkit-scrollbar-track {
+	}
+	 
+	&::-webkit-scrollbar-thumb {
+	    border-radius: 5px;
+	    background-color: #e6e6e6;
+	}
+	p {
+		padding-right: 10px;
+	}
+
+	}
+
+
+	p {
+	line-height: 24px;
+	}
+	.rightCol-price {
+		width:100%;
+		font-size: 18px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 30px;
+		margin-top: 10px;
+	}
+}
+
+
+.pin-show-title {
+	height: auto;
+	font-weight: 100;
+	font-size: 28px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	letter-spacing: -1px;
+	text-align: center;
+	width: auto;
+}
+
+
+
+.pin-section-title-leftCol{
+	float:left;
+	width: 300px;
+	height: 100%;
+	margin-right: 20px;
+}
+
+
+
+/* Profile Page */
+
+.user-header {
+	width:100%;
+	background-color: white;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	border-bottom:1px solid #E1E3E7;
+}
+
+.user-coverpicture {
+	width:100%;
+	height:200px;
+	background-color: #333;
+	background-attachment: fixed;
+	background-image: url(http://7-themes.com/data_images/out/32/6879583-new-york-city-wallpaper.jpg);
+	background-size: cover;
+}
+
+.user-picture {
+	width: 100px;
+	height: 100px;
+	border-radius: 2px;
+	background-color: #f50;
+		background: -webkit-linear-gradient(#f70, #f40);	
+	float:left;
+	position: absolute;
+	margin-top: -66px;
+	box-shadow: 0 0 0 3px white;
+	overflow: hidden;
+		img {
+			width: auto;
+			height:100%;
+			background-position: 50% auto;
+		}
+}
+
+
+.user-middleCol {
+	width:100%;
+	height: 91px;
+	padding-top: 17px;
+	.profile-page-name {
+		font-size: 22px;
+		padding-left: 120px;
+		height:34px;
+		width: 100%;
+		line-height: 34px;
+	}
+	.profile-page-description{
+		width:100%;
+		margin-top:20px;
+		font-size: 14px;
+		color: #888;
+	}
+
+
+}
+
+
+.user-divider {
+	width: 100%;
+	margin-top:20px;
+	border-top: 1px solid rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.user-bottomCol {
+	width:100%;
+	height: 53px;
+	.user-bottomCol-section{
+		float: left;
+		height:50px;
+		line-height: 50px;
+		font-size: 14px;
+
+	}
+	.user-bottomCol-tab{
+		padding: 0 20px;
+		float: left;
+		color: #333;
+		border-bottom: 3px solid #f50;
+		text-decoration: none;
+		font-weight: bold;
+
+
+	}
+
+
+
+.user-bottomCol-social{
+	height: 100%;
+	width:300px;
+	float:right;
+	.user-bottomCol-social-tab{
+		margin-left: 25px;
+		margin-top: 12px;
+		float:right;
+		color: #999;
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+	.btn{
+		margin-top: 11px;
+	}
+}
+
+
+.panel-footer2 {
+	height: 120px;
+}
+
+
+
+
+
+
+
+
+.pin-show-title2 {
+	height: 150px;
+	font-weight: 100;
+	font-size: 34px;
+	margin-bottom: 50px;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	letter-spacing: -1px;
+	text-align: center;
+	width: auto;
+	width:940px;
+}
+
+
+
+
+
+
+
+
+.pin-section-title-rightCol{
+	width:620px;
+	float:left;
+	height: 100%;
+	text-align: left;
+	padding-top: 12px;
+	h4 {
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 28px;
+		font-weight: 400;
+		color:#4b4f54;
+	}
+	.btn {
+		padding: 6px 30px;
+	}
+}
+
+
+
+
+.btn-show-buy {
+	width:100%;
+	color: white;
+	font-size: 16px;
+	margin-left: auto;
+	margin-right: auto;
+	height:51px;
+	line-height: 51px;
+	padding: 0px;
+	&:visited {
+    color: white;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

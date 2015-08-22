@@ -1,0 +1,11 @@
+.pin-nav-wrapper
+  .wrapper-inside.clearfix
+    %ul.pin-nav-list
+      - @pins.each do |pin|
+        %li{class: "#{"active" if params["pin_id"].to_i== pin.id}"}
+          = link_to new_order_path(pin_id: pin.id), class: "ruby" do
+            .pin-name
+              = pin.name
+
+            %button.btn{style: "color: white;background: rgb(242, 118, 73);"} Buy Now ($#{pin.price})
+            .pin-arrow

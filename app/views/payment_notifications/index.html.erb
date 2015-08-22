@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Payment Notifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Params</th>
+      <th>Payer email</th>
+      <th>First name</th>
+      <th>Transaction</th>
+      <th>Create</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_notifications.each do |payment_notification| %>
+      <tr>
+        <td><%= payment_notification.params %></td>
+        <td><%= payment_notification.payer_email %></td>
+        <td><%= payment_notification.first_name %></td>
+        <td><%= payment_notification.transaction_id %></td>
+        <td><%= payment_notification.create %></td>
+        <td><%= link_to 'Show', payment_notification %></td>
+        <td><%= link_to 'Edit', edit_payment_notification_path(payment_notification) %></td>
+        <td><%= link_to 'Destroy', payment_notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment notification', new_payment_notification_path %>

@@ -1,0 +1,26 @@
+.centerCol
+  .pin-show-title
+    %h1= "#{@pin.user.username} - #{@pin.name}"
+  #pin_show
+    .leftCol
+      .panel.panel-default
+        .panel-heading.pin_image
+          = image_tag @pin.image.url
+        .panel-footer.footer-show
+          .row
+            .col-md-6
+              %p.user
+                Submitted by
+                = link_to @pin.user.username, @pin.user
+            .col-md-6
+              .btn-group.pull-right
+                = link_to "View more kits", @pin.user, class: "btn btn-default"
+                /- if user_signed_in?
+                /  = link_to "Edit", edit_pin_path, class: "btn btn-default"
+                /  = link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+    .rightCol
+      .rightCol-price
+        = number_to_currency(@pin.price)
+      = render 'form'
+      .rightCol-description
+        %p.description= simple_format(@pin.description)

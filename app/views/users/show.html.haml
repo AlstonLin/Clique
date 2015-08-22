@@ -1,0 +1,16 @@
+= render 'usertop'
+= render 'profileheader'
+
+#pins.transitions-enable
+  - @user.pins.each do |pin|
+    .box.panel.panel-default
+      .pin-image
+        = link_to (image_tag pin.image.url), new_order_path(pin_id: pin.id)
+      .panel-footer.panel-footer2
+        .panel-footer-CenterCol
+          %h2= link_to pin.name, new_order_path(pin_id: pin.id)
+          .panel-footer-divider
+          = link_to new_order_path(pin_id: pin.id), class: "ruby" do
+            %button.pricebtn.btn #{number_to_currency(pin.price)}
+          = link_to new_order_path(pin_id: pin.id), class: "ruby" do
+            %button.btn Buy Now
