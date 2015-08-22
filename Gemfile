@@ -38,7 +38,7 @@ gem 'paperclip', '~> 4.3.0'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'figaro', '~> 1.1.1'
 gem 'font-awesome-rails', '~> 4.4.0.0'
-gem 'aws-sdk', '~> 2.1.15'
+gem 'aws-sdk', '< 2.0'
 
 
 
