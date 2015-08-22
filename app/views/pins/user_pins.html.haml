@@ -1,15 +1,17 @@
-.pin-section-title
-  My Kits
+
+= render 'currentusertop'
+= render 'currentprofileheader'
+
 #pins.transitions-enable
   - @pins.each do |pin|
     .box.panel.panel-default
       .pin-image
-        = link_to (image_tag pin.image.url), new_order_path(pin_id: pin.id)
+        = link_to (image_tag pin.image.url), pin
       .panel-footer
         .panel-footer-CenterCol
-          %h2= link_to pin.name, new_order_path(pin_id: pin.id)
+          %h2= link_to pin.name, pin
           .panel-footer-divider
-          = link_to new_order_path(pin_id: pin.id), class: "ruby" do
+          = link_to pin, class: "ruby" do
             %button.pricebtn.btn #{number_to_currency(pin.price)}
-          = link_to new_order_path(pin_id: pin.id), class: "ruby" do
-            %button.btn Buy Now
+          = link_to pin, class: "ruby" do
+            %button.btn Edit

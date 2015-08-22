@@ -12,13 +12,12 @@
 						.col-md-6
 							%p.user
 								Submitted by
-								= @pin.user.email
+								= link_to @pin.user.username, @pin.user
 						.col-md-6
 							.btn-group.pull-right
-								= link_to "Order", new_order_path(pin_id: @pin.id), class: "btn btn-default"
 								- if user_signed_in?
 									= link_to "Edit", edit_pin_path, class: "btn btn-default"
-									= link_to "Delete", pin_path, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+									= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 		.rightCol
 			.rightCol-price
 				= number_to_currency(@pin.price)

@@ -9,6 +9,7 @@ class PinsController < ApplicationController
 
 	def user_pins
 		@pins = current_user.pins.order("created_at DESC")
+		render :layout => false
 	end
 
 	def show
@@ -26,6 +27,7 @@ class PinsController < ApplicationController
 			render 'new'
 		end
 	end
+
 	def edit
 	end
 
@@ -38,11 +40,8 @@ class PinsController < ApplicationController
 	end
 
 	def destroy
-		if @pin.destroy
-			redirect_to root_path
-		else
-			render 'delete'
-		end
+		@pin.destroy
+		redirect_to user_pins_path
 	end
 
 	private

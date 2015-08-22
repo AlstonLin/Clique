@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822080812) do
+ActiveRecord::Schema.define(version: 20150822211017) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "pin_id"
@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 20150822080812) do
     t.datetime "purchased_at"
     t.string   "payer_email"
     t.string   "first_name"
+    t.integer  "user_id"
   end
 
   add_index "orders", ["pin_id"], name: "index_orders_on_pin_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "payment_notifications", force: :cascade do |t|
     t.text     "params"
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150822080812) do
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
     t.string   "username"
+    t.string   "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

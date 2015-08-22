@@ -1,10 +1,11 @@
 class Order < ActiveRecord::Base
   belongs_to :pin
   
+
   serialize :notification_params, Hash
   def paypal_url(return_path)
     values = {
-        business: "everestmgteam-1@gmail.com",
+        business: pin.user.email,
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",

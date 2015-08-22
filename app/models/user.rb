@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :pins
   validates :username, presence: true
+  validates :bio, presence: true
+
   has_attached_file :profile_picture, :styles => { :medium => "300x300>" }
   validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 

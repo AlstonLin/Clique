@@ -4,11 +4,11 @@
   .user-middleCol
     .centerCol
       .user-picture
-        = image_tag @user.profile_picture
+        = image_tag @current_user.profile_picture
       .profile-page-name
-        = @user.username
+        = @current_user.username
       .profile-page-description
-        = @user.username
+        = @current_user.bio
 
   .user-divider
   .user-bottomCol

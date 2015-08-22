@@ -11,7 +11,7 @@
 
 
           <div class="form-group">
-            <%= f.label :picture %><br />
+            <%= f.label :Profile_picture %><br />
             <%= f.file_field :profile_picture, input_html: { class: 'form-control' } %>
           </div>
 
@@ -21,7 +21,10 @@
             <%= f.text_field :username, autofocus: true, class: "form-control" %>
           </div>
 
-
+          <div class="form-group">
+            <%= f.label :bio %><br />
+            <%= f.text_field :bio, autofocus: true, class: "form-control" %>
+          </div>
 
           <div class="form-group">
             <%= f.label :email %><br />
