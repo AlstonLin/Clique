@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-	before_action :find_pin, only: [:show, :edit, :update, :destroy]
+	before_action :find_pin, only: [:show]
 	before_action :authenticate_user!, except: [:index, :show, :user_pins]
 	
 	def index
@@ -29,9 +29,11 @@ class PinsController < ApplicationController
 	end
 
 	def edit
+		@pin = current_user.pins.find(params[:id])
 	end
 
 	def update
+		@pin = current_user.pins.find(params[:id])
 		if @pin.update(pin_params)
 			redirect_to @pin, notice: "Pin was successfully updated"
 		else
@@ -40,6 +42,7 @@ class PinsController < ApplicationController
 	end
 
 	def destroy
+		@pin = current_user.pins.find(params[:id])
 		@pin.destroy
 		redirect_to user_pins_path
 	end

@@ -25,7 +25,7 @@
 
 .primary-background {
 	background-color: #f50 !important;
- 	color: white;
+ 	color: white !important;
 }
 
 .gradient-background{
@@ -37,10 +37,25 @@
 }
 
 
+.fa-lg {
+	color:#888;
+
+	&:hover{
+		color:#f50;
+	}
+
+}
+
+
+
+
+
+
+
 
 html {
 	box-sizing: border-box;
-	overflow-y: auto;
+ 	overflow-y: scroll;
 }
 
 
@@ -149,14 +164,21 @@ a:hover {
 
 			&:hover {
 				text-decoration: none;
+				background-color: none;
 			}
 		}
 	}
 }
 
+
+.nav > li > a:hover, .nav > li > a:focus{
+	background-color: white;
+}
+
 nav {
 	border-bottom: 1px solid #cfd4db;
-	
+
+
 	.navbar-brand {
 		a {
 			color: #BD1E23;
@@ -293,6 +315,45 @@ nav {
 		padding-top: 8px;
 	}
 }
+
+.panel-footer2 {
+	padding: 0px 15px 20px 15px;
+	background-color: white;
+	height: 143px;
+	border: 0px;
+	border-radius: 3px;
+	.btn{
+		float:right;
+	}
+	.pricebtn {
+		background-color: white !important;
+		float:left;
+		color: #333;
+		font-size: 16px;
+		padding-left: 0px;
+		padding-right: 0px;
+
+	}
+
+	p {
+		margin: 0;
+	}
+	.user {
+		padding-top: 8px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .panel-footer-CenterCol{
 	width:240px;
@@ -460,7 +521,7 @@ textarea {
 	padding: 20px;
 	max-height: 490px;
 	.rightCol-description {
-		height: 324px;
+		max-height: 324px;
 		width:100%;
 		overflow: auto;
 		margin-top: 10px;

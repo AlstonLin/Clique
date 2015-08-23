@@ -8,18 +8,21 @@
       .profile-page-name
         = @user.username
       .profile-page-description
-        = @user.username
+        = @user.bio
 
   .user-divider
   .user-bottomCol
     .centerCol
       .user-bottomCol-social
         .user-bottomCol-social-tab
-          %i.fa.fa-globe.fa-lg   
+          = link_to "#{@user.website}" do
+            %i.fa.fa-globe.fa-lg 
         .user-bottomCol-social-tab
-          %i.fa.fa-twitter.fa-lg
+          = link_to "#{@user.twitter}" do
+            %i.fa.fa-twitter.fa-lg
         .user-bottomCol-social-tab
-          %i.fa.fa-facebook-square.fa-lg
+          = link_to "#{@user.facebook}" do
+            %i.fa.fa-facebook-square.fa-lg
           
       .user-bottomCol-section
         = link_to "Products", root_path, class: "user-bottomCol-tab"

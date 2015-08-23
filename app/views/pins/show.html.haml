@@ -14,10 +14,10 @@
 								Submitted by
 								= link_to @pin.user.username, @pin.user
 						.col-md-6
-							.btn-group.pull-right
+							.pull-right
 								- if user_signed_in?
-									= link_to "Edit", edit_pin_path, class: "btn btn-default"
-									= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+									= link_to "Edit", edit_pin_path, class: "btn primary-background margin-left10"
+									= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn "
 		.rightCol
 			.rightCol-price
 				= number_to_currency(@pin.price)
