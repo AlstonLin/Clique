@@ -11,7 +11,7 @@
             .col-md-6
               %p.user
                 Submitted by
-                = link_to @pin.user.email, @pin.user
+                = link_to @pin.user.username, @pin.user
             .col-md-6
               .btn-group.pull-right
                 = link_to "View more kits", @pin.user, class: "btn btn-default"
