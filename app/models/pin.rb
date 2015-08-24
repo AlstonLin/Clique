@@ -2,7 +2,7 @@ class Pin < ActiveRecord::Base
 	Paperclip.options[:command_path] = 'C:/Program Files/ImageMagick-6.9.1-Q16'
 	belongs_to :user
 	validates :user_id, presence: true
-	validates :price, presence: true
+	validates :price, presence: true, length: { maximum: 7 }
 	validates :description, presence: true
 	validates :image, presence: true
 	validates :name, presence: true
