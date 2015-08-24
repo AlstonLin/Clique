@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get "user_pins" => "pins#user_pins"
   get "index" => "users#index"
 
-  resources :users
+
+resources :users, :path => '' do
+  resources :pins
+end
+
 
 
 
