@@ -1,26 +1,4 @@
-!!! 5
-%html
-%head
-	%title MajorKit
-	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-	= javascript_include_tag 'application', 'data-turbolinks-track' => true
-	= csrf_meta_tags
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-%body
-	%navbar-default.navbar-fixed-top
-		.container
-			.navbar-brand= link_to "MajorKit", root_path
-
-			- if user_signed_in?
-				%ul.nav.navbar-nav.navbar-right
-					%li= link_to "Upload Kit", new_pin_path
-					%li= link_to "My Profile", user_pins_path
-					%li= link_to "Account", edit_user_registration_path
-					%li= link_to "Sign Out", destroy_user_session_path, method: :delete
-			- else
-				%ul.nav.navbar-nav.navbar-right
-					%li= link_to "Sign Up", new_user_registration_path
-					%li= link_to "Log In", new_user_session_path, class: "button btn primary-background login-btn"
+= render 'currentusertop'
 -if signed_in?
 	.container
 		= render "layouts/pinsmasonry"

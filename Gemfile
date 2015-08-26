@@ -40,6 +40,8 @@ gem 'figaro', '~> 1.1.1'
 gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'aws-sdk', '< 2.0'
 gem 'friendly_id', '~> 5.1.0'
+gem 'jquery-turbolinks'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

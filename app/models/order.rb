@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   
 
   serialize :notification_params, Hash
+  
   def paypal_url(return_path)
     values = {
         business: pin.user.email,
@@ -19,3 +20,7 @@ class Order < ActiveRecord::Base
   end
 
 end
+
+
+
+

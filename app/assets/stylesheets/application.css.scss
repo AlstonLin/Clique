@@ -56,6 +56,7 @@
 html {
 	box-sizing: border-box;
  	overflow-y: scroll;
+ 	overflow-x: hidden;
 }
 
 
@@ -139,6 +140,12 @@ a:hover {
 
 
 /* Nav Bar */
+
+.nav > li {
+	float:right;
+	}
+
+
 
 .navbar-fixed-top{
 	background-color: white;
@@ -672,7 +679,6 @@ textarea {
 
 .user-bottomCol-social{
 	height: 100%;
-	width:300px;
 	float:right;
 	.user-bottomCol-social-tab{
 		margin-left: 25px;
@@ -771,6 +777,54 @@ textarea {
 
 
 
+/**Media changes**/
+
+@media(max-width: 957px){
+
+.navbar-fixed-top{
+	padding-left: 16px;
+	padding-right: 16px;
+	.container {
+		width: 100%;
+	}
+}
+.centerCol {
+  width:100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.homepage-header {
+	height: 530px;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.homepage-header-title{
+	margin-top: 150px;
+	font-size: 30px
+}
+
+.homepage-header-subtitle{
+	font-size: 16px;
+}
+
+.pin-section-title {
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
