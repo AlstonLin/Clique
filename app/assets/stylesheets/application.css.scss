@@ -631,7 +631,8 @@ textarea {
 
 .user-middleCol {
 	width:100%;
-	height: 91px;
+	min-height: 91px;
+	display:inline-block;
 	padding-top: 17px;
 	.profile-page-name {
 		font-size: 22px;
@@ -789,9 +790,6 @@ a {
 
 
 
-.user-middleCol {
-	display:inline-block;
-}
 
 
 
