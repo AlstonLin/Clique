@@ -17,4 +17,5 @@
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree .
-$('.dropdown-toggle').dropdown();
+  $('.dropdown-toggle').dropdown()
+  $('.navbar-toggle').collapse()

@@ -145,9 +145,6 @@ a:hover {
 
 /* Nav Bar */
 
-.nav > li {
-	float:right;
-	}
 
 .navbar-nav>li>a {
 	color: #333;
@@ -789,6 +786,25 @@ a {
 /**Media changes**/
 
 @media(max-width: 957px){
+
+
+
+.user-middleCol {
+	display:inline-block;
+}
+
+
+
+.navbar-brand {
+	margin-left: 16px;
+}
+
+
+
+
+
+
+
 
 .navbar-fixed-top{
 	padding-left: 16px;
