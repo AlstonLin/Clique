@@ -113,6 +113,10 @@ h2 {
 
 .btn-default {
 	border:none;
+	color: #333;
+	&:visited{
+		color: #333;
+	}
 }
 
 a {
@@ -145,6 +149,9 @@ a:hover {
 	float:right;
 	}
 
+.navbar-nav>li>a {
+	color: #333;
+}
 
 
 .navbar-fixed-top{
@@ -773,7 +780,9 @@ textarea {
 }
 
 
-
+a {
+	color: inherit;
+}
 
 
 
@@ -814,12 +823,41 @@ textarea {
 }
 
 
+.rightCol {
+	width: 100%;
+}
+
+.leftCol {
+	width:100%;
+}
+
+
+
+.col-md-6{
+	padding: 0px;
+}
 
 
 
 
+.mh {
+	display:none;
+}
+
+h1 {
+	font-size: 30px;
+}
 
 
+.container {
+	padding: 0px;
+}
+
+
+
+.rightCol-price {
+
+}
 
 
 
@@ -828,10 +866,14 @@ textarea {
 
 
 
+/**Media changes**/
 
+@media(min-width: 957px){
+.mv {
+	display:none;
+}
 
-
-
+}
 
 
 

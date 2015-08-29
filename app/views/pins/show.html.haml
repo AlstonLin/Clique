@@ -3,14 +3,22 @@
 		%h1= @pin.name
 
 	#pin_show
+		.rightCol
+			.rightCol-price
+				= number_to_currency(@pin.price)
+			= link_to "Buy Now", new_order_path(pin_id: @pin.id), class: "btn btn-default btn-show-buy primary-background mh"
+			.rightCol-description
+				%p.description= simple_format(@pin.description)
+
+
 		.leftCol
 			.panel.panel-default
-				.panel-heading.pin_image
+				.panel-heading.pin_image.mh
 					= image_tag @pin.image.url
 				.panel-footer.footer-show
 					.row
 						.col-md-6
-							%p.user
+							%p.user.mh
 								Submitted by
 								= link_to @pin.user.username, @pin.user
 						.col-md-6
@@ -18,9 +26,3 @@
 								- if user_signed_in?
 									= link_to "Edit", edit_pin_path, class: "btn primary-background margin-left10"
 									= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn "
-		.rightCol
-			.rightCol-price
-				= number_to_currency(@pin.price)
-			= link_to "Buy Now", new_order_path(pin_id: @pin.id), class: "btn btn-default btn-show-buy primary-background"
-			.rightCol-description
-				%p.description= simple_format(@pin.description)

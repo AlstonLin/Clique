@@ -12,4 +12,5 @@
 		= f.hidden_field :pin_id, value: @pin.id
 
 	.actions
-		= f.submit "Buy Now", class: "btn btn-default btn-show-buy primary-background"
+		= f.submit "Buy Now", class: "btn btn-default btn-show-buy primary-background mh"
+		= f.submit "Buy Now (#{number_to_currency(@pin.price)})", class: "btn btn-default btn-show-buy primary-background mv"
