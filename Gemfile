@@ -41,7 +41,7 @@ gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'aws-sdk', '< 2.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'jquery-turbolinks'
-
+gem 'papercrop', '~> 0.2.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

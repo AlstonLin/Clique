@@ -123,6 +123,10 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    papercrop (0.2.0)
+      jquery-rails
+      paperclip (>= 3.4)
+      rails (>= 3.1)
     pg (0.17.1-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -220,6 +224,7 @@ DEPENDENCIES
   letter_opener
   masonry-rails (~> 0.2.4)
   paperclip (~> 4.3.0)
+  papercrop (~> 0.2.0)
   pg (= 0.17.1)
   rails (= 4.2.1)
   rails_12factor (= 0.0.2)

@@ -9,12 +9,12 @@
 				  <%= devise_error_messages! %>
 
 				  <div class="form-group">
-				  	<%= f.label "Create a Username" %><br />
+				  	<%= f.label "Username" %><br />
 				  	<%= f.text_field :username, autofocus: true, class: "form-control" %>
 				  </div>
 
           		  <div class="form-group">
-            		<%= f.label "Set a Profile Picture" %><br />
+            		<%= f.label "Profile Picture" %><br />
            			<%= f.file_field :profile_picture, input_html: { class: 'form-control' } %>
           		  </div>
 
@@ -24,7 +24,7 @@
 				  </div>
 
 				  <div class="form-group">
-				  	<%= f.label "Email" %><br />
+				  	<%= f.label "Email" %> <i style="color:#337ab7">(Use your paypal email. This is where payments will be instantly sent)</i><br />
 				  	<%= f.email_field :email, autofocus: true, class: "form-control" %>
 				  </div>
 

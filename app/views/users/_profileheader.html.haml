@@ -15,13 +15,13 @@
     .centerCol
       .user-bottomCol-social
         .user-bottomCol-social-tab
-          = link_to "#{@user.website}" do
+          = link_to "#{@user.website}", target: "_blank" do
             %i.fa.fa-globe.fa-lg 
         .user-bottomCol-social-tab
-          = link_to "#{@user.twitter}" do
+          = link_to "#{@user.twitter}", target: "_blank" do
             %i.fa.fa-twitter.fa-lg
         .user-bottomCol-social-tab
-          = link_to "#{@user.facebook}" do
+          = link_to "#{@user.facebook}", target: "_blank" do
             %i.fa.fa-facebook-square.fa-lg
           
       .user-bottomCol-section
