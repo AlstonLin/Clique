@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
 
   has_attached_file :profile_picture, :styles => { :medium => "300x300>" }
   validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
+  crop_attached_file :profile_picture
+
+
 
   extend FriendlyId
   friendly_id :username, use: [:slugged, :history]
