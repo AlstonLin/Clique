@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy ]
+  before_action :authenticate_user!, only: [:show]
 
   # GET /orders
   def index
