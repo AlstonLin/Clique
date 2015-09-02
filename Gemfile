@@ -43,6 +43,10 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'jquery-turbolinks'
 gem 'papercrop', '~> 0.2.0'
 
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+
+
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

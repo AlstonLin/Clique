@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy ]
-  before_action :authenticate_user!, only: [:show]
 
   # GET /orders
   def index
@@ -35,10 +34,9 @@ class OrdersController < ApplicationController
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]
     if status == "Completed"
-      ExampleMailer.sample_email(@order, @pin).deliver!
       @order = Order.find params[:invoice]
       @order.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now, payer_email: params[:payer_email], first_name: params[:first_name]
-
+      ExampleMailer.sample_email(@order, @pin).deliver!
     end
     render nothing: true
   end
