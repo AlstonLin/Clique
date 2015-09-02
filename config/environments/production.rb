@@ -86,7 +86,7 @@ ActionMailer::Base.smtp_settings = {
   :user_name      => ENV['username'],
   :password       => ENV['password'],
   :authentication => :plain,
-}}
+}
 
   # Sets paperclip to upload images to Amazon S3
 config.paperclip_defaults = {
