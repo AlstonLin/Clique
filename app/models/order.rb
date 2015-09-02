@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
   
   def paypal_url(return_path)
     values = {
-        business: user.email,
+        business: pin.user.email,
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
