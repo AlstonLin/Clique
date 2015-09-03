@@ -99,6 +99,7 @@ config.paperclip_defaults = {
 }
 
 
-
+# Default Mailer Host
+  config.action_mailer.default_url_options = { :host => 'majorkit.heroku.com' }
 
 end
