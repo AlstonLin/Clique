@@ -42,7 +42,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'jquery-turbolinks'
 gem 'papercrop', '~> 0.2.0'
-
+gem "obfuscate_id"
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 
@@ -63,6 +63,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'pg',             '0.17.1'
+  #gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end

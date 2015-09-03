@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :pin
-  
+  obfuscate_id :spin => 19230713
+
 
   serialize :notification_params, Hash
   
