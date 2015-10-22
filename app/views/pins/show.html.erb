@@ -1,0 +1,106 @@
+<div class="centerCol">
+
+
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  <div id="jp_container_1" class="jp-audio">
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <ul class="jp-volume-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1">&#61515;</a></li>
+          <li><a href="javascript:;" class="jp-pause" tabindex="1">&#61516;</a></li>
+          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">&#61480;</a></li>
+          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">&#61478;</a></li>
+        </ul>
+
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+
+        <div class="jp-time-holder">
+          <div class="jp-current-time"></div>
+        </div>
+
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+
+        <div class="jp-no-solution">
+          <span>Update Required</span>
+          To play the media you need to either update your flash plug </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <div class="pin-show-title">
+    <h1>
+      <%= "#{@pin.user.username} - #{@pin.name}" %>
+    </h1>
+  </div>
+  <div id="pin_show">
+    <div class="rightCol">
+      <div class="rightCol-price">
+        <div class="mh">
+          <%= number_to_currency(@pin.price) %>
+        </div>
+      </div>
+      <%= render 'form' %>
+      <div class="rightCol-description">
+        <p class="description">
+          <%= simple_format(@pin.description) %>
+        </p>
+      </div>
+    </div>
+    <div class="leftCol">
+      <div class="panel panel-default">
+        <div class="panel-heading pin_image mh">
+          <%= image_tag @pin.image.url %>
+        </div>
+        <div class="panel-footer footer-show">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="user">
+                Submitted by
+                <%= link_to @pin.user.username, @pin.user %>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div class="btn-group pull-right mh">
+                <%= link_to "View more kits", @pin.user, class: "btn btn-default" %>
+                <!--- if user_signed_in?
+                -->
+                <!--  = link_to "Edit", edit_pin_path, class: "btn btn-default"
+                -->
+                <!--  = link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  
+  $(document).ready(function(){
+   $("#jquery_jplayer_1").jPlayer({
+    ready: function () {
+     $(this).jPlayer("setMedia", {
+      mp3: "<%= @pin.mp3.url %>",
+     });
+    },
+    swfPath: "/js",
+    supplied: "mp3"
+   });
+  });
+  
+</script>
