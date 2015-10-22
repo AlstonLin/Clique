@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.jcrop
+//= require jquery.jplayer.min
 //= require papercrop
 //= require bootstrap-sprockets
 //= require masonry/jquery.masonry
