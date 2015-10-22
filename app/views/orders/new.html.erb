@@ -1,35 +1,42 @@
 <div class="centerCol">
 
 
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-  <div id="jp_container_1" class="jp-audio">
-    <div class="jp-type-single">
-      <div class="jp-gui jp-interface">
-        <ul class="jp-volume-controls">
-          <li><a href="javascript:;" class="jp-play" tabindex="1">&#61515;</a></li>
-          <li><a href="javascript:;" class="jp-pause" tabindex="1">&#61516;</a></li>
-          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">&#61480;</a></li>
-          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">&#61478;</a></li>
-        </ul>
+<div id="jplayer_audio_1" class="jp-jplayer"></div>
 
-        <div class="jp-progress">
-          <div class="jp-seek-bar">
-            <div class="jp-play-bar"></div>
-          </div>
-
-        <div class="jp-time-holder">
-          <div class="jp-current-time"></div>
-        </div>
-
-        <div class="jp-volume-bar">
-          <div class="jp-volume-bar-value"></div>
-        </div>
-
-        <div class="jp-no-solution">
-          <span>Update Required</span>
-          To play the media you need to either update your flash plug </a>
+<div id="jp_gui_audio_1" class="jp-audio">
+  <div class="jp-type-single">
+    <div class="jp-gui jp-interface">
+      <ul class="jp-controls">
+        <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+        <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+        <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+        <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+        <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+        <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+      </ul>
+      <div class="jp-progress">
+        <div class="jp-seek-bar">
+          <div class="jp-play-bar"></div>
         </div>
       </div>
+      <div class="jp-volume-bar">
+        <div class="jp-volume-bar-value"></div>
+      </div>
+      <div class="jp-current-time"></div>
+      <div class="jp-duration"></div>
+      <ul class="jp-toggles">
+        <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+        <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+      </ul>
+    </div>
+    <div class="jp-title">
+      <ul>
+        <li>Bubble</li>
+      </ul>
+    </div>
+    <div class="jp-no-solution">
+      <span>Update Required</span>
+      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
     </div>
   </div>
 </div>
@@ -89,16 +96,24 @@
 </div>
 
 
-<script type="text/javascript">
-  $(document).ready(function(){
-   $("#jquery_jplayer_1").jPlayer({
-    ready: function () {
-     $(this).jPlayer("setMedia", {
-      mp3: <%= @pin.mp3.url %>,
-     });
-    },
-    swfPath: "/js",
-    supplied: "mp3"
-   });
-  });
-</script>
+  <script type="text/javascript" src="lib/jquery.jplayer.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      // Audio
+      $('#jplayer_audio_1').jPlayer({
+        ready: function(event) {
+          $(this).jPlayer('setMedia', {
+            mp3: <%= @pin.mp3.url %>,
+          });
+        },
+        play: function() {
+          $(this).jPlayer('pauseOthers');
+        },
+        cssSelectorAncestor: '#jp_gui_audio_1',
+        swfPath: 'lib',
+        supplied: 'mp3',
+        smoothPlayBar: true,
+        keyEnabled: true,
+        wmode: 'window'
+      });
+  </script>
