@@ -6,9 +6,35 @@
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"
   = csrf_meta_tags
-<meta name="viewport" content="width=device-width, initial-scale=1, , minimal-ui">
-<meta charset="utf-8">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+
+%meta{:content => "width=device-width, initial-scale=1, , minimal-ui", :name => "viewport"}/
+%meta{:charset => "utf-8"}/
+%link{:href => "//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300", :rel => "stylesheet", :type => "text/css"}/
+
+:javascript
+  $(document).ready(function(){
+    $("#jquery_jplayer_1").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "#{@pin.mp3.url}",
+        });
+      },
+      cssSelectorAncestor: "#jp_container_1",
+      swfPath: "/js",
+      supplied: "mp3",
+      useStateClassSkin: true,
+      autoBlur: false,
+      smoothPlayBar: true,
+      keyEnabled: true,
+      remainingDuration: true,
+      toggleDuration: true
+    });
+  });
+
+
+
+
+
 %body
   %nav.navbar.navbar-default.navbar-fixed-top
     .container
