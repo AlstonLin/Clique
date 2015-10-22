@@ -142,6 +142,7 @@ GEM
       jquery-rails
       paperclip (>= 3.4)
       rails (>= 3.1)
+    pg (0.17.1-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -257,6 +258,7 @@ DEPENDENCIES
   obfuscate_id
   paperclip (~> 4.3.0)
   papercrop (~> 0.2.0)
+  pg (= 0.17.1)
   rails (= 4.2.1)
   rails_12factor (= 0.0.2)
   sass-rails (~> 5.0)

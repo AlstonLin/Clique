@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { maximum: 14 }, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   validates :bio, presence: true, length: { maximum: 140 }
   validates_uniqueness_of :username
-  validates :profile_picture, presence: true
+
 
 
 
