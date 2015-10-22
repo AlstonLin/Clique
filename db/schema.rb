@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824004626) do
+ActiveRecord::Schema.define(version: 20151022212543) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20150824004626) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "mp3_file_name"
+    t.string   "mp3_content_type"
+    t.integer  "mp3_file_size"
+    t.datetime "mp3_updated_at"
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
