@@ -20,21 +20,3 @@
 //= require_tree .
   $('.dropdown-toggle').dropdown()
 
-    jQuery(document).ready(function($) {
-      // Audio
-      $('#jplayer_audio_1').jPlayer({
-        ready: function(event) {
-          $(this).jPlayer('setMedia', {
-            mp3: "<%= @pin.mp3.url %>",
-          });
-        },
-        play: function() {
-          $(this).jPlayer('pauseOthers');
-        },
-        cssSelectorAncestor: '#jp_gui_audio_1',
-        swfPath: 'lib',
-        supplied: 'mp3',
-        smoothPlayBar: true,
-        keyEnabled: true,
-        wmode: 'window'
-      });
