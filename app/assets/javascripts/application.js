@@ -18,5 +18,6 @@
 //= require bootstrap-sprockets
 //= require masonry/jquery.masonry
 //= require_tree .
+
   $('.dropdown-toggle').dropdown()
 
