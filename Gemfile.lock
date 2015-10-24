@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.1)
       actionpack (= 4.2.1)
@@ -159,9 +158,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.1)
       sprockets-rails
-    rails-assets-jplayer (2.9.2)
-      rails-assets-jquery (>= 1.7.2)
-    rails-assets-jquery (2.1.4)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -266,7 +262,6 @@ DEPENDENCIES
   papercrop (~> 0.2.0)
   pg (= 0.17.1)
   rails (= 4.2.1)
-  rails-assets-jplayer!
   rails_12factor (= 0.0.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

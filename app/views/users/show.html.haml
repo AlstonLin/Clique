@@ -5,7 +5,31 @@
   - @user.pins.each do |pin|
     .box.panel.panel-default
       .pin-image
-        = link_to (image_tag pin.image.url), new_order_path(pin_id: pin.id)
+        / Audio Player HTML
+        #uniquePlayer-1.webPlayer.light
+          #uniqueContainer-1.videoPlayer
+        :javascript
+          $(document).ready(function() {
+
+            $('.webPlayer').videoPlayer({
+              name: '#{pin.mp3.name}',
+              media: {
+                mp3: '#{pin.mp3.url}',
+              },
+
+              size: {
+                width: '300px',
+              },
+
+              // These go directly to jPlayer object, allowing you to rewrite any player setting
+              loadstart: function() {
+                alert('Video loading started!');
+              }
+
+            });
+
+          });
+        / end Audio Player HTML
       .panel-footer.panel-footer2
         .panel-footer-CenterCol
           %h2= link_to pin.name, new_order_path(pin_id: pin.id)
