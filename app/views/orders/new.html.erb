@@ -1,35 +1,8 @@
 <div class="centerCol">
 
 
-        <div id="player1" class="playerGUI">
-            <div id="videoPlayer"></div>
-            <div class="playerScreen">
-                <a tabindex="1" href="#" class="video-play"></a>
-            </div>
-            <div class="controls">
-                <div class="leftblock">
-                    <a tabindex="1" href="#" class="play smooth"></a>
-                    <a tabindex="1" href="#" class="pause smooth"></a>
-                </div>
-                <div class="play-progress">
-                    <span>Tomorrowland 2013 - Aftermovie</span>
-                    <div class="progressbar">
-                        <div class="seekBar">
-                            <div class="playBar"></div>
-                        </div>
-                    </div>
-                    <div class="time current">00:00</div>
-                    <div class="time duration">00:00</div>
-                </div>
-                <div class="rightblock">
-                    <div class="volumeBar">
-                        <div class="currentVolume"><div class="curvol"></div></div>
-                    </div>
-                    <a class="volumeText">Volume: 50</a>
-                    <a href="#" tabindex="1" class="fullScreen smooth"></a>
-                    <a href="#" tabindex="1" class="fullScreenOFF smooth"></a>
-                </div>
-            </div>
+        <div id="uniquePlayer-1" class="webPlayer light">
+            <div id="uniqueContainer-1" class="videoPlayer"></div>
         </div>
 
 
@@ -89,107 +62,25 @@
   </div>
 </div>
 
-        <script type="text/javascript">
+       <script type="text/javascript">
             $(document).ready(function() {
 
-                var media = { mp3: '<%= @pin.mp3.url %>' }
-                var options = {
-
-                    ready: function () {
-                        $(this).jPlayer("setMedia", media);
+                $('.webPlayer').videoPlayer({
+                    name: 'Tomorrowland Official Aftermovie 2013',
+                    media: {
+                        mp3: '<%= @pin.mp3.url %>',
                     },
 
-                    // Extra Settings
-                    swfPath: "/images/jplayer.swf",
-                    supplied: 'mp3',
-                    solution: 'html, flash',
-                    volume: 0.5,
-                    size: size,
-                    smoothPlayBar: false,
-                    keyEnabled: true,
-
-                    // CSS Selectors
-                    cssSelectorAncestor: '.playerGUI',
-                    cssSelector: {
-                        videoPlay: ".video-play",
-                        play: ".play",
-                        pause: ".pause",
-                        seekBar: ".seekBar",
-                        playBar: ".playBar",
-                        volumeBar: ".currentVolume",
-                        volumeBarValue: ".currentVolume .curvol",
-                        currentTime: ".time.current",
-                        duration: ".time.duration",
-                        fullScreen: ".fullScreen",
-                        restoreScreen: ".fullScreenOFF",
-                        gui: ".controls",
-                        noSolution: ".noSolution"
+                    size: {
+                        width: '1280px',
                     },
 
-                    error: function(event) {
-                        if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-                            // Setup the media stream again and play it.
-                            $(this).jPlayer("setMedia", media).jPlayer('play');
-                        }
-                    },
-
-                    play: function() {
-                        $('#player1 .video-play').fadeOut();
-                        $(this).on('click', function() { $('#player1').jPlayer('pause');});
-                        $(this).jPlayer("pauseOthers");
-                    },
-
-                    pause: function() {
-                        $('#player1 .video-play').fadeIn();
-                        $('#player1 .playerScreen').unbind('click');
-                    },
-
-                    volumechange: function(event) {
-                        if(event.jPlayer.options.muted) {
-                            $('#player1 .currentVolume').val(0);
-                        } else {
-                            $('#player1 .currentVolume').val(event.jPlayer.options.volume);
-                        }
-                    },
-
-                    timeupdate: function(event) {
-                        $('#player1 .seekBar').val(event.jPlayer.status.currentPercentRelative);
-                    },
-
-                    ended: function() {
-                        $(this).jPlayer("setMedia", media);
+                    // These go directly to jPlayer object, allowing you to rewrite any player setting
+                    loadstart: function() {
+                        alert('Video loading started!');
                     }
 
-
-                };
-
-                // Create the volume slider control
-                $('#player1 .currentVolume').slider({
-                    range: [0, 1],
-                    step: 0.01,
-                    start : 0.5,
-                    handles: 1,
-                    slide: function() {
-                        var value = $(this).val();
-                        $(mainPlayer).jPlayer("option", "muted", false);
-                        $(mainPlayer).jPlayer("option", "volume", value);
-                        $('#player1 .volumeText').html('Volume: ' + (value * 100).toFixed(0) + '');
-                    }
                 });
-
-                $('#player1 .seekBar').slider({
-                    range: [0,100],
-                    step: 0.01,
-                    start: 0,
-                    handles: 1,
-                    slide: function() {
-                        var value = $(this).val();
-                        $('#player1').jPlayer("playHead", value);
-                    }
-                });
-
-                // Initialize Player
-                $('#player1').jPlayer(options);
 
             });
         </script>
