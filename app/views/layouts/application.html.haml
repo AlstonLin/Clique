@@ -6,7 +6,10 @@
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 
-
+  :javascript
+    $(document).ready(function(){
+        $(document).find('.webPlayer').each(function() { $('#'+this.id).videoPlayer(); });
+    });
 
 %meta{:content => "width=device-width, initial-scale=1, , minimal-ui", :name => "viewport"}/
 %meta{:charset => "utf-8"}/
