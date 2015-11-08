@@ -1,0 +1,18 @@
+    <div>
+      <% if current_fan %>
+        Signed in as <strong><%= current_fan.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
+      <% end %>
+    </div>
+    <div>
+
+
+
+<% if !current_fan.nil? %>
+    <p>Click The link below to send a tweet.</p>
+    <%= link_to "Send a Tweet", new_tweet_path %>
+<% else %>
+    <p>You must log in to send a tweet.</p>
+<% end %>

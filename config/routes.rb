@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+  get 'tweets/new'
+
+  get 'tweets/create'
+  get 'tweets/show'
+  get 'home/show'
+
   resources :payment_notifications
-  devise_for :users, :controllers => { registrations: 'registrations' }
+
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks'}
+
+  resources :tweets
   resources :orders
 
   post "/hook" => "orders#hook"
@@ -16,6 +25,7 @@ Rails.application.routes.draw do
 resources :users, :path => '' do
   resources :pins
 end
+
 
 
 

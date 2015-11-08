@@ -1,0 +1,125 @@
+<style>
+
+.background {
+  background-image: url("<%= @pin.image.url %>");
+    -webkit-filter: blur(25px);
+
+  background-repeat: none;
+  width:100%;
+  height:100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: cover;
+}
+
+.centerCol{
+  z-index: 1000;
+  width: 705px;
+  margin-top: -14px;
+}
+
+.leftCol {
+  width:400px;
+}
+
+.webPlayer.light .controls {
+  border: none;
+  background-color: #fff;
+}
+
+.webPlayer.light .controls .play-progress .time.current {
+  color: white;
+}
+
+.webPlayer.light .controls .play-progress .time.duration {
+  color: white;
+}
+
+.webPlayer.light .controls .play-progress .progressbar {
+  width: 285px;
+  margin-left:15px;
+    margin-top: 5px;
+}
+
+.webPlayer.light .controls .leftblock{
+  left:15px;
+  margin-top: 5px;
+}
+
+#pin_show .panel-heading{
+  max-height: 265px;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]{
+  margin-top: 10px;
+}
+
+
+.pin-show-title{
+  color: white;
+}
+
+</style>
+
+
+<div class="centerCol">
+
+
+
+
+
+  <div class="pin-show-title">
+    <h1>
+      <%= "#{@pin.user.username} - #{@pin.name}" %>
+    </h1>
+  </div>
+  <div id="pin_show">
+    <div class="rightCol">
+
+
+
+    </div>
+    <div class="leftCol">
+      <div class="panel panel-default">
+        <div class="panel-heading pin_image mh">
+          <%= image_tag @pin.image.url %>
+            <!-- Audio Player HTML -->
+   
+        </div>
+ <div id="uniquePlayer-1" class="webPlayer light audioPlayer">
+      <div id="uniqueContainer-1" class="videoPlayer"></div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+
+        $('.webPlayer').videoPlayer({
+          name: '<%= @pin.mp3.name %>',
+          media: {
+            mp3: '<%= @pin.mp3.url %>',
+          },
+
+          size: {
+            width: '400px',
+          },
+
+
+        });
+
+      });
+
+
+    </script>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

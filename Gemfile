@@ -44,8 +44,8 @@ gem 'jquery-turbolinks'
 gem 'papercrop', '~> 0.2.0'
 gem "obfuscate_id"
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
-
-
+gem 'twitter', '~> 5.3.1'
+gem 'omniauth-twitter', '~> 1.0.1'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

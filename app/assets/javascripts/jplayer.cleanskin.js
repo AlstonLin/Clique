@@ -24,7 +24,7 @@
 <a tabindex="1" href="#" class="pause smooth noload"></a>\
 </div>\
 <div class="play-progress">\
-<span>' + settings.name + '</span>\
+<span></span>\
 <div class="progressbar">\
 <div class="seekBar">\
 <div class="playBar"></div>\
@@ -45,6 +45,7 @@
 		if ($(this).hasClass('audioPlayer')) { 
 			$(this).find('.fullScreen').remove();
 			$(this).find('.fullScreenOFF').remove();
+			$(this).find('.rightblock').remove();
 		}
 		
 		createPlayer(playerGUI, playerID, settings, extras);

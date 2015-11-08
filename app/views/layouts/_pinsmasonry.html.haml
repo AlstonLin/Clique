@@ -4,10 +4,10 @@
 	- @pins.each do |pin|
 		.box.panel.panel-default
 			.pin-image
-				= link_to (image_tag pin.image.url), new_order_path(pin_id: pin.id)
+				= link_to (image_tag pin.image.url), new_tweet_path(pin_id: pin.id)
 			.panel-footer
 				.panel-footer-CenterCol
-					%h2= link_to pin.name, new_order_path(pin_id: pin.id)
+					%h2= link_to pin.name, new_tweet_path(pin_id: pin.id)
 					.panel-user
 						.panel-user-picture
 							= link_to (image_tag pin.user.profile_picture), pin.user

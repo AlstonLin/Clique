@@ -1,0 +1,166 @@
+
+<style>
+
+.background {
+  background-image: url("<%= @pin.image.url %>");
+    -webkit-filter: blur(25px);
+
+  background-repeat: none;
+  width:100%;
+  height:100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: cover;
+}
+
+.centerCol{
+  z-index: 1000;
+  width: 705px;
+  margin-top: -14px;
+}
+
+.leftCol {
+  width:400px;
+}
+
+.webPlayer.light .controls {
+  border: none;
+  background-color: #fff;
+}
+
+.webPlayer.light .controls .play-progress .time.current {
+  color: white;
+}
+
+.webPlayer.light .controls .play-progress .time.duration {
+  color: white;
+}
+
+.webPlayer.light .controls .play-progress .progressbar {
+  width: 285px;
+  margin-left:15px;
+    margin-top: 5px;
+}
+
+.webPlayer.light .controls .leftblock{
+  left:15px;
+  margin-top: 5px;
+}
+
+#pin_show .panel-heading{
+  max-height: 265px;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]{
+  margin-top: 10px;
+}
+
+
+.pin-show-title{
+  color: white;
+}
+
+</style>
+
+
+<div class="centerCol">
+
+
+
+
+
+  <div class="pin-show-title">
+    <h1>
+      <%= "#{@pin.user.username} - #{@pin.name}" %>
+    </h1>
+  </div>
+  <div id="pin_show">
+    <div class="rightCol">
+
+          <div>
+      <% if current_user %>
+        Signed in as <strong><%= current_user.username %></strong>!
+      <% else %>
+        <%= link_to "Sign in with Twitter", "/users/auth/twitter", id: "sign_in" %>
+      <% end %>
+    </div>
+
+<script>
+function myFunction() {
+    document.getElementsByClassName("btn").style.backgroundColor = "red";
+}
+</script>
+
+
+
+
+
+    <div>
+
+<% if !current_user.nil? %>
+    <p>Share on twitter to get your free download.</p>
+<% else %>
+    <p>Share with twitter to get your free download.</p>
+<% end %>
+</div>
+
+
+
+
+
+
+
+
+
+  <%= simple_form_for :tweet, url: tweets_path, method: :post do |f| %>
+    <%= f.text_field :message, :value => @pin.message, :readonly => true %>
+    <%= f.text_field :pin_id, :value => @pin.id, :readonly => true %>
+    <%= f.submit "Send Tweet",  class: "btn btn-default btn-show-buy primary-background" %>
+  <% end %>
+
+
+    </div>
+    <div class="leftCol">
+      <div class="panel panel-default">
+        <div class="panel-heading pin_image mh">
+          <%= image_tag @pin.image.url %>
+            <!-- Audio Player HTML -->
+   
+        </div>
+ <div id="uniquePlayer-1" class="webPlayer light audioPlayer">
+      <div id="uniqueContainer-1" class="videoPlayer"></div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+
+        $('.webPlayer').videoPlayer({
+          name: '<%= @pin.mp3.name %>',
+          media: {
+            mp3: '<%= @pin.mp3.url %>',
+          },
+
+          size: {
+            width: '400px',
+          },
+
+
+        });
+
+      });
+
+
+    </script>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

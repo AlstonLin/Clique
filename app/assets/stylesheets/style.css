@@ -182,3 +182,12 @@ div.audio-player {
 	color: #666666;
 	text-align: center;
 }
+
+.progressbar {
+	width: 223px;
+	height: 2px;
+}
+
+.webPlayer.light .controls .play-progress {
+	margin: 0 5px 0 50px;
+}

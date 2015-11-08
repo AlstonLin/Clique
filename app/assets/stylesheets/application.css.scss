@@ -523,6 +523,7 @@ textarea {
 	width: 630px;
 	height: auto;
 	float:left;
+	position: relative;
 }
 
 .rightCol {
@@ -533,6 +534,7 @@ textarea {
 	border-radius: 3px;
 	padding: 20px;
 	max-height: 490px;
+	position: relative;
 	.rightCol-description {
 		max-height: 324px;
 		width:100%;
@@ -580,6 +582,7 @@ textarea {
 	letter-spacing: -1px;
 	text-align: center;
 	width: auto;
+	position: relative;
 }
 
 
@@ -841,10 +844,12 @@ a {
 
 .rightCol {
 	width: 100%;
+	position: relative;
 }
 
 .leftCol {
 	width:100%;
+	position: relative;
 }
 
 

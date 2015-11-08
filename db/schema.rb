@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022212543) do
+ActiveRecord::Schema.define(version: 20151031232503) do
+
+  create_table "fans", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -68,9 +78,18 @@ ActiveRecord::Schema.define(version: 20151022212543) do
     t.string   "mp3_content_type"
     t.integer  "mp3_file_size"
     t.datetime "mp3_updated_at"
+    t.text     "message"
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+
+  create_table "tweets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "pins_id"
+  end
+
+  add_index "tweets", ["pins_id"], name: "index_tweets_on_pins_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                        default: "", null: false
@@ -96,6 +115,10 @@ ActiveRecord::Schema.define(version: 20151022212543) do
     t.string   "youtube"
     t.string   "website"
     t.string   "slug"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
