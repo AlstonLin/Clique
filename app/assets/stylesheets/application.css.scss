@@ -229,12 +229,13 @@ a:hover {
 	.input-group-btn{
 		.btn-default{
 			height:34px;
-			background-color: #F6F6F6 !important;
+			background-color: #F6F6F6;
 
 			color: #888;
-			border-top: 1px solid #E5E5E5 !important;
-			border-right: 1px solid #E5E5E5 !important;
-			border-bottom: 1px solid #E5E5E5 !important;
+			border-top: 1px solid #E5E5E5;
+			border-right: 1px solid #E5E5E5;
+			border-bottom: 1px solid #E5E5E5;
+			border-left: none;
 		}
 
 	}
@@ -251,7 +252,7 @@ a:hover {
 }
 
 .navbar-default{
-
+	background-color: white;
 	border: 0px;	
 }
 
@@ -2259,6 +2260,12 @@ $border: #e5e5e5;
 	cursor: pointer;
 }
 
+
+.rightCol-Index{
+	float:right;
+	width:260px;
+}
+
 .rightCol-Filter{
 	width: 260px;
 	float: right;
@@ -2410,7 +2417,7 @@ body {
 
 
 .leftCol {
-width: 600px;
+width: 630px;
 }
 
 
@@ -2788,7 +2795,7 @@ padding-right: 0px !important;
 .player1-Name{
 	margin-top: 10px;
 	height: 68px;
-	width: 200px;
+	width: 30px;
 	float:left;
 	z-index: 10;
 	position: absolute;
@@ -2830,6 +2837,7 @@ padding-right: 0px !important;
 	font-size: 14px;
 	margin-left: 46px;
 	margin-top: -2px;
+	width:300px;
 }
 
 .player1-songName:hover{
@@ -2842,6 +2850,7 @@ padding-right: 0px !important;
 	font-size: 12px;
 	margin-left: 46px;
 	color:#A5A5A5;
+	width:300px;
 }
 
 .player1-artist:hover{
