@@ -47,6 +47,14 @@ class PinsController < ApplicationController
 		redirect_to user_pins_path
 	end
 
+
+	def user_followers
+
+  		render :layout => false
+	end
+
+
+
 	private
 
 	def pin_params

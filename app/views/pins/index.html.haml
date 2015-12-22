@@ -1,15 +1,23 @@
-= render 'currentusertop'
+
+
 -if signed_in?
-	.container
+	= render 'currentusertop'
+	.page-Bottom2
 		= render "layouts/pinsmasonry"
+		.container2
+			= render "layouts/likes"
+			= render "layouts/likes"
+
 -else
+	= render 'defaultnav'
 	.homepage-header
 		.homepage-header-title
-			Sell Your Drumkits. 
-			%br Receive Instant Payments.
+			Find the music you love.
 		.homepage-header-subtitle
-			The only place to sell your drumkits commission free.
-		= link_to "Upload your kits", new_user_registration_path, class: "button btn primary-background gradient-background"
-	
+			Connect directly with your favourite artists.
+		= link_to "Create acccount" , new_user_registration_path, class: "button btn primary-background"
 
-	= render "layouts/pinsmasonry"
+	.page-Bottom
+		= render "layouts/pinsmasonry"
+
+= render "layouts/footer"

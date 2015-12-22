@@ -1,23 +1,41 @@
 !!! 5
 %html
 %head
-  %title MajorKit
+  %title Clique
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimal-ui">
 <meta charset="utf-8">
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css", :rel => "stylesheet"}/
 %body
   %nav.navbar.navbar-default.navbar-fixed-top
-    .container
+    .container3
       .navbar-header
         %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        .navbar-brand= link_to "MajorKit", root_path
+        .navbar-brand= link_to " CLIQUE", root_path
+
+        %ul.nav.navbar-nav
+          %li
+            = link_to "Home", root_path
+          %li
+            %a{:href => "#"} Discover
+
+        %form.navbar-form{:role => "search"}
+          .input-group
+            %input.form-control{:name => "q", :placeholder => "Search", :type => "text"}/
+            .input-group-btn
+              %button.btn.btn-default{:type => "submit"}
+                %i.glyphicon.glyphicon-search
+
       #navbar.navbar-collapse.collapse
         %ul.nav.navbar-nav
 
@@ -39,7 +57,7 @@
         - else
           %ul.nav.navbar-nav.navbar-right
             %li= link_to "Sign Up", new_user_registration_path
-            %li= link_to "Log In", new_user_session_path, class: "button btn primary-background login-btn"
+            %li= link_to "Log In", new_user_session_path, class: "btn btn-login"
 
 
 

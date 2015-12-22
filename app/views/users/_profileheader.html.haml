@@ -1,28 +1,40 @@
-.user-header
-  .user-coverpicture
-    
-  .user-middleCol
-    .centerCol
-      .user-picture
-        = image_tag @user.profile_picture
-      .profile-page-name
-        = @user.username
-      .profile-page-description
-        = @user.bio
+.topBanner
+  .user-picture
+    / = image_tag @user.profile_picture
+  .profile-pagename
+    Vday Beatz
+  .profile-location
+    Toronto
+.statsBar
+  .container2
+    / Trigger the modal with a button
+    %button.btn.btn-info.btn-lg.btn-primary.btn{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"} Join Clique
+    / Modal
+    #myModal.modal.fade{:role => "dialog"}
+      .modal-dialog
+        / Modal content
+        .modal-content
+          .modal-header
+            %button.close{"data-dismiss" => "modal", :type => "button"} ×
+            %h4.modal-title Join Vday's Clique
+          .modal-body
+            %p Some text in the modal.
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
 
-  .user-divider
-  .user-bottomCol
-    .centerCol
-      .user-bottomCol-social
-        .user-bottomCol-social-tab
-          = link_to "#{@user.website}", target: "_blank" do
-            %i.fa.fa-globe.fa-lg 
-        .user-bottomCol-social-tab
-          = link_to "#{@user.twitter}", target: "_blank" do
-            %i.fa.fa-twitter.fa-lg
-        .user-bottomCol-social-tab
-          = link_to "#{@user.facebook}", target: "_blank" do
-            %i.fa.fa-facebook-square.fa-lg
-          
-      .user-bottomCol-section
-        = link_to "Products", root_path, class: "user-bottomCol-tab"
+
+    .btn-hollow.btn
+      + Follow
+    .leftCol2
+      .stats1
+        %b 12 
+        Posts
+      .stats2
+        %b 28 
+        Following
+      .stats2
+        %b 2K 
+        Followers 
+      .stats2
+        %b 3K 
+        Favourites

@@ -19,7 +19,14 @@ Rails.application.routes.draw do
   root "pins#index"
 
   get "user_pins" => "pins#user_pins"
+  get "user_followers" => "pins#followers"
+
   get "index" => "users#index"
+
+
+
+
+  get 'followers' => 'users#followers'
 
 
 resources :users, :path => '' do

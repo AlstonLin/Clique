@@ -1,17 +1,37 @@
 
 = render 'currentusertop'
-= render 'currentprofileheader'
+.topBanner
+.container2
+  .leftCol
+    .profilePicture-border
+      .profilePicture
+        = image_tag @current_user.profile_picture
+    .artistName
+      Fortune
+.statsBar
+  .container2
+    .btn-primary.btn
+      Follow
+    .leftCol
+      .stats1
+        Posts
+      =link_to followers_path do
+        .stats2 Followers  
+      .stats2
+        Following
+      .stats2
+        Favourites
 
-#pins.transitions-enable
-  - @pins.each do |pin|
-    .box.panel.panel-default
-      .pin-image
-        = link_to (image_tag pin.image.url), pin
-      .panel-footer2
-        .panel-footer-CenterCol
-          %h2= link_to pin.name, pin
-          .panel-footer-divider
-          = link_to pin, class: "ruby" do
-            %button.pricebtn.btn #{number_to_currency(pin.price)}
-          = link_to pin, class: "ruby" do
-            %button.btn Edit
+.container2
+  .rightCol2
+    .rightBlock
+      .rightBlock-Top
+        About
+      .rightBlock-Body
+        Flow-Fi was founded in 2014 following a series of football tweets and an appreciation for whats good in Hip Hop.
+      .rightBlock-Top
+        Social
+      .rightBlock-Body
+        Flow-Fi was founded in 2014 following a series of football tweets and an appreciation for whats good in Hip Hop.
+  .leftCol
+    = render 'player'
