@@ -1,12 +1,13 @@
 .topBanner
-  .user-picture
-    / = image_tag @user.profile_picture
-  .profile-pagename
-    Vday Beatz
-  .profile-location
-    Toronto
+
 .statsBar
   .container2
+    .user-picture
+      / = image_tag @user.profile_picture
+    .profile-pagename
+      Vday Beatz
+    .profile-location
+      Toronto
     / Trigger the modal with a button
     %button.btn.btn-info.btn-lg.btn-primary.btn{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"} Join Clique
     / Modal

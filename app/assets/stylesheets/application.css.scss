@@ -744,17 +744,15 @@ textarea {
 }
 
 .user-picture {
-	margin-top:234px;
+	margin-top:-114px;
 	background-image: url(https://i1.sndcdn.com/avatars-000186622640-isz41l-t500x500.jpg);
 	width: 150px;
 	height: 150px;
-	background-color: #f50;	
 	float:left;
 	position: absolute;
 	overflow: hidden;
 	z-index: 10;
 	border-radius: 3px;
-	margin-left:170px;
 	background-size: cover;
 	border: 3px solid white;
 		img {
@@ -767,9 +765,9 @@ textarea {
 
 .profile-pagename {
 	font-size: 24px;
-	margin-left: 346px;
+	margin-left: 176px;
 	color: white;
-	margin-top:270px;	
+	margin-top:-82px;	
 	position: absolute;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
 }
@@ -778,9 +776,9 @@ textarea {
 
 .profile-location{
 	font-size: 18px;
-	margin-left: 346px;
+	margin-left: 176px;
 	color: white;
-	margin-top:306px;	
+	margin-top:-46px;	
 	position: absolute;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);	
 }
