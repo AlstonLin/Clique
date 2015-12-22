@@ -22,8 +22,8 @@
 @import "bootstrap";
 
 $primary-color: #fe4641;
-
-
+$light-gray: #333;
+$border-gray: #333;
 
 
 /* Repeated Classes */
@@ -1055,7 +1055,6 @@ h1 {
 .following-header {
   width: 100%;
   height: 40px;
-  background-color: $medium-gray;
   font-family: "Open Sans";
   line-height:40px;
   text-transform: uppercase;
