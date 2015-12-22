@@ -45,7 +45,15 @@ a {
 }
 
 a:visited {
-	color: #333;
+	color: inherit; 
+}
+a { 
+	color: inherit; 
+} 
+
+a:hover, a:focus{
+	color: inherit;
+	text-decoration: none;
 }
 
 textarea:focus, input:focus{
@@ -1261,7 +1269,7 @@ h1 {
 
 
 .mejs-container{
-	width:30px;
+	width:30px !important;
 }
 
 .mejs-poster {
