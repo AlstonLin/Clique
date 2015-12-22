@@ -12,7 +12,6 @@
  *
  *= require 'masonry/transitions'
  *= require jquery.jcrop
- *= require_tree .
  *= require_self
 
  */
@@ -220,9 +219,9 @@ a:hover {
 	.input-group{
 		padding: 0px;
 			.form-control{
-	width: 530px;
-	background-color: #F6F6F6;
-	border-color: #E5E5E5;
+	width: 530px !important;
+	background-color: #F6F6F6 !important;
+	border-color: #E5E5E5 !important;
 	box-shadow: none;
 	color: #999
 
@@ -230,11 +229,12 @@ a:hover {
 	.input-group-btn{
 		.btn-default{
 			height:34px;
-			background-color: #F6F6F6;
+			background-color: #F6F6F6 !important;
+
 			color: #888;
-			border-top: 1px solid #E5E5E5;
-			border-right: 1px solid #E5E5E5;
-			border-bottom: 1px solid #E5E5E5;			
+			border-top: 1px solid #E5E5E5 !important;
+			border-right: 1px solid #E5E5E5 !important;
+			border-bottom: 1px solid #E5E5E5 !important;
 		}
 
 	}
@@ -357,7 +357,12 @@ nav {
 	font-weight: 700;
 	margin-top: 35px;
 	color: white;
+
 }
+a:visited{
+	color:white !important;
+}
+
 
 
 }
