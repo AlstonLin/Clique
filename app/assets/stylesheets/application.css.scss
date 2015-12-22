@@ -22,8 +22,6 @@
 @import "bootstrap";
 
 $primary-color: #fe4641;
-$light-gray: #333;
-$border-gray: #333;
 
 
 /* Repeated Classes */
@@ -96,7 +94,7 @@ html {
 body {
 		background-color: white;
 font-family: 'Roboto', sans-serif;
-	color: #777;
+	color: #777 !important;
 }
 
 
@@ -314,9 +312,11 @@ nav {
 
 .navbar-front{
 	height: 50px;
-	background: transparent;
+	background: transparent !important;
+	background-color: transparent !important;
+	border: none !important;
 	color: white;
-	position: absolute;
+	position: absolute !important;
 	margin-top: 10px;
 	.navbar-nav > li > a{
 		color: white !important;
@@ -1114,8 +1114,6 @@ h1 {
   position: absolute;
   margin-left: 16px;
   margin-top: 50px;
-  background-color: $light-gray;
-  border-color: $border-gray;
   border-width: 2px;
   border-style: solid;
   overflow: hidden;
@@ -1151,7 +1149,6 @@ h1 {
   font-size: 11px;
   font-weight: bold;
   margin-bottom: 5px;
-  background-color: $light-gray;
   border: 1px solid #e1e8ed;
   background-image: linear-gradient(#fff,#f5f8fa);
   background-color: #f5f8fa;
@@ -1258,8 +1255,13 @@ h1 {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 30px;
 	height: 100%;
+}
+
+
+.mejs-container{
+	width:30px;
 }
 
 .mejs-poster {
@@ -2923,7 +2925,7 @@ padding-right: 0px !important;
 
 .player1-left-btn{
 	float:left;
-	width:400px;
+	width:30px;
 }
 
 .player1-right-btn{
