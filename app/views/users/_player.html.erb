@@ -1,0 +1,129 @@
+<% @user.pins.each do |pin| %>
+  <div class="player1">
+    <div class="player1-Top">
+      <div class="overlay"></div>
+      <div class="player1-background">
+        <%= image_tag pin.image.url %>
+      </div>
+
+      <div class="player1-Picture">
+        <%= image_tag pin.image.url %>
+      </div>
+        <div class="player1-Stats">
+                <div class="player1-Stats1">
+                  <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 12k 
+                  </div>   
+                  <div class="player1-Stats1">     
+                  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52k
+                </div>
+                  <div class="player1-Stats1">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> 120k
+                  </div>
+
+
+        </div>
+        <div class="player1-Genre">
+          #hiphop
+        </div>
+    </div>
+    <div class="player1-Section2">
+
+
+
+
+
+
+
+
+      <div class="player1-Section2-Middle">
+      <div class="player1-Name">
+        <div class="player1-play">
+          <audio id="audio-player-<%= pin.id %>" src="<%= pin.mp3.url %>" type="audio/mp3" controls="controls"></audio>
+        </div>
+
+      </div>
+      <div class="player1-left-btn">
+        <div class="player1-artist">
+          <%= pin.user.username %>
+        </div>
+        <div class="player1-songName">
+          <%= pin.name %>
+        </div>
+      </div>
+
+      <div class="player1-right-btn">
+
+        <div class="player1-btn">
+          <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+        </div>
+        <div class="player1-btn">
+          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        </div>
+        <div class="player1-btn">
+          <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+        </div>
+        <div class="player1-btn">
+          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </div>
+        <div class="player1-btn">
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        </div>
+      </div>
+
+
+
+  <script>
+  $("audio").mediaelementplayer({
+      // API options
+      alwaysShowControls: true,
+      features: ['playpause'],
+      audioWidth: 450,
+      audioHeight: 70,
+      iPadUseNativeControls: true,
+      iPhoneUseNativeControls: true,
+      AndroidUseNativeControls: true
+  });
+  </script>
+
+<!--
+        <div class="download-btn float-Left">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Like
+        </div>
+        <div class="download-btn float-Left">
+          <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>Repost
+        </div>
+        <div class="download-btn float-Left">
+          <span class="glyphicon glyphicon-share" aria-hidden="true"></span>Share
+     </div>
+              <div class="song-stats float-Right">
+          10K Plays
+        </div>  
+-->
+      </div>
+
+
+
+
+
+    </div>
+<!--    <div class="player1-Bottom">
+
+
+      <textarea class="player1-Bottom-Middle" placeholder= "Reply to Vday">
+      </textarea>
+        <div class="comment-btn"> Comment
+        </div>
+    </div>-->
+  </div>
+<% end %>
+
+
+<!--      <script>
+$('.player1-Bottom').click(function(){
+    $(this).toggleClass('player1-Bottom-tall', 200 );
+    $(this).find('.comment-btn').fadeToggle(200);
+    $(this).find('.player1-Bottom-Middle').toggleClass('player1-Bottom-Middle-tall', 200 );
+});
+
+
+</script>-->

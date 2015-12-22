@@ -1,0 +1,78 @@
+!!! 5
+%html
+%head
+  %title Clique
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+<meta name="viewport" content="width=device-width, initial-scale=1, , minimal-ui">
+<meta charset="utf-8">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css", :rel => "stylesheet"}/
+%body
+  %nav.navbar.navbar-default.navbar-front
+    .container3
+      .navbar-header
+        %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        /.navbar-brand= link_to " CLIQUE", root_path
+
+      #navbar.navbar-collapse.collapse
+        %ul.nav.navbar-nav
+
+
+        
+        - if user_signed_in?
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Upload", new_pin_path
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Account
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to "Profile", user_pins_path
+                %li= link_to "Settings", edit_user_registration_path
+                %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+
+
+        - else
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Sign Up", new_user_registration_path
+            %li= link_to "Log In", new_user_session_path, class: "btn btn-login"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
