@@ -2,12 +2,14 @@
 
 -if signed_in?
 	= render 'currentusertop'
+	= render "layouts/bottomaudio"
 	.page-Bottom2
 		= render "layouts/pinsmasonry"
 		.container2
 			.rightCol-Index
 				= render "layouts/likes"
 				= render "layouts/likes"
+
 
 -else
 	= render 'defaultnav'
