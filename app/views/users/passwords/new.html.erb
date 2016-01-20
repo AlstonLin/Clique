@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading panel-heading-style">
+      <h1 class="text-center">Forgot your password?</h1>
+    </div>
+    <div class="panel-body panel-body-style">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <h3><%= f.label :email %></h3>
+          <%= f.email_field :email, class: "input input-lg"%><br/><br/>
+          <div align="center">
+            <%= recaptcha_tags %>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Send me reset password instructions", class: "btn btn-style btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

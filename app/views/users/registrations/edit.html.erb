@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading panel-heading-style">
+      <h1 class="text-center">Change Your Password</h1>
+    </div>
+  </div>
+  <div class="panel-body panel-body-style">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, autocomplete: "off", class: "input input-lg" %><br><br>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "input input-lg" %><br><br>
+      <%= f.label :current_password %> <br>
+      <%= f.password_field :current_password, autocomplete: "off", class: "input input-lg" %><br><br>
+    </div>
+    <div class="text-center">
+      <%= f.submit "Update", class: "btn btn-style btn-lg" %>
+    </div>
+    <% end %>
+  </div>
+</div>
