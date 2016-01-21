@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<!-- Navbar --->
+<% if current_user %>
+  <%= render :partial => "shared/navbar" %>
+<% end %>
+<!-- Flash Box -->
+<%= render :partial => "shared/flash_box" %>
+<!-- Content -->
 <%= yield %>
-
 </body>
 </html>

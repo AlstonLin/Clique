@@ -1,0 +1,15 @@
+---------------------------------NAVBAR-----------------------------------------
+<br>
+<%= link_to "Home", streams_path %>
+<br>
+<%= link_to "Upload", new_song_path %>
+<br>
+------------------------------ACCOUNTS-----------------------
+<br>
+<%= link_to "Profile", current_user %>
+<br>
+<%= link_to "Settings", edit_user_registration_path %>
+<br>
+<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+<br>
+--------------------------------END NAVBAR---------------------------------------
