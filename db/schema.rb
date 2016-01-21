@@ -43,19 +43,6 @@ ActiveRecord::Schema.define(version: 20160121111357) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "songs", force: :cascade do |t|
-    t.string   "url"
-    t.integer  "price"
-    t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "streams", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tracks", force: :cascade do |t|
     t.string   "song_file_name"
     t.string   "song_content_type"

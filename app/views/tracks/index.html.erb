@@ -1,11 +1,3 @@
-<h1>My Tracks</h1>
-<%= form_for(Track.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
-  <div class="fallback">
-    <%= f.file_field :avatar %><br>
-    <%= f.submit "Upload my Song" %>
-  </div>
-<% end %>
-
-<div class="index">
-  <%= render "index" %>
-</div>
+HOME
+<br>
+<%= render :partial => "explore", :locals => { tracks: @tracks } %>

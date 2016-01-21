@@ -1,0 +1,24 @@
+<h1>My Tracks</h1>
+<%= form_for Track.new, :html => { multipart: true, class: "dropzone"} do |f|  %>
+  <div class="fallback">
+    <%= f.file_field :avatar %><br>
+    <%= f.submit "Upload my Song" %>
+  </div>
+<% end %>
+
+<script>
+$(document).ready(function(){
+	// disable auto discover
+  Dropzone.autoDiscover = false;
+  	var dropzone = new Dropzone (".dropzone", {
+  		maxFilesize: 256, // Set the maximum file size to 256 MB
+  		paramName: "track[song]", // Rails expects the file upload to be something like model[field_name]
+  		addRemoveLinks: true // Don't show remove links on dropzone itself.
+  	});
+
+  	dropzone.on("success", function(file) {
+  		this.removeFile(file)
+  		$.getScript("/tracks")
+  	})
+});
+</script>
