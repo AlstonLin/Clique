@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tracks/index'
+
+  get 'tracks/create'
+
   # Root
   authenticated :user do
     root to: "streams#index", :as => :authenticated_root
@@ -9,7 +13,7 @@ Rails.application.routes.draw do
   # Resources
   resources :users, :only => [:show], :path => '/profiles'
   resources :streams
-  resources :songs
+  resources :tracks, only: [:index, :create]
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations",
