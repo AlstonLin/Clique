@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "streams#index", :as => :authenticated_root
   end
   unauthenticated do
-    root to: "homes#index"
+    root to: "landing_page#index"
   end
   # Resources
   resources :users, :only => [:show], :path => '/profiles'
