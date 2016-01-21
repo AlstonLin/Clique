@@ -1,4 +1,4 @@
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :method => :get %>
+<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
 <h1>Sign In with Email</h1>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <!-- Form Fields -->
