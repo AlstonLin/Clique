@@ -6,10 +6,18 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: "landing_page#index"
   end
+  # Custom routes
+  get "explore" => "tracks#explore"
+  get "followed" => "tracks#followed"
+  get "cliques" => "tracks#cliques"
   # Resources
-  resources :users, :only => [:index, :show], :path => '/profiles' do
+  resources :users, :only => [:index, :show], :path => 'profiles' do
+    post 'follow'
   end
-  resources :tracks, only: [:index, :new, :create]
+  resources :tracks, :only => [:index, :new, :create]
+  resources :cliqs, :only => [:new, :create, :show], :path => 'cliques' do
+    post 'join'
+  end
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations",

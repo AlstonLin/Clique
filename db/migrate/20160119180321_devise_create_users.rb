@@ -4,18 +4,17 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # Basic Info
       t.string :name
       t.string :image
-      t.integer :age
       t.string :gender
-      t.date :birthday
+      t.string :birthday
       t.string :phone
       t.integer :type
       # Location
+      t.string :location
       t.string :address
       t.string :city
       t.string :country
       # Contact
       t.string :email
-      t.string :twitter_name
       t.string :soundcloud_name
       t.timestamps null: false
       # Omniauth
@@ -35,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
-      ##Confirmable
+      # Confirmable
       t.string   :confirmation_token
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at

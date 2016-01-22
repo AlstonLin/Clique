@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121111357) do
+ActiveRecord::Schema.define(version: 20160121210308) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "perks_description"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20160121111357) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "following_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -48,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160121111357) do
     t.string   "song_content_type"
     t.integer  "song_file_size"
     t.datetime "song_updated_at"
+    t.integer  "owner_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -55,16 +63,15 @@ ActiveRecord::Schema.define(version: 20160121111357) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
-    t.integer  "age"
     t.string   "gender"
-    t.date     "birthday"
+    t.string   "birthday"
     t.string   "phone"
     t.integer  "type"
+    t.string   "location"
     t.string   "address"
     t.string   "city"
     t.string   "country"
     t.string   "email",                  default: "", null: false
-    t.string   "twitter_name"
     t.string   "soundcloud_name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

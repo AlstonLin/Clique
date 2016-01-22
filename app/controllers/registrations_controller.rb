@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :configure_permitted_parameters
+
   def create
     if verify_recaptcha
      super
@@ -11,8 +13,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # --------------------------- Overrides --------------------------------------
   private
   def after_inactive_sign_up_path_for(resource)
     new_user_session_path
+  end
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up).push(:name)
   end
 end

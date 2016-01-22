@@ -1,3 +1,9 @@
 HOME
 <br>
-<%= render :partial => "explore", :locals => { tracks: @tracks } %>
+<%= button_to "Explore", explore_path, :method => :get, :remote => true %>
+<%= button_to "Followed", followed_path, :method => :get, :remote => true %>
+<%= button_to "Cliques", cliques_path, :method => :get, :remote => true %>
+
+<div id="content">
+  <%= render :partial => "explore", :locals => { tracks: @tracks } %>
+</div>

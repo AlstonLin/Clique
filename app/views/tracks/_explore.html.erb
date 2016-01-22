@@ -1,5 +1,13 @@
-EXPLORE
+<h1>Explore</h1>
 <% @tracks.each do |track| %>
-  <p><%= track.song.original_filename %></p>
+  <%= track.song.original_filename %> by <%= track.owner.name %><br>
+  <!-- Follow and Join Clique buttons -->
+  <% if !(is_following track.owner) && track.owner != current_user %>
+    <%= button_to "Follow", user_follow_path(track.owner), :remote => true %>
+  <% end %>
+  <% if track.owner.clique && !(current_user.cliques.include? track.owner.clique) \
+    && track.owner != current_user %>
+    <%= button_to "Join Clique", cliq_join_path(track.owner.clique), :remote => true %>
+  <% end %>
   <div class="track-thumbnail"><%= audio_tag track.song.url, controls: true %></div>
 <% end %>
