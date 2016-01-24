@@ -1,16 +1,19 @@
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<div class="buffer" id="signin">
 <h1>Sign In with Email</h1>
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <!-- Form Fields -->
   <%= f.email_field :email, placeholder: "Email" %>
   <%= f.password_field :password, placeholder: "Password" %>
   <%= f.label :remember_me, class: "center-block" do %>
+    <br>
     <div id="remember-me">Remember Me</div>
     <%= f.check_box :remember_me %>
   <% end %>
-  <%= button_tag "Log In", type: 'submit' %>
+  <%= button_tag "Log In", type: 'submit', id: "loginbutton" %>
 <% end %>
 <br>
-<%= link_to "Forgot Password", "/users/password/new", :method => :get, class: "login-link" %>
+<%= link_to "Forgot Password", "/users/password/new", :method => :get, class: "login-link", id: "forgotbutton" %>
 <%= link_to "Sign Up", "/users/sign_up",  class: "link_to", :method => :get, class: "login-link" %>
 <%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %>
+</div>
