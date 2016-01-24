@@ -1,5 +1,6 @@
-HOME
-<br>
+
+  <div class="buffer" id="home">
+<h1>Home</h1>
 <%= button_to "Explore", explore_path, :method => :get, :remote => true %>
 <%= button_to "Followed", followed_path, :method => :get, :remote => true %>
 <%= button_to "Cliques", cliques_path, :method => :get, :remote => true %>
@@ -7,3 +8,5 @@ HOME
 <div id="content">
   <%= render :partial => "explore", :locals => { tracks: @tracks } %>
 </div>
+
+  </div class="buffer">

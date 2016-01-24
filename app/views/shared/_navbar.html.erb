@@ -1,15 +1,12 @@
----------------------------------NAVBAR-----------------------------------------
-<br>
+<div id="navbar">
+  <div class="buffer">
+    <p>Clique</p>
+    <div id="links">
 <%= link_to "Home", tracks_path %>
-<br>
 <%= link_to "Upload", new_track_path %>
-<br>
-------------------------------ACCOUNTS-----------------------
-<br>
 <%= link_to "Profile", current_user %>
-<br>
 <%= link_to "Settings", edit_user_registration_path %>
-<br>
 <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-<br>
---------------------------------END NAVBAR---------------------------------------
+    </div>
+  </div>
+</div>

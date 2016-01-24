@@ -1,4 +1,4 @@
-<h1>Followed</h1>
+<div class="buffer"><h1>Followed</h1>
 <% @following.each do |f| %>
   <h3><%= f.following.name %></h3>
   <% f.following.tracks.each do |t| %>
@@ -6,3 +6,4 @@
     <div class="track-thumbnail"><%= audio_tag t.song.url, controls: true %></div>
   <% end %>
 <% end %>
+</div>

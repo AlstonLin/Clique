@@ -1,4 +1,5 @@
-<!-- Option to create a Cliq -->
+<div class="buffer">
+  <!-- Option to create a Cliq -->
 <% if !current_user.clique %>
   <%= button_to "Create a Clique", new_cliq_path, :method => :get %>
 <% end %>
@@ -17,3 +18,4 @@
   <%= f.password_field :current_password, autocomplete: "off" %><br><br>
   <%= f.submit "Update", class: "btn btn-style btn-lg" %>
 <% end %>
+</div>

@@ -1,4 +1,5 @@
-<h1>Explore</h1>
+<div class="buffer">
+  <h1>Explore</h1>
 <% @tracks.each do |track| %>
   <%= track.song.original_filename %> by <%= track.owner.name %><br>
   <!-- Follow and Join Clique buttons -->
@@ -11,3 +12,4 @@
   <% end %>
   <div class="track-thumbnail"><%= audio_tag track.song.url, controls: true %></div>
 <% end %>
+</div>
