@@ -39,12 +39,12 @@
   margin-top:17.5px;
   font-family:sans-serif;
 }
- #navbar a{
+#navbar a{
    color: inherit;
    text-decoration: none;
    outline:none;
- }
-  #navbar a{
+}
+#navbar a{
    margin-right:25px;
  }
 
@@ -70,9 +70,9 @@ input[type=submit]{
    font-size: 15px;
  }
 
- .g-recaptcha{
+.g-recaptcha{
    margin-left:50px;
- }
+}
 
 #remember-me{
   margin: 20px 0px 20px 50px;
@@ -93,7 +93,7 @@ form{
     margin-bottom: 20px;
   }
 
-  #signin #forgotbutton{
+#signin #forgotbutton{
     clear:left;
 }
 
