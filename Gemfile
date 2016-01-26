@@ -25,9 +25,9 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-#  gem 'sqlite3'
+  gem 'sqlite3'
 end
 # Production Specific
-gem 'pg'
 group :production do
+  gem 'pg'
 end
