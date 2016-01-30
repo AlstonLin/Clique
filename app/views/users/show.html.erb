@@ -1,3 +1,12 @@
 <div class="buffer">
   <h1>User Profile</h1>
+  <%= button_to "Songs", user_songs_path(@user), :method => :get, :remote => true %>
+  <%= button_to "Followers", user_followers_path(@user), :method => :get, :remote => true %>
+  <%= button_to "Following", user_following_path(@user), :method => :get, :remote => true %>
+  <% if @user.clique %>
+    <%= button_to "Clique", @user.clique, :method => :get %>
+  <% end %>
+  <div id="content">
+    <%= render :partial => "songs", :locals => { songs: @songs } %>
+  </div>
 </div>

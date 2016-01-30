@@ -1,0 +1,4 @@
+<h1>Following</h1>
+<% following.each do |f| %>
+  <%= link_to f.following.name, f.following %><br>
+<% end %>

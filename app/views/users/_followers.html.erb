@@ -1,0 +1,4 @@
+<h1>Followers</h1>
+<% followers.each do |f| %>
+  <%= link_to f.follower.name, f.follower %><br>
+<% end %>

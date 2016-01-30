@@ -1,7 +1,7 @@
 <div class="buffer">
   <h1>Explore</h1>
 <% @tracks.each do |track| %>
-  <%= track.song.original_filename %> by <%= track.owner.name %><br>
+  <%= track.song.original_filename %> by <%= link_to track.owner.name, track.owner %><br>
   <!-- Follow and Join Clique buttons -->
   <% if !(is_following track.owner) && track.owner != current_user %>
     <%= button_to "Follow", user_follow_path(track.owner), :remote => true %>

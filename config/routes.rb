@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # Resources
   resources :users, :only => [:index, :show], :path => 'profiles' do
     post 'follow'
+    get 'songs'
+    get 'followers'
+    get 'following'
   end
   resources :tracks, :only => [:index, :new, :create]
   resources :cliqs, :only => [:new, :create, :show], :path => 'cliques' do

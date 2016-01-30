@@ -1,0 +1,5 @@
+<h1>Songs</h1>
+<% songs.each do |s| %>
+  <%= s.song.original_filename %><br>
+  <div class="track-thumbnail"><%= audio_tag s.song.url, controls: true %></div>
+<% end %>
