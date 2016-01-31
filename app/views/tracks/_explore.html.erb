@@ -1,7 +1,48 @@
 <div class="buffer">
   <h1>Explore</h1>
+  <div class="track-thumbnail" style="clear:both;margin-left:50px;">
+    <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+  <div class="jp-type-single">
+    <div class="jp-gui jp-interface">
+      <div class="jp-volume-controls">
+        <button class="jp-mute" role="button" tabindex="0">mute</button>
+        <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+      </div>
+      <div class="jp-controls-holder">
+        <div class="jp-controls">
+          <button class="jp-play" role="button" tabindex="0">play</button>
+          <button class="jp-stop" role="button" tabindex="0">stop</button>
+        </div>
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+        <div class="jp-toggles">
+          <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+        </div>
+      </div>
+    </div>
+    <div class="jp-details">
+      <div class="jp-title" aria-label="title">&nbsp;</div>
+    </div>
+    <div class="jp-no-solution">
+      <span>Update Required</span>
+      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
 <% @tracks.each do |track| %>
-  <%= track.song.original_filename %> by <%= link_to track.owner.name, track.owner %><br>
+  <p style="float:left;margin-left: 50px;clear:left;"><%= track.song.original_filename %> by </p><%= link_to track.owner.name, track.owner, class:"ownerlink" %><br>
+  <%= link_to 'Play', track.song.url, class:"playa"%>
   <!-- Follow and Join Clique buttons -->
   <% if !(is_following track.owner) && track.owner != current_user %>
     <%= button_to "Follow", user_follow_path(track.owner), :remote => true %>
@@ -10,6 +51,32 @@
     && track.owner != current_user %>
     <%= button_to "Join Clique", cliq_join_path(track.owner.clique), :remote => true %>
   <% end %>
-  <div class="track-thumbnail"><%= audio_tag track.song.url, controls: true %></div>
 <% end %>
-</div>
+<script>
+
+$("#jquery_jplayer_1").jPlayer({
+  swfPath: "/app/assets/jplayerflash",
+  supplied: "mp3",
+  wmode: "window"
+});
+$("#jquery_jplayer_1").jPlayer({
+       cssSelectorAncestor: "#jp_container_1",
+       swfPath: "/app/assets/jplayerflash",
+       supplied: "m4a, oga",
+       useStateClassSkin: true,
+       autoBlur: true,
+       smoothPlayBar: true,
+       keyEnabled: true,
+       remainingDuration: true,
+       toggleDuration: true
+     });
+$('a.playa').click(function(e) {
+  e.preventDefault();
+  $("#jquery_jplayer_1").jPlayer("setMedia", {mp3: this.href }).jPlayer("play");
+});
+$('button.jp-play').click(function(e){
+  if(!$('#jquery_jplayer_1').data().jPlayer.status.paused)
+    $("#jquery_jplayer_1").jPlayer("pause");
+});
+
+</script>
