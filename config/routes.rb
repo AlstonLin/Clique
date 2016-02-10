@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   end
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
-    :registrations => "registrations", :confirmations => "confirmations",
+    :registrations => "registrations", :confirmations => "confirmations", :sessions => "sessions",
     :passwords => "passwords"}
 end

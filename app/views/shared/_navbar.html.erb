@@ -2,11 +2,17 @@
   <div class="buffer">
     <p>Clique</p>
     <div id="links">
-<%= link_to "Home", tracks_path %>
-<%= link_to "Upload", new_track_path %>
-<%= link_to "Profile", current_user %>
-<%= link_to "Settings", edit_user_registration_path %>
-<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <%= link_to "Home", tracks_path %>
+      <% if current_user %>
+        <%= link_to "Upload", new_track_path %>
+        <%= link_to "Profile", current_user %>
+        <%= link_to "Settings", edit_user_registration_path %>
+      <% end %>
+      <% if current_user %>
+        <%= button_to 'Logout', destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+      <% end %>
     </div>
   </div>
 </div>

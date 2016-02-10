@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-#uploading
+# Uploading
 gem 'paperclip', '~> 4.2.0'
 gem 'dropzonejs-rails', '~> 0.4.16'
-
 # Auth
 gem "recaptcha", require: "recaptcha/rails"
 gem 'devise'
