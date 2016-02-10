@@ -13,5 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require dropzone
-//= require turbolinks
+//= require jquery.pjax
 //= require_tree .
+$(function() {
+  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]')
+});
+soundManager.setup({
+  url: '/app/assets/javascripts/swf/',
+  ontimeout: function() {
+    // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+  }
+});

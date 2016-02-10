@@ -17,6 +17,14 @@ class TracksController < ApplicationController
       render json: { error: @track.errors.full_messages.join(',')}, :status => 400
     end
   end
+
+  def destroy
+    @track = Track.find_by_id(params[:id])
+    if @track
+      @track.destroy
+    end
+    redirect_to tracks_path
+  end
   # ----------------------- Custom RESTFUL Actions-----------------------------
   def explore
     # TODO: Somehow find what to show them?

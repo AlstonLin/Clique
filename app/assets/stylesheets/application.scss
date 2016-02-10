@@ -33,6 +33,7 @@
  #navbar p{
    display: inline-block;
    font:26px/0px sans-serif;
+   margin:26px 0 !important;
  }
 #navbar #links{
   display:inline-block;
@@ -106,7 +107,7 @@ form{
     border:1px solid #777;
     border-radius:10px;
     min-width:100px;
-    padding-top: 7.5px;
+    padding-top: 3.5px;
     padding-left:5px;
     padding-right:5px;
     height:25px;
@@ -122,87 +123,23 @@ form{
    margin:0 auto;
  }
 
- .alert {
-   padding: 15px;
-   margin-bottom: 20px;
-   border: 1px solid transparent;
-   border-radius: 4px;
- }
- .alert h4 {
-   margin-top: 0;
-   color: inherit;
- }
- .alert .alert-link {
-   font-weight: bold;
- }
- .alert > p,
- .alert > ul {
-   margin-bottom: 0;
- }
- .alert > p + p {
-   margin-top: 5px;
- }
- .alert-dismissable,
- .alert-dismissible {
-   padding-right: 35px;
- }
- .alert-dismissable .close,
- .alert-dismissible .close {
-   position: relative;
-   top: -2px;
-   right: -21px;
-   color: inherit;
- }
- .alert-success {
-   background-color: #dff0d8;
-   border-color: #d6e9c6;
-   color: #3c763d;
- }
- .alert-success hr {
-   border-top-color: #c9e2b3;
- }
- .alert-success .alert-link {
-   color: #2b542c;
- }
- .alert-info {
-   background-color: #d9edf7;
-   border-color: #bce8f1;
-   color: #31708f;
- }
- .alert-info hr {
-   border-top-color: #a6e1ec;
- }
- .alert-info .alert-link {
-   color: #245269;
- }
- .alert-warning {
-   background-color: #fcf8e3;
-   border-color: #faebcc;
-   color: #8a6d3b;
- }
- .alert-warning hr {
-   border-top-color: #f7e1b5;
- }
- .alert-warning .alert-link {
-   color: #66512c;
- }
- .alert-danger {
-   background-color: #f2dede;
-   border-color: #ebccd1;
-   color: #a94442;
- }
- .alert-danger hr {
-   border-top-color: #e4b9c0;
- }
- .alert-danger .alert-link {
-   color: #843534;
- }
-
  .ownerlink{
     width: auto !important;
     height: auto !important;
     padding: 0px !important;
     border: none !important;
-    margin: 16px 0px !important;
+    margin: 2px 0px 2px 15px !important;
     text-decoration: underline !important;
   }
+
+.sm2-bar-ui {
+ font-size: 16px;
+ box-shadow: 0px -1px 1px #ddd;
+}
+.sm2-bar-ui .sm2-main-controls,
+.sm2-bar-ui .sm2-playlist-drawer {
+ background-color: #F6F6F6;
+}
+.sm2-bar-ui .sm2-inline-texture {
+ background: transparent;
+}

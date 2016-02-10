@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'followers'
     get 'following'
   end
-  resources :tracks, :only => [:index, :new, :create]
+  resources :tracks, :only => [:index, :new, :create, :destroy]
   resources :cliqs, :only => [:new, :create, :show], :path => 'cliques' do
     post 'join'
   end
