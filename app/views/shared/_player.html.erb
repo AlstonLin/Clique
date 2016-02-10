@@ -98,6 +98,9 @@
       <li class="selected">
         <div class="sm2-row">
           <div class="sm2-col sm2-wide">
+            <%
+              @tracks = Track.all if !defined? @tracks;
+            %>
             <% firstTrack = @tracks.first %>
             <% if firstTrack %>
             <a href='<%= firstTrack.song.url %>'>firstTrack.song.original_filename</a>
