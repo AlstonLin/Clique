@@ -2,11 +2,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       # Basic Info
-      t.string :name
-      t.string :image
+      t.string :first_name
+      t.string :last_name
       t.string :gender
       t.string :birthday
       t.string :phone
+      t.string :username
       t.integer :type
       # URLs
       t.string :cover_picture_url

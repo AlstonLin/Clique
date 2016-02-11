@@ -1,5 +1,7 @@
 <div class="buffer">
-  <h1>User Profile</h1>
+  <h1><%= @user.first_name %>'s Profile</h1>
+  <img src="<%= @user.cover_picture_url %>" height="300" />
+  <img src="<%= @user.profile_picture_url %>"  height="150" /> <br><br>
   <%= button_to "All Posts", user_posts_path(@user), :method => :get, :remote => true %>
   <%= button_to "Tracks", user_songs_path(@user), :method => :get, :remote => true %>
   <%= button_to "Reposts", user_reposts_path(@user), :method => :get, :remote => true %>

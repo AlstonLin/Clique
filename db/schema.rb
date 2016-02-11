@@ -75,11 +75,12 @@ ActiveRecord::Schema.define(version: 20160211030625) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "gender"
     t.string   "birthday"
     t.string   "phone"
+    t.string   "username"
     t.integer  "type"
     t.string   "cover_picture_url"
     t.string   "profile_picture_url"

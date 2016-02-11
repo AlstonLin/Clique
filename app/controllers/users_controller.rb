@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
     @posts = filter_clique_only(@user.posts, false)
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @followed = User.find(params[:user_id])
+    @followed = User.find_by_username(params[:user_id])
     raise "Attempt to follow self" unless current_user != @followed
     # TODO: Some validation for if already following
     # Creates new Follow
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def posts
-    @user = User.find(params[:user_id])
+    @user = User.find_by_username(params[:user_id])
     @posts = filter_clique_only(@user.posts, false)
     respond_to do |format|
       format.js
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   def reposts
-    @user = User.find(params[:user_id])
+    @user = User.find_by_username(params[:user_id])
     @reposts = @user.reposts
     respond_to do |format|
       format.js
@@ -68,6 +68,7 @@ class UsersController < ApplicationController
   end
 
   def clique
+    @user = User.find_by_username(params[:user_id])
     @songs = filter_clique_only(@user.tracks, true)
     @posts = filter_clique_only(@user.posts, true)
 
@@ -77,8 +78,7 @@ class UsersController < ApplicationController
   end
 
   def songs
-    @debug = params[:user_id]
-    @user = User.find(params[:user_id])
+    @user = User.find_by_username(params[:user_id])
     @songs = filter_clique_only(@user.tracks, false)
     respond_to do |format|
       format.js
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:user_id])
+    @user = User.find_by_username(params[:user_id])
     @followers = @user.followers
     respond_to do |format|
       format.js
@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user = User.find(params[:user_id])
+    @user = User.find_by_username(params[:user_id])
     @following = @user.following
     respond_to do |format|
       format.js

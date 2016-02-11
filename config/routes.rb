@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'orders' => 'settings#orders'
   get 'payment_settings' => 'settings#payment_settings'
   # Resources
-  resources :users, :only => [:index, :show, :update], :path => 'profiles' do
+  resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'
     patch 'update_password'
     get 'posts'
