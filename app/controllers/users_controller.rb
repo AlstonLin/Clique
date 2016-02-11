@@ -18,14 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @songs = @user.tracks
-  end
-
-  private
-
-  def user_params
-    # NOTE: Using `strong_parameters` gem
-    params.require(:user).permit(:password, :password_confirmation)
+    @posts = filter_clique_only(@user.posts, false)
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def update_password
@@ -60,13 +53,7 @@ class UsersController < ApplicationController
 
   def posts
     @user = User.find(params[:user_id])
-    @posts = []
-    # Filter posts
-    @user.posts.each do |post|
-      if !post.clique_only
-        @posts << post
-      end
-    end
+    @posts = filter_clique_only(@user.posts, false)
     respond_to do |format|
       format.js
     end
@@ -81,20 +68,8 @@ class UsersController < ApplicationController
   end
 
   def clique
-    @user = User.find(params[:user_id])
-    # Filter tracks
-    @songs = []
-    @posts = []
-    @user.tracks.each do |song|
-      if song.clique_only
-        @songs << song
-      end
-    end
-    @user.posts.each do |post|
-      if post.clique_only
-        @posts << post
-      end
-    end
+    @songs = filter_clique_only(@user.tracks, true)
+    @posts = filter_clique_only(@user.posts, true)
 
     respond_to do |format|
       format.js
@@ -104,14 +79,7 @@ class UsersController < ApplicationController
   def songs
     @debug = params[:user_id]
     @user = User.find(params[:user_id])
-    # # Filter tracks
-    # @songs = []
-    # @user.tracks.each do |song|
-    #   if !song.clique_only
-    #     @songs << song
-    #   end
-    # end
-    @songs = @user.tracks
+    @songs = filter_clique_only(@user.tracks, false)
     respond_to do |format|
       format.js
     end
@@ -134,6 +102,17 @@ class UsersController < ApplicationController
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def user_params
-			params.require(:user).permit(:bio)
+			params.require(:user).permit(:bio, :password, :password_confirmation)
 	end
+
+  def filter_clique_only(elements, clique_only)
+    filtered = []
+    # Filtering
+    elements.each do |e|
+      if e.clique_only == clique_only
+        filtered << e
+      end
+    end
+    return filtered
+  end
 end
