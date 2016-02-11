@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
-  has_many :following, class_name: 'Follow', :foreign_key => 'follower_id'
-  has_many :followers, class_name: 'Follow', :foreign_key => 'following_id'
+  has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
+  has_many :followers, :class_name => 'Follow', :foreign_key => 'following_id'
   has_many :tracks, :foreign_key => 'owner_id'
+  has_many :posts
+  has_and_belongs_to_many :reposts, :class_name => 'Post'
   has_and_belongs_to_many :cliques, :class_name => 'Cliq'
   # Auth
   devise :omniauthable, :database_authenticatable, :confirmable, :registerable, \

@@ -8,6 +8,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :birthday
       t.string :phone
       t.integer :type
+      # URLs
+      t.string :cover_picture_url
+      t.string :profile_picture_url
+      t.text :bio
       # Location
       t.string :location
       t.string :address

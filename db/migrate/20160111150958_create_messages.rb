@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       #Attributes
       t.string :title
-      t.string :description
+      t.text :content
       #Relationships
       t.belongs_to :from
       t.belongs_to :to

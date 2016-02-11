@@ -3,6 +3,7 @@ class CreateTracks < ActiveRecord::Migration
     create_table :tracks do |t|
       t.attachment :song
       t.belongs_to :owner
+      t.boolean :clique_only, default: false
       t.timestamps null: false
     end
   end

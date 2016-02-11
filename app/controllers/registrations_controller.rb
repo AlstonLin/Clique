@@ -12,7 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
      render :new
     end
   end
-
   # --------------------------- Overrides --------------------------------------
   private
   def after_inactive_sign_up_path_for(resource)

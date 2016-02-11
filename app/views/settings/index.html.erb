@@ -1,0 +1,15 @@
+<div class="buffer">
+  <h1>Settings</h1>
+<!-- TODO: Make tabs so that it will change the content each time one is pressed -->
+<div class="col-md-3">
+    <%= button_to "Edit Profile", "/edit_profile", :remote => true, :method => :get %>
+    <% if !current_user.uid %>
+      <%= button_to "Change Password", "/change_password", :remote => true, :method => :get %>
+    <% end %>
+    <%= button_to "Clique", "/clique_settings", :remote => true, :method => :get %>
+    <%= button_to "Payment Settings", "/payment_settings", :remote => true, :method => :get %>
+    <%= button_to "Orders", "/orders", :remote => true, :method => :get %>
+</div>
+<div class="col-md-9" id="content">
+  <%= render :partial => "settings/edit_profile" %>
+</div>

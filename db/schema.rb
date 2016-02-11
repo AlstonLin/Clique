@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121210308) do
+ActiveRecord::Schema.define(version: 20160211030625) do
 
   create_table "cliqs", force: :cascade do |t|
-    t.string   "perks_description"
+    t.text     "perks_description"
     t.integer  "price"
     t.integer  "owner_id"
     t.datetime "created_at",        null: false
@@ -43,11 +43,24 @@ ActiveRecord::Schema.define(version: 20160121210308) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "content"
     t.integer  "from_id"
     t.integer  "to_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.boolean  "clique_only", default: false
+    t.integer  "poster_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "posts_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -56,8 +69,9 @@ ActiveRecord::Schema.define(version: 20160121210308) do
     t.integer  "song_file_size"
     t.datetime "song_updated_at"
     t.integer  "owner_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.boolean  "clique_only",       default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +81,9 @@ ActiveRecord::Schema.define(version: 20160121210308) do
     t.string   "birthday"
     t.string   "phone"
     t.integer  "type"
+    t.string   "cover_picture_url"
+    t.string   "profile_picture_url"
+    t.text     "bio"
     t.string   "location"
     t.string   "address"
     t.string   "city"
