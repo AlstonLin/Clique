@@ -6,14 +6,31 @@ class CliqsController < ApplicationController
 
   def create
     raise "You already have a Clique" unless !current_user.clique
-    @clique = Cliq.new
+    # Creates Clique
+    @clique = Cliq.new(clique_params)
     @clique.owner = current_user
-    if @clique.save
-      flash[:notice] = "Clique Created!"
-      redirect_to @clique
-    else
-      flash[:error] = "There was an error while creating your Clique"
-      redirect_to new_cliq_path
+    # Saves and Respond
+    respond_to do |format|
+      if @clique.save
+        flash[:notice] = "Clique Created!"
+        format.js
+      else
+        flash[:error] = "There was an error while creating your Clique"
+        format.js
+      end
+    end
+  end
+
+  def update
+    @clique = Cliq.find(params[:id])
+    respond_to do |format|
+      if @clique.update_attributes(clique_params)
+        flash[:notice] = "Clique Updated!"
+        format.js
+      else
+        flash[:error] = "There was an error while updating your Clique"
+        format.js
+      end
     end
   end
 
@@ -33,7 +50,13 @@ class CliqsController < ApplicationController
       else
         flash[:error] = "An error has occured"
       end
+      @user = @clique.owner
       format.js
     end
+  end
+
+  private
+  def clique_params
+    params.require(:cliq).permit(:name, :price, :description, :thank_you_message)
   end
 end

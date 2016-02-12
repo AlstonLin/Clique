@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
-    @posts = filter_clique_only(@user.posts, false)
+    @posts = @user.get_posts(false)
     # Create Post
     if @user == current_user
       @post = Post.new
@@ -68,8 +68,7 @@ class UsersController < ApplicationController
 
   def posts
     @user = User.find_by_username(params[:user_id])
-    @posts = filter_clique_only(@user.posts, false)
-    puts "-----------------LENGTH: #{@posts.count}-----------------"
+    @posts = @user.get_posts(false)
     respond_to do |format|
       format.js
     end
@@ -85,8 +84,8 @@ class UsersController < ApplicationController
 
   def clique
     @user = User.find_by_username(params[:user_id])
-    @songs = filter_clique_only(@user.tracks, true)
-    @posts = filter_clique_only(@user.posts, true)
+    @content = @user.get_tracks(true) + @user.get_posts(true)
+    @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     respond_to do |format|
       format.js
     end
@@ -94,7 +93,7 @@ class UsersController < ApplicationController
 
   def songs
     @user = User.find_by_username(params[:user_id])
-    @songs = filter_clique_only(@user.tracks, false)
+    @songs = @user.get_tracks(false)
     respond_to do |format|
       format.js
     end
@@ -121,15 +120,4 @@ class UsersController < ApplicationController
 			params.require(:user).permit(:bio, :first_name, :last_name, :username,
       :profile_picture, :cover_picture, :password, :password_confirmation)
 	end
-
-  def filter_clique_only(elements, clique_only)
-    filtered = []
-    # Filtering
-    elements.each do |e|
-      if e.clique_only == clique_only
-        filtered << e
-      end
-    end
-    return filtered
-  end
 end

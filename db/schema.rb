@@ -14,11 +14,13 @@
 ActiveRecord::Schema.define(version: 20160211030625) do
 
   create_table "cliqs", force: :cascade do |t|
-    t.text     "perks_description"
-    t.integer  "price"
+    t.string   "name"
+    t.text     "description"
+    t.text     "thank_you_message"
+    t.decimal  "price",             precision: 8, scale: 2
     t.integer  "owner_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "cliqs_users", id: false, force: :cascade do |t|
@@ -54,7 +56,6 @@ ActiveRecord::Schema.define(version: 20160211030625) do
     t.text     "content"
     t.boolean  "clique_only", default: false
     t.integer  "poster_id"
-    t.datetime "posted_time"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

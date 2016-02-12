@@ -11,6 +11,9 @@ class SettingsController < ApplicationController
 
   def clique_settings
     @clique = current_user.clique
+    if !@clique
+      @clique = Cliq.new
+    end
     respond_to do |format|
       format.js
     end

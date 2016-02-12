@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  # Sorting
+  default_scope { order :created_at => :desc }
   # Relationships
   has_attached_file :song
   belongs_to :owner, :class_name => 'User'

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
   resources :tracks, :only => [:index, :new, :create, :destroy]
   resources :posts, :only => [:create, :update]
-  resources :cliqs, :only => [:new, :create, :show], :path => 'cliques' do
+  resources :cliqs, :only => [:create, :update], :path => 'clique' do
     post 'join'
   end
   # Auth

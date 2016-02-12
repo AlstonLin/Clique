@@ -4,6 +4,9 @@
 <%= button_to "Reposts", user_reposts_path(user), :method => :get, :remote => true %>
 <!-- Own profile -->
 <% if @user == current_user %>
+  <% if @user.clique %>
+    <%= button_to "Clique", user_clique_path(user), :method => :get, :remote => true %>
+  <% end %>
   <%= button_to "Followers", user_followers_path(user), :method => :get, :remote => true %>
   <%= button_to "Following", user_following_path(user), :method => :get, :remote => true %>
 <% else%>
@@ -17,9 +20,9 @@
   <!-- Clique-->
   <% if @user.clique %>
     <% if current_user.cliques.include? user.clique %>
-      <%= button_to "Clique", user_clique_path(user), :method => :get %>
+      <%= button_to "Clique", user_clique_path(user), :method => :get, :remote => true  %>
     <% else %>
-      <%= button_to "Join Clique", cliq_join_path(user), :remote => true %>
+      <%= button_to "Join Clique", cliq_join_path(user.clique), :remote => true %>
     <% end %>
   <% end %>
 <% end %>

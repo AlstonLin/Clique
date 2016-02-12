@@ -45,35 +45,55 @@ class User < ActiveRecord::Base
     end
   end
 
-  # ---------------------------- Helper Functions ------------------------------
+  # ---------------------------- Methods ---------------------------------------
   def name
     self.first_name + " " + self.last_name
   end
 
-  def generate_username
-    self.username = self.first_name + self.last_name + self.id.to_s
-    self.save
+  def get_posts(clique_only)
+    return filter_clique_only(self.posts, clique_only)
   end
 
-  def default_values
-    if !self.profile_picture_url
-      self.profile_picture_url = ActionController::Base.helpers.asset_path("default-profile.jpg")
-    end
-    if !self.cover_picture_url
-      self.cover_picture_url = ActionController::Base.helpers.asset_path("default-cover.png")
-    end
-  end
-
-  def generate_urls
-    if self.profile_picture.exists?
-      self.update_column(:profile_picture_url, self.profile_picture.url(:med))
-    end
-    if self.cover_picture.exists?
-      self.update_column(:cover_picture_url, self.cover_picture.url(:med))
-    end
+  def get_tracks(clique_only)
+    return filter_clique_only(self.tracks, clique_only)
   end
 
   def to_param
     username
   end
+  # ------------------------------- Private  -----------------------------------
+  private
+    def filter_clique_only(elements, clique_only)
+      filtered = []
+      # Filtering
+      elements.each do |e|
+        if e.clique_only == clique_only
+          filtered << e
+        end
+      end
+      return filtered
+    end
+
+    def generate_username
+      self.username = self.first_name + self.last_name + self.id.to_s
+      self.save
+    end
+
+    def default_values
+      if !self.profile_picture_url
+        self.profile_picture_url = ActionController::Base.helpers.asset_path("default-profile.jpg")
+      end
+      if !self.cover_picture_url
+        self.cover_picture_url = ActionController::Base.helpers.asset_path("default-cover.png")
+      end
+    end
+
+    def generate_urls
+      if self.profile_picture.exists?
+        self.update_column(:profile_picture_url, self.profile_picture.url(:med))
+      end
+      if self.cover_picture.exists?
+        self.update_column(:cover_picture_url, self.cover_picture.url(:med))
+      end
+    end
 end
