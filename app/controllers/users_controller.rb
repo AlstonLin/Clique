@@ -102,7 +102,7 @@ class UsersController < ApplicationController
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def user_params
-			params.require(:user).permit(:bio, :username, :password, :password_confirmation)
+			params.require(:user).permit(:bio, :first_name, :last_name, :username, :password, :password_confirmation)
 	end
 
   def filter_clique_only(elements, clique_only)
