@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :profile_picture_url, presence: true
   validates :cover_picture_url, presence: true
+  validates :username, uniqueness: true, presence: false
 
   # Auth
   def self.from_omniauth(auth)

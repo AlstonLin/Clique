@@ -1,7 +1,7 @@
 <div class="buffer">
   <h1>Explore</h1>
 <% @tracks.each do |track| %>
-  <p style="float:left;margin-left: 50px;clear:left;"><%= track.song.original_filename %> by </p><%= link_to track.owner.name, track.owner, class:"ownerlink" %>
+  <p style="float:left;margin-left: 50px;clear:left;"><%= track.song.original_filename %> by </p><%= link_to track.owner.first_name + " " + track.owner.last_name, track.owner, class:"ownerlink" %>
   <%= link_to 'Play', track.song.url, class:"playa", 'data-skip-pjax' => true %>
   <!-- Follow and Join Clique buttons -->
   <% if track.owner == current_user %>
