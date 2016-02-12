@@ -2,6 +2,10 @@
 <%= form_for current_user, :remote => true do |form| %>
     TODO: ADD PROFILE PICTURE FIELD AND PUT URL TO :profile_picture_url<br>
     TODO: ADD COVER PHOTO FIELD AND PUT URL TO :cover_picture_url<br>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %><br>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %><br>
     <%= form.label :username %>
     <%= form.text_field :username %><br>
     <%= form.label :bio %><br>

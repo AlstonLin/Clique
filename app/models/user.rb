@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :reposts, :class_name => 'Post'
   has_and_belongs_to_many :cliques, :class_name => 'Cliq'
   # Auth
-  devise :omniauthable, :database_authenticatable, :confirmable, :registerable, \
+  devise :omniauthable, :database_authenticatable, :registerable, \
   :recoverable, :rememberable, :trackable, :validatable, :lockable,
   :omniauth_providers => [:facebook]
   # Validations
