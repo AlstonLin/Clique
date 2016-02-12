@@ -1,0 +1,25 @@
+<!-- Content Filters -->
+<%= button_to "All Posts", user_posts_path(user), :method => :get, :remote => true %>
+<%= button_to "Tracks", user_songs_path(user), :method => :get, :remote => true %>
+<%= button_to "Reposts", user_reposts_path(user), :method => :get, :remote => true %>
+<!-- Own profile -->
+<% if @user == current_user %>
+  <%= button_to "Followers", user_followers_path(user), :method => :get, :remote => true %>
+  <%= button_to "Following", user_following_path(user), :method => :get, :remote => true %>
+<% else%>
+<!-- Others profile -->
+  <!-- Follow -->
+  <% if is_following @user %>
+    <%= button_to "Unfollow", user_unfollow_path(user), :remote => true %>
+  <% else %>
+    <%= button_to "Follow", user_follow_path(user), :remote => true %>
+  <% end %>
+  <!-- Clique-->
+  <% if @user.clique %>
+    <% if current_user.cliques.include? user.clique %>
+      <%= button_to "Clique", user_clique_path(user), :method => :get %>
+    <% else %>
+      <%= button_to "Join Clique", cliq_join_path(user), :remote => true %>
+    <% end %>
+  <% end %>
+<% end %>

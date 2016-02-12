@@ -31,20 +31,33 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @followed = User.find_by_username(params[:user_id])
-    raise "Attempt to follow self" unless current_user != @followed
+    @user = User.find_by_username(params[:user_id])
+    raise "Attempt to follow self" unless current_user != @user
     # TODO: Some validation for if already following
     # Creates new Follow
     follow = Follow.new
     follow.follower = current_user
-    follow.following = @followed
+    follow.following = @user
     # Response
     respond_to do |format|
       if follow.save
-        flash[:notice] = "Followed " + @followed.name
+        flash[:notice] = "Followed " + @user.name
       else
         flash[:error] = "An error has occured"
       end
+      format.js
+    end
+  end
+
+  def unfollow
+    # TODO: Some validation for if not following
+    # Finds the follow
+    @user= User.find_by_username(params[:user_id])
+    follows = Follow.where(:follower => current_user, :following => @user)
+    follows.destroy_all
+    # Response
+    respond_to do |format|
+      flash[:notice] = "Unfollowed " + @user.name
       format.js
     end
   end
@@ -69,7 +82,6 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     @songs = filter_clique_only(@user.tracks, true)
     @posts = filter_clique_only(@user.posts, true)
-
     respond_to do |format|
       format.js
     end

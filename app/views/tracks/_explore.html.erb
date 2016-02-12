@@ -3,18 +3,9 @@
 <% @tracks.each do |track| %>
   <p style="float:left;margin-left: 50px;clear:left;"><%= track.song.original_filename %> by </p><%= link_to track.owner.name, track.owner, class:"ownerlink" %>
   <%= link_to 'Play', track.song.url, class:"playa", 'data-skip-pjax' => true %>
-  <!-- Follow and Join Clique buttons -->
-  <% if current_user %>
-    <% if track.owner == current_user %>
-      <%= button_to "Delete", track, method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
-    <% end %>
-    <% if !(is_following track.owner) && track.owner != current_user %>
-      <%= button_to "Follow", user_follow_path(track.owner), :remote => true %>
-    <% end %>
-    <% if track.owner.clique && !(current_user.cliques.include? track.owner.clique) \
-      && track.owner != current_user %>
-      <%= button_to "Join Clique", cliq_join_path(track.owner.clique), :remote => true %>
-    <% end %>
+  <!-- Delete -->
+  <% if current_user && track.owner == current_user %>
+    <%= button_to "Delete", track, method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
   <% end %>
 <% end %>
 <script>

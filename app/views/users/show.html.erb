@@ -1,20 +1,17 @@
 <div class="buffer">
+  <!-- Header -->
   <h1><%= @user.first_name %>'s Profile</h1>
   <img src="<%= @user.cover_picture_url %>" height="300" />
   <img src="<%= @user.profile_picture_url %>"  height="150" /> <br><br>
-  <%= button_to "All Posts", user_posts_path(@user), :method => :get, :remote => true %>
-  <%= button_to "Tracks", user_songs_path(@user), :method => :get, :remote => true %>
-  <%= button_to "Reposts", user_reposts_path(@user), :method => :get, :remote => true %>
-  <% if @user == current_user %>
-    <%= button_to "Followers", user_followers_path(@user), :method => :get, :remote => true %>
-    <%= button_to "Following", user_following_path(@user), :method => :get, :remote => true %>
-  <% end %>
-  <% if @user.clique && (@user == current_user || @user.clique.members.include?(current_user)) %>
-    <%= button_to "Clique", user_clique_path(@user), :method => :get %>
-  <% end %>
+  <!-- Buttons -->
+  <div id="buttons" class="col-sm-9">
+    <%= render :partial => "buttons", :locals => { user: @user } %>
+  </div>
+  <!-- Content -->
   <div id="content" class="col-sm-9">
     <%= render :partial => "posts", :locals => { songs: @songs } %>
   </div>
+  <!-- Right info bar -->
   <div class="col-sm-3">
     <%= render :partial => "profile_right", :locals => { user: @user } %>
   </div>

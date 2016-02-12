@@ -1,9 +1,9 @@
 
   <div class="buffer" id="home">
 <h1>Home</h1>
-<%= button_to "Explore", explore_path, :method => :get, :remote => true %>
+<%= button_to "Tracks", explore_path, :method => :get, :remote => true %>
 <% if current_user %>
-  <%= button_to "Followed", followed_path, :method => :get, :remote => true %>
+  <%= button_to "Posts", followed_path, :method => :get, :remote => true %>
   <%= button_to "Cliques", cliques_path, :method => :get, :remote => true %>
 <% end %>
 <div id="content">
