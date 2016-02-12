@@ -17,6 +17,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     @posts = filter_clique_only(@user.posts, false)
+    # Create Post
+    if @user == current_user
+      @post = Post.new
+    end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def update_password
@@ -65,6 +69,7 @@ class UsersController < ApplicationController
   def posts
     @user = User.find_by_username(params[:user_id])
     @posts = filter_clique_only(@user.posts, false)
+    puts "-----------------LENGTH: #{@posts.count}-----------------"
     respond_to do |format|
       format.js
     end
@@ -111,6 +116,7 @@ class UsersController < ApplicationController
     end
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
+  private
 	def user_params
 			params.require(:user).permit(:bio, :first_name, :last_name, :username,
       :profile_picture, :cover_picture, :password, :password_confirmation)

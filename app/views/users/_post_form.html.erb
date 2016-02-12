@@ -1,0 +1,18 @@
+<%= form_for post, :remote => true do |form| %>
+  <%= form.text_area :content, :style => "width: 100%" %><br>
+  <!-- Clique Only button-->
+  <% if current_user.clique %>
+    <div class="col-sm-6">
+      <%= form.label :clique_only do %>
+        <%= form.check_box :clique_only, :class => 'checkbox'  %>
+        Clique Only
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      <%= form.submit "Create Post" %>
+    </div>
+  <% else %>
+    <%= form.submit "Create Post" %>
+  <% end %>
+  
+<% end %>
