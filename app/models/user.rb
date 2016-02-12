@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
   end
 
   # ---------------------------- Helper Functions ------------------------------
+  def name
+    self.first_name + " " + self.last_name
+  end
+
   def generate_username
     self.username = self.first_name + self.last_name + self.id.to_s
     self.save
@@ -61,10 +65,10 @@ class User < ActiveRecord::Base
   end
 
   def generate_urls
-    if self.profile_picture
+    if self.profile_picture.exists?
       self.update_column(:profile_picture_url, self.profile_picture.url(:med))
     end
-    if self.cover_picture
+    if self.cover_picture.exists?
       self.update_column(:cover_picture_url, self.cover_picture.url(:med))
     end
   end
