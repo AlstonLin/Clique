@@ -9,7 +9,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :username
       t.integer :type
-      # URLs
+      # Pictures
+      t.attachment :profile_picture
+      t.attachment :cover_picture
       t.string :cover_picture_url
       t.string :profile_picture_url
       t.text :bio

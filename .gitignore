@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 
-public/system/tracks/songs/*
+public/system/*

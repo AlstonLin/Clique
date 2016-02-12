@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   after_initialize :default_values
   after_create :generate_username
+  after_save :generate_urls
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
@@ -9,6 +10,17 @@ class User < ActiveRecord::Base
   has_many :posts, :class_name => 'Post', :foreign_key => 'poster_id'
   has_and_belongs_to_many :reposts, :class_name => 'Post'
   has_and_belongs_to_many :cliques, :class_name => 'Cliq'
+  # Pictures
+  has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
+                  :url  => "/assets/users/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
+  has_attached_file :cover_picture, :styles => { small: "640x480", med: "1280x720", large: "1920x1080",
+                  :url  => "/assets/users/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
+  validates_attachment_size :profile_picture, :cover_picture, :less_than => 25.megabytes
+  validates_attachment_size :cover_picture, :cover_picture, :less_than => 25.megabytes
+  validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_content_type :cover_picture, :content_type => ['image/jpeg', 'image/png']
   # Auth
   devise :omniauthable, :database_authenticatable, :registerable, \
   :recoverable, :rememberable, :trackable, :validatable, :lockable,
@@ -29,7 +41,7 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.password = Devise.friendly_token[0,20]
       user.profile_picture_url = auth.info.image
-      user.skip_confirmation!
+      # user.skip_confirmation!
     end
   end
 
@@ -45,6 +57,15 @@ class User < ActiveRecord::Base
     end
     if !self.cover_picture_url
       self.cover_picture_url = ActionController::Base.helpers.asset_path("default-cover.png")
+    end
+  end
+
+  def generate_urls
+    if self.profile_picture
+      self.update_column(:profile_picture_url, self.profile_picture.url(:med))
+    end
+    if self.cover_picture
+      self.update_column(:cover_picture_url, self.cover_picture.url(:med))
     end
   end
 

@@ -1,13 +1,15 @@
 <h1>Edit Profile</h1>
-<%= form_for current_user, :remote => true do |form| %>
-    TODO: ADD PROFILE PICTURE FIELD AND PUT URL TO :profile_picture_url<br>
-    TODO: ADD COVER PHOTO FIELD AND PUT URL TO :cover_picture_url<br>
+<%= form_for current_user, :authenticity_token => true, :multipart => true  do |form| %>
     <%= form.label :first_name %>
     <%= form.text_field :first_name %><br>
     <%= form.label :last_name %>
     <%= form.text_field :last_name %><br>
     <%= form.label :username %>
     <%= form.text_field :username %><br>
+    <%= form.label :profile_picture %>
+    <%= form.file_field :profile_picture %><br>
+    <%= form.label :cover_picture %>
+    <%= form.file_field :cover_picture %><br>
     <%= form.label :bio %><br>
     <%= form.text_area :bio, placeholder: "Enter your bio here", :rows => '10', :cols => '75' %><br>
     <%= form.submit "Update Profile" %>

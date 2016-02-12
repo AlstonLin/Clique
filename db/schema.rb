@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212000914) do
+ActiveRecord::Schema.define(version: 20160211030625) do
 
   create_table "cliqs", force: :cascade do |t|
     t.text     "perks_description"
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 20160212000914) do
     t.string   "phone"
     t.string   "username"
     t.integer  "type"
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
+    t.string   "cover_picture_file_name"
+    t.string   "cover_picture_content_type"
+    t.integer  "cover_picture_file_size"
+    t.datetime "cover_picture_updated_at"
     t.string   "cover_picture_url"
     t.string   "profile_picture_url"
     t.text     "bio"
@@ -111,14 +119,6 @@ ActiveRecord::Schema.define(version: 20160212000914) do
     t.integer  "failed_attempts",              default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "profile_picture_file_name"
-    t.string   "profile_picture_content_type"
-    t.integer  "profile_picture_file_size"
-    t.datetime "profile_picture_updated_at"
-    t.string   "cover_pircture_file_name"
-    t.string   "cover_pircture_content_type"
-    t.integer  "cover_pircture_file_size"
-    t.datetime "cover_pircture_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

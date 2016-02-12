@@ -5,14 +5,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if current_user.update_attributes(user_params)
-        flash[:notice] = "Successfully Updated"
-        format.js
-      else
-        flash[:alert] = "There was a problem while updating"
-        format.js
-      end
+    if current_user.update_attributes(user_params)
+      flash[:notice] = "Successfully Updated"
+      redirect_to current_user
+    else
+      flash[:alert] = "There was a problem while updating"
+      redirect_to current_user
     end
   end
 
@@ -102,7 +100,8 @@ class UsersController < ApplicationController
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def user_params
-			params.require(:user).permit(:bio, :first_name, :last_name, :username, :password, :password_confirmation)
+			params.require(:user).permit(:bio, :first_name, :last_name, :username,
+      :profile_picture, :cover_picture, :password, :password_confirmation)
 	end
 
   def filter_clique_only(elements, clique_only)
