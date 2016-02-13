@@ -46,7 +46,23 @@ class CliqsController < ApplicationController
     # Response
     respond_to do |format|
       if @clique.save
-        flash[:notice] = "Joined " + @clique.owner.name + "'s Clique"
+        flash[:notice] = "Joined " + @clique.name
+      else
+        flash[:error] = "An error has occured"
+      end
+      @user = @clique.owner
+      format.js
+    end
+  end
+
+  def leave
+    @clique = Cliq.find(params[:cliq_id])
+    # TODO: Add some kind of payment thing and validation
+    @clique.members.delete(current_user)
+    # Response
+    respond_to do |format|
+      if @clique.save
+        flash[:notice] = "Left " + @clique.name
       else
         flash[:error] = "An error has occured"
       end

@@ -20,7 +20,8 @@
   <!-- Clique-->
   <% if @user.clique %>
     <% if current_user.cliques.include? user.clique %>
-      <%= button_to "Clique", user_clique_path(user), :method => :get, :remote => true  %>
+      <%= button_to "Clique", user_clique_path(user), :method => :get, :remote => true %>
+      <%= button_to "Leave Clique", cliq_leave_path(user.clique), :remote => true %>
     <% else %>
       <%= button_to "Join Clique", cliq_join_path(user.clique), :remote => true %>
     <% end %>

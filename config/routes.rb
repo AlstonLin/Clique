@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :posts, :only => [:create, :update]
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
     post 'join'
+    post 'leave'
   end
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
