@@ -609,7 +609,7 @@
         }
 
         data.playlist = dom.playlist.getElementsByTagName('li');
-
+        console.log(data.playlist);
       }
 
       function initDOM() {
@@ -617,7 +617,7 @@
         //EDIT dom.playlistTarget = utils.dom.get(dom.o, '.sm2-playlist-target');
         dom.playlistContainer = utils.dom.get(dom.o, '.sm2-playlist-drawer');
         dom.playlist = utils.dom.get(dom.o, '.sm2-playlist-bd');
-
+        console.log(dom.playlist);
       }
 
       function init() {

@@ -1,0 +1,11 @@
+<div class="buffer">
+  <h1>Explore Tracks</h1>
+<% @tracks.each do |track| %>
+  <!-- TODO: Externalize this to a single common HTML file -->
+  <p style="float:left;margin-left: 50px;clear:left;"><%= track.song.original_filename %> by </p><%= link_to track.owner.name, track.owner, class:"ownerlink" %>
+  <%= link_to 'Play', track.song.url, class:"playa", 'data-skip-pjax' => true %>
+  <!-- Delete -->
+  <% if current_user && track.owner == current_user %>
+    <%= button_to "Delete", track, :method => :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+  <% end %>
+<% end %>

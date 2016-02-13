@@ -1,9 +1,0 @@
-<div class="buffer"><h1>Cliques</h1>
-<% cliques.each do |c| %>
-  <h3><%= c.owner.name %>'s Clique</h3>
-  <% c.owner.tracks.each do |t| %>
-    <%= t.song.original_filename %><br>
-    <div class="track-thumbnail"><%= audio_tag t.song.url, controls: true %></div>
-  <% end %>
-<% end %>
-</div>

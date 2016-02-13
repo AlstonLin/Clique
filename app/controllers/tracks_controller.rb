@@ -1,14 +1,11 @@
 class TracksController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
-  def index
-    @tracks = Track.all
-  end
-
   def new
     @track = Track.new
   end
 
   def create
+    puts params
     @track = Track.new(track_params)
     @track.owner = current_user
     if @track.save
@@ -25,31 +22,9 @@ class TracksController < ApplicationController
     end
     redirect_to tracks_path
   end
-  # ----------------------- Custom RESTFUL Actions-----------------------------
-  def explore
-    # TODO: Somehow find what to show them?
-    @tracks = Track.all
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def followed
-    @following = current_user.following
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def cliques
-    @cliques = current_user.cliques
-    respond_to do |format|
-      format.js
-    end
-  end
   # --------------------------------- Other-------------------------------------
   private
   def track_params
-    params.require(:track).permit(:song)
+    params.require(:track).permit(:song, :name, :pic, :public, :downloadable, :desc)
   end
 end

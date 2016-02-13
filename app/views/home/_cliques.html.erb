@@ -1,0 +1,10 @@
+<div class="buffer">
+<h1>Your Cliques</h1>
+<% content.each do |c| %>
+  <% if c.is_a? Post %>
+    <%= render :partial => '/posts/post', :locals => { :post => c } %>
+  <% else %>
+    <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+  <% end %>
+<% end %>
+</div>

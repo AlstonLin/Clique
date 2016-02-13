@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20160211030625) do
     t.string   "song_content_type"
     t.integer  "song_file_size"
     t.datetime "song_updated_at"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.string   "name"
+    t.string   "desc"
+    t.boolean  "public"
+    t.boolean  "downloadable"
     t.integer  "owner_id"
     t.boolean  "clique_only",       default: false
     t.datetime "created_at",                        null: false

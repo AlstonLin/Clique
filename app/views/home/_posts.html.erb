@@ -1,0 +1,6 @@
+<div class="buffer">
+  <h1>Posts</h1>
+  <% posts.each do |p| %>
+      <%= render :partial => '/posts/post', :locals => { :post => p } %>
+  <% end %>
+</div>

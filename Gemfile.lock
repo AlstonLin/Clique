@@ -68,8 +68,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    dropzonejs-rails (0.4.16)
-      rails (> 3.1)
     erubis (2.7.0)
     execjs (2.6.0)
     faraday (0.9.2)
@@ -204,7 +202,6 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
-  dropzonejs-rails (~> 0.4.16)
   jbuilder (~> 2.0)
   jquery-rails
   omniauth

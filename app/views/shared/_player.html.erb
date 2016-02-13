@@ -48,14 +48,14 @@
       </div>
     </div>
 
-    <div class="sm2-inline-element sm2-button-element">
+    <!-- <div class="sm2-inline-element sm2-button-element">
       <div class="sm2-button-bd">
         <div class="audioplayer-btn">
           <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
         </div>
         <a href="#repeat" title="Repeat playlist" class="sm2-inline-button repeat">∞ repeat</a>
       </div>
-    </div>
+    </div> -->
 
     <div class="sm2-inline-element sm2-button-element sm2-volume">
       <div class="sm2-button-bd">
@@ -94,21 +94,9 @@
 
   <div class="sm2-playlist-wrapper">
     <ul class="sm2-playlist-bd">
-      <!-- item with "download" link -->
-      <li class="selected">
-        <div class="sm2-row">
-          <div class="sm2-col sm2-wide">
-            <%
-              @tracks = Track.all if !defined? @tracks;
-            %>
-            <% firstTrack = @tracks.first %>
-            <% if firstTrack %>
-            <a href='<%= firstTrack.song.url %>'>firstTrack.song.original_filename</a>
-            <%end%>
-          </div>
-        </div>
-      </li>
-      <!-- standard one-line items -->
+      <%
+        @tracks = Track.all if !defined? @tracks;
+      %>
       <% @tracks.each do |track| %>
         <li><a href='<%= track.song.url %>'>track.song.original_filename</a></li>
       <% end %>

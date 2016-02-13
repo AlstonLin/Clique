@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   # Root
   authenticated :user do
-    root to: "tracks#index", :as => :authenticated_root
+    root to: "home#index", :as => :authenticated_root
   end
   unauthenticated do
     root to: "landing_page#index"
   end
-  # Custom routes
-  get "explore" => "tracks#explore"
-  get "followed" => "tracks#followed"
-  get "cliques" => "tracks#cliques"
+  # Home Page routes
+  get "home" => "home#index"
+  get "explore" => "home#explore"
+  get "posts" => "home#posts"
+  get "cliques" => "home#cliques"
   # Settings custom routing
   get 'settings' => 'settings#index'
   get 'change_password' => 'settings#change_password'
