@@ -40,8 +40,9 @@ class CliqsController < ApplicationController
   # ----------------------- Custom RESTFUL Actions-----------------------------
   def join
     @clique = Cliq.find(params[:cliq_id])
-    raise "Already in Clique" unless !(current_user.cliques.include? @clique)
+    raise "Already in Clique" if current_user.cliques.include? @clique
     # TODO: Add some kind of payment thing and validation
+    
     @clique.members << current_user
     # Response
     respond_to do |format|

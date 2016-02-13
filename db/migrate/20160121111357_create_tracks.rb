@@ -5,7 +5,6 @@ class CreateTracks < ActiveRecord::Migration
       t.attachment :pic
       t.string :name
       t.string :desc
-      t.boolean :public
       t.boolean :downloadable
       t.belongs_to :owner
       t.boolean :clique_only, default: false

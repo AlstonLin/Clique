@@ -423,7 +423,7 @@
  position: relative;
  display: block;
  /* prevent clipping of characters like "g" */
- height: 1.5em;
+ min-height: 1.5em;
  white-space: nowrap;
  overflow: hidden;
  text-overflow: ellipsis;

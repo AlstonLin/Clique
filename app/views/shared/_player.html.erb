@@ -35,14 +35,21 @@
       </div>
     </div>
 
+      <%
+        @tracks = Track.all if !defined? @tracks;
+      %>
     <div class="sm2-inline-element sm2-name">
       <div class="sm2-playlist">
         <div class="audioplayer-image">
         </div>
         <div class="sm2-playlist-target">
           <div class="audioplayer-info">
-            <h4> Bryson Tiller </h4>
-            <h5> Exchange (ft. A$AP Rocky) </h5>
+            <h4> Anmol Mago</h4>
+            <h5>
+              <% if defined? tracks.first%>
+                <%=  @tracks.first.name %>
+              <% end %>
+            </h5>
           </div>
         </li></div>
       </div>
@@ -76,9 +83,9 @@
   <div class="sm2-inline-element sm2-button-element sm2-favourite">
     <div class="sm2-button-bd">
       <div class="audioplayer-btn">
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
       </div>
-      <a href="#favourite" class="sm2-inline-button favourite">favourite</a>
+      <a href="#favourite" class="sm2-inline-button favourite">Download</a>
     </div>
 </div>
 
@@ -94,11 +101,15 @@
 
   <div class="sm2-playlist-wrapper">
     <ul class="sm2-playlist-bd">
-      <%
-        @tracks = Track.all if !defined? @tracks;
-      %>
       <% @tracks.each do |track| %>
-        <li><a href='<%= track.song.url %>'>track.song.original_filename</a></li>
+        <li>
+          <a href="<%= track.song.url %>">
+            <div class="audioplayer-info">
+              <h4><%= track.owner.name %></h4>
+              <h5><%= track.name %></h5>
+            </div>
+          </a>
+        </li>
       <% end %>
     </ul>
   </div>

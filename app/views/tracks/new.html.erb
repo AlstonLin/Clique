@@ -58,7 +58,7 @@ $(document).ready(function(){
         formData.append('track[name]', $("#"+file.myid + " input[name='name']").val());
         formData.append('track[pic]', $("#"+file.myid + " input[name='pic']")[0].files[0]);
         formData.append('track[desc]', $("#"+file.myid + " textarea").val());
-        formData.append('track[public]', $("#"+file.myid + " input[name='public']").is(':checked'));
+        formData.append('track[clique_only]', $("#"+file.myid + " input[name='public']").is(':checked'));
         formData.append('track[downloadable]', $("#"+file.myid + " input[name='downloadable']").is(':checked'));
     });
     dropzone.on('success', function(file, xhr, formData){
