@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Home Page routes
   get "home" => "home#index"
   get "explore" => "home#explore"
+  get "tracks" => "home#tracks"
   get "posts" => "home#posts"
   get "cliques" => "home#cliques"
   # Settings custom routing
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
     get 'followers'
     get 'following'
   end
-  resources :tracks, :only => [:index, :new, :create, :destroy]
+  resources :tracks, :only => [:new, :create, :destroy]
   resources :posts, :only => [:create, :update]
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
     post 'join'

@@ -6,9 +6,6 @@
   <!-- List of the most followed users -->
   <h1>Popular Artists</h1>
   <% @top.each do |t| %>
-    <%= link_to t do %>
-      <img src="<%= t.profile_picture_url %>"  height="150" />
-    <% end %>
-    <h3><%= t.name %></h3>
+    <%= render :partial => '/home/artist_tile', :locals => { :artist => t } %>
   <% end %>
 </div>

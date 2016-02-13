@@ -2,18 +2,34 @@ class HomeController < ApplicationController
   MAX_ITEMS = 20
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
-    @tracks = Track.where(:clique_only => false).limit(MAX_ITEMS)
+    @tracks = []
+    current_user.following.each do |f|
+      @tracks = @tracks + f.following.get_tracks(false)
+    end
+    @tracks = @tracks.first(MAX_ITEMS)
+  end
+
+  def explore
+    @top = User.where(:id => Follow.group(:following_id).order("count(*) desc").limit(MAX_ITEMS).count.keys)
   end
   # ----------------------- Custom RESTFUL Actions-----------------------------
-  def explore
-    @tracks = Track.where(:clique_only => false).limit(MAX_ITEMS)
+  def tracks
+    @tracks = []
+    current_user.following.each do |f|
+      @tracks = @tracks + f.following.get_tracks(false)
+    end
+    @tracks = @tracks.first(MAX_ITEMS)
     respond_to do |format|
       format.js
     end
   end
 
   def posts
-    @posts = Post.where(:clique_only => false).limit(MAX_ITEMS)
+    @posts = []
+    current_user.following.each do |f|
+      @posts = @posts + f.following.get_posts(false)
+    end
+    @posts = @posts.first(MAX_ITEMS)
     respond_to do |format|
       format.js
     end

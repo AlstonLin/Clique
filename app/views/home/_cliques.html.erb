@@ -1,10 +1,15 @@
 <div class="buffer">
 <h1>Your Cliques</h1>
-<% content.each do |c| %>
-  <% if c.is_a? Post %>
-    <%= render :partial => '/posts/post', :locals => { :post => c } %>
+  <% if content.count == 0 %>
+    <h3>You have no clique content to show!<br>
+      Discover new Artists and join their Clique at the <%= link_to "Explore Page", explore_path %></h3>
   <% else %>
-    <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+    <% content.each do |c| %>
+      <% if c.is_a? Post %>
+        <%= render :partial => '/posts/post', :locals => { :post => c } %>
+      <% else %>
+        <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
 </div>

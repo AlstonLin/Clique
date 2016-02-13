@@ -1,0 +1,6 @@
+<div class="buffer" id="home">
+  <h1>Popular Artists</h1>
+  <% @top.each do |t| %>
+    <%= render :partial => 'artist_tile', :locals => { :artist => t } %>
+  <% end %>
+</div>

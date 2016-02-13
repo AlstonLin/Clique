@@ -1,13 +1,13 @@
 
   <div class="buffer" id="home">
 <h1>Home</h1>
-<%= button_to "Tracks", explore_path, :method => :get, :remote => true %>
+<%= button_to "Tracks", tracks_path, :method => :get, :remote => true %>
 <% if current_user %>
   <%= button_to "Posts", posts_path, :method => :get, :remote => true %>
   <%= button_to "Cliques", cliques_path, :method => :get, :remote => true %>
 <% end %>
 <div id="content">
-  <%= render :partial => "explore", :locals => { tracks: @tracks } %>
+  <%= render :partial => "tracks", :locals => { tracks: @tracks } %>
 </div>
 
 </div class="buffer">
