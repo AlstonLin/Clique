@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   def get_tracks(clique_only)
     return filter_clique_only(self.tracks, clique_only)
   end
-  
+
   def to_param
     username
   end

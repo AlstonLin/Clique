@@ -1,4 +1,14 @@
-<div class="buffer" id="home"><h1>Landing Page</h1>
-<%= link_to "Sign Up", new_user_registration_path %>
-<%= link_to "Login", new_user_session_path %>
+<div class="buffer" id="home">
+  <h1>Clique</h1>
+  <%= link_to "Sign Up", new_user_registration_path %>
+  <%= link_to "Login", new_user_session_path %>
+  <br>
+  <!-- List of the most followed users -->
+  <h1>Popular Artists</h1>
+  <% @top.each do |t| %>
+    <%= link_to t do %>
+      <img src="<%= t.profile_picture_url %>"  height="150" />
+    <% end %>
+    <h3><%= t.name %></h3>
+  <% end %>
 </div>

@@ -1,25 +1,33 @@
-class PasswordsController < Devise::PasswordsController
+class PasswordsController < ApplicationController
+  before_filter :authenticate_user!
   def create
-   if verify_recaptcha
+    if verify_recaptcha
      super
-   else
+    else
      flash[:alert] = "reCAPTCHA Failed."
      redirect_to action: 'new'
-   end
- end
+    end
+  end
 
- def edit
+  def edit
     @user = current_user
   end
 
   def update
     @user = current_user
     # raise params.inspect
-    if @user.update_with_password(params[:user])
+    if @user.update_with_password(password_params)
+      flash[:notice] = "Your Password has been updated!"
       sign_in(@user, :bypass => true)
-      redirect_to root_path, :notice => "Your Password has been updated!"
+      redirect_to root_path
     else
-      render :edit,:locals => { :resource => @user, :resource_name => "user" }
+      flash[:alert] = "An Error has occured"
+      redirect_to root_path
     end
+  end
+
+  private
+  def password_params
+    params.require(:user).permit(:user, :reset_password_token, :current_password, :password, :password_confirmation)
   end
 end

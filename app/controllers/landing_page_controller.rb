@@ -1,6 +1,6 @@
 class LandingPageController < ApplicationController
-  skip_before_action :authenticate_user!
+  MAX_ITEMS = 20
   def index
-    @tracks = Track.all
+    @top = User.where(:id => Follow.group(:following_id).order("count(*) desc").limit(MAX_ITEMS).count.keys)
   end
 end
