@@ -21,9 +21,11 @@ class HomeController < ApplicationController
   # ----------------------- Custom RESTFUL Actions-----------------------------
   def tracks
     @tracks = []
+    # Generates a list of Tracks from all users being followed
     current_user.following.each do |f|
       @tracks = @tracks + f.following.get_tracks(false)
     end
+    # Gets the first MAX_ITEMS items
     @tracks = @tracks.first(MAX_ITEMS)
     respond_to do |format|
       format.js

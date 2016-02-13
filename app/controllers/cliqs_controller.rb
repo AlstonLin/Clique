@@ -5,7 +5,6 @@ class CliqsController < ApplicationController
   end
 
   def create
-    raise "You already have a Clique" unless !current_user.clique
     # Creates Clique
     @clique = Cliq.new(clique_params)
     @clique.owner = current_user
@@ -37,7 +36,7 @@ class CliqsController < ApplicationController
   def show
     @clique = Cliq.find(params[:id])
   end
-  # ----------------------- Custom RESTFUL Actions-----------------------------
+  # ----------------------- Custom RESTFUL Actions------------------------------
   def join
     @clique = Cliq.find(params[:cliq_id])
     raise "Already in Clique" unless !(current_user.cliques.include? @clique)
