@@ -25,6 +25,6 @@ class TracksController < ApplicationController
   # --------------------------------- Other-------------------------------------
   private
   def track_params
-    params.require(:track).permit(:song, :name, :pic, :public, :downloadable, :desc)
+    params.require(:track).permit(:song, :name, :pic, :clique_only, :downloadable, :desc)
   end
 end

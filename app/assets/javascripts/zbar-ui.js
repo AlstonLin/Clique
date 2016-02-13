@@ -155,13 +155,14 @@
       }
 
       // remove any failed character sequence, also
-      /* EDIT dom.playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li>' + item.innerHTML.replace(extras.loadFailedCharacter, '') + '</li></ul>';
-      /* EDIT dom.playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li>' + item.innerHTML.replace(extras.loadFailedCharacter, '') + '</li></ul>';
+      dom.playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li>' + item.innerHTML.replace(extras.loadFailedCharacter, '') + '</li></ul>';
+      dom.playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li>' + item.innerHTML.replace(extras.loadFailedCharacter, '') + '</li></ul>';
 
       if (dom.playlistTarget.getElementsByTagName('li')[0].scrollWidth > dom.playlistTarget.offsetWidth) {
         // this item can use <marquee>, in fact.
-        dom.playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li><marquee>' + item.innerHTML + '</marquee></li></ul>';
-      }*/
+        //dom.playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li><marquee>' + item.innerHTML + '</marquee></li></ul>';
+      }
+      console.log(item);
 
     }
 
@@ -253,7 +254,7 @@
             // playlistTarget.innerHTML = '<ul class="sm2-playlist-bd"><li>' + item.innerHTML + '</li></ul>';
 
             if (extras.loadFailedCharacter) {
-              //EDIT dom.playlistTarget.innerHTML = dom.playlistTarget.innerHTML.replace('<div>' ,'<li>' + extras.loadFailedCharacter + ' ');
+              dom.playlistTarget.innerHTML = dom.playlistTarget.innerHTML.replace('<div>' ,'<li>' + extras.loadFailedCharacter + ' ');
               if (playlistController.data.playlist && playlistController.data.playlist[playlistController.data.selectedIndex]) {
                 element = playlistController.data.playlist[playlistController.data.selectedIndex].getElementsByTagName('a')[0];
                 html = element.innerHTML;
@@ -614,7 +615,7 @@
 
       function initDOM() {
 
-        //EDIT dom.playlistTarget = utils.dom.get(dom.o, '.sm2-playlist-target');
+        dom.playlistTarget = utils.dom.get(dom.o, '.sm2-playlist-target');
         dom.playlistContainer = utils.dom.get(dom.o, '.sm2-playlist-drawer');
         dom.playlist = utils.dom.get(dom.o, '.sm2-playlist-bd');
         console.log(dom.playlist);
