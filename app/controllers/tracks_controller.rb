@@ -1,9 +1,5 @@
 class TracksController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
-  def index
-    @tracks = Track.all
-  end
-
   def new
     @track = Track.new
   end
@@ -24,28 +20,6 @@ class TracksController < ApplicationController
       @track.destroy
     end
     redirect_to tracks_path
-  end
-  # ----------------------- Custom RESTFUL Actions-----------------------------
-  def explore
-    # TODO: Somehow find what to show them?
-    @tracks = Track.all
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def followed
-    @following = current_user.following
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def cliques
-    @cliques = current_user.cliques
-    respond_to do |format|
-      format.js
-    end
   end
   # --------------------------------- Other-------------------------------------
   private
