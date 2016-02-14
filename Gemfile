@@ -10,11 +10,11 @@ gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
 # Default Gems
 gem 'rails', '4.2.5'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
+gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'pjax_rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc

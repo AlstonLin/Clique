@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   get "tracks" => "home#tracks"
   get "posts" => "home#posts"
   get "cliques" => "home#cliques"
-  # Settings custom routing
-  get 'settings' => 'settings#index'
+  # Settings routes
+  get 'settings' => 'settings#account_settings'
   get 'change_password' => 'settings#change_password'
   get 'clique_settings' => 'settings#clique_settings'
   get 'edit_profile' => 'settings#edit_profile'
   get 'orders' => 'settings#orders'
   get 'payment_settings' => 'settings#payment_settings'
+  get 'edit_clique' => 'settings#edit_clique'
+  get 'clique_members' => 'settings#clique_members'
+  get 'clique_orders' => 'settings#clique_orders'
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'

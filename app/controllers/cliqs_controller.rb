@@ -8,16 +8,13 @@ class CliqsController < ApplicationController
     # Creates Clique
     @clique = Cliq.new(clique_params)
     @clique.owner = current_user
-    # Saves and Respond
-    respond_to do |format|
-      if @clique.save
-        flash[:notice] = "Clique Created!"
-        format.js
-      else
-        flash[:error] = "There was an error while creating your Clique"
-        format.js
-      end
+    # Saves and Redirects
+    if @clique.save
+      flash[:notice] = "Clique Created!"
+    else
+      flash[:alert] = "There was an error while creating your Clique"
     end
+    redirect_to clique_settings_path
   end
 
   def update
@@ -27,7 +24,7 @@ class CliqsController < ApplicationController
         flash[:notice] = "Clique Updated!"
         format.js
       else
-        flash[:error] = "There was an error while updating your Clique"
+        flash[:alert] = "There was an error while updating your Clique"
         format.js
       end
     end
@@ -41,14 +38,14 @@ class CliqsController < ApplicationController
     @clique = Cliq.find(params[:cliq_id])
     raise "Already in Clique" if current_user.cliques.include? @clique
     # TODO: Add some kind of payment thing and validation
-    
+
     @clique.members << current_user
     # Response
     respond_to do |format|
       if @clique.save
         flash[:notice] = "Joined " + @clique.name
       else
-        flash[:error] = "An error has occured"
+        flash[:alert] = "An error has occured"
       end
       @user = @clique.owner
       format.js
@@ -64,7 +61,7 @@ class CliqsController < ApplicationController
       if @clique.save
         flash[:notice] = "Left " + @clique.name
       else
-        flash[:error] = "An error has occured"
+        flash[:alert] = "An error has occured"
       end
       @user = @clique.owner
       format.js

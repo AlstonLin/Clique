@@ -3,8 +3,6 @@ class Cliq < ActiveRecord::Base
   # Relationships
   belongs_to :owner, :class_name => 'User'
   has_and_belongs_to_many :members, :class_name => 'User'
-  validates :price, :presence => true
-  validates :name, :presence => true
   # Validations
   validates :owner, :presence => true
   validates :price, :presence => true
