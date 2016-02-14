@@ -8,8 +8,12 @@ class PostsController < ApplicationController
       else
         flash[:error] = "An Error has occured"
       end
+
+      # Show all content
+      @content = current_user.tracks + current_user.posts
+      @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+
       @post = Post.new
-      @posts = current_user.get_posts(false)
       format.js
     end
   end
