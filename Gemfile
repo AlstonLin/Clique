@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Paypal
+gem 'paypal-sdk-adaptivepayments'
 # Uploading
 gem 'paperclip', '~> 4.2.0'
 # Auth

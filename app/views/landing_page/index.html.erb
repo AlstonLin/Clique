@@ -1,7 +1,6 @@
 <div class="buffer" id="home">
-  <h1>Clique</h1>
-  <%= link_to "Sign Up", new_user_registration_path %>
-  <%= link_to "Login", new_user_session_path %>
+  <h1>Welcome to Clique</h1>
+  <%= link_to "Create Account", new_user_registration_path, 'data-skip-pjax' => true %>
   <br>
   <!-- List of the most followed users -->
   <h1>Popular Artists</h1>

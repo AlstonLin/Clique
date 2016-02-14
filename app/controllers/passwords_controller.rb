@@ -1,5 +1,4 @@
 class PasswordsController < ApplicationController
-  before_filter :authenticate_user!
   def create
     if verify_recaptcha
      super
@@ -7,6 +6,11 @@ class PasswordsController < ApplicationController
      flash[:alert] = "reCAPTCHA Failed."
      redirect_to action: 'new'
     end
+  end
+
+  def new
+    @resource = User.new
+    @resource_class = "user"
   end
 
   def edit

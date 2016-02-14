@@ -43,5 +43,7 @@ Rails.application.routes.draw do
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations", :passwords => "passwords"}
-  resources :passwords
+  devise_scope :user do
+    resources :passwords, :only => [:new, :create, :edit, :update]
+  end
 end
