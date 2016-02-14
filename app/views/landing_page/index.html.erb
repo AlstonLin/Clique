@@ -1,3 +1,20 @@
+<!--  Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Clique", root_path, :class => "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <!-- Shown when signed out -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path, 'data-skip-pjax' => true %></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+<!-- Content -->
 <div class="buffer" id="home">
   <h1>Welcome to Clique</h1>
   <%= link_to "Create Account", new_user_registration_path, 'data-skip-pjax' => true %>

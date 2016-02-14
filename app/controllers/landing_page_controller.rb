@@ -8,5 +8,6 @@ class LandingPageController < ApplicationController
       @top = @top + User.all.limit(MAX_ITEMS - @top.count)
       @top = @top.uniq
     end
+    render :layout => "landing_page"
   end
 end
