@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
-    @posts = @user.get_posts(false)
+    get_all_content
     # Create Post
     if @user == current_user
       @post = Post.new
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   def unfollow
     # TODO: Some validation for if not following
     # Finds the follow
-    @user= User.find_by_username(params[:user_id])
+    @user = User.find_by_username(params[:user_id])
     follows = Follow.where(:follower => current_user, :following => @user)
     follows.destroy_all
     # Response
@@ -64,6 +64,11 @@ class UsersController < ApplicationController
       flash[:notice] = "Unfollowed " + @user.name
       format.js
     end
+  end
+
+  def all
+    @user = User.find_by_username(params[:user_id])
+    get_all_content
   end
 
   def posts
@@ -116,8 +121,20 @@ class UsersController < ApplicationController
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
   private
-	def user_params
-			params.require(:user).permit(:bio, :first_name, :last_name, :username,
-      :profile_picture, :cover_picture, :password, :password_confirmation)
-	end
+    def get_all_content
+      # Show all content
+      if @user.clique && current_user && @user.clique.members.include?(current_user)
+        @content = @user.tracks + @user.posts
+      # Show all non-clique content
+      else
+        @content = @user.get_tracks(false) + @user.get_posts(false)
+      end
+      # Sort
+      @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    end
+
+  	def user_params
+  			params.require(:user).permit(:bio, :first_name, :last_name, :username,
+        :profile_picture, :cover_picture, :password, :password_confirmation)
+  	end
 end

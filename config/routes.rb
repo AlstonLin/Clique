@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     post 'follow'
     post 'unfollow'
     patch 'update_password'
+    get 'all'
     get 'posts'
     get 'reposts'
     get 'clique'
