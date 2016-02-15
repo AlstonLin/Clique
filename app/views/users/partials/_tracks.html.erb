@@ -1,5 +1,9 @@
 <h1>Tracks</h1>
 <% if songs %>
+  <% if songs.count == 0 %>
+  No Tracks to Show
+  <% end %>
+  
   <% songs.each do |t| %>
     <%= render :partial => '/tracks/track', :locals => { :track => t } %>
   <% end %>
