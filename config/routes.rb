@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     get 'following'
   end
   resources :tracks, :only => [:new, :create, :destroy]
-  resources :posts, :only => [:create, :update]
+  resources :posts, :only => [:create, :update] do
+    post 'delete'
+  end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
     post 'join'
     post 'leave'

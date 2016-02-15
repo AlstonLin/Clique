@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160211030625) do
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.boolean  "clique_only", default: false
+    t.boolean  "removed",     default: false
     t.integer  "poster_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -76,9 +77,9 @@ ActiveRecord::Schema.define(version: 20160211030625) do
     t.datetime "pic_updated_at"
     t.string   "name"
     t.string   "desc"
-    t.boolean  "public"
     t.boolean  "downloadable"
     t.integer  "owner_id"
+    t.boolean  "removed",           default: false
     t.boolean  "clique_only",       default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false

@@ -7,6 +7,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :desc
       t.boolean :downloadable
       t.belongs_to :owner
+      t.boolean :removed, default: false
       t.boolean :clique_only, default: false
       t.datetime :created_at
       t.timestamps null: false

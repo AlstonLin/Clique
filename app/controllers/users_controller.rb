@@ -124,7 +124,7 @@ class UsersController < ApplicationController
     def get_all_content
       # Show all content
       if @user.clique && current_user && @user.clique.members.include?(current_user)
-        @content = @user.tracks + @user.posts
+        @content = @user.get_tracks(nil) + @user.get_posts(nil)
       # Show all non-clique content
       else
         @content = @user.get_tracks(false) + @user.get_posts(false)
