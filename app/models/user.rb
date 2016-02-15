@@ -89,10 +89,10 @@ class User < ActiveRecord::Base
     end
 
     def generate_urls
-      if self.profile_picture.url(:med) != self.profile_picture_url
+      if self.profile_picture.exists? && self.profile_picture.url(:med) != self.profile_picture_url
         self.update_column(:profile_picture_url, self.profile_picture.url(:med))
       end
-      if self.cover_picture.url(:med) != self.cover_picture_url
+      if self.profile_picture.exists? && self.cover_picture.url(:med) != self.cover_picture_url
         self.update_column(:cover_picture_url, self.cover_picture.url(:med))
       end
     end
