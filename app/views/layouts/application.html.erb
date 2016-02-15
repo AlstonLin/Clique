@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clique</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <!-- Navbar --->
+  <%= render :partial => "shared/navbar" %>
+  <!-- Bottom Player -->
+  <%= render :partial => "shared/player" %>
+  <!-- Content -->
+  <div data-pjax-container>
+    <!-- Flash Box -->
+    <%= render :partial => "shared/flash_box" %>
+    <%= yield %>
+  </div>
+</body>
+</html>
