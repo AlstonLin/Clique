@@ -1,4 +1,7 @@
 <h1>Clique Content</h1>
+<% if content.count == 0 %>
+  Nothing to show
+<% end %>
 <% content.each do |c| %>
   <% if c.is_a? Post %>
     <%= render :partial => '/posts/post', :locals => { :post => c } %>

@@ -5,20 +5,20 @@
   <img src="<%= @user.profile_picture_url %>"  height="150" /> <br><br>
   <!-- Buttons -->
   <div id="buttons" class="row">
-    <%= render :partial => "buttons", :locals => { user: @user } %>
+    <%= render :partial => "/users/partials/buttons", :locals => { user: @user } %>
   </div>
   <!-- Post Form if own profile -->
   <% if @user == current_user %>
     <div id="post_form" class="col-sm-8 col-sm-offset-2">
-      <%= render :partial => "post_form", :locals => { post: @post } %>
+      <%= render :partial => "/users/partials/post_form", :locals => { post: @post } %>
     </div>
   <% end %>
   <!-- Content -->
   <div id="content" class="col-sm-9">
-    <%= render :partial => "posts", :locals => { posts: @posts } %>
+    <%= render :partial => "/users/partials/all", :locals => { content: @content } %>
   </div>
   <!-- Right info bar -->
   <div class="col-sm-3">
-    <%= render :partial => "profile_right", :locals => { user: @user } %>
+    <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
   </div>
 </div>

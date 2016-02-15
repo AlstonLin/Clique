@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
       filtered = []
       # Filtering
       elements.each do |e|
-        if e.clique_only == clique_only
+        if !e.removed && (clique_only == nil || e.clique_only == clique_only)
           filtered << e
         end
       end
@@ -89,10 +89,10 @@ class User < ActiveRecord::Base
     end
 
     def generate_urls
-      if self.profile_picture.exists?
+      if self.profile_picture.url(:med) != self.profile_picture_url
         self.update_column(:profile_picture_url, self.profile_picture.url(:med))
       end
-      if self.cover_picture.exists?
+      if self.cover_picture.url(:med) != self.cover_picture_url
         self.update_column(:cover_picture_url, self.cover_picture.url(:med))
       end
     end

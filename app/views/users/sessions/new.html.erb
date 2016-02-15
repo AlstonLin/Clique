@@ -13,7 +13,7 @@
   <%= button_tag "Log In", type: 'submit', id: "loginbutton" %>
 <% end %>
 <br>
-<%= link_to "Forgot Password", "/users/password/new", :method => :get, class: "login-link", id: "forgotbutton" %>
+<%= link_to "Forgot Password", new_user_password_path, :method => :get, class: "login-link", id: "forgotbutton" %>
 <%= link_to "Sign Up", "/users/sign_up",  class: "link_to", :method => :get, class: "login-link" %>
 <%# link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %>
 </div>

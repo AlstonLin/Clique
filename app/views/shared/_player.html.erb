@@ -36,7 +36,7 @@
     </div>
 
       <%
-        @tracks = Track.all if !defined? @tracks;
+        @tracks = Track.all;
       %>
     <div class="sm2-inline-element sm2-name">
       <div class="sm2-playlist">
@@ -46,7 +46,7 @@
           <div class="audioplayer-info">
             <h4> Anmol Mago</h4>
             <h5>
-              <% if defined? tracks.first%>
+              <% if defined? @tracks.first%>
                 <%=  @tracks.first.name %>
               <% end %>
             </h5>
@@ -85,7 +85,7 @@
       <div class="audioplayer-btn">
         <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
       </div>
-      <a href="#favourite" class="sm2-inline-button favourite">Download</a>
+      <a href="#" class="sm2-inline-button favourite">Download</a>
     </div>
 </div>
 

@@ -1,8 +1,31 @@
 class SettingsController < ApplicationController
-  # ----------------------- Default RESTFUL Actions-----------------------------
-  def index
-  end
   # ----------------------- Custom RESTFUL Actions------------------------------
+  def account_settings
+  end
+
+  def edit_profile
+  end
+
+  def orders
+  end
+
+  def edit_clique
+    @clique = current_user.clique
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def clique_members
+    @clique = current_user.clique
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def clique_orders
+  end
+
   def change_password
     respond_to do |format|
       format.js
@@ -13,21 +36,6 @@ class SettingsController < ApplicationController
     @clique = current_user.clique
     if !@clique
       @clique = Cliq.new
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def edit_profile
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def orders
-    respond_to do |format|
-      format.js
     end
   end
 

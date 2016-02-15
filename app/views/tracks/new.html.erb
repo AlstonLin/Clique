@@ -25,7 +25,7 @@ function readURL(input, id) {
             reader.readAsDataURL(input.files[0]);
         }
     }
-$(document).ready(function(){
+$(document).on('ready pjax:success', function() {
 	// disable auto discover
 
   Dropzone.autoDiscover = false;
@@ -40,21 +40,21 @@ $(document).ready(function(){
   		//this.removeFile(file)
   		//$.getScript("/tracks")
       var id = new Date().getMilliseconds();
-      console.log(id);
       file.myid = id;
+      //alert(file.myid);
       $("#upload").append("<div id='"+id+"'class='editUpload'><h4>'"+file.name+"'</h4><img width=180 height=180 class=image_upload_preview src='' /><table><tr><td>Song Name:<td><input name=name><tr><td>Image:<td><input class=edituploadimg type=file name=pic accept=image/*><tr><td>Description:<td><textarea></textarea><tr><td>Public:<td><input type=checkbox name=public><tr><td>Downloadable:<td><input type=checkbox name=downloadable><tr><td colspan=2><button>Upload</button></table></div>");
       $("#"+id+" button").click(function(){
         if(true){
           dropzone.processFile(file);
         }
       });
-      $(".edituploadimg").change(function () {
-        alert(file.myid);
+      $("#" + id + " .edituploadimg").change(function () {
+          //alert(file.myid);
           readURL(this, file.myid);
       });
   	});
     dropzone.on('sending', function(file, xhr, formData){
-        alert($("#"+file.myid + " input[name='name']").val());
+        //alert($("#"+file.myid + " input[name='name']").val());
         formData.append('track[name]', $("#"+file.myid + " input[name='name']").val());
         formData.append('track[pic]', $("#"+file.myid + " input[name='pic']")[0].files[0]);
         formData.append('track[desc]', $("#"+file.myid + " textarea").val());
@@ -66,7 +66,7 @@ $(document).ready(function(){
       dropzone.removeFile(file);
     });
     dropzone.on('error', function(file, xhr, formData){
-      alert("Your upload was unsuccessfull. Please make sure you inputted all information correctly.");
+      //alert("Your upload was unsuccessfull. Please make sure you inputted all information correctly.");
     });
 });
 </script>

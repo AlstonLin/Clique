@@ -1,2 +1,5 @@
 <h3><%= post.content %></h3>
 <h4> Posted <%= time_ago_in_words post.created_at %> by <%= link_to post.poster.name, post.poster %></h4>
+<% if post.poster == current_user %>
+<%= button_to "Delete", post_delete_path(post), :remote => true %>
+<% end %>

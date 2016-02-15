@@ -5,7 +5,7 @@
     <h3>You have no tracks to show!<br>
       Discover new Artists to follow at the <%= link_to "Explore Page", explore_path %></h3>
   <% else %>
-    <!-- Displays each track on the list -->>
+    <!-- Displays each track on the list -->
     <% tracks.each do |track| %>
       <!-- TODO: Externalize this to a single common HTML file -->
       <p style="float:left;margin-left: 50px;clear:left;"><%= track.song.original_filename %> by </p><%= link_to track.owner.name, track.owner, class:"ownerlink" %>

@@ -6,4 +6,5 @@ class Post < ActiveRecord::Base
   belongs_to :poster, :class_name => 'User'
   # validation
   validates :poster, :presence => true
+  validates :content, :presence => true
 end

@@ -15,6 +15,7 @@ class TracksController < ApplicationController
     end
   end
 
+  # TODO: Change removed to false and not actually destroy it; just hide it
   def destroy
     @track = Track.find_by_id(params[:id])
     if @track

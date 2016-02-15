@@ -1,7 +1,6 @@
 /*jslint plusplus: true, white: true, nomen: true */
 /*global console, document, navigator, soundManager, window */
 
-(function(window) {
 
   /**
    * SoundManager 2: "Bar UI" player
@@ -11,7 +10,6 @@
    * http://schillmania.com/projects/soundmanager2/license.txt
    */
 
-  "use strict";
 
   var Player,
       players = [],
@@ -25,9 +23,8 @@
    * Override globally by setting window.sm2BarPlayers.on = {}, or individually by window.sm2BarPlayers[0].on = {} etc.
    */
   players.on = {
-    /*
     play: function(player) {
-      console.log('playing', player);
+      console.log('playing111111', player);
     },
     finish: function(player) {
       // each sound
@@ -38,12 +35,11 @@
     },
     error: function(player) {
       console.log('error', player);
-    }
+    },
     end: function(player) {
       // end of playlist
       console.log('end', player);
     }
-    */
   };
 
   playerOptions = {
@@ -77,9 +73,9 @@
    * player bits
    */
 
+var css, dom, extras, playlistController, soundObject, actions, actionData, defaultItem, defaultVolume, firstOpen, exports;
   Player = function(playerNode) {
 
-    var css, dom, extras, playlistController, soundObject, actions, actionData, defaultItem, defaultVolume, firstOpen, exports;
 
     css = {
       disabled: 'disabled',
@@ -610,7 +606,7 @@
         }
 
         data.playlist = dom.playlist.getElementsByTagName('li');
-        console.log(data.playlist);
+        //console.log(data.playlist);
       }
 
       function initDOM() {
@@ -945,7 +941,6 @@
     actions = {
 
       play: function(offsetOrEvent) {
-
         /**
          * This is an overloaded function that takes mouse/touch events or offset-based item indices.
          * Remember, "auto-play" will not work on mobile devices unless this function is called immediately from a touch or click event.
@@ -980,6 +975,7 @@
         if (!soundObject) {
           soundObject = makeSound(href);
         }
+        console.log(soundObject);
 
         // edge case: if the current sound is not playing, stop all others.
         if (!soundObject.playState) {
@@ -1019,6 +1015,27 @@
         // just an alias for pause, really.
         // don't actually stop because that will mess up some UI state, i.e., dragging the slider.
         return actions.pause();
+
+      },
+
+      first: function(/* e */) {
+
+        var item, lastIndex;
+
+        // special case: clear "play next" timeout, if one exists.
+        if (playlistController.data.timer) {
+          window.clearTimeout(playlistController.data.timer);
+          playlistController.data.timer = null;
+        }
+
+        lastIndex = playlistController.data.selectedIndex;
+
+        item = playlistController.getNext(true);
+
+        // don't play the same item again
+        if (item && playlistController.data.selectedIndex !== lastIndex) {
+          playLink(item.getElementsByTagName('a')[0]);
+        }
 
       },
 
@@ -1674,5 +1691,3 @@
   window.sm2BarPlayers = players;
   window.sm2BarPlayerOptions = playerOptions;
   window.SM2BarPlayer = Player;
-
-}(window));

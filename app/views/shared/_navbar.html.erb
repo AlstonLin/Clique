@@ -1,19 +1,41 @@
-<div id="navbar">
-  <div class="buffer">
-    <p><%= link_to "Clique", root_path %></p>
-    <div id="links">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Clique", root_path, :class => "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse">
       <% if current_user %>
-        <%= link_to "Home", home_path %>
-        <%= link_to "Explore", explore_path %>
-        <%= link_to "Upload", new_track_path %>
-        <%= link_to "Profile", current_user %>
-        <%= link_to "Settings", settings_path %>
-      <% end %>
-      <% if current_user %>
-        <%= button_to 'Logout', destroy_user_session_path, :method => :delete %>
+        <!-- Links on the left -->
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", home_path %></li>
+          <li><%= link_to "Explore", explore_path %></li>
+          <li><%= link_to "Upload", new_track_path %></li>
+          <li><%= link_to "Profile", current_user %></li>
+        </ul>
+
+        <!-- Account dropdown menu-->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Profile", edit_profile_path %></li>
+              <li><%= link_to "Settings", settings_path %></li>
+              <li><%= link_to "Clique Settings", clique_settings_path %></li>
+              <li><%= link_to "Orders", orders_path %></li>
+              <!-- NOTE: This is a buton because Rails is stupid and think wont work as a link -->
+              <li><%= button_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+              <!-- Trust me, I spent hours trying to get it to work as a link -->
+            </ul>
+          </li>
+        </ul>
       <% else %>
-        <%= button_to "Sign In", new_user_session_path %>
+        <!-- Shown when signed out -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path, 'data-skip-pjax' => true %></li>
+        </ul>
       <% end %>
     </div>
   </div>
-</div>
+</nav>

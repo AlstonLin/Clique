@@ -1,2 +1,6 @@
-<%= track.song.original_filename %><br>
-<div class="track-thumbnail"><%= audio_tag track.song.url, controls: true %></div>
+<p style="float:left;margin-left: 50px;clear:left;"><%= track.name %> by </p><%= link_to track.owner.name, track.owner, class:"ownerlink" %>
+<%= link_to 'Play', track.song.url, class:"playa"%>
+<!-- Delete Track -->
+<% if current_user && track.owner == current_user %>
+  <%= button_to "Delete", track, :method => :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+<% end %>

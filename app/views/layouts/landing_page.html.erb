@@ -7,15 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- Bottom Player -->
-  <%= render :partial => "shared/player" %>
-<!-- Content -->
-<div data-pjax-container>
   <!-- Navbar --->
-  <%= render :partial => "shared/navbar" %>
-  <!-- Flash Box -->
-  <%= render :partial => "shared/flash_box" %>
-  <%= yield %>
-</div>
+  <%= render :partial => "landing_page/navbar" %>
+  <div data-pjax-container>
+    <!-- Flash Box -->
+    <%= render :partial => "shared/flash_box" %>
+    <%= yield %>
+  </div>
 </body>
 </html>

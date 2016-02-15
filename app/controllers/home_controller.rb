@@ -2,11 +2,7 @@ class HomeController < ApplicationController
   MAX_ITEMS = 20
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
-    @tracks = []
-    current_user.following.each do |f|
-      @tracks = @tracks + f.following.get_tracks(false)
-    end
-    @tracks = @tracks.first(MAX_ITEMS)
+    get_tracks
   end
 
   def explore
@@ -20,11 +16,7 @@ class HomeController < ApplicationController
   end
   # ----------------------- Custom RESTFUL Actions-----------------------------
   def tracks
-    @tracks = []
-    current_user.following.each do |f|
-      @tracks = @tracks + f.following.get_tracks(false)
-    end
-    @tracks = @tracks.first(MAX_ITEMS)
+    get_tracks
     respond_to do |format|
       format.js
     end
@@ -53,4 +45,15 @@ class HomeController < ApplicationController
       format.js
     end
   end
+  # -------------------- EXTERNALIZED FUNCTIONS --------------------------------
+  private
+    def get_tracks
+      @tracks = []
+      # Generates a list of Tracks from all users being followed
+      current_user.following.each do |f|
+        @tracks = @tracks + f.following.get_tracks(false)
+      end
+      # Gets the first MAX_ITEMS items
+      @tracks = @tracks.first(MAX_ITEMS)
+    end
 end
