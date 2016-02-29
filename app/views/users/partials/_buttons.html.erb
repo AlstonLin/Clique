@@ -10,6 +10,7 @@
   <% end %>
   <%= button_to "Followers", user_followers_path(user), :method => :get, :remote => true %>
   <%= button_to "Following", user_following_path(user), :method => :get, :remote => true %>
+  <%= button_to  "Edit Profile", edit_profile_path, :method => :get %>
 <% elsif current_user %>
 <!-- Others profile -->
   <!-- Follow -->
