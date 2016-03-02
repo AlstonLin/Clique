@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   after_initialize :default_values
   after_create :generate_username
-  after_commit :generate_urls, :on => :update
+  after_save :generate_urls
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/profile_pictures/:id/:style/:basename.:extension" }
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
   has_attached_file :cover_picture, :styles => { small: "640x480", med: "1280x720", large: "1920x1080",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/cover_pictures/:id/:style/:basename.:extension" }
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
   validates_attachment_size :profile_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_size :cover_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   validates :profile_picture_url, presence: true
   validates :cover_picture_url, presence: true
   validates :username, uniqueness: true, presence: false
-  validates_length_of :bio, :maximum => 140
+
   # Auth
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
       if self.profile_picture.exists? && self.profile_picture.url(:med) != self.profile_picture_url
         self.update_column(:profile_picture_url, self.profile_picture.url(:med))
       end
-      if self.cover_picture.exists? && self.cover_picture.url(:med) != self.cover_picture_url
+      if self.profile_picture.exists? && self.cover_picture.url(:med) != self.cover_picture_url
         self.update_column(:cover_picture_url, self.cover_picture.url(:med))
       end
     end

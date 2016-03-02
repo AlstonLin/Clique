@@ -9,12 +9,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :username
       t.integer :type
-      t.text :bio, :limit => 140
       # Pictures
       t.attachment :profile_picture
       t.attachment :cover_picture
       t.string :cover_picture_url
       t.string :profile_picture_url
+      t.text :bio
       # Location
       t.string :location
       t.string :address
