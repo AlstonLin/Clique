@@ -23,6 +23,32 @@ class TracksController < ApplicationController
     end
     redirect_to current_user_path
   end
+  # ----------------------- Custom RESTFUL Actions------------------------------
+  def repost
+    @track = Track.find(params[:track_id])
+    @track.reposters << current_user
+    respond_to do |format|
+      if @track.save
+        flash[:notice] = "Reposted!"
+      else
+        flash[:error] = "An Error has occured"
+      end
+      format.js
+    end
+  end
+
+  def favorite
+    @track = Track.find(params[:track_id])
+    @track.favorites << current_user
+    respond_to do |format|
+      if @track.save
+        flash[:notice] = "Reposted!"
+      else
+        flash[:error] = "An Error has occured"
+      end
+      format.js
+    end
+  end
   # --------------------------------- Other-------------------------------------
   private
   def track_params

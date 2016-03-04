@@ -37,7 +37,6 @@ class UsersController < ApplicationController
   def follow
     @user = User.find_by_username(params[:user_id])
     raise "Attempt to follow self" unless current_user != @user
-    # TODO: Some validation for if already following
     # Creates new Follow
     follow = Follow.new
     follow.follower = current_user

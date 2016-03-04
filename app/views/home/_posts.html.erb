@@ -1,4 +1,3 @@
-
 <div class="leftCol">
     <% if posts.count == 0 %>
     	<div class="no-post">
@@ -6,12 +5,6 @@
       No posts to show</br>
         <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
        </div>
-
-
-
-
-
-
     <% else %>
       <% posts.each do |p| %>
           <%= render :partial => '/posts/post', :locals => { :post => p } %>

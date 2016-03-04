@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "tracks" => "home#tracks"
   get "posts" => "home#posts"
   get "cliques" => "home#cliques"
+  get "favorites" => "home#favorites"
   # Settings routes
   get 'settings' => 'settings#account_settings'
   get 'change_password' => 'settings#change_password'
@@ -35,9 +36,14 @@ Rails.application.routes.draw do
     get 'followers'
     get 'following'
   end
-  resources :tracks, :only => [:new, :create, :destroy]
+  resources :tracks, :only => [:new, :create, :destroy] do
+    post 'repost'
+    post 'favorite'
+  end
   resources :posts, :only => [:create, :update] do
     post 'delete'
+    post 'repost'
+    post 'favorite'
   end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
     post 'join'

@@ -8,7 +8,15 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'Follow', :foreign_key => 'following_id'
   has_many :tracks, :foreign_key => 'owner_id'
   has_many :posts, :class_name => 'Post', :foreign_key => 'poster_id'
-  has_and_belongs_to_many :reposts, :class_name => 'Post'
+  has_many :comments, :class_name => 'Comment'
+  has_and_belongs_to_many :reposts, :class_name => 'Post', :join_table => 'reposts_users', \
+    :foreign_key => :user_id, :association_foreign_key => :post_id
+  has_and_belongs_to_many :retracks, :class_name => 'Track', :join_table => 'retracks_users', \
+    :foreign_key => :user_id, :association_foreign_key => :track_id
+  has_and_belongs_to_many :favorite_posts, :class_name => 'Post', :join_table => 'fav_posts_users', \
+    :foreign_key => :user_id, :association_foreign_key => :post_id
+  has_and_belongs_to_many :favorite_tracks, :class_name => 'Track', :join_table => 'fav_tracks_users', \
+    :foreign_key => :user_id, :association_foreign_key => :track_id
   has_and_belongs_to_many :cliques, :class_name => 'Cliq'
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
@@ -51,11 +59,11 @@ class User < ActiveRecord::Base
   end
 
   def get_posts(clique_only)
-    return filter_clique_only(self.posts, clique_only)
+    return filter_clique_only(self.posts + self.reposts, clique_only)
   end
 
   def get_tracks(clique_only)
-    return filter_clique_only(self.tracks, clique_only)
+    return filter_clique_only(self.tracks + self.retracks, clique_only)
   end
 
   def to_param
@@ -64,14 +72,7 @@ class User < ActiveRecord::Base
   # ------------------------------- Private  -----------------------------------
   private
     def filter_clique_only(elements, clique_only)
-      filtered = []
-      # Filtering
-      elements.each do |e|
-        if !e.removed && (clique_only == nil || e.clique_only == clique_only)
-          filtered << e
-        end
-      end
-      return filtered
+      return elements.select{ |e| !e.removed && (clique_only == nil || e.clique_only == clique_only) }
     end
 
     def generate_username

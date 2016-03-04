@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  # ----------------------- Default RESTFUL Actions-----------------------------
   def create
     @post = Post.new(post_params)
     @post.poster = current_user
@@ -29,7 +30,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def delete
     @post = Post.find(params[:post_id])
     @post.removed = true
@@ -46,7 +46,33 @@ class PostsController < ApplicationController
       format.js
     end
   end
+  # ----------------------- Custom RESTFUL Actions------------------------------
+  def repost
+    @post = Post.find(params[:post_id])
+    @post.reposters << current_user
+    respond_to do |format|
+      if @post.save
+        flash[:notice] = "Reposted!"
+      else
+        flash[:error] = "An Error has occured"
+      end
+      format.js
+    end
+  end
 
+  def favorite
+    @post = Post.find(params[:post_id])
+    @post.favoriters << current_user
+    respond_to do |format|
+      if @post.save
+        flash[:notice] = "Favorited!"
+      else
+        flash[:error] = "An Error has occured"
+      end
+      format.js
+    end
+  end
+  # --------------------------------- Other-------------------------------------
   private
   def post_params
     params.require(:post).permit(:content, :clique_only)

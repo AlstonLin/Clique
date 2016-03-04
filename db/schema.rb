@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211030625) do
+ActiveRecord::Schema.define(version: 20160303213323) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -28,12 +28,29 @@ ActiveRecord::Schema.define(version: 20160211030625) do
     t.integer "cliq_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.integer  "creator_id"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "downloads", force: :cascade do |t|
     t.integer  "song_id"
     t.integer  "clique_id"
     t.integer  "downloader_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "fav_posts_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+
+  create_table "fav_tracks_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "track_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -64,6 +81,16 @@ ActiveRecord::Schema.define(version: 20160211030625) do
   create_table "posts_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
+  end
+
+  create_table "reposts_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+
+  create_table "retracks_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "track_id"
   end
 
   create_table "tracks", force: :cascade do |t|

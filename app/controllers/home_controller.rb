@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       @top = @top.uniq
     end
   end
-  # ----------------------- Custom RESTFUL Actions-----------------------------
+  # ----------------------- Custom RESTFUL Actions------------------------------
   def tracks
     get_tracks
     respond_to do |format|
@@ -41,6 +41,14 @@ class HomeController < ApplicationController
     end
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @content = @content.first(MAX_ITEMS)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def favorites
+    @favorites = current_user.favorite_posts + current_user.favorite_tracks
+    @favorites = @favorites.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
     respond_to do |format|
       format.js
     end
