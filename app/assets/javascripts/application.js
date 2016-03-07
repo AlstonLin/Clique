@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require jquery.pjax
 //= require bootstrap-sprockets
@@ -22,9 +23,5 @@ soundManager.setup({
   url: '/app/assets/javascripts/swf/'
 });
 $(document).on('ready pjax:success', function() {
-  $('.playa').click(function(e){
-    e.stopImmediatePropagation();
-    actions.play(e);
-    e.preventDefault();
-  });
+  
 });
