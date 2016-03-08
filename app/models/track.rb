@@ -6,9 +6,9 @@ class Track < ActiveRecord::Base
   has_attached_file :pic
   belongs_to :owner, :class_name => 'User'
   has_and_belongs_to_many :reposters, :class_name => 'User', :join_table => 'retracks_users', \
-    :foreign_key => :user_id, :association_foreign_key => :track_id
+    :foreign_key => :track_id, :association_foreign_key => :user_id
   has_and_belongs_to_many :favoriters, :class_name => 'User', :join_table => 'fav_tracks_users', \
-    :foreign_key => :user_id, :association_foreign_key => :track_id
+    :foreign_key => :track_id, :association_foreign_key => :user_id
   # Validation
   validates_attachment_content_type :song, :content_type => [ 'audio/mpeg',
     'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]

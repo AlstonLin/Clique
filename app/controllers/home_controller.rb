@@ -47,8 +47,7 @@ class HomeController < ApplicationController
   end
 
   def favorites
-    @favorites = current_user.favorite_posts + current_user.favorite_tracks
-    @favorites = @favorites.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
+    @favorites = current_user.get_favorites
     respond_to do |format|
       format.js
     end

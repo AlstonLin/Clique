@@ -39,7 +39,12 @@ class TracksController < ApplicationController
 
   def favorite
     @track = Track.find(params[:track_id])
-    @track.favorites << current_user
+    if @track.favoriters.include? current_user
+      @track.favoriters.delete(current_user)
+    else
+      @track.favoriters << current_user
+    end
+    @favorites = current_user.get_favorites
     respond_to do |format|
       if @track.save
         flash[:notice] = "Reposted!"

@@ -1,4 +1,3 @@
-
 <% if content.count == 0 %>
   <div class="no-post">
   <div class="no-post-img"></div>
@@ -15,6 +14,10 @@
       <%= render :partial => '/posts/repost', :locals => { :post => c } %>
     <% end %>
   <% else %>
-    <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+    <% if c.owner == @user %>
+      <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+    <% else %>
+      <%= render :partial => '/tracks/retrack', :locals => { :track => c } %>
+    <% end %>
   <% end %>
 <% end %>

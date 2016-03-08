@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  MAX_ITEMS = 20
   after_initialize :default_values
   after_create :generate_username
   after_save :generate_urls
@@ -64,6 +65,12 @@ class User < ActiveRecord::Base
 
   def get_tracks(clique_only)
     return filter_clique_only(self.tracks + self.retracks, clique_only)
+  end
+
+  def get_favorites
+    favorites = self.favorite_posts + self.favorite_tracks
+    favorites = favorites.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
+    return favorites
   end
 
   def to_param

@@ -7,8 +7,12 @@
         <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
        </div>
   <% end %>
-  
+
   <% songs.each do |t| %>
-    <%= render :partial => '/tracks/track', :locals => { :track => t } %>
+    <% if t.owner == @user %>
+      <%= render :partial => '/tracks/track', :locals => { :track => t } %>
+    <% else %>
+      <%= render :partial => '/tracks/retrack', :locals => { :track => t } %>
+    <% end %>
   <% end %>
 <% end %>

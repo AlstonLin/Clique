@@ -1,4 +1,3 @@
-
 <% if posts.count == 0 %>
         <div class="no-post">
         <div class="no-post-img"></div>
@@ -8,5 +7,9 @@
 <% end %>
 
 <% posts.each do |p| %>
-  <%= render :partial => '/posts/post', :locals => { :post => p } %>
+  <% if p.poster == @user %>
+    <%= render :partial => '/posts/post', :locals => { :post => p } %>
+  <% else %>
+    <%= render :partial => '/posts/repost', :locals => { :post => p } %>
+  <% end %>
 <% end %>

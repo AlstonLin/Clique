@@ -62,7 +62,12 @@ class PostsController < ApplicationController
 
   def favorite
     @post = Post.find(params[:post_id])
-    @post.favoriters << current_user
+    if @post.favoriters.include? current_user
+      @post.favoriters.delete(current_user)
+    else
+      @post.favoriters << current_user
+    end
+    @favorites = current_user.get_favorites
     respond_to do |format|
       if @post.save
         flash[:notice] = "Favorited!"
