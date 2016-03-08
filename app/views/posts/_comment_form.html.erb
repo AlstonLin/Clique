@@ -1,0 +1,10 @@
+<% if current_user %>
+  <%= form_for PostComment.new, :remote => true do |form| %>
+    <%= form.hidden_field :post_id, :value => post.id %>
+    <%= form.text_field :content %>
+      <%= button_tag do %>
+        <span class="glyphicon glyphicon-comment" aria-hidden="true">
+        </span>
+      <% end %>
+  <% end %>
+<% end %>

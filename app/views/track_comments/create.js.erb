@@ -1,0 +1,3 @@
+$("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
+$("#track-comments<%= @track.id %>").html('<%= j render :partial => "tracks/comments", :locals => { track: @track } %> \
+<%= j render :partial => "tracks/comment_form", :locals => { track: @track } %>');

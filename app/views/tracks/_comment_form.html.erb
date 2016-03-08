@@ -1,0 +1,10 @@
+<% if current_user %>
+  <%= form_for TrackComment.new, :remote => true do |form| %>
+    <%= form.hidden_field :track_id, :value => track.id %>
+    <%= form.text_field :content %>
+      <%= button_tag do %>
+        <span class="glyphicon glyphicon-comment" aria-hidden="true">
+        </span>
+      <% end %>
+  <% end %>
+<% end %>

@@ -38,16 +38,12 @@
       <% end %>
       <!-- Content -->
       <div id="content">
-        <%= render :partial => "/users/partials/all", :locals => { content: @content } %>
+        <%= render :partial => "/users/partials/all", :locals => { content: @content, user: @user } %>
       </div>
     </div>
-
     <!-- Right Column -->
     <div class="rightCol">
       <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
     </div>
   </div>
-
-
-
 </div>

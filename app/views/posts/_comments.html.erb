@@ -1,0 +1,15 @@
+<br><br><br>
+<h3>Comments</h3>
+<% post.comments.each do |c| %>
+  <div class="text-userPic">
+    <img src="<%= c.creator.profile_picture_url %>">
+  </div>
+  <div class="text-profileName">
+    <%= link_to c.creator.name, c.creator %>
+  </div>
+  <div class="text-Middle">
+    <div class="text-text">
+      <%= c.content %>
+    </div>
+  </div>
+<% end %>

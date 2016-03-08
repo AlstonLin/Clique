@@ -50,6 +50,8 @@ Rails.application.routes.draw do
     post 'join'
     post 'leave'
   end
+  resources :post_comments, :only => :create
+  resources :track_comments, :only => :create
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations", :passwords => "passwords"}

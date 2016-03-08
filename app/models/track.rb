@@ -5,6 +5,7 @@ class Track < ActiveRecord::Base
   has_attached_file :song
   has_attached_file :pic
   belongs_to :owner, :class_name => 'User'
+  has_many :comments, :class_name => 'TrackComment'
   has_and_belongs_to_many :reposters, :class_name => 'User', :join_table => 'retracks_users', \
     :foreign_key => :track_id, :association_foreign_key => :user_id
   has_and_belongs_to_many :favoriters, :class_name => 'User', :join_table => 'fav_tracks_users', \

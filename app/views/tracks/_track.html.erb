@@ -7,17 +7,6 @@
     <div class="player1-Picture">
       <%= image_tag track.pic.url %>
     </div>
-    <!--<div class="player1-Stats">
-      <div class="player1-Stats1">
-        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 12K
-      </div>
-      <div class="player1-Stats1">
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 52K
-      </div>
-      <div class="player1-Stats1">
-        <span class="glyphicon glyphicon-play" aria-hidden="true"></span> 120K
-      </div>
-    </div>-->
     <div class="player1-Genre">
       <%= time_ago_in_words track.created_at %>
     </div>
@@ -39,6 +28,11 @@
         </div>
         <div class="player1-songName">
           <%= track.name %>
+        </div>
+        <!-- Comments -->
+        <div id="track-comments<%= track.id %>">
+          <%= render :partial => 'tracks/comments', :locals => { :track => track } %>
+          <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
         </div>
       </div>
       <div class="player1-right-btn">

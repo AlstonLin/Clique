@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303213323) do
+ActiveRecord::Schema.define(version: 20160308174157) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(version: 20160303213323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_comments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text     "content"
+    t.integer  "creator_id"
+    t.integer  "post_id"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.boolean  "clique_only", default: false
@@ -91,6 +99,14 @@ ActiveRecord::Schema.define(version: 20160303213323) do
   create_table "retracks_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "track_id"
+  end
+
+  create_table "track_comments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text     "content"
+    t.integer  "creator_id"
+    t.integer  "track_id"
+    t.datetime "updated_at", null: false
   end
 
   create_table "tracks", force: :cascade do |t|

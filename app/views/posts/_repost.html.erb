@@ -1,6 +1,6 @@
 <div class="textpost-Box">
 	<div class="text-Top">
-    Reposted
+		Reposted
 		<div class="text-userPic">
 			<img src="<%= post.poster.profile_picture_url %>">
 		</div>
@@ -20,21 +20,26 @@
 	<div class="text-Bottom">
 		<div class="player1-right-btn2">
 			<% if post.poster == current_user %>
+				<!-- Buttons to show owner -->
 				<div class="player1-btn2">
 					<%= button_to "Delete", post_delete_path(post), :remote => true %>
 				</div>
-			<% end %>
-      <div class="player1-btn">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-      </div>
-			<% if !post.clique_only && post.poster != current_user %>
-				<div class="player1-btn">
-					<%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
-				</div>
-	      <div class="player1-btn">
-	        <%= link_to "", post_favorite_path(post), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
-	      </div>
+			<% else %>
+				<% if !post.clique_only %>
+					<!-- Buttons to show everyone else -->
+		      <div class="player1-btn">
+		        <%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
+		      </div>
+					<div class="player1-btn">
+		        <%= link_to "", post_favorite_path(post), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
+		      </div>
+				<% end %>
 			<% end %>
 		</div>
+	</div>
+	<!-- Comments -->
+	<div id="comments<%= post.id %>">
+		<%= render :partial => 'posts/comments', :locals => { :post => post} %>
+		<%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
 	</div>
 </div>

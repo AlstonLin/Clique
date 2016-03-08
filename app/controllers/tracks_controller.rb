@@ -5,7 +5,6 @@ class TracksController < ApplicationController
   end
 
   def create
-    puts params
     @track = Track.new(track_params)
     @track.owner = current_user
     if @track.save

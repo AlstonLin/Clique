@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :followers, :class_name => 'Follow', :foreign_key => 'following_id'
   has_many :tracks, :foreign_key => 'owner_id'
   has_many :posts, :class_name => 'Post', :foreign_key => 'poster_id'
-  has_many :comments, :class_name => 'Comment'
+  has_many :post_comments, :class_name => 'PostComment'
+  has_many :track_comments, :class_name => 'TrackComment'
   has_and_belongs_to_many :reposts, :class_name => 'Post', :join_table => 'reposts_users', \
     :foreign_key => :user_id, :association_foreign_key => :post_id
   has_and_belongs_to_many :retracks, :class_name => 'Track', :join_table => 'retracks_users', \
