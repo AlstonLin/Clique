@@ -73,6 +73,48 @@ class User < ActiveRecord::Base
     return favorites
   end
 
+  def get_following_all
+    content = []
+    self.following.each do |f|
+      following = f.following
+      if following.clique && following.clique.members.includes?(self)
+        content = content + filter_clique_only(following.posts + following.tracks, nil)
+      else
+        content = content + filter_clique_only(following.posts + following.tracks, false)
+      end
+    end
+    content = content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    return content.first(MAX_ITEMS)
+  end
+
+  def get_following_tracks
+    tracks = []
+    self.following.each do |f|
+      following = f.following
+      if following.clique && following.clique.members.includes?(self)
+        tracks = tracks + filter_clique_only(following.tracks, nil)
+      else
+        tracks = tracks + filter_clique_only(following.tracks, false)
+      end
+    end
+    tracks = tracks.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    return tracks.first(MAX_ITEMS)
+  end
+
+  def get_following_posts
+    posts = []
+    self.following.each do |f|
+      following = f.following
+      if following.clique && following.clique.members.includes?(self)
+        posts = posts + filter_clique_only(following.posts, nil)
+      else
+        posts = posts + filter_clique_only(following.posts, false)
+      end
+    end
+    posts = posts.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    return posts.first(MAX_ITEMS)
+  end
+
   def to_param
     username
   end

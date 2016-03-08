@@ -2,9 +2,9 @@ class HomeController < ApplicationController
   MAX_ITEMS = 20
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
-    get_tracks
+    @content = current_user.get_following_all
   end
-
+  # ----------------------- Custom RESTFUL Actions------------------------------
   def explore
     # TODO: There's probably a more efficient way of doing this
     @top = User.where(:id => Follow.group(:following_id).order("count(*) desc").limit(MAX_ITEMS).count.keys)
@@ -14,20 +14,23 @@ class HomeController < ApplicationController
       @top = @top.uniq
     end
   end
-  # ----------------------- Custom RESTFUL Actions------------------------------
+
+  def all
+    @content = current_user.get_following_all
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def tracks
-    get_tracks
+    @tracks = current_user.get_following_tracks
     respond_to do |format|
       format.js
     end
   end
 
   def posts
-    @posts = []
-    current_user.following.each do |f|
-      @posts = @posts + f.following.get_posts(false)
-    end
-    @posts = @posts.first(MAX_ITEMS)
+    @posts = current_user.get_following_posts
     respond_to do |format|
       format.js
     end

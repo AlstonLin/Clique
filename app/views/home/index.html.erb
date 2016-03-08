@@ -7,7 +7,7 @@
 	  <div class="leftCol">
 	  	<div class="newsfeed-title">
 				<div class="newsfeed-title1">
-					<%= link_to "All Stream", tracks_path, :method => :get, :remote => true %>
+					<%= link_to "All Stream", all_path, :method => :get, :remote => true %>
 				</div>
 				<div class="newsfeed-title2">
 					<%= link_to "Tracks", tracks_path, :method => :get, :remote => true %>
@@ -28,7 +28,7 @@
 			See the latest posts from people you follow
 		</div>
 			<div id="home-content">
-			  <%= render :partial => "tracks", :locals => { tracks: @tracks } %>
+			  <%= render :partial => "all", :locals => { content: @content } %>
 			</div>
 		</div>
 	</div>

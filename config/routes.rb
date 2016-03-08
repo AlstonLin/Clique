@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   # Home Page routes
   get "home" => "home#index"
+  get "all" => "home#all"
   get "explore" => "home#explore"
   get "tracks" => "home#tracks"
   get "posts" => "home#posts"
