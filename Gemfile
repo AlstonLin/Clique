@@ -37,6 +37,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 # Production Specific
 group :production do

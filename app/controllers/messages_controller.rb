@@ -13,8 +13,7 @@ class MessagesController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def conversation
     @other = User.find(params[:message_id])
-    @messages = Message.where(:from => current_user, :to => @other) + Message.where(:from => @other, :to => current_user)
-    @messages.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    @messages = get_messages @other
     respond_to do |format|
       format.js
     end
@@ -32,7 +31,8 @@ class MessagesController < ApplicationController
       respond_to do |format|
         if @message.save
           flash[:notice] = "Message Sent!"
-          @conversations = get_conversations
+          @messages = get_messages @to
+          @other = @to
         else
           flash[:alerrt] = "There was an error while sending the message"
         end
@@ -53,7 +53,7 @@ class MessagesController < ApplicationController
   def get_conversations
     # Variables
     conversations = []
-    users = Message.where("to_id = #{current_user.id} OR from_id = #{current_user.id}").order('created_at ASC').map{ |m| [m.from, m.to]}.uniq
+    users = Message.where("to_id = #{current_user.id} OR from_id = #{current_user.id}").order('created_at DESC').map{ |m| [m.from, m.to]}.uniq
     # Filters out the current user from the list
     users.each do |u|
       if u[0] != current_user
@@ -62,6 +62,13 @@ class MessagesController < ApplicationController
         conversations << u[1]
       end
     end
-    return conversations
+    return conversations.uniq
+  end
+
+  private
+  def get_messages(other)
+    messages = Message.where(:from => current_user, :to => other) + Message.where(:from => other, :to => current_user)
+    messages.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    return messages
   end
 end
