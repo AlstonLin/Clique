@@ -85,12 +85,12 @@ $(document).on('ready pjax:success', function() {
 				return;
 			}
 		}
-		//RESET PLAYLIST
-		i++;
-		var sound = createMySound("file:///Users/Mago/MyLife/Development/Rails/Sound/songs/song"+i+".mp3", "file:///Users/Mago/MyLife/Development/Rails/Sound/pics/pic"+i+".png", "Artist"+i, "Song"+i);
-		sound.myArrIndex = (i-1);
-		queue[i] = sound;
-		queue[i].play();
+		queue = [];
+		$(".playa").each(function(i, v){
+			var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"));
+			sound.myArrIndex = i;
+			queue[i] = sound;
+		});
 	});
 	soundManager.setup({
 		url: 'swfs/',
