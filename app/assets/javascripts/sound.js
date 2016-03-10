@@ -28,7 +28,7 @@ $(document).on('ready pjax:success', function() {
 	$("#playpause").click(function(){
 		if($(this).hasClass("glyphicon-play")){//play button shown, song not playing
 			if(null !== nowPlaying){
-				nowPlaying.togglePause();
+				nowPlaying.resume();
 			}else if(undefined !== queue[0]){
 				queue[0].play();
 			}else{
@@ -37,7 +37,7 @@ $(document).on('ready pjax:success', function() {
 			}
 			$(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
 		}else{//pause button shown, song playing
-			nowPlaying.togglePause();
+			nowPlaying.pause();
 			$(this).addClass("glyphicon-play").removeClass("glyphicon-pause");
 		}
 	});
@@ -76,16 +76,21 @@ $(document).on('ready pjax:success', function() {
 		var i;
 		for(i = 0; i < queue.length; i++){
 			if(queue[i] !== undefined && queue[i].url == $(this).attr('song')){
-				queue[i].play();
+				if (nowPlaying !== null && nowPlaying.id !== null && nowPlaying.id == queue[i].id) {
+					nowPlaying.resume();
+				}else{
+					queue[i].play();
+				}
+				$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
 				return;
 			}
 		}
-		//RESET PLAYLIST
-		i++;
-		var sound = createMySound("file:///Users/Mago/MyLife/Development/Rails/Sound/songs/song"+i+".mp3", "file:///Users/Mago/MyLife/Development/Rails/Sound/pics/pic"+i+".png", "Artist"+i, "Song"+i);
-		sound.myArrIndex = (i-1);
-		queue[i] = sound;
-		queue[i].play();
+		queue = [];
+		$(".playa").each(function(i, v){
+			var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"));
+			sound.myArrIndex = i;
+			queue[i] = sound;
+		});
 	});
 	soundManager.setup({
 		url: 'swfs/',
