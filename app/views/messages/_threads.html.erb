@@ -1,0 +1,3 @@
+<% @conversations.each do |other| %>
+  <%= link_to other.name, message_conversation_path(other.id), :remote => true %>
+<% end %>

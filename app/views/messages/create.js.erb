@@ -1,0 +1,6 @@
+<% if @message %>
+  $('#content').html("<%= j render :partial => 'messages' %>");
+<% else %>
+  $("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
+  <% flash.discard %>
+<% end %>

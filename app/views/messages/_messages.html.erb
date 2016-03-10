@@ -1,0 +1,7 @@
+<% if @messages %>
+    <% @messages.each do |m| %>
+      <%= render :partial => "message", :locals => { :message => m }%>
+    <% end %>
+<% else %>
+  Select a conversation to show
+<% end %>
