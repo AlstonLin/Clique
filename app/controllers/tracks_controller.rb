@@ -4,6 +4,10 @@ class TracksController < ApplicationController
     @track = Track.new
   end
 
+  def show
+    @track = Track.find(params[:id])
+  end
+
   def create
     @track = Track.new(track_params)
     @track.owner = current_user

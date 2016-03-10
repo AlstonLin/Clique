@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     get 'followers'
     get 'following'
   end
-  resources :tracks, :only => [:new, :create, :destroy] do
+  resources :tracks, :only => [:new, :create, :destroy, :show] do
     post 'repost'
     post 'favorite'
   end
