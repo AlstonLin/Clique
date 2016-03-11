@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
     post 'join'
+    get 'joined'
     post 'leave'
   end
   resources :messages, :only => [:index, :new, :create] do

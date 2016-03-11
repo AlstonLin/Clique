@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308174157) do
+ActiveRecord::Schema.define(version: 20160311003146) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -26,13 +26,6 @@ ActiveRecord::Schema.define(version: 20160308174157) do
   create_table "cliqs_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "cliq_id"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.integer  "creator_id"
-    t.datetime "updated_at", null: false
   end
 
   create_table "downloads", force: :cascade do |t|
@@ -173,6 +166,7 @@ ActiveRecord::Schema.define(version: 20160308174157) do
     t.integer  "failed_attempts",              default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "preapprovalKey"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
