@@ -21,14 +21,11 @@ gem 'jquery-ui-rails'
 gem 'pjax_rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'rake', '~>10.5.0'
+gem 'rake'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
-
-
-
 
 
 # Deployment Specific

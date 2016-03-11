@@ -287,7 +287,7 @@ DEPENDENCIES
   pjax_rails
   rails (= 4.2.5)
   rails_12factor (= 0.0.2)
-  rake (~> 10.5.0)
+  rake
   recaptcha
   sass-rails
   sdoc (~> 0.4.0)

@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
     content = []
     self.following.each do |f|
       following = f.following
-      if following.clique && following.clique.members.includes?(self)
+      if following.clique #&& following.clique.members.includes?(self)
         content = content + filter_clique_only(following.posts + following.tracks, nil)
       else
         content = content + filter_clique_only(following.posts + following.tracks, false)
