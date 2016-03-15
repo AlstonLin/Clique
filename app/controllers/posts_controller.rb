@@ -32,6 +32,23 @@ class PostsController < ApplicationController
       format.js
     end
   end
+
+  def delete
+    @post = Post.find(params[:post_id])
+    @post.removed = true
+    respond_to do |format|
+      if @post.save
+        flash[:notice] = "Post Deleted!"
+      else
+        flash[:error] = "An Error has occured"
+      end
+      # Show all content for response
+      @content = current_user.get_tracks(nil) + current_user.get_posts(nil)
+      @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+      # JS Reponse
+      format.js
+    end
+  end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def repost
     @post = Post.find(params[:post_id])
