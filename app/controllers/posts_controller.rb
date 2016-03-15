@@ -35,7 +35,11 @@ class PostsController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def repost
     @post = Post.find(params[:post_id])
-    @post.reposters << current_user
+    if @post.reposters.include? current_user
+      @post.reposters.delete current_user
+    else
+      @post.reposters << current_user
+    end
     respond_to do |format|
       if @post.save
         flash[:notice] = "Reposted!"

@@ -26,10 +26,17 @@
 				</div>
 			<% else %>
 				<% if !post.clique_only %>
-					<!-- Buttons to show everyone else -->
-		      <div class="player1-btn">
-		        <%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
-		      </div>
+					<% if current_user.reposts.include? post %>
+						<!-- Un-repost button -->
+						<div class="player1-btn">
+							<%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
+						</div>
+					<% else %>
+						<!-- Repost button -->
+						<div class="player1-btn">
+							<%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
+						</div>
+					<% end %>
 					<div class="player1-btn">
 		        <%= link_to "", post_favorite_path(post), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
 		      </div>

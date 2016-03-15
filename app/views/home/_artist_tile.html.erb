@@ -5,19 +5,10 @@
     </div>
     <div class="panel-Overlay">
     </div>
-
-
-
-      <div class="panel-ProfilePic">
-        <%= link_to (image_tag artist.profile_picture_url), artist %>
-      </div>
-
-
-
+    <div class="panel-ProfilePic">
+      <%= link_to (image_tag artist.profile_picture_url), artist %>
+    </div>
     <div class="panel-Info">
-      <!--<div class="panel-Btn">
-        VIEW
-      </div>-->
       <div class="panel-Info-Name">
         <%= link_to artist.name, artist   %>
       </div>
@@ -25,9 +16,5 @@
         <%= link_to artist.followers.count  %> Followers
       </div>
     </div>
-
-
-
-
   </div>
 </div>

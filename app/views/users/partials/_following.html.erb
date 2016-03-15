@@ -3,6 +3,6 @@
     You are not following anyone
   <% end %>
   <% following.each do |f| %>
-    <%= link_to f.following.name, f.following %><br>
+    <%= render :partial => 'home/artist_tile', :locals => { :artist => f.following } %><br>
   <% end %>
 <% end %>
