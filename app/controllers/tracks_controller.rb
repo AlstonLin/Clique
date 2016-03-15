@@ -29,7 +29,11 @@ class TracksController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def repost
     @track = Track.find(params[:track_id])
-    @track.reposters << current_user
+    if @track.reposters.include? current_user
+      @track.reposters.delete current_user
+    else
+      @track.reposters << current_user
+    end
     respond_to do |format|
       if @track.save
         flash[:notice] = "Reposted!"
