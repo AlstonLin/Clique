@@ -1,18 +1,20 @@
-<br><br><br>
-<ul class="list-group">
-  <% track.comments.each do |c| %>
-    <li class="list-group-item">
+<div class="modal-post-commentBox">
+  <ul class="list-group">
+    <% track.comments.each do |c| %>
+    <div class="text-Post">
       <div class="text-userPic">
         <img src="<%= c.creator.profile_picture_url %>">
       </div>
-      <div class="text-profileName">
+
+      <div class="commentSection-name">
+        <div class="comment-time"><%= time_ago_in_words c.created_at %></div>
         <%= link_to c.creator.name, c.creator %>
       </div>
-      <div class="text-Middle">
-        <div class="text-text">
+
+        <div class="commentSection-comment">
           <%= c.content %>
         </div>
-      </div>
-    </li>
-  <% end %>
-</u1>
+    </div>
+    <% end %>
+  </u1>
+</div>

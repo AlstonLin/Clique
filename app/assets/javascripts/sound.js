@@ -77,7 +77,7 @@ $(document).on('ready pjax:success', function() {
 		$span = $(this).find('span');
 		if($span.hasClass('glyphicon-play')){
 			if($("#audioplayer").css('display') == 'none'){
-				$("#audioplayer").css('display', 'table');
+				$("#audioplayer").css('display', 'inline-flex');
 				onResize($(window));
 			}
 			var i;

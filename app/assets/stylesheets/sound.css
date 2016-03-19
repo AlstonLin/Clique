@@ -1,3 +1,43 @@
+.audioplayer-rightbtn{
+    display: flex;
+    align-items: center;
+	margin: auto 5px;   
+}
+
+
+
+
+
+#status #progressBar{
+  height: 1px !important;
+  background-color: #ccc !important;
+  margin-top: 4px;
+}
+
+#status #progressBar .ui-slider-handle{
+  width: 8px !important;
+  height: 8px !important;
+
+}
+
+
+
+
+
+
+/************** Anmol's Code *************/
+
+
+
+
+
+
+
+
+
+
+
+
 body, html{
 	min-width:530px;
 	width:100%;
@@ -5,25 +45,36 @@ body, html{
 
 #audioplayer{
 	min-width:530px;
-	background:#eee;
+	background: #F5F5F5;
 	position:fixed;
 	bottom:0px;
 	height:50px;
 	width:100%;
 	display:table;
-	z-index: 9001;
+	z-index: 10;
+	    display: inline-flex; 
+	border-top: 1px solid rgba(0,0,0,.05);
+
+.glyphicon{
+	color: #999;
+}
 	}
 
+
+
+
 .abtn{
-	display:table-cell !important;
+    display: flex !important;
+    align-items: center;
+	margin: auto 5px;   
+	width: 40px;
 	height:50px;
-	min-width:35px;
-	width:35px;
-	max-width:35px;
 	font-size:18px;
 	vertical-align:middle;
 	text-align:center;
+	padding: 0 10px;
 	//border:1px red solid;
+
 	}
 
 .abtn:not(.buffer):not(#status):not(#desc){
@@ -36,27 +87,30 @@ body, html{
 
 #status{
 	min-width:50%;
-	width:50%;
+	width:650px;
 	height:50px;
+	line-height: 10px;	
 	//background:rgba(30,98,206,0.4);
 	padding:0 20px;
+	padding-top: 2px;
 	text-align:center;
 	}
 
 	#status > * {
 		display:table-cell;
-		font:14px/14px Helvetica;
+		font:12px Helvetica;
 		vertical-align:middle;
 		float:left;
 	}
 
 	#status #progressBar{
-		width:82.5%;
+		width:505px !important;
 		background:#333;
 		height:3px;
-		margin:5px 10px 0px;
+		margin:0px 20px 0px 30px;
 		cursor:pointer;
 		border:none;
+
 		}
 
 		#status #progressBar .ui-slider-handle{
@@ -66,6 +120,7 @@ body, html{
 			background:#fe4641;
 			cursor:pointer;
 			outline:none;
+
 			}
 
 		#status #progressBar .ui-slider-range{
@@ -129,6 +184,11 @@ body, html{
 	max-width:240px;
 	height:50px;
 	color:black;
+    display: flex;
+    align-items: center;
+	margin: auto 5px;   
+
+
 	}
 
 	#desc a > *{
@@ -155,9 +215,9 @@ body, html{
 		overflow:hidden;
 		}
 
-.abtn.buffer{
+/*.abtn.buffer{
 	width:10%;
-	}
+	} */
 
 .repeatOn{
 	background:#ccc !important;
@@ -207,9 +267,6 @@ body, html{
 	}
 }
 
-.glyphicon{
-	color:#555;
-}
 
 a, a:hover{
 	color:inherit;

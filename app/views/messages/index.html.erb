@@ -1,16 +1,20 @@
 <div class="page-Bottom2">
 	<div class="container2">
-	  <h1>Your Messages</h1>
-    <div class="col-md-12">
-      <div class="text-center">
+		<div class="message-Box">
+			<div class="message-Box-top">
+			 	Your Messages
         <%= link_to "New Message", new_message_path, :remote => true %>
-      </div>
-    </div>
-		<div class="col-md-3" style="overflow: auto;">
-		  <%= render :partial => "threads" %>
-		</div>
-		<div class="col-md-9" id="content">
-		  <%= render :partial => "messages" %>
+			</div>
+
+			  <%= render :partial => "threads" %>
+
+
+			<div class="col-md-9" id="content">
+			  <%= render :partial => "messages" %>
+			</div>
+
+
+
 		</div>
 	</div>
 </div>
