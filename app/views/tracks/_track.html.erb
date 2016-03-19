@@ -52,8 +52,10 @@
 				  <% end %>
   				<div class="player1-btn">
   					<% if track.favoriters.include? current_user %>
+              <!-- Unfavorite button -->
   						<%= link_to "", track_favorite_path(track), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
   					<% else %>
+              <!-- Favorite button -->
   						<%= link_to "", track_favorite_path(track), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
   					<% end %>
   				</div>
@@ -72,9 +74,11 @@
       </div>
     </div>
   </div>
-  <div id="tpc<%= track.id%>">
-    <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
-  </div>
+  <% if current_user %>
+    <div id="tpc<%= track.id%>">
+      <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
+    </div>
+  <% end %>
 </div>
 
 
@@ -131,8 +135,10 @@
               <% end %>
               <div class="player1-btn">
                 <% if track.favoriters.include? current_user %>
+                  <!-- Unfavorite button -->
                   <%= link_to "", track_favorite_path(track), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
                 <% else %>
+                  <!-- Favorite button -->
                   <%= link_to "", track_favorite_path(track), :remote => true, :class => "glyphicon glyphicon-heart", :method => :post %>
                 <% end %>
               </div>

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   MAX_ITEMS = 20
   after_initialize :default_values
   after_create :generate_username
-  after_save :generate_urls
+  after_commit :generate_urls
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
@@ -140,10 +140,13 @@ class User < ActiveRecord::Base
     end
 
     def generate_urls
-      if self.profile_picture.exists? && self.profile_picture.url(:med) != self.profile_picture_url
+      puts "----------------------------------------------------CALLED----------------------------------"
+      if self.profile_picture.exists?
+        puts "---------------UPDATED PROFILE PIC----------------------------"
         self.update_column(:profile_picture_url, self.profile_picture.url(:med))
       end
-      if self.profile_picture.exists? && self.cover_picture.url(:med) != self.cover_picture_url
+      if self.profile_picture.exists?
+        puts "---------------UPDATED COVER PIC----------------------------"
         self.update_column(:cover_picture_url, self.cover_picture.url(:med))
       end
     end
