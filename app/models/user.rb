@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
     tracks = []
     self.following.each do |f|
       following = f.following
-      if following.clique && following.clique.members.includes?(self)
+      if following.clique && following.clique.members.include?(self)
         tracks = tracks + filter_clique_only(following.tracks, nil)
       else
         tracks = tracks + filter_clique_only(following.tracks, false)
@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
     posts = []
     self.following.each do |f|
       following = f.following
-      if following.clique && following.clique.members.includes?(self)
+      if following.clique && following.clique.members.include?(self)
         posts = posts + filter_clique_only(following.posts, nil)
       else
         posts = posts + filter_clique_only(following.posts, false)

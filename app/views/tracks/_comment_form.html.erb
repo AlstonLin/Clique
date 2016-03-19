@@ -1,13 +1,15 @@
 <% if current_user %>
-<div class="post-Comment">
-  <div class="user-avi1">
-    <%= link_to image_tag(current_user.profile_picture_url), current_user %>
-  </div>
-
-  <%= form_for TrackComment.new, :remote => true do |form| %>
-    <%= form.hidden_field :track_id, :value => track.id %>
-    <%= form.text_field :content, :placeholder => "Comment"  %>
-
-  <% end %>
+  <div class="post-Comment">
+    <div class="user-avi1">
+      <%= link_to image_tag(current_user.profile_picture_url), current_user %>
+    </div>
+    <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{track.id}" } do |form| %>
+      <%= form.hidden_field :track_id, :value => track.id %>
+      <%= form.text_field :content, :placeholder => "Comment" %>
+      <div class="player1-btn">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true" onclick='$("#track-comment-form<%= track.id %>").submit();' >
+        </span>
+      </div>
+    <% end %>
   </div>
 <% end %>
