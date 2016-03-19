@@ -1,3 +1,40 @@
 <% @conversations.each do |other| %>
-  <%= link_to other.name, message_conversation_path(other.id), :remote => true %><br>
+
+<div class="message-thread">
+
+
+
+	<div class="message-profile-image">
+	</div>
+
+
+
+
+	<div class="message-content-box">
+		<div class="message-profile-name">
+			<div class="message-time">
+			</div>
+		<div class="message-content">
+			<%= link_to other.name, message_conversation_path(other.id), :remote => true %><br>
+		</div>
+	</div>
+
+
+
+
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
 <% end %>
+
+

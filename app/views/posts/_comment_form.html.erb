@@ -1,10 +1,15 @@
 <% if current_user %>
-  <%= form_for PostComment.new, :remote => true do |form| %>
-    <%= form.hidden_field :post_id, :value => post.id %>
-    <%= form.text_field :content %>
-      <%= button_tag do %>
-        <span class="glyphicon glyphicon-comment" aria-hidden="true">
+  <div class="post-Comment">
+    <div class="user-avi1">
+      <%= link_to image_tag(current_user.profile_picture_url), current_user %>
+    </div>
+    <%= form_for PostComment.new, :remote => true,  :html => { :id => "comment-form#{post.id}" } do |form| %>
+      <%= form.hidden_field :post_id, :value => post.id %>
+      <%= form.text_field :content, :placeholder => "Comment" %>
+      <div class="player1-btn">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true" onclick='$("#comment-form<%= post.id %>").submit();' >
         </span>
-      <% end %>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

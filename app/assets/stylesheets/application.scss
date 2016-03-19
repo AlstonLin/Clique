@@ -20,11 +20,9 @@
  @import "bootstrap";
 
 
-
-.text-profileName{
-  width: 496px;
+#flash-container{
+  margin-top: 50px;
 }
-
 
 
 
@@ -199,11 +197,12 @@ input[type=submit]{
     text-decoration: none;
     text-align: center;
   }
- .buffer{
+
+ /* .buffer{
    width:1024px;
    height:100%;
    margin:0 auto;
- }
+ } */
 
  .ownerlink{
     width: auto !important;
