@@ -68,7 +68,6 @@ class MessagesController < ApplicationController
   private
   def get_messages(other)
     messages = Message.where(:from => current_user, :to => other) + Message.where(:from => other, :to => current_user)
-    messages.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
-    return messages
+    return messages.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
   end
 end

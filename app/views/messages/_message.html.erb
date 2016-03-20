@@ -1,2 +1,3 @@
-<%= message.from.name %>
-<h3><%= message.content %></h3><br>
+<h2><%= message.from.name %></h2>
+<h3><%= message.content %></h3>
+<h6><i><%= time_ago_in_words message.created_at %></i></h6><br>

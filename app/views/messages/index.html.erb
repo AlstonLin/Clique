@@ -5,16 +5,17 @@
 			 	Your Messages
         <%= link_to "New Message", new_message_path, :remote => true %>
 			</div>
-
-			  <%= render :partial => "threads" %>
-
-
-			<div class="col-md-9" id="content">
-			  <%= render :partial => "messages" %>
+			<div id="threads">
+				<%= render :partial => "threads" %>
 			</div>
-
-
-
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="messagesModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="content">
+		</div>
+  </div>
 </div>
