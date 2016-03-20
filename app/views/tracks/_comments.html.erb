@@ -10,7 +10,7 @@
         <%= link_to c.creator.name, c.creator %>
       </div>
       <div class="commentSection-comment">
-        <%= c.content %>
+        <%= simple_format c.content %>
       </div>
     </div>
     <% end %>

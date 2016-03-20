@@ -88,6 +88,7 @@
       </div>
     </div>
   </div>
+  <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
 </div>
 
 
@@ -164,8 +165,8 @@
         </div>
       </div>
       <!-- Comments -->
+      <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
       <div id="track-comments<%= track.id %>">
-        <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
         <%= render :partial => 'tracks/comments', :locals => { :track => track } %>
       </div>
     </div>
