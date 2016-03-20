@@ -25,7 +25,7 @@
       </div>
       <div class="player1-left-btn">
         <div class="player1-artist">
-          Reposted<br>
+          Reposted
           <%= link_to track.owner.name, track.owner %>
         </div>
         <div class="player1-songName">
@@ -89,7 +89,18 @@
       </div>
     </div>
   </div>
-  <%= render :partial => 'tracks/comment_form', :locals => { :track => track } %>
+  <!-- Comment form outside of modal -->
+  <% if current_user %>
+    <div class="post-Comment">
+      <div class="user-avi1">
+        <%= link_to image_tag(current_user.profile_picture_url), current_user %>
+      </div>
+      <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{track.id}a" } do |form| %>
+        <%= form.hidden_field :track_id, :value => track.id %>
+        <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 

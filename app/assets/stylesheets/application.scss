@@ -223,3 +223,7 @@ input[type=submit]{
 .sm2-bar-ui .sm2-inline-texture {
  background: transparent;
 }
+
+body.modal-open {
+    overflow: visible;
+}
