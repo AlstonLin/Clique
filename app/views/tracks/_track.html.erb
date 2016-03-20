@@ -86,6 +86,16 @@
   				</div>
         <% end %>
 
+        <div class="player1-btn">
+          <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+        </div>
+        <% if track.downloadable %>
+          <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+          </div>
+        <% end %>
+
+
         <div class="player1-btn" data-toggle="modal" data-target="#track-modal<%= track.id %>">
           <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
         </div>

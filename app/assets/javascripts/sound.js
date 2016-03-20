@@ -8,7 +8,6 @@ $(document).on('ready pjax:success', function() {
 	});
 	$("#progressBar").slider({
 		range: "min",
-		value: 0,
 		min: 0,
 		max: 1000,
 		slide: function( event, ui ) {
@@ -84,13 +83,11 @@ $(document).on('ready pjax:success', function() {
 			for(i = 0; i < queue.length; i++){
 				if(queue[i] !== undefined && queue[i].url == $(this).attr('song')){
 					if (nowPlaying !== null && nowPlaying.id !== null && nowPlaying.id == queue[i].id) {
-						nowPlaying.mySpan = $span;
 						nowPlaying.resume();
 					}else{
 						if(nowPlaying !== null){
 							nowPlaying.mySpan.addClass("glyphicon-play").removeClass("glyphicon-pause");
 						}
-						queue[i].mySpan = $span;
 						queue[i].play();
 					}
 					$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
@@ -111,6 +108,7 @@ $(document).on('ready pjax:success', function() {
 				nowPlaying.pause();
 			}
 			$span.addClass("glyphicon-play").removeClass("glyphicon-pause");
+			$("#playpause").addClass("glyphicon-play").removeClass("glyphicon-pause");
 		}
 	});
 	soundManager.setup({
@@ -143,7 +141,9 @@ $(document).on('ready pjax:success', function() {
 			volume: 100
 		}
 	});
-	$("#audioplayer").css('display', 'none');//NOTE: Not a mistake but rather a workaround for css bug in a few browsers
+	if(nowPlaying == null){
+		$("#audioplayer").css('display', 'none');//NOTE: Not a mistake but rather a workaround for css bug in a few browsers
+	}
 	onResize($(window));
 });
 
@@ -224,6 +224,13 @@ function createMySound(myurl, image, artist, songName){
 	console.log(sound.url);
 	console.log(sound);
 	return sound;
+}
+
+function myDownload(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  link.click();
 }
 
 function getTime(msec, useString) {
