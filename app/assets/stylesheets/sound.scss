@@ -1,43 +1,3 @@
-.audioplayer-rightbtn{
-  display: flex;
-  align-items: center;
-  margin: auto 5px;
-}
-
-
-
-
-
-#status #progressBar{
-  //height: 1px !important;
-  background-color: #ccc !important;
-  margin-top: 4px;
-}
-
-#status #progressBar .ui-slider-handle{
-  width: 8px !important;
-  height: 8px !important;
-
-}
-
-
-
-
-
-
-/************** Anmol's Code *************/
-
-
-
-
-
-
-
-
-
-
-
-
 body, html{
   min-width:530px;
   width:100%;
@@ -60,8 +20,11 @@ body, html{
   }
 }
 
-
-
+.audioplayer-rightbtn{
+  display: flex;
+  align-items: center;
+  margin: auto 5px;
+}
 
 .abtn{
   display: flex !important;
@@ -107,25 +70,44 @@ body, html{
 #status #progressBar{
   width:505px !important;
   background:#333;
-  height:3px;
+  background:linear-gradient(
+    to bottom,
+    #F5F5F5,
+    #F5F5F5 1px,
+    #333 2px,
+    #F5F5F5 1px
+  );
+  height:5px;
   margin:0px 20px 0px 30px;
   cursor:pointer;
   border:none;
 
 }
 
+#status #progressBar:hover .ui-slider-handle{
+  display:block;
+}
+
 #status #progressBar .ui-slider-handle{
-  width:10px;
-  height:10px;
+  width:8px;
+  height:8px;
   border:none;
   background:#fe4641;
   cursor:pointer;
   outline:none;
+  display: none;
   margin-top: 1.5px;
 }
 
 #status #progressBar .ui-slider-range{
   background:#fe4641;
+  background:linear-gradient(
+    to bottom,
+    #F5F5F5,
+    #F5F5F5 1px,
+    #fe4641 2px,
+    #F5F5F5 1px
+  );
   border:none;
 }
 
