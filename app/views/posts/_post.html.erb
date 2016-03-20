@@ -18,9 +18,6 @@
 					<%= button_to post_delete_path(post), :remote => true, :class => "player1-btn2" do %>
 						<div class="glyphicon glyphicon-trash"></div>
 					<% end %>
-
-
-
 			<% elsif current_user %>
 				<% if !post.clique_only %>
 					<!-- Buttons to show everyone else -->
@@ -60,6 +57,7 @@
 </div>
 
 <!-- Modal -->
+<!-- TODO: Make this more efficient by having a single modal -->
 <div class="modal fade" id="modal<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -82,15 +80,6 @@
 				<%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
 				<%= render :partial => 'posts/comments', :locals => { :post => post} %>
 			</div>
-
-
-
-
-
-
-
-
-
 	  </div>
   </div>
 </div>
