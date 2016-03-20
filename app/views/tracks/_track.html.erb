@@ -64,7 +64,7 @@
           <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
         </div>
         <% if track.downloadable %>
-          <div class="player1-btn" onclick="window.open('<%= track.song.url%>')">
+          <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
             <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
           </div>
         <% end %>
