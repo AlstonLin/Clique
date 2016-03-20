@@ -15,9 +15,12 @@
 		<div class="player1-right-btn2">
 			<% if post.poster == current_user %>
 				<!-- Buttons to show owner -->
-				<div class="player1-btn2">
-					<%= button_to "Delete", post_delete_path(post), :remote => true %>
-				</div>
+					<%= button_to post_delete_path(post), :remote => true, :class => "player1-btn2" do %>
+						<div class="glyphicon glyphicon-trash"></div>
+					<% end %>
+
+
+
 			<% elsif current_user %>
 				<% if !post.clique_only %>
 					<!-- Buttons to show everyone else -->
@@ -79,6 +82,15 @@
 				<%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
 				<%= render :partial => 'posts/comments', :locals => { :post => post} %>
 			</div>
+
+
+
+
+
+
+
+
+
 	  </div>
   </div>
 </div>

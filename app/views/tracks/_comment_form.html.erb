@@ -6,10 +6,7 @@
     <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{track.id}" } do |form| %>
       <%= form.hidden_field :track_id, :value => track.id %>
       <%= form.text_field :content, :placeholder => "Comment" %>
-      <div class="player1-btn">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true" onclick='$("#track-comment-form<%= track.id %>").submit();' >
-        </span>
-      </div>
-    <% end %>
+
+    <% end %> 
   </div>
 <% end %>
