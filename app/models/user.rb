@@ -87,12 +87,12 @@ class User < ActiveRecord::Base
     self.following.each do |f|
       following = f.following
       if following.clique #&& following.clique.members.includes?(self)
-        content << filter_clique_only(following.posts + following.tracks, nil)
+        content = content + filter_clique_only(following.posts + following.tracks, nil)
       else
-        content << filter_clique_only(following.posts + following.tracks, false)
+        content = content + filter_clique_only(following.posts + following.tracks, false)
       end
-      content << filter_clique_only_reposts(following.reposts, false)
-      content << filter_clique_only_retracks(following.retracks, false)
+      content = content + filter_clique_only_reposts(following.reposts, false)
+      content = content + filter_clique_only_retracks(following.retracks, false)
     end
     content = content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     return content.first(MAX_ITEMS)
@@ -103,11 +103,11 @@ class User < ActiveRecord::Base
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
-        tracks << filter_clique_only(following.tracks, nil)
+        tracks = tracks + filter_clique_only(following.tracks, nil)
       else
-        tracks << filter_clique_only(following.tracks, false)
+        tracks = tracks + filter_clique_only(following.tracks, false)
       end
-      tracks << filter_clique_only_retracks(following.retracks, false)
+      tracks = tracks + filter_clique_only_retracks(following.retracks, false)
     end
     tracks = tracks.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     return tracks.first(MAX_ITEMS)
@@ -118,11 +118,11 @@ class User < ActiveRecord::Base
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
-        posts << filter_clique_only(following.posts, nil)
+        posts = posts + filter_clique_only(following.posts, nil)
       else
-        posts << filter_clique_only(following.posts, false)
+        posts = posts + filter_clique_only(following.posts, false)
       end
-      posts << filter_clique_only_reposts(following.reposts, false)
+      posts = posts + filter_clique_only_reposts(following.reposts, false)
     end
     posts = posts.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     return posts.first(MAX_ITEMS)
