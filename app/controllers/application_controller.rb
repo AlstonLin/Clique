@@ -9,4 +9,5 @@ class ApplicationController < ActionController::Base
     end
     return false
   end
+  helper_method :is_following
 end
