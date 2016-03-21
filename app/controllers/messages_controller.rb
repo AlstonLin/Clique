@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
     @conversations = get_conversations
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
