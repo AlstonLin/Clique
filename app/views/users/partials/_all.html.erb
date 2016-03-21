@@ -7,17 +7,12 @@
 <% end %>
 <% content.each do |c| %>
   <% if c.is_a? Post %>
-    <% if c.poster == @user %>
-      <%= render :partial => '/posts/post', :locals => { :post => c } %>
-    <% else %>
-      <!-- Repost -->
-      <%= render :partial => '/posts/repost', :locals => { :post => c } %>
-    <% end %>
+    <%= render :partial => '/posts/post', :locals => { :post => c } %>
+  <% elsif c.is_a? Repost %>
+    <%= render :partial => '/posts/repost', :locals => { :repost => c } %>
+  <% elsif c.is_a? Track %>
+    <%= render :partial => '/tracks/track', :locals => { :track => c } %>
   <% else %>
-    <% if c.owner == @user %>
-      <%= render :partial => '/tracks/track', :locals => { :track => c } %>
-    <% else %>
-      <%= render :partial => '/tracks/retrack', :locals => { :track => c } %>
-    <% end %>
+    <%= render :partial => '/tracks/retrack', :locals => { :retrack => c } %>
   <% end %>
 <% end %>

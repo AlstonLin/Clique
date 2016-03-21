@@ -11,10 +11,8 @@ class User < ActiveRecord::Base
   has_many :posts, :class_name => 'Post', :foreign_key => 'poster_id'
   has_many :post_comments, :class_name => 'PostComment'
   has_many :track_comments, :class_name => 'TrackComment'
-  has_and_belongs_to_many :reposts, :class_name => 'Post', :join_table => 'reposts_users', \
-    :foreign_key => :user_id, :association_foreign_key => :post_id
-  has_and_belongs_to_many :retracks, :class_name => 'Track', :join_table => 'retracks_users', \
-    :foreign_key => :user_id, :association_foreign_key => :track_id
+  has_many :reposts, :class_name => 'Repost', :foreign_key => 'reposter_id'
+  has_many :retracks, :class_name => 'Retrack', :foreign_key => 'reposter_id'
   has_and_belongs_to_many :favorite_posts, :class_name => 'Post', :join_table => 'fav_posts_users', \
     :foreign_key => :user_id, :association_foreign_key => :post_id
   has_and_belongs_to_many :favorite_tracks, :class_name => 'Track', :join_table => 'fav_tracks_users', \
@@ -60,12 +58,22 @@ class User < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
+  def has_reposted?(post)
+    return Repost.where(:post => post).where(:reposter => self).count > 0
+  end
+
+  def has_retracked?(track)
+    return Retrack.where(:track => track).where(:reposter => self).count > 0
+  end
+
   def get_posts(clique_only)
-    return filter_clique_only(self.posts + self.reposts, clique_only)
+    posts = filter_clique_only(self.posts, clique_only) + filter_clique_only_reposts(self.reposts, clique_only)
+    return posts.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
   end
 
   def get_tracks(clique_only)
-    return filter_clique_only(self.tracks + self.retracks, clique_only)
+    tracks = filter_clique_only(self.tracks, clique_only) + filter_clique_only_retracks(self.retracks, clique_only)
+    return tracks.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
   end
 
   def get_favorites
@@ -79,10 +87,12 @@ class User < ActiveRecord::Base
     self.following.each do |f|
       following = f.following
       if following.clique #&& following.clique.members.includes?(self)
-        content = content + filter_clique_only(following.posts + following.tracks, nil)
+        content << filter_clique_only(following.posts + following.tracks, nil)
       else
-        content = content + filter_clique_only(following.posts + following.tracks, false)
+        content << filter_clique_only(following.posts + following.tracks, false)
       end
+      content << filter_clique_only_reposts(following.reposts, false)
+      content << filter_clique_only_retracks(following.retracks, false)
     end
     content = content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     return content.first(MAX_ITEMS)
@@ -93,10 +103,11 @@ class User < ActiveRecord::Base
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
-        tracks = tracks + filter_clique_only(following.tracks, nil)
+        tracks << filter_clique_only(following.tracks, nil)
       else
-        tracks = tracks + filter_clique_only(following.tracks, false)
+        tracks << filter_clique_only(following.tracks, false)
       end
+      tracks << filter_clique_only_retracks(following.retracks, false)
     end
     tracks = tracks.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     return tracks.first(MAX_ITEMS)
@@ -107,10 +118,11 @@ class User < ActiveRecord::Base
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
-        posts = posts + filter_clique_only(following.posts, nil)
+        posts << filter_clique_only(following.posts, nil)
       else
-        posts = posts + filter_clique_only(following.posts, false)
+        posts << filter_clique_only(following.posts, false)
       end
+      posts << filter_clique_only_reposts(following.reposts, false)
     end
     posts = posts.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     return posts.first(MAX_ITEMS)
@@ -123,6 +135,14 @@ class User < ActiveRecord::Base
   private
     def filter_clique_only(elements, clique_only)
       return elements.select{ |e| !e.removed && (clique_only == nil || e.clique_only == clique_only) }
+    end
+
+    def filter_clique_only_reposts(reposts, clique_only)
+      return reposts.select{ |e| !e.post.removed && (clique_only == nil || e.post.clique_only == clique_only) }
+    end
+
+    def filter_clique_only_retracks(retracks, clique_only)
+      return retracks.select{ |e| !e.track.removed && (clique_only == nil || e.track.clique_only == clique_only) }
     end
 
     def generate_username

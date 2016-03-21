@@ -15,14 +15,14 @@
 		<div class="player1-right-btn2">
 			<% if post.poster == current_user %>
 				<!-- Buttons to show owner -->
-					<%= button_to post_delete_path(post), :remote => true, :class => "player1-btn2" do %>
+					<%= button_to post_delete_path(post), :remote => true, :class => "player1-btn2", data: { confirm: 'Are you certain you want to delete this?' } do %>
 						<div class="glyphicon glyphicon-trash"></div>
 					<% end %>
 			<% elsif current_user %>
 				<% if !post.clique_only %>
 					<!-- Buttons to show everyone else -->
 					<div class="player1-btn">
-						<% if current_user.reposts.include? post %>
+						<% if current_user.has_reposted? post %>
 							<!-- Un-repost button -->
 							<%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
 						<% else %>

@@ -9,10 +9,10 @@
   <% end %>
 
   <% songs.each do |t| %>
-    <% if t.owner == @user %>
+    <% if t.is_a? Track %>
       <%= render :partial => '/tracks/track', :locals => { :track => t } %>
     <% else %>
-      <%= render :partial => '/tracks/retrack', :locals => { :track => t } %>
+      <%= render :partial => '/tracks/retrack', :locals => { :retrack => t } %>
     <% end %>
   <% end %>
 <% end %>

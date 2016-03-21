@@ -1,6 +1,7 @@
+<% post = repost.post %>
 <div class="textpost-Box">
 	<div class="textpost">
-		Reposted
+		Reposted by <%= repost.reposter.name %> at <%= time_ago_in_words repost.created_at %>
 		<div class="text-Post">
       <div class="text-userPic">
         <img src="<%= post.poster.profile_picture_url %>">
@@ -23,7 +24,7 @@
 				<% if !post.clique_only %>
 					<!-- Buttons to show everyone else -->
 					<div class="player1-btn">
-						<% if current_user.reposts.include? post %>
+						<% if current_user.has_reposted? post %>
 							<!-- Un-repost button -->
 							<%= link_to "", post_repost_path(post), :remote => true, :class => "glyphicon glyphicon-refresh", :method => :post %>
 						<% else %>

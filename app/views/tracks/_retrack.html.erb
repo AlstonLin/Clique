@@ -1,3 +1,4 @@
+<% track = retrack.track %>
 <div class="player1">
   <div class="player1-Top">
     <div class="overlay"></div>
@@ -25,10 +26,10 @@
       </div>
       <div class="player1-left-btn">
         <div class="player1-artist">
-          Reposted
           <%= link_to track.owner.name, track.owner %>
         </div>
         <div class="player1-songName">
+          Reposted by <%= retrack.reposter.name %> at <%= time_ago_in_words retrack.created_at %><br>
           <%= link_to track.name, track %>
         </div>
       </div>
@@ -49,7 +50,7 @@
             <%= link_to "", track, :class => "glyphicon glyphicon-trash", :method => :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
           </div>
   			  <% elsif !track.clique_only %>
-  					<% if current_user.retracks.include? track %>
+  					<% if current_user.has_retracked? track %>
   						<!-- Un-repost button -->
                 <%= link_to track_repost_path(track), :remote => true, :class => "player1-btn redclass", :method => :post do %>
                   <div class="glyphicon glyphicon-refresh redclass"></div>

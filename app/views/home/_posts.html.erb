@@ -7,7 +7,11 @@
        </div>
     <% else %>
       <% posts.each do |p| %>
+        <% if p.is_a? Post %>
           <%= render :partial => '/posts/post', :locals => { :post => p } %>
+        <% else %>
+          <%= render :partial => '/posts/repost', :locals => { :repost => p } %>
+        <% end %>
       <% end %>
     <% end %>
 </div>

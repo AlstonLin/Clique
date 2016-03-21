@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311003146) do
+ActiveRecord::Schema.define(version: 20160320225619) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -83,14 +83,18 @@ ActiveRecord::Schema.define(version: 20160311003146) do
     t.integer "post_id"
   end
 
-  create_table "reposts_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+  create_table "reposts", force: :cascade do |t|
+    t.integer  "reposter_id"
+    t.integer  "post_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "retracks_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "track_id"
+  create_table "retracks", force: :cascade do |t|
+    t.integer  "reposter_id"
+    t.integer  "track_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "track_comments", force: :cascade do |t|

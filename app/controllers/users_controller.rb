@@ -78,14 +78,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def reposts
-    @user = User.find_by_username(params[:user_id])
-    @reposts = @user.reposts
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def clique
     @user = User.find_by_username(params[:user_id])
     @content = @user.get_tracks(true) + @user.get_posts(true)

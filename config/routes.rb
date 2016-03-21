@@ -31,7 +31,6 @@ Rails.application.routes.draw do
     patch 'update_password'
     get 'all'
     get 'posts'
-    get 'reposts'
     get 'clique'
     get 'songs'
     get 'followers'
