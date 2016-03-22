@@ -90,11 +90,21 @@ ActiveRecord::Schema.define(version: 20160320225619) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "reposts_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+
   create_table "retracks", force: :cascade do |t|
     t.integer  "reposter_id"
     t.integer  "track_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "retracks_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "track_id"
   end
 
   create_table "track_comments", force: :cascade do |t|

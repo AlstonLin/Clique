@@ -69,12 +69,12 @@ body, html{
 
 #status #progressBar{
   width:505px !important;
-  background:#333;
+  background:#C5C5C5;
   background:linear-gradient(
     to bottom,
     #F5F5F5,
     #F5F5F5 1px,
-    #333 2px,
+    #C5C5C5 3px,
     #F5F5F5 1px
   );
   height:5px;
@@ -96,7 +96,7 @@ body, html{
   cursor:pointer;
   outline:none;
   display: none;
-  margin-top: 1.5px;
+  margin-top: 2.5px;
 }
 
 #status #progressBar .ui-slider-range{
@@ -105,7 +105,7 @@ body, html{
     to bottom,
     #F5F5F5,
     #F5F5F5 1px,
-    #fe4641 2px,
+    #fe4641 3px,
     #F5F5F5 1px
   );
   border:none;
