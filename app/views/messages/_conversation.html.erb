@@ -1,19 +1,12 @@
 <div class="message-Box-top">
-	        	<%= link_to "", messages_path, :remote => true, :class => "glyphicon glyphicon-menu-left" %>
-			
-			Conversation with <%= @other.name %>
-        </div>
-
-
-
-
+	<%= link_to "", messages_path, :remote => true, :class => "glyphicon glyphicon-menu-left" %>
+	Conversation with <%= @other.name %>
+</div>
 <div class="message-Box-body2">
-	<% @messages.each do |m| %>
+	<% @messages.reverse_each do |m| %>
 	  <%= render :partial => "message", :locals => { :message => m }%>
 	<% end %>
 </div>
-
-
 <div class="message-textbox">
 	<%= form_for Message.new, :remote => true do |f| %>
 	  <%= hidden_field_tag :username, @other.username %>

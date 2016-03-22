@@ -1,16 +1,9 @@
 <% if message.from == current_user %>
   <!-- Message from the User -->
-
-
-
-
-
   <div class="message-from-you">
-  		<div class="message-profile-pic">
-  			<%= image_tag message.from.profile_picture %>
-
-  		</div>
-
+		<div class="message-profile-pic">
+			<%= image_tag message.from.profile_picture_url %>
+		</div>
 		<div class="message-text">
 			<b class="caret-right"></b>
 		  <%= message.content %>
@@ -18,38 +11,19 @@
 		<div class="message-time">
 	  	<%= time_ago_in_words message.created_at %>
 	  </div>
-
 	</div>
-
 <% else %>
-
   <!-- Message from someone else -->
   <div class="message-from-else">
-
-
-  		<div class="message-profile-pic">
-  			<%= image_tag message.from.profile_picture %>
-
-  		</div>
-
-
-
-
+		<div class="message-profile-pic">
+			<%= image_tag message.from.profile_picture_url %>
+		</div>
   	<div class="message-text">
  			<b class="caret-left"></b>
  		 	<%= message.content %>
  		</div>
-  <!--<h2><%= message.from.name %></h2>-->
-
-
 		<div class="message-time">
   		<%= time_ago_in_words message.created_at %>
 	  </div>
-
-
 	</div>
-
-
-
-
 <% end %>
