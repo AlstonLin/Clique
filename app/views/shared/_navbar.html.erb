@@ -28,7 +28,11 @@
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Edit Profile", edit_profile_path %></li>
               <li><%= link_to "Settings", settings_path %></li>
-              <li><%= link_to "Clique Settings", clique_settings_path %></li>
+              <% if current_user.clique %>
+                <li><%= link_to "Your Clique", clique_settings_path %></li>
+              <% else %>
+                <li><%= link_to "Create a Clique", clique_settings_path %></li>
+              <% end %>
               <li><%= link_to "Orders", orders_path %></li>
               <!-- NOTE: This is a buton because Rails is stupid and think wont work as a link -->
               <li><%= button_to 'Logout', destroy_user_session_path, :method => :delete %></li>

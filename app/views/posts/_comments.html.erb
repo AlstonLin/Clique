@@ -5,8 +5,8 @@
         <img src="<%= c.creator.profile_picture_url %>">
       </div>
       <div class="commentSection-name">
-        <div class="comment-time"><%= time_ago_in_words c.created_at %></div>
-        <%= link_to c.creator.name, c.creator %>
+        <div class="comment-time  "><%= time_ago_in_words c.created_at %></div>
+        <%= link_to c.creator.name, c.creator, :onclick => "$('.modal-backdrop').remove(); $('body').removeClass('modal-open');" %>
       </div>
       <div class="commentSection-comment">
         <%= simple_format c.content %>
