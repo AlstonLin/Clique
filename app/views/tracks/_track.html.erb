@@ -36,11 +36,11 @@
         <div class="player1-btn">
           <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
         </div>
-        <% if track.downloadable %>
+        <!--<% if track.downloadable %>
           <div class="player1-btn" onclick="window.open('<%= track.song.url%>')">
             <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
           </div>
-        <% end %>
+        <% end %>-->
       <% if current_user %>
 				<% if track.owner == current_user %>
 					<!-- Buttons to show owner -->
@@ -73,9 +73,6 @@
 					<% end %>
         <% end %>
 
-        <div class="player1-btn">
-          <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-        </div>
         <% if track.downloadable %>
           <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
             <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
@@ -89,7 +86,7 @@
     </div>
   </div>
   <!-- Comment form outside of modal -->
-  <% if current_user %>
+  <!--<% if current_user %>
     <div class="post-Comment">
       <div class="user-avi1">
         <%= link_to image_tag(current_user.profile_picture_url), current_user %>
@@ -99,7 +96,7 @@
         <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
       <% end %>
     </div>
-  <% end %>
+  <% end %>-->
 </div>
 
 
