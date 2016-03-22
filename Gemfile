@@ -37,7 +37,7 @@ group :development, :test do
 end
 # Production Specific
 group :production do
-  gem 'pg',             '0.17.1'
+#  gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'aws-sdk', '< 2.0'
 end

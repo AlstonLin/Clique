@@ -254,13 +254,18 @@ a:hover {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-.navbar-nav>li>a {
-	color: #999 !important;
+.navbar-nav>li>a{
+	color: #333f48;
+	font-weight: 600;
 	font-size: 14px;
-}
-
-.navbar-nav>li>a:hover {
-	color: #333 !important;
+	font-family: "Proxima Nova", Helvetica, Arial;
+	&hover{
+		color: #222;
+		outline: -webkit-focus-ring-color auto 5px;
+    	outline-color: -webkit-focus-ring-color;
+    	outline-style: auto;
+    	outline-width: 5px;
+	}
 }
 
 
@@ -281,6 +286,7 @@ a:hover {
 		padding-left: 0px;
 		font-weight: bold;
 		display: none;
+		font-weight: 600;
 		a {
 			color: $primary-color;
 			background: $primary-color;
@@ -354,6 +360,20 @@ nav {
 	font-weight: 700;
 	margin-top: 35px;
 	color: white;
+	background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
+    border: 1px solid transparent;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    &:hover{
+    	border: rgba(0,0,0,0) solid 1px;
+    	outline: rgba(0,0,0,0) 0;
+    }
+    &:hover{
+    	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    	background-color: #b0281a;
+    	background-image: -webkit-linear-gradient(top,#dd4b39,#b0281a);
+    }
+
+
 
 }
 a:visited{
@@ -375,6 +395,8 @@ a:visited{
 	margin-right: auto;
 	opacity: 1 !important;
 	letter-spacing: -1px;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+	-webkit-font-smoothing:antialiased;
 
 }
 
