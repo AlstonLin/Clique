@@ -50,9 +50,8 @@ Rails.application.routes.draw do
     get 'joined'
     post 'leave'
   end
-  resources :messages, :only => [:index, :new, :create] do
-    get 'conversation'
-  end
+  resources :messages, :only => [:index, :new, :create]
+  resources :conversations, :only => [:show]
   resources :post_comments, :only => :create
   resources :track_comments, :only => :create
   # Auth

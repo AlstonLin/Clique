@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320225619) do
+ActiveRecord::Schema.define(version: 20160322190154) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160320225619) do
   create_table "cliqs_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "cliq_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "updated_at", null: false
+    t.datetime "created_at", null: false
+  end
+
+  create_table "conversations_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "conversation_id"
   end
 
   create_table "downloads", force: :cascade do |t|
@@ -55,10 +66,10 @@ ActiveRecord::Schema.define(version: 20160320225619) do
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
-    t.integer  "from_id"
-    t.integer  "to_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "creator_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -90,21 +101,11 @@ ActiveRecord::Schema.define(version: 20160320225619) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "reposts_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-  end
-
   create_table "retracks", force: :cascade do |t|
     t.integer  "reposter_id"
     t.integer  "track_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "retracks_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "track_id"
   end
 
   create_table "track_comments", force: :cascade do |t|
