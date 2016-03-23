@@ -218,8 +218,26 @@ input[type=submit]{
  background: transparent;
 }
 
-body.modal-open {
-    overflow: visible;
+body.modal-open{
+    width:100%!important;
+    padding-right:0!important;
+    overflow-y:scroll!important;
+    position:fixed!important;
+    padding-right: 55px;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  overflow: auto;
+  height: 100%;
+}
+
+/* unset bs3 setting */
+.modal-open {
+ overflow: auto;
 }
 
 

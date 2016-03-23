@@ -1,9 +1,9 @@
 class Message < ActiveRecord::Base
+  default_scope { order :created_at => :desc }
   # Relationships
-  belongs_to :from, :class_name => 'User'
-  belongs_to :to, :class_name => 'User'
+  belongs_to :creator, :class_name => 'User'
+  belongs_to :conversation, :class_name => 'Conversation'
   # Validation
-  validates :from, :presence => true
-  validates :to, :presence => true
+  validates :creator, :presence => true
   validates :content, :presence => true
 end

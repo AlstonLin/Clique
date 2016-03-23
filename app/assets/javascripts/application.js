@@ -27,7 +27,7 @@ $(document).on('ready pjax:success', function() {
   // Allows submitting by pressing "Enter" for comment fields
   $('.comment-field').keypress(function(e){
     if (e.which == 13){
-      if (event.shiftKey){
+      if (e.shiftKey){
         e.currentTarget.val(e.currentTarget.val() + "\n");
       } else{
         var id = e.currentTarget.closest('form').id;
