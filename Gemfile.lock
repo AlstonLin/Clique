@@ -281,7 +281,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  aws-sdk (< 2.0)
+  aws-sdk
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
@@ -297,7 +297,7 @@ DEPENDENCIES
   omniauth-soundcloud
   paperclip (~> 4.2.0)
   paypal-sdk-adaptivepayments
-  pg (= 0.17.1)
+  pg
   pjax_rails
   rails (>= 5.0.0.beta1)
   rails_12factor (= 0.0.2)
