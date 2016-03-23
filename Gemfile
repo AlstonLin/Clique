@@ -13,7 +13,7 @@ gem 'omniauth-soundcloud'
 # Websocket
 
 # Default Gems
-gem 'rails', '>= 5.0.0.beta1'
+gem 'rails' #, '>= 5.0.0.beta1'
 gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
