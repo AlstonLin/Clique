@@ -7,12 +7,15 @@ class User < ActiveRecord::Base
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
   has_many :followers, :class_name => 'Follow', :foreign_key => 'following_id'
-  has_many :tracks, :foreign_key => 'owner_id'
+  has_many :tracks, :class_name => 'Track', :foreign_key => 'owner_id'
   has_many :posts, :class_name => 'Post', :foreign_key => 'poster_id'
   has_many :post_comments, :class_name => 'PostComment'
   has_many :track_comments, :class_name => 'TrackComment'
   has_many :reposts, :class_name => 'Repost', :foreign_key => 'reposter_id'
   has_many :retracks, :class_name => 'Retrack', :foreign_key => 'reposter_id'
+  has_many :messages, :class_name => 'Message', :foreign_key => 'creator_id'
+  has_and_belongs_to_many :conversations, :class_name => 'Conversation', :join_table => 'conversations_users', \
+    :foreign_key => :user_id, :association_foreign_key => :conversation_id
   has_and_belongs_to_many :favorite_posts, :class_name => 'Post', :join_table => 'fav_posts_users', \
     :foreign_key => :user_id, :association_foreign_key => :post_id
   has_and_belongs_to_many :favorite_tracks, :class_name => 'Track', :join_table => 'fav_tracks_users', \
@@ -160,13 +163,10 @@ class User < ActiveRecord::Base
     end
 
     def generate_urls
-      puts "----------------------------------------------------CALLED----------------------------------"
       if self.profile_picture.exists?
-        puts "---------------UPDATED PROFILE PIC----------------------------"
         self.update_column(:profile_picture_url, self.profile_picture.url(:med))
       end
       if self.profile_picture.exists?
-        puts "---------------UPDATED COVER PIC----------------------------"
         self.update_column(:cover_picture_url, self.cover_picture.url(:med))
       end
     end

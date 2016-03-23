@@ -9,7 +9,7 @@
 <% else %>
     <!-- Displays each track on the list -->
   <% tracks.each do |track| %>
-    <% if c.is_a? Track %>
+    <% if track.is_a? Track %>
       <%= render :partial => '/tracks/track', :locals => { :track => track } %>
     <% else %>
       <%= render :partial => '/tracks/retrack', :locals => { :retrack => track } %>

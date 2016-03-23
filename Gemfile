@@ -10,6 +10,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
+# Websocket
+
 # Default Gems
 gem 'rails', '4.2.5'
 gem 'sass-rails'
@@ -26,7 +28,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
-
 # Deployment Specific
 group :development, :test do
   gem 'byebug'
