@@ -38,11 +38,7 @@ group :development, :test do
 end
 # Production Specific
 group :production do
-<<<<<<< HEAD
-#  gem 'pg',             '0.17.1'
-=======
   gem 'pg'
->>>>>>> AnmolMago/master
   gem 'rails_12factor', '0.0.2'
   gem 'aws-sdk'
 end
