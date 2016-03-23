@@ -12,31 +12,9 @@ input[type=password], input[type=text], input[type=email], label{
 	margin-left: 0px !important;
 }
 
-
-
-.dropdown-menu{
-
-    margin-top: 6px !important;
-    border-radius: 5px !important;	
-    padding-top: 10px !important;
-input[type=submit]{
-padding-left: 20px;
-text-align: left;
-border: 0px;
-width: 100%;
-margin: 0px;
-height:auto;
-margin-bottom: 10px;
-border-radius: 0px;
-}
-
 input[type=submit]:hover{
 background-color: #f5f5f5;
 }
-
-}
-
-
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
 	background-color: white !important
@@ -304,8 +282,8 @@ background-color: #f5f5f5;
 
 input[type=password], input[type=text], input[type=email], label{
 	margin-left: 0px;
-	margin-top: 10px;
 	font-size: 14px !important;
+	color: #4d4e50;
 }
 
 input[type=checkbox]{
