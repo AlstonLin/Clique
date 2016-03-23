@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Clique</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1, , minimal-ui">
-<meta charset="utf-8">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-
-
-
-</head>
-<body>
-  <!-- Navbar --->
-  <%= render :partial => "shared/navbar" %>
-  <!-- Bottom Player -->
-  <%= render :partial => "shared/player" %>
-  <!-- Download Song-->
-  <%#= render :partial => "shared/downloadUI" %>
-  <!-- Content -->
-  <div data-pjax-container id="pjax-container">
-    <!-- Flash Box -->
-    <!--<%= render :partial => "shared/flash_box" %>-->
-    <%= yield %>
-  </div>
-</body>
+  <head>
+    <title>Clique</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, , minimal-ui">
+  <meta charset="utf-8">
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <script src="https://use.typekit.net/hrj7gfy.js"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/c/e6e4ca/1w;proxima-nova,1,2clzC9:W:n3,2clzCF:W:n4,2clzCH:W:n6,2clzC5:W:n7/l?3bb2a6e53c9684ffdc9a9bf41b5b2a624b88601564a934ad1670a5e5ff94b023a3afdff268b72e29a593ab48f80d1e2b2ad5c752e8d9e840e379fe93a6bca7f4ec65430635de2db978af8bb98b6231185681d336935a68ecccb4edd99df30f2b0e5984c469732907416d7fad09ff770a019c5d5bb99015f573" media="all">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- Navbar --->
+    <%= render :partial => "shared/navbar" %>
+    <!-- Bottom Player -->
+    <%= render :partial => "shared/player" %>
+    <!-- Download Song-->
+    <%#= render :partial => "shared/downloadUI" %>
+    <!-- Content -->
+    <div data-pjax-container id="pjax-container">
+      <!-- Flash Box -->
+      <!--<%= render :partial => "shared/flash_box" %>-->
+      <%= yield %>
+    </div>
+  </body>
+  <%= render :partial => 'shared/messages_modal' %>
 </html>

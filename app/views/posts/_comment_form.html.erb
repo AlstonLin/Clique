@@ -5,11 +5,7 @@
     </div>
     <%= form_for PostComment.new, :remote => true,  :html => { :id => "comment-form#{post.id}" } do |form| %>
       <%= form.hidden_field :post_id, :value => post.id %>
-      <%= form.text_field :content, :placeholder => "Comment" %>
-      <div class="player1-btn">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true" onclick='$("#comment-form<%= post.id %>").submit();' >
-        </span>
-      </div>
+      <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
     <% end %>
   </div>
 <% end %>

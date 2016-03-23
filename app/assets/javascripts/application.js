@@ -16,6 +16,7 @@
 //= require jquery.pjax
 //= require bootstrap-sprockets
 //= require_tree .
+
 $(function() {
   $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]')
 });
@@ -23,5 +24,15 @@ soundManager.setup({
   url: '/app/assets/javascripts/swf/'
 });
 $(document).on('ready pjax:success', function() {
-  
+  // Allows submitting by pressing "Enter" for comment fields
+  $('.comment-field').keypress(function(e){
+    if (e.which == 13){
+      if (e.shiftKey){
+        e.currentTarget.val(e.currentTarget.val() + "\n");
+      } else{
+        var id = e.currentTarget.closest('form').id;
+        $("#" + id).submit();
+      }
+    }
+  });
 });

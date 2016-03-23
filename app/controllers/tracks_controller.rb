@@ -29,17 +29,21 @@ class TracksController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def repost
     @track = Track.find(params[:track_id])
-    if @track.reposters.include? current_user
-      @track.reposters.delete current_user
+    @retrack = Retrack.where(:track => @track).where(:reposter => current_user)
+    if @retrack.count > 0
+      @retrack.first.destroy
+      flash[:notice] = "Repost deleted"
     else
-      @track.reposters << current_user
-    end
-    respond_to do |format|
-      if @track.save
+      @retrack = Retrack.new
+      @retrack.track = @track
+      @retrack.reposter = current_user
+      if @retrack.save
         flash[:notice] = "Reposted!"
       else
         flash[:error] = "An Error has occured"
       end
+    end
+    respond_to do |format|
       format.js
     end
   end

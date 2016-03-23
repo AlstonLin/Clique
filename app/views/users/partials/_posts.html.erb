@@ -1,15 +1,15 @@
 <% if posts.count == 0 %>
-        <div class="no-post">
-        <div class="no-post-img"></div>
-          <%= @user.first_name %> has not made any posts</br>
-        <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
-       </div>
+  <div class="no-post">
+  <div class="no-post-img"></div>
+    <%= @user.first_name %> has not made any posts</br>
+  <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
+  </div>
 <% end %>
 
 <% posts.each do |p| %>
-  <% if p.poster == @user %>
+  <% if p.is_a? Post %>
     <%= render :partial => '/posts/post', :locals => { :post => p } %>
   <% else %>
-    <%= render :partial => '/posts/repost', :locals => { :post => p } %>
+    <%= render :partial => '/posts/repost', :locals => { :repost => p } %>
   <% end %>
 <% end %>

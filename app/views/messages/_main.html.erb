@@ -1,0 +1,25 @@
+<div class="message-Box-top">
+ 	Your Messages
+  <%= link_to "New Message", new_message_path, :remote => true, :class => "button btn btn-info btn-lg btn-primary btn" %>
+</div>
+<div class="message-Box-body">
+	<% @conversations.each do |conversation| %>
+	<div id="threads">
+		<%= link_to conversation, :remote => true do %>
+			<div class="message-thread">
+				<div class="message-profile-image">
+					<%= image_tag conversation.image_url current_user %>
+				</div>
+				<div class="message-content-box">
+					<div class="message-profile-name">
+						<div class="message-time">
+						</div>
+						<div class="message-content">
+							<%= conversation.get_name current_user %>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+<% end %>

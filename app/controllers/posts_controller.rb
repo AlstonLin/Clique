@@ -52,17 +52,21 @@ class PostsController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def repost
     @post = Post.find(params[:post_id])
-    if @post.reposters.include? current_user
-      @post.reposters.delete current_user
+    @repost = Repost.where(:post => @post).where(:reposter => current_user)
+    if @repost.count > 0
+      @repost.first.destroy
+      flash[:notice] = "Repost deleted"
     else
-      @post.reposters << current_user
-    end
-    respond_to do |format|
-      if @post.save
+      @repost = Repost.new
+      @repost.post = @post
+      @repost.reposter = current_user
+      if @repost.save
         flash[:notice] = "Reposted!"
       else
         flash[:error] = "An Error has occured"
       end
+    end
+    respond_to do |format|
       format.js
     end
   end

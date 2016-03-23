@@ -1,5 +1,4 @@
 $("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
-$("#comments<%= @post.id %>").html('<%= j render :partial => "posts/comment_form", :locals => { post: @post } %> \
-  <%= j render :partial => "posts/comments", :locals => { post: @post } %>');
-$("#pc<%= @post.id%>").html("<%= j render :partial => 'posts/comment_form', :locals => { :post => @post } %>");
+$("#comments<%= @post.id %>").html('<%= j render :partial => "posts/comments", :locals => { post: @post } %>');
+$(".comment-field").val("");
 $("#modal<%= @post.id %>").modal();

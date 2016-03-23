@@ -39,6 +39,15 @@ class CliqsController < ApplicationController
   def join
     @clique = Cliq.find(params[:cliq_id])
     raise "Already in Clique" if current_user.cliques.include? @clique
+    # Follows owner
+    @user = @clique.owner
+    if !is_following @user
+      follow = Follow.new
+      follow.follower = current_user
+      follow.following = @user
+      follow.save
+    end
+    # Payment stuff
     @api = PayPal::SDK::AdaptivePayments::API.new
     @preapproval = @api.build_preapproval({
       :cancelUrl => "http://66d2a092.ngrok.io/profile/"+@clique.owner.id.to_s,

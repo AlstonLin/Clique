@@ -9,8 +9,12 @@
       <% content.each do |c| %>
         <% if c.is_a? Post %>
           <%= render :partial => '/posts/post', :locals => { :post => c } %>
-        <% else %>
+        <% elsif c.is_a? Repost %>
+          <%= render :partial => '/posts/repost', :locals => { :repost => c } %>
+        <% elsif c.is_a? Track %>
           <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+        <% else %>
+          <%= render :partial => '/tracks/retrack', :locals => { :retrack => c } %>
         <% end %>
       <% end %>
     <% end %>
