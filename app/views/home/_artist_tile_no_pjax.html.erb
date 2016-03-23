@@ -3,11 +3,11 @@
     <div class="panel-Cover">
       <%= link_to (image_tag artist.cover_picture_url), artist, 'data-skip-pjax' => true %>
     </div>
-    <div class="panel-Overlay">
-    </div>
+    <!--<div class="panel-Overlay">
+    </div>-->
+  </div>
 
-
-
+   <div class="panel-Bottom">
       <div class="panel-ProfilePic">
         <%= link_to (image_tag artist.profile_picture_url), artist, 'data-skip-pjax' => true %>
       </div>
@@ -25,9 +25,8 @@
         <%= link_to artist.followers.count, artist, 'data-skip-pjax' => true %> Followers
       </div>
     </div>
+   </div>
 
 
 
-
-  </div>
 </div>
