@@ -509,7 +509,47 @@ a:visited{
     }
 }
 
+.signupform {
+    margin: 0 auto;
+    width: 600px;
+    background-clip: padding-box;
+    background-color: #FFF;
+    border-radius: 5px !important;
+    border: 1px solid #E4E4E4;
+    .form-control{
+    	border-radius: 1px;
+    border: 1px solid #E0E0E0;
+    box-shadow: none;
+    &:focus{
+    	border-color: #E0E0E0;
+    	box-shadow: inherit;
+    }
+}
+}
 
+.g-recaptcha>div>div{
+	margin: 0 auto;
+}
+
+.fn-field{
+    width: 50%;
+    float: left;
+    border-right: none !important;
+    &>*{
+    float: left;
+    border-right: none !important;
+    }
+}
+.ln-field{
+	width: 50%;
+    float: left;
+}
+
+.signbtn{
+    margin: 0 auto !important;
+    display: table !important;
+    float: none !important;
+}
 
 /* Login Page */
 
@@ -604,7 +644,6 @@ a:visited{
 	border-bottom: 1px solid rgba(255,255,255,.2);
 }
 
-
 #pins {
   margin: 0 auto;
   width: 100%;
@@ -656,6 +695,16 @@ a:visited{
 			font-size: 16px;
     		font-weight: 600;
     		margin-left: 10px;
+		}
+
+		h2{
+			font-size: 16px !important;
+			text-transform: uppercase;
+			text-align: center;
+			font-weight: 900 !important;
+    		-webkit-font-smoothing: antialiased;
+    		color: #848F94;
+
 		}
 
 		.fa{
@@ -2700,7 +2749,7 @@ img{
 	color: white !important;
 	float:right;
 	border: none;
-	border-radius: 5px;
+	border-radius: 3px;
 	text-align: center;
 	margin-top: 12.5px;
 	font-weight: bold;

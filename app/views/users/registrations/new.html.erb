@@ -1,8 +1,6 @@
 <div class="page-Bottom2">
   <div class="container2">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="row">
-        <div class="panel panel-default">
+        <div class="signupform">
           <div class="panel-heading">
             <h2>Sign up</h2>
           </div>
@@ -11,43 +9,33 @@
 
               <%= devise_error_messages! %>
 
-              <div class="form-group">
-                <%= f.label :first_name %><br />
-                <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+              <div class="form-group fn-field">
+                <%= f.text_field :first_name, autofocus: true,:placeholder => "First Name", class: "form-control" %>
+              </div>
+              <div class="form-group ln-field">
+                <%= f.text_field :last_name, autofocus: true,:placeholder => "Last Name", class: "form-control" %>
               </div>
               <div class="form-group">
-                <%= f.label :last_name %><br />
-                <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
-              </div>
-              <div class="form-group">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                <%= f.email_field :email, autofocus: true,:placeholder => "Email", class: "form-control" %>
               </div>
 
               <div class="form-group">
-                <%= f.label :password %>
-                <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "off", class: "form-control"  %>
+                <%= f.password_field :password, autocomplete: "off",:placeholder => "Password (8 Characters Minimum)", class: "form-control"  %>
               </div>
 
               <div class="form-group">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control"  %>
+                <%= f.password_field :password_confirmation, autocomplete: "off",:placeholder => "Confirm Password", class: "form-control"  %>
               </div>
 
               <div class="form-group">
                 <%= recaptcha_tags %>
               </div>
 
-              <div class="form-group">
-                <%= f.submit "Sign up", class: "btn btn-primary secondary-background" %>
+              <div class="form-group w100">
+                <%= f.submit "Sign up", class: "btn btn-primary secondary-background signbtn" %>
               </div>
               
             <% end %>
         </div>
-      </div>
-    </div>
   </div>
 </div>
