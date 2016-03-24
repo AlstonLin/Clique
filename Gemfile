@@ -6,7 +6,7 @@ gem 'paypal-sdk-adaptivepayments'
 gem 'paperclip', '~> 4.2.0'
 # Auth
 gem "recaptcha", require: "recaptcha/rails"
-gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
