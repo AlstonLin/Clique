@@ -6,14 +6,14 @@ gem 'paypal-sdk-adaptivepayments'
 gem 'paperclip', '~> 4.2.0'
 # Auth
 gem "recaptcha", require: "recaptcha/rails"
-gem 'devise'
+gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
 # Websocket
 
 # Default Gems
-gem 'rails', '4.2.5'
+gem 'rails' #, '>= 5.0.0.beta1'
 gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
@@ -38,7 +38,7 @@ group :development, :test do
 end
 # Production Specific
 group :production do
-#  gem 'pg',             '0.17.1'
+  gem 'pg'
   gem 'rails_12factor', '0.0.2'
-  gem 'aws-sdk', '< 2.0'
+  gem 'aws-sdk'
 end
