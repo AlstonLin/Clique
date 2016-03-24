@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160322190154) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.string   "title"
     t.text     "content"
     t.integer  "from_id"
     t.integer  "to_id"
