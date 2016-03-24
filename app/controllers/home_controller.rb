@@ -1,18 +1,14 @@
 class HomeController < ApplicationController
   MAX_ITEMS = 20
+  ITEMS_HOME = 4
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
     @content = current_user.get_following_all
+    @top = get_top ITEMS_HOME
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def explore
-    # TODO: There's probably a more efficient way of doing this
-    @top = User.where(:id => Follow.group(:following_id).order("count(*) desc").limit(MAX_ITEMS).count.keys)
-    # If there is not enough followers to fill the list, add fill it with people with none
-    if @top.count < MAX_ITEMS
-      @top = @top + User.all.limit(MAX_ITEMS - @top.count)
-      @top = @top.uniq
-    end
+    @top = get_top MAX_ITEMS
   end
 
   def all

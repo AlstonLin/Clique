@@ -17,10 +17,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     get_all_content
-    # Create Post
-    if @user == current_user
-      @post = Post.new
-    end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def update_password
@@ -37,30 +33,18 @@ class UsersController < ApplicationController
   def follow
     @user = User.find_by_username(params[:user_id])
     raise "Attempt to follow self" unless current_user != @user
-    # Creates new Follow
-    follow = Follow.new
-    follow.follower = current_user
-    follow.following = @user
-    # Response
-    respond_to do |format|
-      if follow.save
-        flash[:notice] = "Followed " + @user.name
-      else
-        flash[:error] = "An error has occured"
-      end
-      format.js
+    follows = Follow.where(:follower => current_user).where(:following => @user)
+    if follows.count > 0 # Unfollow
+      follows.destroy_all
+    else # Follow
+      follow = Follow.new
+      follow.follower = current_user
+      follow.following = @user
+      follow.save
     end
-  end
-
-  def unfollow
-    # TODO: Some validation for if not following
-    # Finds the follow
-    @user = User.find_by_username(params[:user_id])
-    follows = Follow.where(:follower => current_user, :following => @user)
-    follows.destroy_all
     # Response
+    @top = get_top HomeController::ITEMS_HOME
     respond_to do |format|
-      flash[:notice] = "Unfollowed " + @user.name
       format.js
     end
   end

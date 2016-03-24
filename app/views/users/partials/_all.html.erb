@@ -1,18 +1,35 @@
-<% if content.count == 0 %>
-  <div class="no-post">
-  <div class="no-post-img"></div>
-    <%= @user.first_name %> has not uploaded any content</br>
-  <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
-  </div>
-<% end %>
-<% content.each do |c| %>
-  <% if c.is_a? Post %>
-    <%= render :partial => '/posts/post', :locals => { :post => c } %>
-  <% elsif c.is_a? Repost %>
-    <%= render :partial => '/posts/repost', :locals => { :repost => c } %>
-  <% elsif c.is_a? Track %>
-    <%= render :partial => '/tracks/track', :locals => { :track => c } %>
-  <% else %>
-    <%= render :partial => '/tracks/retrack', :locals => { :retrack => c } %>
+
+<!-- Left Column  -->
+<div class="leftCol">
+<!-- Post Form if own profile -->
+  <% if @user == current_user %>
+    <div class="post-Box">
+      <%= render :partial => "/users/partials/post_form" %>
+    </div>
   <% end %>
-<% end %>
+  <!-- Content -->
+  <div id="content">
+    <% if @content.count == 0 %>
+      <div class="no-post">
+        <div class="no-post-img"></div>
+          <%= @user.first_name %> has not uploaded any content</br>
+        <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
+      </div>
+    <% end %>
+    <% @content.each do |c| %>
+      <% if c.is_a? Post %>
+        <%= render :partial => '/posts/post', :locals => { :post => c } %>
+      <% elsif c.is_a? Repost %>
+        <%= render :partial => '/posts/repost', :locals => { :repost => c } %>
+      <% elsif c.is_a? Track %>
+        <%= render :partial => '/tracks/track', :locals => { :track => c } %>
+      <% else %>
+        <%= render :partial => '/tracks/retrack', :locals => { :retrack => c } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<!-- Right Column -->
+<div id="rightCol" class="rightCol">
+  <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
+</div>

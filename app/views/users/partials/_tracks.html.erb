@@ -1,18 +1,33 @@
-
-<% if songs %>
-  <% if songs.count == 0 %>
-        <div class="no-post">
-        <div class="no-post-img"></div>
-          <%= @user.first_name %> has not uploaded any tracks</br>
-        <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
-       </div>
+<!-- Left Column  -->
+<div class="leftCol">
+<!-- Post Form if own profile -->
+  <% if @user == current_user %>
+    <div class="post-Box">
+      <%= render :partial => "/users/partials/post_form" %>
+    </div>
   <% end %>
+  <!-- Content -->
+  <div id="content">
+    <% if @songs %>
+      <% if @songs.count == 0 %>
+            <div class="no-post">
+            <div class="no-post-img"></div>
+              <%= @user.first_name %> has not uploaded any tracks</br>
+            <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
+           </div>
+      <% end %>
 
-  <% songs.each do |t| %>
-    <% if t.is_a? Track %>
-      <%= render :partial => '/tracks/track', :locals => { :track => t } %>
-    <% else %>
-      <%= render :partial => '/tracks/retrack', :locals => { :retrack => t } %>
+      <% @songs.each do |t| %>
+        <% if t.is_a? Track %>
+          <%= render :partial => '/tracks/track', :locals => { :track => t } %>
+        <% else %>
+          <%= render :partial => '/tracks/retrack', :locals => { :retrack => t } %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>
+<!-- Right Column -->
+<div id="rightCol" class="rightCol">
+  <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
+</div>

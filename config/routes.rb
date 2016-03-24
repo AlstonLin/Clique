@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'
-    post 'unfollow'
     patch 'update_password'
     get 'all'
     get 'posts'

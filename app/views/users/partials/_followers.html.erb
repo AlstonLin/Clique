@@ -1,8 +1,8 @@
-<% if followers %>
-  <% if followers.count == 0 %>
+<% if @followers %>
+  <% if @followers.count == 0 %>
     You have no followers
   <% end %>
-  <% followers.each do |f| %>
+  <% @followers.each do |f| %>
     <%= render :partial => 'home/artist_tile', :locals => { :artist => f.follower } %><br>
   <% end %>
 <% end %>

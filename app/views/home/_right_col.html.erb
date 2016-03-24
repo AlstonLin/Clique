@@ -2,61 +2,36 @@
   <div class="rightCol-Filter-Title">
     <div class="rightCol-Filter-Title-Name">
       <span aria-hidden="true" class="glyphicon glyphicon-heart"></span>
-     	Favourites
-    </div>
-    <div class="rightCol-Filter-Title-Stat">
-      470
+     	Top Artists
     </div>
   </div>
-  <div class="rightCol-Filter-Profile">
-    <div class="rightCol-Profile-Avi">
-      <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/artworks-000138032353-aywlgh-t500x500.jpg" width="40"/>
+  <% @top.each do |t| %>
+    <div class="rightCol-Filter-Profile">
+      <%= link_to t do %>
+        <div class="rightCol-Profile-Avi text-userPic">
+          <%= image_tag t.profile_picture_url %>
+        </div>
+        <div class="rightCol-Profile-Bar">
+          <div class="rightCol-Profile-Name">
+            <%= t.name %>
+          </div>
+          <div class="rightCol-Followers">
+            <i class="fa fa-user-plus"></i>
+            <%= t.followers.count %>
+          </div>
+        </div>
+      <% end %>
+      <% if current_user %>
+        <%= link_to user_follow_path(t), :remote => true, :method => :post do %>
+          <div class="rightCol-Profile-Follow">
+            <% if is_following t %>
+              Unfollow
+            <% else %>
+              Follow
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <div class="rightCol-Profile-Bar">
-      <div class="rightCol-Profile-Name">
-        EverestMG
-      </div>
-      <div class="rightCol-Followers">
-        <i class="fa fa-user-plus"></i>
-        45.2K
-      </div>
-    </div>
-    <div class="rightCol-Profile-Follow">
-      Follow
-    </div>
-  </div>
-  <div class="rightCol-Filter-Profile">
-    <div class="rightCol-Profile-Avi">
-      <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/avatars-000157722791-4aqyc1-t500x500.jpg" width="40"/>
-    </div>
-    <div class="rightCol-Profile-Bar">
-      <div class="rightCol-Profile-Name">
-        Tory Lanez
-      </div>
-      <div class="rightCol-Followers">
-        <i class="fa fa-user-plus"></i>
-        120.3K
-      </div>
-    </div>
-    <div class="rightCol-Profile-Follow">
-      Follow
-    </div>
-  </div>
-  <div class="rightCol-Filter-Profile">
-    <div class="rightCol-Profile-Avi">
-      <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/avatars-000183007726-u3wsuc-t500x500.jpg" width="40"/>
-    </div>
-    <div class="rightCol-Profile-Bar">
-      <div class="rightCol-Profile-Name">
-        Bryson Tiller
-      </div>
-      <div class="rightCol-Followers">
-        <i class="fa fa-user-plus"></i>
-        3.2M
-      </div>
-    </div>
-    <div class="rightCol-Profile-Follow">
-      Follow
-    </div>
-  </div>
+  <% end %>
 </div>

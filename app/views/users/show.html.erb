@@ -27,35 +27,7 @@
 </div>
 
 <div class="profile-bottom">
-  <div class="container2">
-    <!-- Left Column  -->
-    <div class="leftCol">
-    <!-- Post Form if own profile -->
-      <% if @user == current_user %>
-        <div class="post-Box">
-          <%= render :partial => "/users/partials/post_form", :locals => { post: @post } %>
-        </div>
-      <% end %>
-      <!-- Content -->
-      <div id="content">
-        <%= render :partial => "/users/partials/all", :locals => { content: @content, user: @user } %>
-      </div>
-    </div>
-    <!-- Right Column -->
-    <div id="rightCol" class="rightCol">
-      <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+  <div id="container" class="container2">
+    <%= render :partial => '/users/partials/all' %>
   </div>
 </div>
