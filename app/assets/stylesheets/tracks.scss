@@ -23,26 +23,26 @@ $fbblue: rgba(59, 89, 152,1);
 
 
 textarea{
-	min-height: 0px !important; 
+	min-height: 0px !important;
  	resize: none;
  	    overflow: hidden;
 }
 
 
 a {
-   outline: 0 !important; 
+   outline: 0 !important;
 }
 
 a:visited {
-	color: inherit !important; 
+	color: inherit !important;
 }
-a { 
-	color: inherit !important; 
-} 
+a {
+	color: inherit !important;
+}
 
 a:hover, a:focus{
-	color: inherit !important; 
-	text-decoration: none !important; 
+	color: inherit !important;
+	text-decoration: none !important;
 }
 
 
@@ -240,7 +240,7 @@ a:hover {
 
 .navbar-default{
 	background-color: white !important;
-	border: 0px;	
+	border: 0px;
 	width: 100%;
 	margin-bottom: 50px !important;
 	border-color: #e7e7e7!important;
@@ -712,7 +712,7 @@ a:visited{
 		}
 
 		h2{
-		font-weight: 100 !important;		
+		font-weight: 100 !important;
 		}
 	}
 
@@ -815,7 +815,7 @@ textarea {
 .profile-pagename {
 	font-size: 24px;
 	color: white;
-	margin-top:200px;	
+	margin-top:200px;
 	position: absolute;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
 	text-align: center;
@@ -827,7 +827,7 @@ textarea {
 .profile-Bio {
 	font-size: 16px;
 	color: white;
-	margin-top:240px;	
+	margin-top:240px;
 	position: absolute;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
 	text-align: center;
@@ -848,9 +848,9 @@ textarea {
 	font-size: 18px;
 	margin-left: 176px;
 	color: white;
-	margin-top:-76px;	
+	margin-top:-76px;
 	position: absolute;
-	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);	
+	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
 }
 
 
@@ -1274,8 +1274,8 @@ h1 {
 	margin-top: -2px;
 }
 
-.mejs-container:focus { 
-	outline: none; 
+.mejs-container:focus {
+	outline: none;
 }
 
 .me-plugin {
@@ -2274,14 +2274,16 @@ $border: #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 }
 
+.newsfeed-active{
+	border-bottom: 1px solid $primary-color;
+	color: $primary-color;
+}
+
 .newsfeed-title1{
 	height: 50px;
 	line-height: 50px;
 	font-size: 18px;
 	float: left;
-	border-bottom: 1px solid $primary-color;
-	color: $primary-color;
-
 }
 
 .newsfeed-title2{
@@ -2401,10 +2403,10 @@ $border: #e5e5e5;
 		border-radius: 3px;
 	}
 }
-	
+
 .rightCol-Profile-Avi:hover{
 	cursor: pointer;
-}					
+}
 
 .rightCol-Profile-Bar{
 	width:100px;
@@ -2546,7 +2548,7 @@ margin-bottom: 10px
 	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 .rightBlock-Body{
@@ -2660,7 +2662,7 @@ img{
 	margin-right: auto;
 	margin-left: auto;
 	background-color: white;
-	border-top: 1px solid #E1E3ED; 
+	border-top: 1px solid #E1E3ED;
 }
 
 
@@ -2671,8 +2673,8 @@ img{
 	margin-left: auto;
 	margin-right: auto;
 	background-color: white;
-	border-bottom: 1px solid #E1E3ED; 
-	border-top: 1px solid #E1E3ED; 
+	border-bottom: 1px solid #E1E3ED;
+	border-top: 1px solid #E1E3ED;
 }
 
 .stats1{
@@ -2733,7 +2735,7 @@ img{
 	font-size: 12px;
 	border-color: #d1d1d1;
 	padding: 0px;
-	margin-left: 10px;	
+	margin-left: 10px;
 	background-color: white;
 	margin-bottom: 0px;
 }
@@ -2829,8 +2831,8 @@ img{
     margin-right: 10px;
 }
 
-.modal-open::-webkit-scrollbar { 
-    display: none; 
+.modal-open::-webkit-scrollbar {
+    display: none;
 
 }
 
@@ -2970,7 +2972,7 @@ img{
 	z-index: 2;
 	width:30px;
 	height:30px;
-	position: absolute;	
+	position: absolute;
 	border-radius: 50%;
 }
 
@@ -3134,7 +3136,7 @@ img{
 	font-size: 12px;
 	text-align: center;
 	line-height: 25px;
-	
+
 
 }
 
@@ -3444,7 +3446,7 @@ input[type=submit]{
   height: 50px;
   background-color: #F6F6F6;
   border: 1px solid #EAEAEA;
-  position:fixed; 
+  position:fixed;
   bottom:0;
   z-index: 2000;
 
@@ -3454,7 +3456,7 @@ input[type=submit]{
     height:2px;
     margin: auto;
     position: absolute;
-    top: 0; 
+    top: 0;
     bottom: 0;
     margin-left:226px;
     background-color: #999;
@@ -3477,7 +3479,7 @@ input[type=submit]{
   float: left;
   margin: 10px 10px 10px 838px;
   position: relative;
-  top: 0;  bottom: 0; 
+  top: 0;  bottom: 0;
   background-position: 50% 50%;
   background-size: 100%;
   background-image: url(http://thatgrapejuice.net/wp-content/uploads/2013/02/asap-rocky-mr-porter-5-e1361908414323.jpg)
@@ -3492,7 +3494,7 @@ input[type=submit]{
   color: #333;
   font-size: 11px;
   position: relative;
-  top: 0;  bottom: 0; 
+  top: 0;  bottom: 0;
   line-height: 8px;
 
   h4 {
@@ -3676,7 +3678,7 @@ glyphicon{
 	width: auto;
 	position: relative;
 	h1{
-	font-weight: 100 !important;		
+	font-weight: 100 !important;
 	}
 }
 
