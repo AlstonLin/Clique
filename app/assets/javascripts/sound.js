@@ -98,7 +98,7 @@ $(document).on('ready pjax:success', function() {
 			queue = [];
 			$(".playa").each(function(i, v){
 				$span = $(this).find('span');
-				var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"));
+				var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"), $(this).attr("trackLink"), $(this).attr("ownerLink"));
 				sound.mySpan = $span;
 				sound.myArrIndex = i;
 				queue[i] = sound;
@@ -119,7 +119,7 @@ $(document).on('ready pjax:success', function() {
 			console.log('SM2 ready!');
 			$(".playa").each(function(i, v){
 				$span = $(this).find('span');
-				var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"));
+				var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"), $(this).attr("trackLink"), $(this).attr("ownerLink"));
 				sound.mySpan = $span;
 				sound.myArrIndex = i;
 				queue[i] = sound;
@@ -155,9 +155,9 @@ function onResize(doc){
 	$("#progressBar").width(progBGWidth);
 }
 
-function createMySound(myurl, image, artist, songName){
+function createMySound(myurl, image, artist, songName, trackLink, ownerLink){
 	if(!soundManager.canPlayURL(myurl)){
-		console.log("ERROR: " + myurl + " because: " + soundManager.canPlayURL(urmyurll));
+		console.log("ERROR: " + myurl + " because: " + soundManager.canPlayURL(myurl));
 		return null;
 	}
 	console.log(artist, songName, myurl);
@@ -174,16 +174,19 @@ function createMySound(myurl, image, artist, songName){
 			$("#totalTime").text(getTime(this.duration, true));
 		},
 		onplay: function(){
-			//for global access
 			if(nowPlaying != null && nowPlaying.id != this.id)
-			soundManager.stop(nowPlaying.id);
+				soundManager.stop(nowPlaying.id);
 
+			//for global access
 			nowPlaying = this;
 
 			//update description
 			$("#desc img").attr("src", image);
 			$("#desc h4").text(artist);
 			$("#desc p").text(songName);
+			$("#desc #ptrackLink").attr('href', trackLink);
+			alert(trackLink);
+			$("#desc #pprofileLink").attr('href', ownerLink);
 
 			//reset progress
 			$("#progressBar").slider("value", 0);
