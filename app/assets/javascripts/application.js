@@ -35,4 +35,12 @@ $(document).on('ready pjax:success', function() {
       }
     }
   });
+
+  $(".newsfeed-title1, .newsfeed-title2").click(function(){
+    $(".newsfeed-active").each(function(){
+      $(this).removeClass("newsfeed-active");
+    });
+    $(this).addClass("newsfeed-active");
+  });
+
 });
