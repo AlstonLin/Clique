@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+  # TODO: Don't forget to use obfuscate_id on everything for security!
+  
   # ----------------------- Default RESTFUL Actions-----------------------------
   def new
     @track = Track.new

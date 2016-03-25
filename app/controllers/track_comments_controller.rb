@@ -11,6 +11,16 @@ class TrackCommentsController < ApplicationController
     end
   end
 
+  def delete
+    @comment = TrackComment.find(params[:track_comment_id])
+    @comment.removed = true
+    @comment.save
+    respond_to do |format|
+      @track = @comment.track
+      format.js
+    end
+  end
+
   private
   def comment_params
     params.require(:track_comment).permit(:content, :track_id)

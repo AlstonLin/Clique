@@ -19,6 +19,14 @@ class UsersController < ApplicationController
     get_all_content
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
+  def message
+    @user = User.find(current_user.id)
+    @message = Message.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def update_password
     @user = User.find(current_user.id)
     if @user.update(user_params)

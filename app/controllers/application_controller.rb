@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def is_following(following)
+  def is_following(following, user = nil)
+    if user == nil
+      user = current_user
+    end
     # TODO: Make this more efficient?
-    current_user.following.each do |f|
+    user.following.each do |f|
       if f.following == following
         return true
       end

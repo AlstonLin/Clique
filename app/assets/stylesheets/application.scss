@@ -220,7 +220,7 @@ input[type=submit]{
 body.modal-open{
     width:100%!important;
     padding-right:0!important;
-    overflow-y:scroll!important;
+    overflow: hidden;
     position:fixed!important;
     padding-right: 55px;
 }
@@ -240,7 +240,7 @@ body {
 }
 
 
-.dropdown-menu{ 
+.dropdown-menu{
 text-align: left;
 border: 0px;
 margin: 0px;

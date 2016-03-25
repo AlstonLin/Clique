@@ -39,6 +39,10 @@
   <% else %>
     <%= button_to "Follow", user_follow_path(user), :remote => true, :class => "btn-hollow btn"  %>
   <% end %>
+
+  <% if is_following current_user, @user %>
+    <%= button_to "Message", user_message_path(user), :method => :get, :remote => true, :class => "btn-hollow btn"  %>
+  <% end %>
   <!-- Clique-->
   <% if @user.clique %>
     <% if current_user.cliques.include? user.clique %>

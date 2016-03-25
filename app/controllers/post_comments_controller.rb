@@ -11,6 +11,16 @@ class PostCommentsController < ApplicationController
     end
   end
 
+  def delete
+    @comment = PostComment.find(params[:post_comment_id])
+    @comment.removed = true
+    @comment.save
+    respond_to do |format|
+      @post = @comment.post
+      format.js
+    end
+  end
+
   private
   def comment_params
     params.require(:post_comment).permit(:content, :post_id)
