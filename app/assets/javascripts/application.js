@@ -43,4 +43,11 @@ $(document).on('ready pjax:success', function() {
     $(this).addClass("newsfeed-active");
   });
 
+  $(".stats1, .stats2").click(function(){
+    $(".stats-active").each(function(){
+      $(this).removeClass("stats-active");
+    });
+    $(this).addClass("stats-active");
+  });
+
 });
