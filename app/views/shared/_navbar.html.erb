@@ -26,7 +26,6 @@
               <!--<div class="pointer" style="content: '';position: absolute;border-style: solid;border-width: 0 16px 16px;border-color:  #D7D7D7  transparent;display: block;width: 0;z-index: 1;top: -15px;left: 94px; margin-top: -1px; opacity: 0.8;">
               </div>
               <div class="pointer" style="content: '';position: absolute;border-style: solid;border-width: 0 15px 15px;border-color: #FFFFFF transparent;display: block;width: 0;z-index: 1;top: -15px;left: 94px; margin: 1px 0px 0px 1px;">
-
               </div>-->
 
 
@@ -41,7 +40,6 @@
               <% end %>
               <li><%= link_to "Orders", orders_path, :class => 'menu-item' %></li>
               <div class="cdivider"></div>
-
               <!-- NOTE: This is a buton because Rails is stupid and think wont work as a link -->
               <li><%= button_to 'Logout', destroy_user_session_path, :class => 'menu-item', :method => :delete %></li>
 

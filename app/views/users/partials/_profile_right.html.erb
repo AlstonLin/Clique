@@ -1,33 +1,33 @@
 <div class="rightBlock">
-    <div class="right-Stats">
-      <div class="right-Stat1">
-        <div class="right-Stat-Top">
-          Posts
-        </div>
-        <div class="right-Stat-Bottom">
-          <%= user.posts.select{|post| !post.removed }.size %>
-        </div>
+  <div class="right-Stats">
+    <div class="right-Stat1">
+      <div class="right-Stat-Top">
+        Posts
       </div>
-      <div class="right-Stat2">
-        <div class="right-Stat-Top">
-          Tracks
-        </div>
-        <div class="right-Stat-Bottom">
-          <%= user.tracks.select{|track| !track.removed }.size %>
-        </div>
+      <div class="right-Stat-Bottom">
+        <%= user.posts.select{|post| !post.removed }.size %>
       </div>
-      <div class="right-Stat3">
-        <div class="right-Stat-Top">
-          Followers
-        </div>
-        <div class="right-Stat-Bottom">
-          <%= user.followers.count %>
-        </div>
+    </div>
+    <div class="right-Stat2">
+      <div class="right-Stat-Top">
+        Tracks
+      </div>
+      <div class="right-Stat-Bottom">
+        <%= user.tracks.select{|track| !track.removed }.size %>
+      </div>
+    </div>
+    <div class="right-Stat3">
+      <div class="right-Stat-Top">
+        Followers
+      </div>
+      <div class="right-Stat-Bottom">
+        <%= user.followers.count %>
       </div>
     </div>
   </div>
+</div>
 
-<% if user.clique.present? %>
+<% if user != current_user && user.clique %>
   <div class="rightBlock">
     <div class="rightCol-Clique-Title">
         Exclusive Clique Perks
@@ -35,20 +35,26 @@
     <div class="rightBlock-Body">
        <%= user.clique.description %>
     </div>
-    <div class="right-Clique-Btn">
-      Join Clique
-    </div>
+    <% if current_user.cliques.include? user.clique %>
+      <%= link_to cliq_leave_path(user.clique), :remote => true do %>
+        <div class="right-Clique-Btn">
+          Join Clique
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to cliq_join_path(user.clique), :method => :post do %>
+        <div class="right-Clique-Btn">
+          Join Clique
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <% else %>
-<div class="rightBlock">
-
-    <div class="right-Clique-Btn">
-      Create your clique
-    </div>
+<% elsif user == current_user && !user.clique %>
+  <div class="rightBlock">
+    <%= link_to clique_settings_path, :method => :get do %>
+      <div class="right-Clique-Btn">
+        Create your clique
+      </div>
+    <% end %>
   </div>
-</div>
-
-
 <% end %>
-
-
