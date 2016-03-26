@@ -65,20 +65,20 @@ ActiveRecord::Schema.define(version: 20160322190154) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "title"
     t.text     "content"
-    t.integer  "from_id"
-    t.integer  "to_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "creator_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.datetime "created_at",                 null: false
     t.text     "content"
+    t.boolean  "removed",    default: false
     t.integer  "creator_id"
     t.integer  "post_id"
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -102,11 +102,6 @@ ActiveRecord::Schema.define(version: 20160322190154) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "reposts_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-  end
-
   create_table "retracks", force: :cascade do |t|
     t.integer  "reposter_id"
     t.integer  "track_id"
@@ -114,17 +109,13 @@ ActiveRecord::Schema.define(version: 20160322190154) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "retracks_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "track_id"
-  end
-
   create_table "track_comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.datetime "created_at",                 null: false
     t.text     "content"
+    t.boolean  "removed",    default: false
     t.integer  "creator_id"
     t.integer  "track_id"
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "tracks", force: :cascade do |t|

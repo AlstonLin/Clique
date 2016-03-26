@@ -83,11 +83,13 @@ $(document).on('ready pjax:success', function() {
 			for(i = 0; i < queue.length; i++){
 				if(queue[i] !== undefined && queue[i].url == $(this).attr('song')){
 					if (nowPlaying !== null && nowPlaying.id !== null && nowPlaying.id == queue[i].id) {
+						nowPlaying.mySpan = $span;
 						nowPlaying.resume();
 					}else{
 						if(nowPlaying !== null){
 							nowPlaying.mySpan.addClass("glyphicon-play").removeClass("glyphicon-pause");
 						}
+						queue[i].mySpan = $span;
 						queue[i].play();
 					}
 					$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
@@ -117,6 +119,8 @@ $(document).on('ready pjax:success', function() {
 		preferFlash: false, // prefer 100% HTML5 mode, where both supported
 		onready: function() {
 			console.log('SM2 ready!');
+			if(nowPlaying !== null)
+				 return;
 			$(".playa").each(function(i, v){
 				$span = $(this).find('span');
 				var sound = createMySound($(this).attr("song"), $(this).attr("image"), $(this).attr("artist"), $(this).attr("name"), $(this).attr("trackLink"), $(this).attr("ownerLink"));
@@ -185,7 +189,7 @@ function createMySound(myurl, image, artist, songName, trackLink, ownerLink){
 			$("#desc h4").text(artist);
 			$("#desc p").text(songName);
 			$("#desc #ptrackLink").attr('href', trackLink);
-			alert(trackLink);
+			//alert(trackLink);
 			$("#desc #pprofileLink").attr('href', ownerLink);
 
 			//reset progress

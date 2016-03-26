@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'
-    post 'unfollow'
     patch 'update_password'
+    get 'message'
     get 'all'
     get 'posts'
     get 'clique'
@@ -36,7 +36,8 @@ Rails.application.routes.draw do
     get 'followers'
     get 'following'
   end
-  resources :tracks, :only => [:new, :create, :destroy, :show] do
+  resources :tracks, :only => [:new, :create, :show] do
+    post 'delete'
     post 'repost'
     post 'favorite'
   end
@@ -52,8 +53,12 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:index, :new, :create]
   resources :conversations, :only => [:show]
-  resources :post_comments, :only => :create
-  resources :track_comments, :only => :create
+  resources :post_comments, :only => :create do
+    post 'delete'
+  end
+  resources :track_comments, :only => :create do
+    post 'delete'
+  end
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations", :passwords => "passwords"}

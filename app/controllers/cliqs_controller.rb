@@ -50,7 +50,7 @@ class CliqsController < ApplicationController
     # Payment stuff
     @api = PayPal::SDK::AdaptivePayments::API.new
     @preapproval = @api.build_preapproval({
-      :cancelUrl => "http://66d2a092.ngrok.io/profile/"+@clique.owner.id.to_s,
+      :cancelUrl => "http://clique.us-east-1.elasticbeanstalk.com/profile/"+@clique.owner.id.to_s,
       :currencyCode => "USD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
@@ -58,8 +58,8 @@ class CliqsController < ApplicationController
       :maxNumberOfPayments => 100,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
-      :returnUrl => "http://66d2a092.ngrok.io/clique/"+@clique.id.to_s+"/joined",
-      :ipnNotificationUrl => "https://paypal-sdk-samples.herokuapp.com/adaptive_payments/ipn_notify",
+      :returnUrl => "http://clique.us-east-1.elasticbeanstalk.com/clique/"+@clique.id.to_s+"/joined",
+      :ipnNotificationUrl => "http://clique.us-east-1.elasticbeanstalk.com/ipn_notify",
       :startingDate => "2016-03-11T00:00:00+00:00",
       :feesPayer => "SENDER",
       :feesPayer => "SECONDARYONLY",

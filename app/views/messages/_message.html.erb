@@ -8,7 +8,9 @@
   </div>
   <div class="message-text">
     <b class="caret-right"></b>
-    <%= message.content %>
+    <div class="message-content">
+      <%= simple_format message.content, :style => "word-wrap: break-word;" %>
+    </div>
   </div>
   <div class="message-time">
     <%= time_ago_in_words message.created_at %>

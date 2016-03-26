@@ -1,7 +1,11 @@
 <h3>New Message</h3>
 <%= form_for @message, :remote => true do |f| %>
 	<%= label_tag :username %>
-	<%= text_field_tag :username, params[:username] %><br>
+	<% if @user %>
+		<%= text_field_tag :username, params[:username], :value => @user.username %><br>
+	<% else %>
+		<%= text_field_tag :username, params[:username] %><br>
+	<% end %>
 	<%= f.label :content %>
 	<%= f.text_area :content %><br>
 	<%= f.submit "Send" %>
