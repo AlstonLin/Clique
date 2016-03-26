@@ -76,6 +76,7 @@ textarea:focus, input:focus{
 	padding-top: 8px;
 	padding-bottom: 8px;
 	line-height: 32px;
+	margin-left: 7px;
 
 }
 
@@ -302,9 +303,6 @@ a:hover {
 nav {
 }
 
-	.navbar-right{
-		margin-right: 7px !important;
-	}
 
 .login-btn {
 	color: white !important;
@@ -2287,7 +2285,6 @@ $border: #e5e5e5;
 .newsfeed-active{
 	border-bottom: 1px solid $primary-color;
 	color: $primary-color;
-	font-weight: 600;
 }
 
 .newsfeed-title1{
@@ -2720,7 +2717,7 @@ img{
 .stats-active{
 	border-bottom: 1px solid $primary-color;
 	color: $primary-color;
-	font-weight: 600;
+
 }
 
 .stats1:hover{

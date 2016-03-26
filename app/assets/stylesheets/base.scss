@@ -13,6 +13,15 @@ body{
 }
 
 
+.nav-margin{
+  margin-left: -7px !important;
+}
+
+.nav-margin-right{
+  margin-right: -1px !important;
+}
+
+
 /* Repeated Classes */
 
 $primary-color: #fe4641;
@@ -77,7 +86,7 @@ textarea:focus, input:focus{
   padding-top: 8px;
   padding-bottom: 8px;
   line-height: 32px;
-  margin-left: -8px;
+
 }
 
 

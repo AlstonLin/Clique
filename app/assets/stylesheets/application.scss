@@ -139,8 +139,8 @@
 
 input[type=password],input[type=text],input[type=email], label{
   font-size:16px;
-  margin-top: -2px;
-  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 0px;
 }
 
 input[type=checkbox]{
@@ -266,9 +266,7 @@ padding: 0;
       background: rgba(0,0,0,.05);
       color: rgba(0,0,0,.8);
       z-index: 13;
-      border-top: 1px solid #cfd4db;
-      border-bottom: 1px solid #cfd4db;
-      font-weight: bold;
+
       color: #222;
     }
   }
