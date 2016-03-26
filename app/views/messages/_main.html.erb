@@ -16,7 +16,9 @@
 						</div>
 						<div class="message-content">
 							<%= conversation.get_name current_user %>
+              <%= time_ago_in_words conversation.messages.first.created_at %>
 						</div>
+            <%= simple_format conversation.messages.first.content, :class => "message-preview" %>
 					</div>
 				</div>
 			</div>

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     # If there is not enough followers to fill the list, add fill it with people with none
     if top.count < num
       top = top + User.all
-      top = top.uniq.first(num)
+      top = top.select{ |t| t != current_user }.uniq.first(num)
     end
     return top
   end

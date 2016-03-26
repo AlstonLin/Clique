@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   # TODO: Don't forget to use obfuscate_id on everything for security!
-  
+
   # ----------------------- Default RESTFUL Actions-----------------------------
   def new
     @track = Track.new
@@ -29,6 +29,15 @@ class TracksController < ApplicationController
     redirect_to current_user_path
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
+  def delete
+    @track = Track.find_by_id(params[:track_id])
+    @track.removed = true
+    @track.save
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def repost
     @track = Track.find(params[:track_id])
     @retrack = Retrack.where(:track => @track).where(:reposter => current_user)

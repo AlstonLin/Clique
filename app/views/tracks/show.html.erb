@@ -1,18 +1,17 @@
 <div class="page-Bottom2">
   <div class="centerCol">
-    <div class="pin-show-title" />
+    <div class="pin-show-title">
+      <%= @track.name %>
+    </div>
     <div id="pin_show">
       <div class="rightCol-singleSong">
         <div class="song-Description">
-          <div class="text-userPic">
+          <div class="rightCol-profileAvi">
             <img src="<%= @track.owner.profile_picture_url %>">
           </div>
           <div class="rightCol-profileName">
             <div class="profileName-Artist">
               <%= @track.owner.name %>
-            </div>
-            <div class="profilename-location">
-              Location not yet implemented
             </div>
             <% if current_user %>
               <% if is_following @user %>

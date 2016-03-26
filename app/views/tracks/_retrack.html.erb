@@ -37,17 +37,12 @@
         <div class="player1-btn">
           <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
         </div>
-        
-        <!--<% if track.downloadable %>
-          <div class="player1-btn" onclick="window.open('<%= track.song.url%>')">
-            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-          </div>
-        <% end %>-->
+
       <% if current_user %>
 				<% if track.owner == current_user %>
 					<!-- Buttons to show owner -->
           <div class="player1-btn2">
-            <%= link_to "", track, :class => "glyphicon glyphicon-trash", :method => :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+            <%= link_to "", track_delete_path(track), :remote => true, :method => :post, :class => "glyphicon glyphicon-trash", data: { confirm: 'Are you certain you want to delete this?' } %>
           </div>
   			  <% elsif !track.clique_only %>
   					<% if current_user.has_retracked? track %>
@@ -76,7 +71,7 @@
         <% end %>
 
 
-        
+
         <% if track.downloadable %>
           <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
             <span class="glyphicon glyphicon-save" aria-hidden="true"></span>

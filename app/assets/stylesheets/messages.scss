@@ -6,7 +6,10 @@
 $primary-color: #fe4641;
 $border: #e5e5e5;
 
-
+.message-preview {
+	height: 3em;
+	overflow: hidden;
+}
 
 .message-Box{
 	.modal-content{
@@ -20,7 +23,7 @@ $border: #e5e5e5;
 .message-Box-body{
 	overflow: auto;
 	width: 100%;
-	height: 450px;	
+	height: 450px;
 }
 
 .message-Box-body2{
@@ -104,7 +107,7 @@ $border: #e5e5e5;
 	border: 1px solid #dcdee3;
 	border-radius: 4px;
 	background-color: white;
-	margin-top: 0px;	
+	margin-top: 0px;
 }
 
 .message-send{
@@ -239,7 +242,7 @@ $border: #e5e5e5;
 		float:left;
 		color: #999;
 		padding-left: 44px;
-		margin-top: 4px;		
+		margin-top: 4px;
 	}
 
 	.message-profile-pic{

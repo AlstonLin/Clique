@@ -25,9 +25,17 @@
     </div>
   </div>
 </div>
-
 <div class="profile-bottom">
-  <div id="container" class="container2">
-    <%= render :partial => '/users/partials/all' %>
+  <div class="container2">
+    <!-- Left Column  -->
+    <div class="leftCol">
+      <div id="container" class="container2">
+        <%= render :partial => '/users/partials/all' %>
+      </div>
+    </div>
+    <!-- Right Column -->
+    <div id="rightCol" class="rightCol">
+      <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
+    </div>
   </div>
 </div>

@@ -19,8 +19,10 @@
     <%= image_tag message.creator.profile_picture_url %>
   </div>
   <div class="message-text">
+
     <b class="caret-left"></b>
     <%= message.content %>
+
   </div>
   <div class="message-time">
     <%= time_ago_in_words message.created_at %>

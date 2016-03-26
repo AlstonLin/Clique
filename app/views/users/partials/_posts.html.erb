@@ -11,8 +11,12 @@
     <% if @posts.count == 0 %>
       <div class="no-post">
       <div class="no-post-img"></div>
-        <%= @user.first_name %> has not made any posts</br>
-      <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
+        <% if @user == current_user %>
+          You have no made any posts
+        <% else %>
+          <%= @user.first_name %> has not made any posts</br>
+          <%= link_to "Explore Artists", explore_path, :class => "btn no-post-btn btn-primary secondary-background" %>
+        <% end %>
       </div>
     <% end %>
 
