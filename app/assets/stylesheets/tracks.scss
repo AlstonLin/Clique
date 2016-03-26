@@ -645,7 +645,9 @@ a:visited{
   margin: 0 auto;
   width: 100%;
   .box {
-  		margin: 0px 20px 20px 0px;
+
+		margin: 0px 20px 20px 0px;
+
 	  width: 300px;
 	  border-radius: 7px;
 	  img {
@@ -678,6 +680,12 @@ a:visited{
 			margin: 0;
 	  }
 	}
+
+	.box:nth-child(3){
+		margin: 0px 0px 20px 0px;
+	}
+
+
 }
 
 #edit_page {
@@ -2752,7 +2760,7 @@ img{
 
 .btn-primary.btn{
 	height:38px;
-	line-height: 33px;
+	line-height: 38px;
 	width:150px;
 	color: white !important;
 	float:right;
@@ -3635,6 +3643,12 @@ glyphicon{
 	border-radius: 3px;
 	background-image: url(https://i1.sndcdn.com/avatars-000186622640-isz41l-t500x500.jpg);
 	background-size: cover;
+	img{
+	width: 80px;
+	height: 80px;
+	background-size: cover;
+	background-position: center;
+	}
 }
 
 .rightCol-profileName{
@@ -3646,6 +3660,7 @@ glyphicon{
 
 .profileName-Artist{
 	width:100%;
+	font-size: 20px;
 }
 
 .profileName-location{
@@ -3675,7 +3690,7 @@ glyphicon{
 .pin-show-title {
 	height: auto;
 
-	font-size: 28px;
+	font-size: 40px;
 	margin-bottom: 50px;
 	margin-left: auto;
 	margin-right: auto;
@@ -3683,9 +3698,13 @@ glyphicon{
 	text-align: center;
 	width: auto;
 	position: relative;
+
+	font-weight: 100;
+
 	h1{
 	font-weight: 100 !important;
 	}
+
 }
 
 
