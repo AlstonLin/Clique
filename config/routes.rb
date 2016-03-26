@@ -47,9 +47,9 @@ Rails.application.routes.draw do
     post 'favorite'
   end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
-    post 'join'
+    get 'join'
     get 'joined'
-    post 'leave'
+    get 'leave'
   end
   resources :messages, :only => [:index, :new, :create]
   resources :conversations, :only => [:show]

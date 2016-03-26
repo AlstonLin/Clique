@@ -4,6 +4,7 @@
       <!--<%= link_to "Clique", root_path, :class => "navbar-brand" %>-->
     </div>
     <div class="collapse navbar-collapse">
+      <div class="logo"></div>
       <% if current_user %>
         <!-- Links on the left -->
         <ul class="nav navbar-nav nav-margin">
@@ -11,8 +12,6 @@
           <li><%= link_to "Explore", explore_path %></li>
           <li><%= link_to "Messages", messages_path, :remote => true %></li>
         </ul>
-        <div class="logo">
-        </div>
         <!-- Right side of navbar-->
         <ul class="nav navbar-nav navbar-right nav-margin-right">
           <li><%= link_to "Upload", new_track_path %></li>

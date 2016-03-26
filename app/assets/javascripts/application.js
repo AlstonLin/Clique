@@ -50,4 +50,11 @@ $(document).on('ready pjax:success', function() {
     $(this).addClass("stats-active");
   });
 
+  if($(".profile-Banner")){
+    $(".profile-Banner img").css("display", "none");
+    $banner = $(".profile-Banner");
+    $banner.css("background", "url(" + $(".profile-Banner img").attr("src") + ") no-repeat");
+    $banner.css("background-size", "cover");
+    $banner.css("background-position", "50%");
+  }
 });

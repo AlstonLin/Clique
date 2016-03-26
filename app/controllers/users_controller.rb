@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def message
-    @user = User.find(current_user.id)
+    @user = User.find_by_username(params[:user_id])
     @message = Message.new
     respond_to do |format|
       format.js
