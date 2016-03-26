@@ -49,18 +49,19 @@ class CliqsController < ApplicationController
     end
     # Payment stuff
     @api = PayPal::SDK::AdaptivePayments::API.new
+    t = Time.now
     @preapproval = @api.build_preapproval({
-      :cancelUrl => "http://clique.us-east-1.elasticbeanstalk.com/profile/"+@clique.owner.id.to_s,
+      :cancelUrl => root_url + user_path(@clique.owner),
       :currencyCode => "USD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
-      :maxAmountPerPayment => 69.0,
+      :maxAmountPerPayment => @clique.price,
       :maxNumberOfPayments => 100,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
-      :returnUrl => "http://clique.us-east-1.elasticbeanstalk.com/clique/"+@clique.id.to_s+"/joined",
+      :returnUrl => root_url + cliq_joined_path(@clique),
       :ipnNotificationUrl => "http://clique.us-east-1.elasticbeanstalk.com/ipn_notify",
-      :startingDate => "2016-03-11T00:00:00+00:00",
+      :startingDate => t.strftime("%Y-%m-%d") + "T00:00:00+00:00",
       :feesPayer => "SENDER",
       :feesPayer => "SECONDARYONLY",
       :displayMaxTotalAmount => true })
@@ -85,10 +86,11 @@ class CliqsController < ApplicationController
 
   def joined
     puts "FINALLY MOTHERFUCKING AT JOINED"
+    @clique = Cliq.find(params[:cliq_id])
     @api = PayPal::SDK::AdaptivePayments::API.new
     @pay = @api.build_pay({
       :actionType => "PAY",
-      :cancelUrl => "https://paypal-sdk-samples.herokuapp.com/adaptive_payments/pay",
+      :cancelUrl => root_url + user_path(@clique.owner),
       :currencyCode => "CAD",
       :feesPayer => "SECONDARYONLY",
       :ipnNotificationUrl => "https://paypal-sdk-samples.herokuapp.com/adaptive_payments/ipn_notify",
@@ -106,13 +108,11 @@ class CliqsController < ApplicationController
           :paymentType => "DIGITALGOODS" }] },
       :reverseAllParallelPaymentsOnError => true,
       :senderEmail => "sender@gmail.com",
-      :returnUrl => "https://paypal-sdk-samples.herokuapp.com/adaptive_payments/pay"
+      :returnUrl => root_url + user_path(@clique.owner)
     })
 
     # Make API call & get response
     @pay_response = @api.pay(@pay)
-
-    @clique = Cliq.find(params[:cliq_id])
 
     # Access Response
     if @pay_response.success?
@@ -138,18 +138,9 @@ class CliqsController < ApplicationController
 
   def leave
     @clique = Cliq.find(params[:cliq_id])
-    # TODO: Add some kind of payment thing and validation
     @clique.members.delete(current_user)
     # Response
-    respond_to do |format|
-      if @clique.save
-        flash[:notice] = "Left " + @clique.name
-      else
-        flash[:alert] = "An error has occured"
-      end
-      @user = @clique.owner
-      format.js
-    end
+    redirect_to @clique.owner
   end
 
   private
