@@ -1,18 +1,31 @@
-<div class="page-Bottom2">
+<div class="page-Bottom3">
   <div class="container2">
-        <div class="signupform">
+        <div class="loginform">
+          <%= link_to user_omniauth_authorize_path(:facebook) do %>
+            <div class="panel-heading fbc">
+              <i class="fa fa-facebook-official fa-2x"></i>
+              <span class="tva cwf">Sign Up With Facebook</span>
+              <i class="fa float-r fa-angle-right  fa-2x"></i>
+            </div>
+          <% end %>
+
+
+
+
+
+
           <div class="panel-heading">
-            <h2>Sign up</h2>
+            <h2>Sign up with Email</h2>
           </div>
           <div class="panel-body">
             <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
 
               <%= devise_error_messages! %>
 
-              <div class="form-group fn-field">
-                <%= f.text_field :first_name, autofocus: true,:placeholder => "First Name", class: "form-control" %>
+              <div class="form-group">
+                <%= f.text_field :first_name, autofocus: true,:placeholder => "First Name", class: "form-control " %>
               </div>
-              <div class="form-group ln-field">
+              <div class="form-group">
                 <%= f.text_field :last_name, autofocus: true,:placeholder => "Last Name", class: "form-control" %>
               </div>
               <div class="form-group">
@@ -32,7 +45,7 @@
               </div>
 
               <div class="form-group w100">
-                <%= f.submit "Sign up", class: "btn btn-primary secondary-background signbtn" %>
+                <%= f.submit "Sign up", class: "btn btn-primary secondary-background signbtn", id: "loginbutton"%>
               </div>
               
             <% end %>

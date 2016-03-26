@@ -1,6 +1,6 @@
 <!-- Content Filters -->
 <div class="stats1 stats-active">
-<%= link_to "All", user_all_path(user), :method => :get, :remote => true %>
+<%= link_to "All Stream", user_all_path(user), :method => :get, :remote => true %>
 </div>
 <div class="stats2">
 <%= link_to "Posts", user_posts_path(user), :method => :get, :remote => true %>
@@ -25,12 +25,14 @@
   </div>
 
   <div class="edit-Profile">
-    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "button btn btn-info btn-lg btn-primary btn"  %>
+    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn"  %>
   </div>
 
   <% if !@user.clique %>
-    <%= button_to "Create Clique", clique_settings_path, :method => :get, :class => "button btn btn-info btn-lg btn-primary btn" %>
+    <!--<%= button_to "Create Clique", clique_settings_path, :method => :get, :class => "button btn btn-info btn-lg btn-primary btn" %>-->
   <% end %>
+
+
 <% elsif current_user %>
 <!-- Others profile -->
   <!-- Follow -->
