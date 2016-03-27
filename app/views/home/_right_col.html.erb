@@ -48,19 +48,22 @@
         <span aria-hidden="true" class="glyphicon glyphicon-heart"></span>
        	Favorites
       </div>
+      <div class="rightCol-Filter-Title-Stat">
+        <%= link_to "See more", favorites_path, :remote => true %>
+      </div>
     </div>
     <% @favorites.each do |f| %>
       <div class="rightCol-Filter-Profile">
-        <%= link_to f do %>
           <div class="rightCol-Profile-Avi text-userPic">
             <%= image_tag f.pic.url %>
           </div>
           <div class="rightCol-Profile-Bar">
             <div class="rightCol-Profile-Name">
-              <%= f.name %>
+              <%= link_to f.owner.name, f.owner %><br/>
+              <%= link_to f.name, f %>
             </div>
           </div>
-        <% end %>
+          <%= link_to "View", f %>
       </div>
     <% end %>
   </div>

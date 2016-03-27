@@ -85,6 +85,7 @@ class UsersController < ApplicationController
     @songs = @user.get_tracks(false)
     respond_to do |format|
       format.js
+      format.html
     end
   end
 

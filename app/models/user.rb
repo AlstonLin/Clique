@@ -84,9 +84,9 @@ class User < ActiveRecord::Base
     favorites = favorites.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
     return favorites
   end
-  
+
   def get_following_all
-    content = []
+    content = self.tracks + self.posts
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
   end
 
   def get_following_tracks
-    tracks = []
+    tracks = self.tracks
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
   end
 
   def get_following_posts
-    posts = []
+    posts = self.posts
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
@@ -166,7 +166,7 @@ class User < ActiveRecord::Base
       if self.profile_picture.exists?
         self.update_column(:profile_picture_url, self.profile_picture.url(:med))
       end
-      if self.profile_picture.exists?
+      if self.cover_picture.exists?
         self.update_column(:cover_picture_url, self.cover_picture.url(:med))
       end
     end

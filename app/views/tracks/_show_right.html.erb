@@ -24,7 +24,10 @@
   <% if @more.count > 0 %>
     <div class="rightCol-Filter-Title">
       <div class="rightCol-Filter-Title-Name">
-       	More by this artist
+       	More tracks
+      </div>
+      <div class="rightCol-Filter-Title-Stat">
+        <%= link_to "See more", @track.owner %>
       </div>
     </div>
     <% @more.each do |m| %>
@@ -34,7 +37,8 @@
           </div>
           <div class="rightCol-Profile-Bar">
             <div class="rightCol-Profile-Name">
-              <%= m.name %>
+              <%= link_to @track.owner.name, @track.owner %><br/>
+              <%= link_to m.name, m %>
             </div>
           </div>
           <%= link_to "View", m %>
