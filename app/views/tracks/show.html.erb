@@ -4,103 +4,28 @@
       <%= @track.name %>
     </div>
     <div id="pin_show">
-      <div class="rightCol-singleSong">
-        <div class="song-Description">
-          <div class="rightCol-profileAvi">
-            <img src="<%= @track.owner.profile_picture_url %>">
-          </div>
-          <div class="rightCol-profileName">
-            <div class="profileName-Artist">
-              <%= @track.owner.name %>
-            </div>
-            <% if current_user %>
-              <% if is_following @user %>
-                <%= button_to "Unfollow", user_unfollow_path(@track.owner), :remote => true, :class => "profilename-follow button btn btn-info btn-lg btn-primary btn"  %>
-                  <% else %>
-                    <%= button_to "Follow", user_follow_path(@track.owner), :remote => true, :class => "profilename-follow button btn btn-info btn-lg btn-primary btn"  %>
-                      <% end %>
-                        <% end %>
-          </div>
-          <div class="rightCol-Filter">
-            <%= @track.owner.bio %>
-          </div>
-        </div>
-      </div>
+
+      <%= render :partial => 'show_right' %>
+
       <div class="leftCol">
-        <%= render :partial => '/tracks/track', :locals => { :track => @track } %>
-
-
-          <div class="player1-Bottom">
+          <%= render :partial => 'standalone_track' %>
+          <!-- Comment Form -->
+          <div class="post-Comment">
             <div class="user-avi1">
+              <%= link_to image_tag(current_user.profile_picture_url), current_user %>
             </div>
-            <input class="player1-Bottom-Middle" placeholder="Comment">
-            <div class="comment-btn">
-              </input>
-            </div>
+            <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{@track.id}a" } do |form| %>
+              <%= form.hidden_field :track_id, :value => @track.id %>
+              <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
+            <% end %>
           </div>
-
-
-
-
-
-
+          <!-- Comments -->
           <div class="player1-commentSection">
             <div class="rightCol-Filter-Title">
-              <div class="rightCol-Filter-Title-Name">4 Comments</div>
+              <div class="rightCol-Filter-Title-Name"><%= @track.comments.count %> Comments</div>
             </div>
-
-            <div class="comment1">
-              <div class="user-avi">
-                <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/avatars-000157722791-4aqyc1-t500x500.jpg" width="40" />
-              </div>
-              <div class="commentSection-name">
-                <div class="comment-time">1 day ago</div>
-                Vday Beatz
-              </div>
-              <div class="commentSection-comment">
-                Track is dope af.
-              </div>
-            </div>
-
-
-
-            <div class="comment1">
-              <div class="user-avi">
-                <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/avatars-000172193701-g3x3pk-t500x500.jpg" width="40" />
-              </div>
-              <div class="commentSection-name">
-                <div class="comment-time">2 days ago</div>
-                Tory Lanez
-              </div>
-              <div class="commentSection-comment">
-                This song is trash, know your place fam.
-              </div>
-            </div>
-
-            <div class="comment1">
-              <div class="user-avi">
-                <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/artworks-000132536033-2ppedc-t500x500.jpg" width="40" />
-              </div>
-              <div class="commentSection-name">
-                <div class="comment-time">2 days ago</div>
-                Dj Khaled
-              </div>
-              <div class="commentSection-comment">
-                Another 1. Bless Up. Major Key.
-              </div>
-            </div>
-
-            <div class="comment1">
-              <div class="user-avi">
-                <img alt="Smiley face" height="40" src="https://i1.sndcdn.com/artworks-000124894703-jvaba9-t500x500.jpg" width="40" />
-              </div>
-              <div class="commentSection-name">
-                <div class="comment-time">1 week ago</div>
-                Meek Mill
-              </div>
-              <div class="commentSection-comment">
-                You didn't even write this
-              </div>
+            <div id="track-comments<%= @track.id %>">
+              <%= render :partial => "comments", :locals => { :track => @track } %>
             </div>
           </div>
       </div>

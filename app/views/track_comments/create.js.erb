@@ -1,4 +1,7 @@
 $("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
 $("#track-comments<%= @track.id %>").html('<%= j render :partial => "tracks/comments", :locals => { track: @track } %>');
 $(".comment-field").val("");
-$("#track-modal<%= @track.id %>").modal();
+var modal = $("#track-modal<%= @track.id %>");
+if (modal.length > 0){
+  modal.modal();
+}

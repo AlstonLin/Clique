@@ -1,0 +1,42 @@
+<!-- Creator Profile -->
+<div class="rightCol-singleSong">
+  <div class="song-Description">
+    <div class="rightCol-profileAvi">
+      <img src="<%= @track.owner.profile_picture_url %>">
+    </div>
+    <div class="rightCol-profileName">
+      <div class="profileName-Artist">
+        <%= @track.owner.name %>
+      </div>
+      <% if current_user %>
+        <% if is_following @user %>
+          <%= button_to "Unfollow", user_unfollow_path(@track.owner), :remote => true, :class => "btn-hollow btn"  %>
+        <% else %>
+          <%= button_to "Follow", user_follow_path(@track.owner), :remote => true, :class => "btn-hollow btn"  %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="rightCol-Filter">
+      <%= @track.owner.bio %>
+    </div>
+  </div>
+  <!-- Other Songs -->
+  <div class="rightCol-Filter-Title">
+    <div class="rightCol-Filter-Title-Name">
+     	More by this artist
+    </div>
+  </div>
+  <% @more.each do |m| %>
+    <div class="rightCol-Filter-Profile">
+        <div class="rightCol-Profile-Avi text-userPic">
+          <%= image_tag m.pic.url %>
+        </div>
+        <div class="rightCol-Profile-Bar">
+          <div class="rightCol-Profile-Name">
+            <%= m.name %>
+          </div>
+        </div>
+        <%= link_to "View", m %>
+    </div>
+  <% end %>
+</div>

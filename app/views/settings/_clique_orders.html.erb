@@ -1,1 +1,10 @@
-<h1>Clique Orders</h1>
+<div class="panel-heading">
+  <h1>Clique Orders</h1>
+  <div class="row" style="overflow: auto;">
+    <%= button_to "Edit Clique", edit_clique_path, :remote => true, :method => :get %>
+    <%= button_to "Clique Members", clique_members_path, :remote => true, :method => :get %>
+    <%= button_to "Clique Orders", clique_orders_path, :remote => true, :method => :get %>
+  </div>
+</div>
+<div class="panel-body">
+</div>

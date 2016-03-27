@@ -1,4 +1,13 @@
-<h1>Clique Members</h1>
-<% clique.members.each do |m| %>
-  <%= link_to m.name, m %>
-<% end %>
+<div class="panel-heading">
+  <h1>Clique Members</h1>
+  <div class="row" style="overflow: auto;">
+    <%= button_to "Edit Clique", edit_clique_path, :remote => true, :method => :get %>
+    <%= button_to "Clique Members", clique_members_path, :remote => true, :method => :get %>
+    <%= button_to "Clique Orders", clique_orders_path, :remote => true, :method => :get %>
+  </div>
+</div>
+<div class="panel-body">
+  <% clique.members.each do |m| %>
+    <%= link_to m.name, m %>
+  <% end %>
+</div>
