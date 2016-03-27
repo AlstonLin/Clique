@@ -19,11 +19,8 @@
           </div>
           <!-- Comments -->
           <div class="player1-commentSection">
-            <div class="rightCol-Filter-Title">
-              <div class="rightCol-Filter-Title-Name"><%= @track.comments.count %> Comments</div>
-            </div>
-            <div id="track-comments<%= @track.id %>">
-              <%= render :partial => "comments", :locals => { :track => @track } %>
+            <div id="track-comments<%= @track.id %>-numbered">
+              <%= render :partial => "comments_with_number" %>
             </div>
           </div>
       </div>

@@ -1,7 +1,13 @@
 $("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
-$("#track-comments<%= @track.id %>").html('<%= j render :partial => "tracks/comments", :locals => { track: @track } %>');
 $(".comment-field").val("");
+
+var comments = $("#track-comments<%= @track.id %>");
 var modal = $("#track-modal<%= @track.id %>");
+if (comments.length > 0){
+  comments.html('<%= j render :partial => "tracks/comments", :locals => { track: @track } %>');
+} else {
+  $("#track-comments<%= @track.id %>-numbered").html('<%= j render :partial => "tracks/comments_with_number" %>');
+}
 if (modal.length > 0){
   modal.modal();
 }
