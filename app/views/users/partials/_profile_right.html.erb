@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<% if user != current_user && user.clique %>
+<% if current_user && user != current_user && user.clique %>
   <div class="rightBlock">
     <div class="rightCol-Clique-Title">
         Exclusive Clique Perks
