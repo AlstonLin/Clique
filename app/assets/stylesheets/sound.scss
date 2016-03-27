@@ -155,7 +155,9 @@ body, html{
 #volumeBuffer{
   display:none;
   position: absolute;
+
   margin: -160px 0px 0px -11px;
+
   width: 32px;
   //background: rgba(160, 0, 0, 0.38);
   padding:15px 0px 0px 14px;
@@ -177,11 +179,10 @@ body, html{
   background:#fe4641;
   border:none;
   outline:none;
-<<<<<<< HEAD
+
   border-radius: 50%;
   cursor: pointer;
-=======
->>>>>>> origin/master
+
 }
 
 #volume .ui-slider-range{

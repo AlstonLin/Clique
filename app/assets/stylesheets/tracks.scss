@@ -6,7 +6,12 @@ $primary-hover: #A04444;
 $fbhover: #374F86;
 $fbblue: rgba(59, 89, 152,1);
 
-
+.track-btn{
+	width: 100px !important;
+	float: left !important;
+	margin-left: 0px !important;
+	border: 0px !important;
+}
 
 .redclass{
 	color: $primary-color !important;
@@ -806,16 +811,15 @@ textarea {
 	position: absolute;
 	overflow: hidden;
 	z-index: 10;
-	background-size: cover;
+	background-size: contain;
 	border-radius: 50%;
 	left: 50%;
 	margin-left: -55px;
-
+	background-position: center;
 	border: 3px solid white;
 		img {
-			width: 110px;
+			width: auto;
 			height:110px;
-			background-position: 50% auto;
 		}
 }
 
@@ -2454,11 +2458,12 @@ $border: #e5e5e5;
 
 
 .rightCol-Followers{
-	width:100px;
+	width:160px;
 	height:15px;
 	font-size: 12px;
 	margin-top: 5px;
 	color: #999;
+	overflow:hidden;
 	.fa{
 		font-size: 12px;
 
@@ -3181,7 +3186,7 @@ img{
 	border: 1px solid $primary-color;
 	cursor: pointer;
 		.glyphicon{
-		color: $primary-color;
+		color: $primary-color !important;
 	}
 }
 
@@ -3625,7 +3630,7 @@ glyphicon{
 
 
 .centerCol {
-	width:940px;
+	width:950px;
 	margin-right: auto;
 	margin-left: auto;
 	height:100%;
@@ -3739,7 +3744,7 @@ glyphicon{
 
 .song-Description{
 	width: 100%;
-	height: 400px;
+	display: inline-block;
 }
 
 

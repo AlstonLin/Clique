@@ -10,7 +10,10 @@
       <div class="leftCol">
           <%= render :partial => 'standalone_track' %>
           <!-- Comment Form -->
-          <div class="post-Comment">
+
+
+          
+          <div class="player1-Bottom">
             <div class="user-avi1">
               <%= link_to image_tag(current_user.profile_picture_url), current_user %>
             </div>
@@ -19,6 +22,10 @@
               <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
             <% end %>
           </div>
+
+
+
+
           <!-- Comments -->
           <div class="player1-commentSection">
             <div id="track-comments<%= @track.id %>-numbered">

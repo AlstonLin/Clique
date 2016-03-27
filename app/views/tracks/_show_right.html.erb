@@ -10,9 +10,9 @@
       </div>
       <% if current_user %>
         <% if is_following @user %>
-          <%= button_to "Unfollow", user_unfollow_path(@track.owner), :remote => true, :class => "btn-hollow btn"  %>
+          <%= button_to "Unfollow", user_unfollow_path(@track.owner), :remote => true, :class => "button btn btn-info btn-lg btn-primary btn track-btn"  %>
         <% else %>
-          <%= button_to "Follow", user_follow_path(@track.owner), :remote => true, :class => "btn-hollow btn"  %>
+          <%= button_to "Follow", user_follow_path(@track.owner), :remote => true, :class => "button btn btn-info btn-lg btn-primary btn track-btn"  %>
         <% end %>
       <% end %>
     </div>
@@ -22,10 +22,18 @@
   </div>
   <!-- Other Songs -->
   <% if @more.count > 0 %>
+
+
+<div class="rightCol-Filter">
     <div class="rightCol-Filter-Title">
       <div class="rightCol-Filter-Title-Name">
-       	More by this artist
+       	<span aria-hidden="true" class="glyphicon glyphicon-heart"></span> More tracks
       </div>
+        
+    <div class="rightCol-Filter-Title-Stat">
+        <%= link_to "See more", explore_path %>
+    </div>
+    
     </div>
     <% @more.each do |m| %>
       <div class="rightCol-Filter-Profile">
@@ -34,11 +42,23 @@
           </div>
           <div class="rightCol-Profile-Bar">
             <div class="rightCol-Profile-Name">
-              <%= m.name %>
+              <%= @track.owner.name %>
             </div>
+            <div class="rightCol-Followers">
+              <%= m.name %>     
+            </div>
+
+
+
           </div>
-          <%= link_to "View", m %>
+
+          <div class="rightCol-Profile-Follow">
+            View
+          </div>
       </div>
+</div>
     <% end %>
+
+
   <% end %>
 </div>
