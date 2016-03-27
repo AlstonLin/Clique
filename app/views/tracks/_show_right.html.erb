@@ -21,22 +21,24 @@
     </div>
   </div>
   <!-- Other Songs -->
-  <div class="rightCol-Filter-Title">
-    <div class="rightCol-Filter-Title-Name">
-     	More by this artist
+  <% if @more.count > 0 %>
+    <div class="rightCol-Filter-Title">
+      <div class="rightCol-Filter-Title-Name">
+       	More by this artist
+      </div>
     </div>
-  </div>
-  <% @more.each do |m| %>
-    <div class="rightCol-Filter-Profile">
-        <div class="rightCol-Profile-Avi text-userPic">
-          <%= image_tag m.pic.url %>
-        </div>
-        <div class="rightCol-Profile-Bar">
-          <div class="rightCol-Profile-Name">
-            <%= m.name %>
+    <% @more.each do |m| %>
+      <div class="rightCol-Filter-Profile">
+          <div class="rightCol-Profile-Avi text-userPic">
+            <%= image_tag m.pic.url %>
           </div>
-        </div>
-        <%= link_to "View", m %>
-    </div>
+          <div class="rightCol-Profile-Bar">
+            <div class="rightCol-Profile-Name">
+              <%= m.name %>
+            </div>
+          </div>
+          <%= link_to "View", m %>
+      </div>
+    <% end %>
   <% end %>
 </div>
