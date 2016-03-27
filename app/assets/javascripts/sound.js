@@ -66,7 +66,6 @@ $(document).on('ready pjax:success', function() {
 		min: 0,
 		max: 100,
 		slide: function( event, ui ) {
-			//TODO set volume of current playing song
 			if(nowPlaying !== null && nowPlaying.id !== null){
 				soundManager.setVolume(nowPlaying.id,ui.value );
 			}
