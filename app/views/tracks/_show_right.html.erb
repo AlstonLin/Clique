@@ -28,7 +28,6 @@
   </div>
   <% @more.each do |m| %>
     <div class="rightCol-Filter-Profile">
-      <%= link_to m do %>
         <div class="rightCol-Profile-Avi text-userPic">
           <%= image_tag m.pic.url %>
         </div>
@@ -37,7 +36,7 @@
             <%= m.name %>
           </div>
         </div>
-      <% end %>
+        <%= link_to "View", m %>
     </div>
   <% end %>
 </div>
