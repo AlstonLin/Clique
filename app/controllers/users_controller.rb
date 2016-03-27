@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     end
     # Response
     @top = get_top HomeController::ITEMS_HOME
+    @favorites = current_user.favorite_tracks.take HomeController::ITEMS_HOME
     respond_to do |format|
       format.js
     end

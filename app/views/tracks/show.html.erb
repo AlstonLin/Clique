@@ -8,30 +8,23 @@
       <%= render :partial => 'show_right' %>
 
       <div class="leftCol">
-          <%= render :partial => 'standalone_track' %>
-          <!-- Comment Form -->
 
-
-          
-          <div class="player1-Bottom">
-            <div class="user-avi1">
-              <%= link_to image_tag(current_user.profile_picture_url), current_user %>
-            </div>
-            <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{@track.id}a" } do |form| %>
-              <%= form.hidden_field :track_id, :value => @track.id %>
-              <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
-            <% end %>
+        <%= render :partial => 'standalone_track' %>
+        <!-- Comment Form -->
+        <div class="player1-Bottom">
+          <div class="user-avi1">
+            <%= link_to image_tag(current_user.profile_picture_url), current_user %>
+>>>>>>> origin/master
           </div>
-
-
-
-
-          <!-- Comments -->
-          <div class="player1-commentSection">
-            <div id="track-comments<%= @track.id %>-numbered">
-              <%= render :partial => "comments_with_number" %>
-            </div>
-          </div>
+          <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{@track.id}a" } do |form| %>
+            <%= form.hidden_field :track_id, :value => @track.id %>
+            <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
+          <% end %>
+        </div>
+        <!-- Comments -->
+        <div id="track-comments<%= @track.id %>-numbered">
+          <%= render :partial => "comments_with_number" %>
+        </div>
       </div>
     </div>
   </div>
