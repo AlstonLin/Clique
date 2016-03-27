@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
     favorites = favorites.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
     return favorites
   end
-
+  
   def get_following_all
     content = []
     self.following.each do |f|

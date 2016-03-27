@@ -1,3 +1,4 @@
+<!-- Top Artists -->
 <div class="rightCol-Filter">
   <div class="rightCol-Filter-Title">
     <div class="rightCol-Filter-Title-Name">
@@ -7,8 +8,6 @@
     <div class="rightCol-Filter-Title-Stat">
       <%= link_to "See more", explore_path %>
     </div>
-
-
   </div>
   <% @top.each do |t| %>
     <div class="rightCol-Filter-Profile">
@@ -36,6 +35,30 @@
             <% end %>
           </div>
         <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Favorites -->
+<div class="rightCol-Filter">
+  <div class="rightCol-Filter-Title">
+    <div class="rightCol-Filter-Title-Name">
+      <span aria-hidden="true" class="glyphicon glyphicon-heart"></span>
+     	Favorites
+    </div>
+  </div>
+  <% @favorites.each do |f| %>
+    <div class="rightCol-Filter-Profile">
+      <%= link_to f do %>
+        <div class="rightCol-Profile-Avi text-userPic">
+          <%= image_tag f.pic.url %>
+        </div>
+        <div class="rightCol-Profile-Bar">
+          <div class="rightCol-Profile-Name">
+            <%= f.name %>
+          </div>
+        </div>
       <% end %>
     </div>
   <% end %>

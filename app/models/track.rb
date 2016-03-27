@@ -1,6 +1,7 @@
 class Track < ActiveRecord::Base
   # Sorting
   default_scope { order :created_at => :desc }
+  # scope :by_score, :joins => :reviews, :group => "schools.id", :order => "AVG(reviews.score) DESC"
   # Relationships
   has_attached_file :song
   has_attached_file :pic
