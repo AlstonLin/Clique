@@ -27,7 +27,13 @@
 <div class="rightCol-Filter">
     <div class="rightCol-Filter-Title">
       <div class="rightCol-Filter-Title-Name">
+
        	<span aria-hidden="true" class="glyphicon glyphicon-heart"></span> More tracks
+
+      </div>
+      <div class="rightCol-Filter-Title-Stat">
+        <%= link_to "See more", @track.owner %>
+
       </div>
         
     <div class="rightCol-Filter-Title-Stat">
@@ -42,7 +48,8 @@
           </div>
           <div class="rightCol-Profile-Bar">
             <div class="rightCol-Profile-Name">
-              <%= @track.owner.name %>
+
+              <%= @track.owner.name, @track.owner  %>
             </div>
             <div class="rightCol-Followers">
               <%= m.name %>     
