@@ -56,35 +56,18 @@
     </div>
     <% @favorites.each do |f| %>
       <div class="rightCol-Filter-Profile">
-          <div class="rightCol-Profile-Avi text-userPic">
-            <%= image_tag f.pic.url %>
-          </div>
-
-
-        <% end %>
+        <div class="rightCol-Profile-Avi text-userPic">
+          <%= image_tag f.pic.url %>
+        </div>
 
         <div class="rightCol-Profile-Bar">
-
-
-
-        <!-- this should display the artist's name and link to their profile -->  
-        <%= link_to f do %>     
           <div class="rightCol-Profile-Name">
-            Bryson Tiller
-          </div>
-        <% end %>
-
-
-        <%= link_to f do %>          
-          <div class="rightCol-Followers">
-            <%= f.name %>
+            <%= link_to f.owner.name, f.owner %>
           </div>
         </div>
         <div class="rightCol-Profile-Follow">
-          View
+          <%= link_to "View", f %>
         </div>
-        <% end %>
-
       </div>
     <% end %>
   </div>
