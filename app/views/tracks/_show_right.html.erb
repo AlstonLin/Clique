@@ -22,23 +22,21 @@
   </div>
   <!-- Other Songs -->
   <% if @more.count > 0 %>
-
-
-<div class="rightCol-Filter">
-    <div class="rightCol-Filter-Title">
-      <div class="rightCol-Filter-Title-Name">
-
-       	<span aria-hidden="true" class="glyphicon glyphicon-heart"></span> More tracks
-
+    <div class="rightCol-Filter">
+      <div class="rightCol-Filter-Title">
+        <div class="rightCol-Filter-Title-Name">
+         	<span aria-hidden="true" class="glyphicon glyphicon-heart"></span> More tracks
+        </div>
+        <div class="rightCol-Filter-Title-Stat">
+          <%= link_to "See more", @track.owner %>
+        </div>
       </div>
-      <div class="rightCol-Filter-Title-Stat">
-        <%= link_to "See more", @track.owner %>
 
-      </div>
-        
     </div>
     <% @more.each do |m| %>
       <div class="rightCol-Filter-Profile">
+
+
           <div class="rightCol-Profile-Avi text-userPic">
             <%= image_tag m.pic.url %>
           </div>
@@ -49,20 +47,20 @@
             </div>
             <div class="rightCol-Followers">
               <%= link_to m.name, m %>     
+
             </div>
-
-
-
           </div>
+
           <%= link_to m do %>
+
           <div class="rightCol-Profile-Follow">
-            View
+            <%= link_to "View", m %>
           </div>
+
           <% end %>
       </div>
 </div>
     <% end %>
-
 
   <% end %>
 </div>
