@@ -4,7 +4,7 @@ class Track < ActiveRecord::Base
   # scope :by_score, :joins => :reviews, :group => "schools.id", :order => "AVG(reviews.score) DESC"
   # Relationships
   has_attached_file :song
-  has_attached_file :pic, :default_url => "/assets/default-track.png"
+  has_attached_file :pic, :default_url =>  ActionController::Base.helpers.asset_path("default-track.png")
   belongs_to :owner, :class_name => 'User'
   has_many :comments, :class_name => 'TrackComment'
   has_many :retracks
