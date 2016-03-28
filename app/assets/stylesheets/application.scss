@@ -28,8 +28,16 @@
   margin-top: 50px;
 }
 
+#pjax-container, .page-Bottom2{
+  height:100%;
+}
 
-
+.scrollbar-measure {
+    height: 100px;
+    overflow: scroll;
+    position: absolute;
+    top: -9999px;
+}
 
 .no-post{
   width: 100%;
@@ -222,7 +230,6 @@ body.modal-open{
     width:100%!important;
     overflow: hidden;
     position:fixed!important;
-    padding-right: 55px;
 }
 
 html {
