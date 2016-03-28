@@ -36,10 +36,6 @@
 
       </div>
         
-    <div class="rightCol-Filter-Title-Stat">
-        <%= link_to "See more", explore_path %>
-    </div>
-    
     </div>
     <% @more.each do |m| %>
       <div class="rightCol-Filter-Profile">
@@ -49,19 +45,20 @@
           <div class="rightCol-Profile-Bar">
             <div class="rightCol-Profile-Name">
 
-              <%= @track.owner.name, @track.owner  %>
+              <%= link_to @track.owner.name,  @track.owner  %>
             </div>
             <div class="rightCol-Followers">
-              <%= m.name %>     
+              <%= link_to m.name, m %>     
             </div>
 
 
 
           </div>
-
+          <%= link_to m do %>
           <div class="rightCol-Profile-Follow">
             View
           </div>
+          <% end %>
       </div>
 </div>
     <% end %>
