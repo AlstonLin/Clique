@@ -1,21 +1,20 @@
-<div class="col-md-8 col-md-offset-2">
-  <div class="row">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2>Edit Clique</h2>
-      </div>
-      <div class="panel-body">
-		<%= form_for clique, :remote => true do |f| %>
-		  <%= f.label :name, "Clique Name (Optional) " %>
-		  <%= f.text_field :name %><br>
-		  <%= f.label :price, "Monthly Subscription Price " %>
-		  $<%= f.number_field :price, :step => 0.01 %><br>
-		  <%= f.label :description %><br>
-		  <%= f.text_area :description, :cols => '50', :rows => '5' %><br>
-		  <%= f.label :thank_you_message, "Thank You Message (Optional)" %><br>
-		  <%= f.text_area :thank_you_message, :cols => '50', :rows => '5' %><br>
-		  <%= f.submit "Update Clique" %>
-		<% end %>
-    </div>
+<div class="panel-heading panel-heading-no-bottom">
+  <div class="row" style="overflow: auto;">
+    <%= button_to "Edit Clique", edit_clique_path, :remote => true, :method => :get, :class => "settings-tabs1" %>
+    <%= button_to "Clique Members", clique_members_path, :remote => true, :method => :get, :class => "settings-tabs" %>
+    <%= button_to "Clique Orders", clique_orders_path, :remote => true, :method => :get, :class => "settings-tabs" %>
   </div>
+</div>
+<div class="panel-body">
+  <%= form_for clique, :remote => true do |f| %>
+    <%= f.label :name, "Clique Name (Optional) " %>
+    <%= f.text_field :name, :class => "form-control" %><br>
+    <%= f.label :price, "Monthly Subscription Price " %>
+    $<%= f.number_field :price, :step => 1.00 %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :cols => '50', :rows => '5', :class => "form-control" %><br>
+    <%= f.label :thank_you_message, "Thank You Message (Optional)" %><br>
+    <%= f.text_area :thank_you_message, :cols => '50', :rows => '5', :class => "form-control" %><br>
+    <%= f.submit "Update Clique", :class => "btn btn-primary secondary-background" %>
+  <% end %>
 </div>

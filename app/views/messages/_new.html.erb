@@ -1,12 +1,21 @@
-<h3>New Message</h3>
+<div class="message-Box-top">
+	<%= link_to "", messages_path, :remote => true, :class => "fa fa-angle-left fa-1x" %> 	
+ 	New Message
+
+</div>
+<div class="message-Box-body2">
+
+
+
 <%= form_for @message, :remote => true do |f| %>
 	<%= label_tag :username %>
 	<% if @user %>
-		<%= text_field_tag :username, params[:username], :value => @user.username %><br>
+		<%= text_field_tag :username, params[:username], :value => @user.username, class: "form-control"  %><br>
 	<% else %>
-		<%= text_field_tag :username, params[:username] %><br>
+		<%= text_field_tag :username, params[:username], class: "form-control"  %><br>
 	<% end %>
 	<%= f.label :content %>
-	<%= f.text_area :content %><br>
-	<%= f.submit "Send" %>
+	<%= f.text_area :content , class: "form-control" %><br>
+	<%= f.submit "Send" , class: "message-send2" %>
 <% end %>
+</div>

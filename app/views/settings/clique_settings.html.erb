@@ -1,17 +1,13 @@
-
 <div class="page-Bottom2">
-	<div class="container2">	
+	<div class="container2">
 		<% if @clique.valid? %>
-		  <div class="col-md-3" style="overflow: auto;">
-		    <%= button_to "Edit Clique", edit_clique_path, :remote => true, :method => :get %>
-		    <%= button_to "Clique Members", clique_members_path, :remote => true, :method => :get %>
-		    <%= button_to "Clique Orders", clique_orders_path, :remote => true, :method => :get %>
-		  </div>
-
-
-		  <div class="col-md-9" id="content">
-		    <%= render :partial => "edit_clique", :locals => { clique: @clique } %>
-		  </div>
+			<div class="col-md-8 col-md-offset-2">
+		  	<div class="row">
+		    	<div class="panel panel-default" id="content">
+				    <%= render :partial => "edit_clique", :locals => { clique: @clique } %>
+		  		</div>
+				</div>
+			</div>
 		<% else %>
 		  <%= render :partial => "create_clique", :locals => { clique: @clique } %>
 		<% end %>

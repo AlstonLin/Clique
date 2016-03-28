@@ -1,7 +1,31 @@
+
+$primary-color: #fe4641;
+$border: #e5e5e5;
+$primary-hover: #A04444;
+$fbhover: #374F86;
+$fbblue: rgba(59, 89, 152,1);
+
+
+
+
+
 body, html{
   min-width:530px;
   width:100%;
 }
+
+
+
+#volumeBuffer{
+  background-color: #F5F5F5;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  margin-left: -10px !important;
+}
+
+
+
+
 
 #audioplayer{
   min-width:530px;
@@ -11,7 +35,7 @@ body, html{
   height:50px;
   width:100%;
   display:table;
-  z-index: 9001;
+  z-index: 1000;
   display: inline-flex;
   border-top: 1px solid rgba(0,0,0,.05);
 
@@ -131,30 +155,37 @@ body, html{
 #volumeBuffer{
   display:none;
   position: absolute;
-  margin: -175px 0px 0px 0px;
+
+  margin: -160px 0px 0px -11px;
+
   width: 32px;
   //background: rgba(160, 0, 0, 0.38);
-  padding:25px 0px 0px 13px;
-  height: 175px;
+  padding:15px 0px 0px 14px;
+  height: 130px;
+  border-radius: 3px;
+
 }
 
 #volume{
   position:absolute;
-  width: 7.5px;
+  width: 3px;
+  border: 0px;
 }
 
 #volume .ui-slider-handle{
   margin-left:1.75px;
-  width:12.5px;
-  height:12.5px;
+  width:8px;
+  height:8px;
   background:#fe4641;
-  border:none;
   outline:none;
-  margin-left:3px;
+  border-radius: 50%;
+  cursor: pointer;
+
 }
 
 #volume .ui-slider-range{
-  background:black;
+  background: $primary-color;
+  width:2px;
 }
 
 #volumeBtn:hover #volume{

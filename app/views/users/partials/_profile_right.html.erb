@@ -27,22 +27,22 @@
   </div>
 </div>
 
-<% if user != current_user && user.clique %>
+<% if current_user && user != current_user && user.clique %>
   <div class="rightBlock">
     <div class="rightCol-Clique-Title">
         Exclusive Clique Perks
-      </div>
+    </div>
     <div class="rightBlock-Body">
        <%= user.clique.description %>
     </div>
     <% if current_user.cliques.include? user.clique %>
-      <%= link_to cliq_leave_path(user.clique), :remote => true do %>
+      <%= link_to cliq_leave_path(user.clique) do %>
         <div class="right-Clique-Btn">
-          Join Clique
+          Leave Clique
         </div>
       <% end %>
     <% else %>
-      <%= link_to cliq_join_path(user.clique), :method => :post do %>
+      <%= link_to cliq_join_path(user.clique) do %>
         <div class="right-Clique-Btn">
           Join Clique
         </div>

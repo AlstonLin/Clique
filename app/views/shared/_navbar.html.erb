@@ -1,20 +1,19 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container3">
     <div class="navbar-header">
-      <%= link_to "Clique", root_path, :class => "navbar-brand" %>
+      <!--<%= link_to "Clique", root_path, :class => "navbar-brand" %>-->
     </div>
     <div class="collapse navbar-collapse">
+      <div class="logo"></div>
       <% if current_user %>
         <!-- Links on the left -->
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav nav-margin">
           <li><%= link_to "Home", home_path %></li>
           <li><%= link_to "Explore", explore_path %></li>
           <li><%= link_to "Messages", messages_path, :remote => true %></li>
         </ul>
-        <div class="logo">
-        </div>
         <!-- Right side of navbar-->
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right nav-margin-right">
           <li><%= link_to "Upload", new_track_path %></li>
             <%= link_to image_tag(current_user.profile_picture_url), current_user, :class => 'nav-pic' %>
           <!-- Account dropdown menu-->
@@ -38,7 +37,7 @@
               <% else %>
                 <li><%= link_to "Create a Clique", clique_settings_path, :class => 'menu-item' %></li>
               <% end %>
-              <li><%= link_to "Orders", orders_path, :class => 'menu-item' %></li>
+              <li><%= link_to "Subscriptions", orders_path, :class => 'menu-item' %></li>
               <div class="cdivider"></div>
               <!-- NOTE: This is a buton because Rails is stupid and think wont work as a link -->
               <li><%= button_to 'Logout', destroy_user_session_path, :class => 'menu-item', :method => :delete %></li>
@@ -55,11 +54,13 @@
         </ul>
       <% else %>
         <!-- Shown when signed out -->
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav nav-margin">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Explore", explore_path %></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <div class="logo">
+        </div>
+        <ul class="nav navbar-nav navbar-right nav-margin-right">
           <li><%= link_to "Log In", new_user_session_path %></li>
           <li><%= link_to "Sign Up", new_user_registration_path, 'data-skip-pjax' => true %></li>
         </ul>

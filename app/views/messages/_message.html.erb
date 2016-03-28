@@ -1,18 +1,39 @@
 <% if message.creator == current_user %>
   <div class="message-from-you">
-<% else %>
-  <div class="message-from-else">
-<% end %>
   <div class="message-profile-pic">
     <%= image_tag message.creator.profile_picture_url %>
   </div>
   <div class="message-text">
     <b class="caret-right"></b>
-    <div class="message-content">
-      <%= simple_format message.content, :style => "word-wrap: break-word;" %>
-    </div>
+    <%= message.content %>
   </div>
   <div class="message-time">
     <%= time_ago_in_words message.created_at %>
   </div>
+
+
+
+<% else %>
+  <div class="message-from-else">
+  <div class="message-profile-pic">
+    <%= image_tag message.creator.profile_picture_url %>
+  </div>
+  <div class="message-text">
+
+    <b class="caret-left"></b>
+    <%= message.content %>
+
+  </div>
+  <div class="message-time">
+    <%= time_ago_in_words message.created_at %>
+  </div>
+
+
+
+
+
+
+
+<% end %>
+
 </div>

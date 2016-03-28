@@ -1,0 +1,9 @@
+<% count = @track.comments.select{ |c| !c.removed }.count %>
+<% if count > 0 %>
+  <div class="player1-commentSection">
+    <div class="rightCol-Filter-Title">
+      <div class="rightCol-Filter-Title-Name"><%= count %> <%= if count == 1 then "Comment" else "Comments" end %> </div>
+    </div>
+    <%= render :partial => 'tracks/comments', :locals => { track: @track } %>
+  </div>
+<% end %>

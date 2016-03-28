@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  MAX_ITEMS_MORE = 4
   # TODO: Don't forget to use obfuscate_id on everything for security!
 
   # ----------------------- Default RESTFUL Actions-----------------------------
@@ -8,6 +9,8 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+    @more = @track.owner.tracks.select{ |t| t != @track }
+    @more = @more.take(MAX_ITEMS_MORE)
   end
 
   def create
