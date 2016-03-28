@@ -38,10 +38,4 @@ class SettingsController < ApplicationController
       @clique = Cliq.new
     end
   end
-
-  def payment_settings
-    respond_to do |format|
-      format.js
-    end
-  end
 end

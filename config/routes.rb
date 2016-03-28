@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'clique_settings' => 'settings#clique_settings'
   get 'edit_profile' => 'settings#edit_profile'
   get 'orders' => 'settings#orders'
-  get 'payment_settings' => 'settings#payment_settings'
   get 'edit_clique' => 'settings#edit_clique'
   get 'clique_members' => 'settings#clique_members'
   get 'clique_orders' => 'settings#clique_orders'

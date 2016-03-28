@@ -1,9 +1,0 @@
-
-<div class="panel-heading panel-heading-no-bottom">
-  <% if !current_user.uid %>
-    <%= button_to "Change Password", change_password_path, :remote => true, :method => :get, :class => "settings-tabs" %>
-  <% end %>
-  <%= button_to "Payment Settings", payment_settings_path, :remote => true, :method => :get, :class => "settings-tabs1" %>
-</div>
-<div class="panel-body">
-</div>
