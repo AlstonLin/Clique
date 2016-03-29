@@ -1,11 +1,11 @@
 <div class="player1">
   <div class="player1-Top">
     <div class="overlay"></div>
-      <div class="player1-background">
-    	 <%= image_tag track.pic.url %>
-      </div>
+    <div class="player1-background">
+  	 <%= image_tag track.get_pic_url %>
+    </div>
     <div class="player1-Picture">
-      <%= image_tag track.pic.url %>
+      <%= image_tag track.get_pic_url %>
     </div>
     <div class="player1-Genre">
       <%= time_ago_in_words track.created_at %>
