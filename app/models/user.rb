@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
   end
 
   def get_following_all
-    content = self.tracks.select { |t| !t.removed} + self.posts.select { |p| p.removed }
+    content = self.tracks.select { |t| !t.removed} + self.posts.select { |p| !p.removed }
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
