@@ -9,8 +9,7 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    @more = @track.owner.tracks.select{ |t| t != @track }
-    @more = @more.take(MAX_ITEMS_MORE)
+    @more = @track.owner.tracks.select{ |t| t != @track && !t.removed }.take(MAX_ITEMS_MORE)
   end
 
   def create
@@ -21,15 +20,6 @@ class TracksController < ApplicationController
     else
       render json: { error: @track.errors.full_messages.join(',')}, :status => 400
     end
-  end
-
-  # TODO: Change removed to false and not actually destroy it; just hide it
-  def destroy
-    @track = Track.find_by_id(params[:id])
-    if @track
-      @track.destroy
-    end
-    redirect_to current_user_path
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def delete

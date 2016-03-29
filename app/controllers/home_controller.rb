@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @content = current_user.get_following_all
     @top = get_top ITEMS_HOME
-    @favorites = current_user.favorite_tracks.take ITEMS_HOME
+    @favorites = current_user.favorite_tracks.select{ |t| !t.removed }.take ITEMS_HOME
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def explore
