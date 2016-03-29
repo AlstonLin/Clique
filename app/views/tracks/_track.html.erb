@@ -1,11 +1,11 @@
 <div class="player1">
   <div class="player1-Top">
     <div class="overlay"></div>
-      <div class="player1-background">
-    	 <%= image_tag track.pic.url %>
-      </div>
+    <div class="player1-background">
+  	 <%= image_tag track.get_pic_url %>
+    </div>
     <div class="player1-Picture">
-      <%= image_tag track.pic.url %>
+      <%= image_tag track.get_pic_url %>
     </div>
     <div class="player1-Genre">
       <%= time_ago_in_words track.created_at %>
@@ -16,7 +16,7 @@
     <div class="player1-Section2-Middle">
       <div class="player1-Name">
         <div class="player1-play">
-          <div class="playa" song="<%=track.song.url%>" image="<%= track.pic.url%>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%=track_path(track)%>" ownerLink="<%=user_path(track.owner)%>">
+          <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%=track_path(track)%>" ownerLink="<%=user_path(track.owner)%>">
             <div class="play-Btn">
               <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
             </div>
@@ -106,7 +106,7 @@
     <div class="modal-content">
       <div class="modal-track-Top">
         <div class="model-track-background">
-         <%= image_tag track.pic.url %>
+         <%= image_tag track.get_pic_url %>
         </div>
         <div class="modal-track-Genre">
           <%= time_ago_in_words track.created_at %>

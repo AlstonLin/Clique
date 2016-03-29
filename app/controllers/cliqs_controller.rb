@@ -55,13 +55,13 @@ class CliqsController < ApplicationController
       :currencyCode => "USD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
-      :maxAmountPerPayment => @clique.price,
+      :maxAmountPerPayment => 5,
       :maxNumberOfPayments => 100,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
       :returnUrl => root_url + cliq_joined_path(@clique),
       :ipnNotificationUrl => "http://clique.us-east-1.elasticbeanstalk.com/ipn_notify",
-      :startingDate => t.strftime("%Y-%m-%d") + "T00:00:00+00:00",
+      :startingDate => t.strftime("%Y-%m-%d"),
       :feesPayer => "SENDER",
       :feesPayer => "SECONDARYONLY",
       :displayMaxTotalAmount => true })
@@ -71,7 +71,7 @@ class CliqsController < ApplicationController
 
     # Access Response
     if @preapproval_response.success?
-      puts "APPRoved" + @preapproval_response.preapprovalKey
+      puts "APPRoved " + @preapproval_response.preapprovalKey
       current_user.preapprovalKey = @preapproval_response.preapprovalKey;
       redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
       return
@@ -97,12 +97,12 @@ class CliqsController < ApplicationController
       :preapprovalKey => current_user.preapprovalKey,
       :receiverList => {
         :receiver => [{
-          :amount => 60.0,
+          :amount => 5.0,
           :email => "anmolmago-facilitator@hotmail.com",
           :primary => true,
           :paymentType => "DIGITALGOODS" },
           {
-          :amount => 50.0,
+          :amount => 2.0,
           :email => "donate-facilitator@artificialcraft.net",
           :primary => false,
           :paymentType => "DIGITALGOODS" }] },

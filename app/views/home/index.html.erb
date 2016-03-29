@@ -4,22 +4,32 @@
 
 
 	  	<div class="newsfeed-title">
-				<div class="newsfeed-title1 newsfeed-active">
-					<%= link_to "All Stream", all_path, :method => :get, :remote => true %>
-				</div>
-				<div class="newsfeed-title2">
-					<%= link_to "Tracks", tracks_path, :method => :get, :remote => true %>
-				</div>
-				<div class="newsfeed-title2">
-					<%= link_to "Posts", posts_path, :method => :get, :remote => true %>
-				</div>
+				<%= link_to all_path, :method => :get, :remote => true do %>
+					<div class="newsfeed-title1 newsfeed-active">
+						All Stream
+					</div>
+				<% end %>
+				<%= link_to tracks_path, :method => :get, :remote => true do %>
+					<div class="newsfeed-title2">
+						Tracks
+					</div>
+				<% end %>
+				<%= link_to posts_path, :method => :get, :remote => true do %>
+					<div class="newsfeed-title2">
+						Posts
+					</div>
+				<% end %>
 				<% if current_user %>
-					<div class="newsfeed-title2">
-					  <%= link_to "Cliques", cliques_path, :method => :get, :remote => true %>
-					</div>
-					<div class="newsfeed-title2">
-					  <%= link_to "Favorites", favorites_path, :method => :get, :remote => true %>
-					</div>
+					<%= link_to cliques_path, :method => :get, :remote => true do %>
+						<div class="newsfeed-title2">
+						  Cliques
+						</div>
+					<% end %>
+					<%= link_to favorites_path, :method => :get, :remote => true do %>
+						<div class="newsfeed-title2">
+						  Favourites
+						</div>
+					<% end %>
 				<% end %>
 			</div>
 		<div class="newsfeed-subtitle">

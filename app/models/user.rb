@@ -81,12 +81,12 @@ class User < ActiveRecord::Base
 
   def get_favorites
     favorites = self.favorite_posts + self.favorite_tracks
-    favorites = favorites.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
+    favorites = favorites.select { |f| !f.removed }.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
     return favorites
   end
 
   def get_following_all
-    content = self.tracks + self.posts
+    content = self.tracks.select { |t| !t.removed} + self.posts.select { |p| !p.removed }
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
   end
 
   def get_following_tracks
-    tracks = self.tracks
+    tracks = self.tracks.select { |t| !t.removed }
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)
@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
   end
 
   def get_following_posts
-    posts = self.posts
+    posts = self.posts.select { |p| !p.removed }
     self.following.each do |f|
       following = f.following
       if following.clique && following.clique.members.include?(self)

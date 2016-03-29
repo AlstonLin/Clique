@@ -31,25 +31,28 @@
           <%= link_to "See more", @track.owner %>
         </div>
       </div>
-      <% @more.each do |m| %>
-        <div class="rightCol-Filter-Profile">
+    </div>
+    <% @more.each do |m| %>
+      <div class="rightCol-Filter-Profile">
           <div class="rightCol-Profile-Avi text-userPic">
-            <%= image_tag m.pic.url %>
+            <%= image_tag m.get_pic_url %>
           </div>
           <div class="rightCol-Profile-Bar">
             <div class="rightCol-Profile-Name">
-              <%= link_to @track.owner.name, @track.owner %>
+              <%= link_to @track.owner.name,  @track.owner  %>
             </div>
             <div class="rightCol-Followers">
               <%= link_to m.name, m %>
             </div>
 
           </div>
-          <div class="rightCol-Profile-Follow">
-            <%= link_to "View", m %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+
+          <%= link_to m do %>
+            <div class="rightCol-Profile-Follow">
+              View
+            </div>
+          <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>

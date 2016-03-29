@@ -4,7 +4,7 @@ class Track < ActiveRecord::Base
   # scope :by_score, :joins => :reviews, :group => "schools.id", :order => "AVG(reviews.score) DESC"
   # Relationships
   has_attached_file :song
-  has_attached_file :pic, :default_url => "/assets/default-track.png"
+  has_attached_file :pic
   belongs_to :owner, :class_name => 'User'
   has_many :comments, :class_name => 'TrackComment'
   has_many :retracks
@@ -15,4 +15,8 @@ class Track < ActiveRecord::Base
     'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]
   validates :owner, :presence => true
   validates :name, :presence => true
+
+  def get_pic_url
+    if pic.exists? then pic.url else ActionController::Base.helpers.asset_path("default-track.png") end
+  end
 end
