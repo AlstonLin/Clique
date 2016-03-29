@@ -7,14 +7,19 @@
       <div class="panel-body">
 		<%= form_for @clique do |f| %>
           <div class="form-group">
-  			  <%= f.label :name, "Clique Name (Optional) " %>
-  			  <%= f.text_field :name, class: "form-control" %>
+    			  <%= f.label :name, "Clique Name (Optional) " %>
+    			  <%= f.text_field :name, class: "form-control" %>
           </div>
 
           <div class="form-group">
+            <%= f.label :email, "Paypal Email" %>
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+
+          <!-- <div class="form-group">
     			  <%= f.label :price, "Monthly Subscription Price ($)" %>
     			  <%= f.number_field :price, :step => 1.0 %>
-          </div>
+          </div> -->
 
           <div class="form-group">
     			  <%= f.label :description %><br>
