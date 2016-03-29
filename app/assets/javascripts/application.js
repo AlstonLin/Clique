@@ -26,12 +26,12 @@ soundManager.setup({
 $(document).on('ready pjax:success', function() {
   setupComments();
 
-  $(".newsfeed-title1, .newsfeed-title2").click(function(){
-    $(".newsfeed-active").each(function(){
-      $(this).removeClass("newsfeed-active");
+    $(".newsfeed-title1, .newsfeed-title2").click(function(){
+      $(".newsfeed-active").each(function(){
+        $(this).removeClass("newsfeed-active");
+      });
+      $(this).addClass("newsfeed-active");
     });
-    $(this).addClass("newsfeed-active");
-  });
 
   $("#FavSeeMore").click(function(){
     $(".newsfeed-active").each(function(){
@@ -46,6 +46,14 @@ $(document).on('ready pjax:success', function() {
     });
     $(this).addClass("stats-active");
   });
+
+  if($(".artist-Tile .panel-ProfilePic")){
+    $(".artist-Tile .panel-ProfilePic img").css("display", "none");
+    $banner = $(".panel-ProfilePic");
+    $banner.css("background", "url(" + $(".panel-ProfilePic img").attr("src") + ") no-repeat");
+    $banner.css("background-size", "cover");
+    $banner.css("background-position", "50%");
+  }
 
   if($(".profile-Banner")){
     $(".profile-Banner img").css("display", "none");
