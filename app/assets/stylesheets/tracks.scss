@@ -649,8 +649,8 @@ a:visited{
   width: 100%;
   .box {
 
-  		margin: 0px 20px 20px 0px;
-	  width: 303px;
+  		margin: 0px 15px 15px 0px;
+	  width: 306px;
 
 	  border-radius: 7px;
 	  img {
@@ -2289,6 +2289,7 @@ $border: #e5e5e5;
 .newsfeed-active{
 	border-bottom: 1px solid $primary-color;
 	color: $primary-color;
+	font-weight: 600;
 }
 
 .newsfeed-title1{
@@ -2348,18 +2349,23 @@ $border: #e5e5e5;
 
 .rightCol-Index{
 	float:right;
-	width:260px;
+	width:306px;
 }
 
 .rightCol-Filter{
-	width: 270px;
+	width: 306px;
 	float: right;
-	margin-top: 25px;
+	margin-bottom: 15px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid $border;	
+	padding: 20px 20px 16px 20px;
+
 }
 
 .rightCol-Filter-Title{
 	width: 100%;
-	height: 25px;
+	height: 30px;
 	border-bottom: 1px solid $border;
 	margin-bottom: 20px;
 
@@ -2368,6 +2374,7 @@ $border: #e5e5e5;
 .rightCol-Filter-Title-Name{
 	float: left;
 	font-size: 14px;
+	color: #999;
 	.glyphicon{
 		font-size: 12px;
 		color: #999;
@@ -2473,12 +2480,12 @@ $border: #e5e5e5;
 .rightCol-Profile-Follow{
 	float:right;
 	width:60px;
-	height:20px;
+	height:22px;
 	border: 1px solid $border;
 	border-radius: 3px;
 	font-size: 12px;
 	text-align: center;
-	line-height: 20px;
+	line-height: 21px;
 	color: #999;
 }
 
@@ -2513,7 +2520,7 @@ $primary-color: #fe4641;
 
 
 .container2 {
-	width: 950px;
+	width: 948px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -2525,7 +2532,7 @@ $primary-color: #fe4641;
 }
 
 .container4 {
-	width: 630px;
+	width: 627px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -2541,7 +2548,7 @@ $primary-color: #fe4641;
 
 
 .leftCol {
-width: 630px;
+width: 627px;
 display: inline-block;
 }
 
@@ -2903,7 +2910,7 @@ img{
 
 .player1{
 	border: 1px solid #dce0e0;
-	border-radius: 3px;
+	border-radius: 5px;
 	background: white;
 	margin-bottom: 15px;
 	position: relative;
@@ -2913,11 +2920,11 @@ img{
 .player1-Top{
 	width: 100%;
 	height: 130px;
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 }
 
 .player1-background{
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 	width: 100%;
 	height: 130px;
 	z-index: 1;
@@ -2931,7 +2938,7 @@ img{
 
 
 .overlay {
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
     z-index: 2;
 	height: 130px;
     width: 100%;
@@ -2949,7 +2956,7 @@ img{
 .player1-Picture{
 	height: 75px;
 	width: 75px;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-left: 30px;
 	float:left;
 	margin-top: 28px;
@@ -3116,6 +3123,7 @@ img{
 	height: 62px;
 	padding: 0px 20px 0px 20px;
 	background-color: white;
+	border-radius: 0px 0px 5px 5px;
 }
 
 .player1-Section3{
@@ -3629,7 +3637,7 @@ glyphicon{
 
 
 .centerCol {
-	width:950px;
+	width:948px;
 	margin-right: auto;
 	margin-left: auto;
 	height:100%;
@@ -3639,7 +3647,7 @@ glyphicon{
 
 
 .leftCol {
-	width: 630px;
+	width: 627px;
 	height: auto;
 	float:left;
 	position: relative;
