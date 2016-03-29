@@ -24,12 +24,14 @@
   vertical-align: middle;
 }
 
-#flash-container{
+#flash-container {
   margin-top: 50px;
 }
 
-#pjax-container, .page-Bottom2{
-  height:100%;
+#pjax-container {
+  height: auto;
+  min-height: 100%;
+  background: linear-gradient(to bottom, #fff, #F1F5F7);
 }
 
 .scrollbar-measure {
