@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
       content = content + filter_clique_only_reposts(following.reposts, false)
       content = content + filter_clique_only_retracks(following.retracks, false)
     end
-    content = content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    content = content.sort { |e1, e2| e2[:created_at] <=> e1[:created_at] }
     return content.first(MAX_ITEMS)
   end
 

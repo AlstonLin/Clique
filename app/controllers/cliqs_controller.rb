@@ -145,6 +145,6 @@ class CliqsController < ApplicationController
 
   private
   def clique_params
-    params.require(:cliq).permit(:name, :price, :description, :thank_you_message)
+    params.require(:cliq).permit(:name, :price, :email, :description, :thank_you_message)
   end
 end
