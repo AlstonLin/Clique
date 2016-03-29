@@ -106,10 +106,10 @@
     <div class="modal-content">
       <div class="modal-track-Top">
         <div class="model-track-background">
-         <%= image_tag track.pic.url %>
+         <%= image_tag track.get_pic_url %>
         </div>
         <div class="modal-track-Genre">
-          <%= time_ago_in_words track.created_at %>
+          <%= time_ago_in_words track.get_pic_url %>
         </div>
       </div>
       <div class="player1-Section2">
