@@ -97,17 +97,17 @@ class CliqsController < ApplicationController
       :preapprovalKey => current_user.preapprovalKey,
       :receiverList => {
         :receiver => [{
-          :amount => 0.06,
-          :email => "everestmgteam@gmail.com",
+          :amount => 5.0,
+          :email => "anmolmago-facilitator@hotmail.com",
           :primary => true,
           :paymentType => "DIGITALGOODS" },
           {
-          :amount => 0.06,
-          :email => @clique.email,
+          :amount => 2.0,
+          :email => "donate-facilitator@artificialcraft.net",
           :primary => false,
           :paymentType => "DIGITALGOODS" }] },
       :reverseAllParallelPaymentsOnError => true,
-      :senderEmail => current_user.email,
+      :senderEmail => "sender@gmail.com",
       :returnUrl => root_url + user_path(@clique.owner)
     })
 
