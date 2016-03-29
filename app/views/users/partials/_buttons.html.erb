@@ -1,29 +1,39 @@
 <!-- Content Filters -->
-<div class="stats1 stats-active">
-<%= link_to "All Stream", user_all_path(user), :method => :get, :remote => true %>
-</div>
-<div class="stats2">
-<%= link_to "Posts", user_posts_path(user), :method => :get, :remote => true %>
-</div>
-<div class="stats2">
-<%= link_to "Tracks", user_songs_path(user), :method => :get, :remote => true %>
-</div>
+<%= link_to user_all_path(user), :method => :get, :remote => true do %>
+  <div class="stats1 stats-active">
+    All Stream
+  </div>
+<% end %>
+<%= link_to user_posts_path(user), :method => :get, :remote => true do %>
+  <div class="stats2">
+    Posts
+  </div>
+<% end %>
+<%= link_to user_songs_path(user), :method => :get, :remote => true do %>
+  <div class="stats2">
+    Tracks
+  </div>
+<% end %>
 <%# button_to "Reposts", user_reposts_path(user), :method => :get, :remote => true %>
 <!-- Own profile -->
 <% if @user == current_user %>
   <% if @user.clique %>
+    <%= link_to user_clique_path(user), :method => :get, :remote => true do %>
+      <div class="stats2">
+        Clique
+      </div>
+    <% end %>
+  <% end %>
+  <%= link_to user_followers_path(user), :method => :get, :remote => true do %>
     <div class="stats2">
-      <%= link_to "Clique", user_clique_path(user), :method => :get, :remote => true %>
+      Followers
     </div>
   <% end %>
-  <div class="stats2">
-  <%= link_to "Followers", user_followers_path(user), :method => :get, :remote => true %>
-  </div>
-
-  <div class="stats2">
-  <%= link_to "Following", user_following_path(user), :method => :get, :remote => true %>
-  </div>
-
+  <%= link_to user_following_path(user), :method => :get, :remote => true do %>
+    <div class="stats2">
+      Following
+    </div>
+  <% end %>
   <div class="edit-Profile">
     <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn"  %>
   </div>
