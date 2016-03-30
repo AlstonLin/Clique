@@ -53,11 +53,13 @@ $(document).on('ready pjax:success', function() {
   });
 
   if($(".artist-Tile .panel-ProfilePic")){
-    $(".artist-Tile .panel-ProfilePic img").css("display", "none");
-    $banner = $(".panel-ProfilePic");
-    $banner.css("background", "url(" + $(".panel-ProfilePic img").attr("src") + ") no-repeat");
-    $banner.css("background-size", "cover");
-    $banner.css("background-position", "50%");
+    $(".artist-Tile .panel-ProfilePic").each(function(){
+      $profileIcon = $(this);
+      $profileIcon.find("img").css("display", "none");
+      $profileIcon.css("background", "url(" + $profileIcon.find("img").attr("src") + ") no-repeat");
+      $profileIcon.css("background-size", "cover");
+      $profileIcon.css("background-position", "50%");
+    });
   }
 
   if($(".profile-Banner")){
