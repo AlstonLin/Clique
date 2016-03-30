@@ -33,6 +33,11 @@ $(document).on('ready pjax:success', function() {
     $(this).addClass("newsfeed-active");
   });
 
+  $(".modalClosable").click(function(){
+    $('.modal-backdrop').remove();
+    $('body').removeClass('modal-open');
+  });
+
   $("#FavSeeMore").click(function(){
     $(".newsfeed-active").each(function(){
       $(this).removeClass("newsfeed-active");
