@@ -33,9 +33,9 @@
       </div>
 
       <div class="player1-right-btn">
-        <div class="player1-btn">
+        <!-- <div class="player1-btn">
           <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-        </div>
+        </div> -->
         <!--<% if track.downloadable %>
           <div class="player1-btn" onclick="window.open('<%= track.song.url%>')">
             <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
@@ -125,10 +125,10 @@
           </div>
           <div class="player1-left-btn">
             <div class="player1-artist">
-              <%= link_to track.owner.name, track.owner %>
+              <%= link_to track.owner.name, track.owner, :class => "modalClosable" %>
             </div>
             <div class="player1-songName">
-              <%= link_to track.name, track %>
+              <%= link_to track.name, track, :class => "modalClosable" %>
             </div>
           </div>
 

@@ -8,7 +8,7 @@
       </div>
       <div class="commentSection-name">
         <div class="comment-time"><%= time_ago_in_words post.created_at %></div>
-        <%= link_to post.poster.name, post.poster %> <div class="glyphicon glyphicon-retweet"></div> <%= repost.reposter.name %>
+        <%= link_to post.poster.name, post.poster %> <div class="glyphicon glyphicon-retweet"></div> <%= link_to repost.reposter.name, repost.reposter %>
       </div>
       <div class="post-Content">
         <%= post.content %>
@@ -51,9 +51,9 @@
 				<% end %>
 
 			<% end %>
-			<div class="player1-btn">
+			<!-- <div class="player1-btn">
 				<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-			</div>
+			</div> -->
 			<div class="player1-btn" data-toggle="modal" data-target="#modal<%= post.id %>">
 				<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
 			</div>
@@ -86,7 +86,7 @@
       		</div>
 		      <div class="commentSection-name">
 		        <div class="comment-time"><%= time_ago_in_words post.created_at %></div>
-		        <%= link_to post.poster.name, post.poster %>
+		        <%= link_to post.poster.name, post.poster, :class => "modalClosable" %>
 		      </div>
 	        <div class="post-Content">
 	          <%= post.content %>
