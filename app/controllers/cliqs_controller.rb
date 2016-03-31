@@ -55,13 +55,15 @@ class CliqsController < ApplicationController
       :currencyCode => "CAD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
-      :maxAmountPerPayment => 5,
-      :maxNumberOfPayments => 100,
+      :maxAmountPerPayment => 0.02,
+      :maxTotalAmountOfAllPayments=> 0.24,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
       :returnUrl => root_url + cliq_joined_path(@clique),
-      :ipnNotificationUrl => "http://clique.us-east-1.elasticbeanstalk.com/ipn_notify",
+      :ipnNotificationUrl => "http://cliq.fm/ipn_notify",
       :startingDate => t.strftime("%Y-%m-%d"),
+      # TODO: Find a way to not have an ending date
+      :endingDate => 1.year.from_now.strftime("%Y-%m-%d"),
       :feesPayer => "SENDER",
       :feesPayer => "SECONDARYONLY",
       :displayMaxTotalAmount => true })
