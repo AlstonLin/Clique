@@ -56,7 +56,7 @@ class CliqsController < ApplicationController
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
       :maxAmountPerPayment => 5,
-      :maxNumberOfPayments => 100,
+      :maxTotalAmountOfAllPayments=> 100,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
       :returnUrl => root_url + cliq_joined_path(@clique),
