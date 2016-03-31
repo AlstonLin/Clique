@@ -8,7 +8,7 @@ test: &default
   mode: sandbox
 
   # Credentials for Classic APIs
-  app_id: APP-80W284485P519543T
+  app_id: APP-0SK00535KP286891S
   username: anmolmago-facilitator_api1.hotmail.com
   password: TUKAC7Q7Q7E9FHSU
   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AsNh6yUArwCRkBDAYaaA2zdkAQel
