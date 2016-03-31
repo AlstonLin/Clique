@@ -100,16 +100,16 @@ class CliqsController < ApplicationController
       :receiverList => {
         :receiver => [{
           :amount => 0.06,
-          :email => "anmolmago-facilitator@hotmail.com",
+          :email => @clique.email,
           :primary => true,
           :paymentType => "DIGITALGOODS" },
           {
           :amount => 0.03,
-          :email => "donate-facilitator@artificialcraft.net",
+          :email => "everestmgteam@gmail",
           :primary => false,
           :paymentType => "DIGITALGOODS" }] },
       :reverseAllParallelPaymentsOnError => true,
-      :senderEmail => "sender@gmail.com",
+      :senderEmail => current_user.email,
       :returnUrl => root_url + user_path(@clique.owner)
     })
 
