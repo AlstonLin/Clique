@@ -60,8 +60,10 @@ class CliqsController < ApplicationController
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
       :returnUrl => root_url + cliq_joined_path(@clique),
-      :ipnNotificationUrl => "http://clique.us-east-1.elasticbeanstalk.com/ipn_notify",
+      :ipnNotificationUrl => "http://cliq.fm/ipn_notify",
       :startingDate => t.strftime("%Y-%m-%d"),
+      # TODO: Find a way to not have an ending date
+      :endingDate => 1.year.from_now.strftime("%Y-%m-%d"),
       :feesPayer => "SENDER",
       :feesPayer => "SECONDARYONLY",
       :displayMaxTotalAmount => true })
