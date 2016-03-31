@@ -103,12 +103,23 @@ html {
 }
 
 .page-Bottom{
+	background: linear-gradient(to bottom, #fff, #F1F5F7);
 	width: 100%;
 	display: inline-block;
 	padding-bottom: 75px;
 }
 
+.page-Bottom2{
+	background: linear-gradient(to bottom, #fff, #F1F5F7);
+	width: 100%;
+	display: inline-block;
+	padding-bottom: 75px;
+	padding-top: 90px;
+	min-height: 700px;
+}
+
 .signin-Bottom{
+	background: linear-gradient(to bottom, #fff, #F1F5F7);
 	width: 100%;
 	display: inline-block;
 	padding-bottom: 75px;
@@ -240,7 +251,7 @@ a:hover {
 	width: 100%;
 	margin-bottom: 50px !important;
 	border-color: #e7e7e7!important;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+	box-shadow: none;
 }
 
 .navbar-nav>li>a{
@@ -638,15 +649,15 @@ a:visited{
   width: 100%;
   .box {
 
-  		margin: 0px 20px 20px 0px;
-	  width: 303px;
+  		margin: 0px 15px 15px 0px;
+	  width: 306px;
 
 	  border-radius: 7px;
 	  img {
 	  	background-size: 100%;
 	  	background-repeat: no-repeat;
 	  	height: auto;
-	  	width: 100%;
+	  	width: 100% !important;
 	  	border-radius: 3px 3px 0px 0px;
 	  	background-position: cover;
 	  }
@@ -2278,6 +2289,7 @@ $border: #e5e5e5;
 .newsfeed-active{
 	border-bottom: 1px solid $primary-color;
 	color: $primary-color;
+	font-weight: 600;
 }
 
 .newsfeed-title1{
@@ -2285,6 +2297,7 @@ $border: #e5e5e5;
 	line-height: 50px;
 	font-size: 18px;
 	float: left;
+	font-weight: 600;	
 }
 
 .newsfeed-title2{
@@ -2293,6 +2306,7 @@ $border: #e5e5e5;
 	line-height: 50px;
 	font-size: 18px;
 	float: left;
+	font-weight: 600;
 
 }
 
@@ -2337,18 +2351,23 @@ $border: #e5e5e5;
 
 .rightCol-Index{
 	float:right;
-	width:260px;
+	width:306px;
 }
 
 .rightCol-Filter{
-	width: 270px;
+	width: 306px;
 	float: right;
-	margin-top: 25px;
+	margin-bottom: 15px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid $border;	
+	padding: 20px 20px 16px 20px;
+
 }
 
 .rightCol-Filter-Title{
 	width: 100%;
-	height: 25px;
+	height: 30px;
 	border-bottom: 1px solid $border;
 	margin-bottom: 20px;
 
@@ -2357,11 +2376,11 @@ $border: #e5e5e5;
 .rightCol-Filter-Title-Name{
 	float: left;
 	font-size: 14px;
-	.glyphicon{
-		font-size: 12px;
-		color: #999;
-		margin-right: 3px;
-	}
+	color: #333;
+	height: 30px;
+	font-weight: 600;
+	border-bottom: 1px solid #333;
+
 
 }
 
@@ -2371,7 +2390,9 @@ $border: #e5e5e5;
 	font-size: 14px;
 }
 
-
+.rightCol-Filter-Title-Stat:hover{
+	color: #333;
+}
 
 
 .rightCol-Clique-Title{
@@ -2403,11 +2424,16 @@ $border: #e5e5e5;
 .rightCol-Filter-Profile{
 	width: 100%;
 	height: 40px;
-	clear: both;
 	margin-bottom: 12px;
 	font-size: 14px;
 }
 
+
+
+.rightCol-footer{
+	color: #999;
+	font-size: 12px;
+}
 
 
 .rightCol-Profile-Avi{
@@ -2447,7 +2473,7 @@ $border: #e5e5e5;
 
 
 .rightCol-Followers{
-	width:160px;
+	width:140px;
 	height:15px;
 	font-size: 12px;
 	margin-top: 5px;
@@ -2462,13 +2488,13 @@ $border: #e5e5e5;
 
 .rightCol-Profile-Follow{
 	float:right;
-	width:60px;
-	height:20px;
+	padding: 0px 9px 0px 8px;
+	height:22px;
 	border: 1px solid $border;
 	border-radius: 3px;
 	font-size: 12px;
 	text-align: center;
-	line-height: 20px;
+	line-height: 21px;
 	color: #999;
 }
 
@@ -2477,6 +2503,25 @@ $border: #e5e5e5;
 	color: $primary-color;
 	cursor: pointer;
 }
+
+.rightCol-Profile-Following{
+	float:right;
+	padding: 0px 9px 0px 8px;
+	height:22px;
+	border: 1px solid $primary-color;
+	border-radius: 3px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 21px;
+	color: $primary-color;
+}
+
+.rightCol-Profile-Following:hover{
+	border: 1px solid $primary-color;
+	color: $primary-color;
+	cursor: pointer;
+}
+
 
 .rightCol-Filter-seeMore{
 	width:100%;
@@ -2503,7 +2548,7 @@ $primary-color: #fe4641;
 
 
 .container2 {
-	width: 950px;
+	width: 948px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -2515,7 +2560,7 @@ $primary-color: #fe4641;
 }
 
 .container4 {
-	width: 630px;
+	width: 627px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -2531,7 +2576,7 @@ $primary-color: #fe4641;
 
 
 .leftCol {
-width: 630px;
+width: 627px;
 display: inline-block;
 }
 
@@ -2863,7 +2908,7 @@ img{
 
 
 .profile-bottom{
-	background: #F5F8FA;
+	background: #F7F7F7;
 	width: 100%;
 	display: inline-block;
 	padding-top: 20px;
@@ -2893,7 +2938,7 @@ img{
 
 .player1{
 	border: 1px solid #dce0e0;
-	border-radius: 3px;
+	border-radius: 5px;
 	background: white;
 	margin-bottom: 15px;
 	position: relative;
@@ -2903,11 +2948,11 @@ img{
 .player1-Top{
 	width: 100%;
 	height: 130px;
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 }
 
 .player1-background{
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 	width: 100%;
 	height: 130px;
 	z-index: 1;
@@ -2921,7 +2966,7 @@ img{
 
 
 .overlay {
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
     z-index: 2;
 	height: 130px;
     width: 100%;
@@ -2939,7 +2984,7 @@ img{
 .player1-Picture{
 	height: 75px;
 	width: 75px;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-left: 30px;
 	float:left;
 	margin-top: 28px;
@@ -3106,6 +3151,7 @@ img{
 	height: 62px;
 	padding: 0px 20px 0px 20px;
 	background-color: white;
+	border-radius: 0px 0px 5px 5px;
 }
 
 .player1-Section3{
@@ -3619,7 +3665,7 @@ glyphicon{
 
 
 .centerCol {
-	width:950px;
+	width:948px;
 	margin-right: auto;
 	margin-left: auto;
 	height:100%;
@@ -3629,7 +3675,7 @@ glyphicon{
 
 
 .leftCol {
-	width: 630px;
+	width: 627px;
 	height: auto;
 	float:left;
 	position: relative;

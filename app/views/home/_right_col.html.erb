@@ -2,7 +2,6 @@
 <div class="rightCol-Filter">
   <div class="rightCol-Filter-Title">
     <div class="rightCol-Filter-Title-Name">
-      <span aria-hidden="true" class="glyphicon glyphicon-heart"></span>
      	Top Artists
     </div>
     <div class="rightCol-Filter-Title-Stat">
@@ -27,13 +26,16 @@
       <% end %>
       <% if current_user %>
         <%= link_to user_follow_path(t), :remote => true, :method => :post do %>
-          <div class="rightCol-Profile-Follow">
+
             <% if is_following t %>
-              Unfollow
+              <div class="rightCol-Profile-Following">
+                Following
+              </div>
             <% else %>
-              Follow
+              <div class="rightCol-Profile-Follow">
+                Follow
+              </div>
             <% end %>
-          </div>
         <% end %>
       <% end %>
     </div>
@@ -45,7 +47,6 @@
   <div class="rightCol-Filter">
     <div class="rightCol-Filter-Title">
       <div class="rightCol-Filter-Title-Name">
-        <span aria-hidden="true" class="glyphicon glyphicon-heart"></span>
        	Favorites
       </div>
 
@@ -74,10 +75,11 @@
         <% end %>
 
 
-        <%= link_to f do %>
-          <div class="rightCol-Followers">
-            <%= f.name %>
-          </div>
+
+            <div class="rightCol-Followers">
+              <%= link_to f.name, f %>
+            </div>
+
         </div>
 
         <%= link_to f do %>
@@ -85,9 +87,13 @@
             View
           </div>
         <% end %>
-        <% end %>
 
       </div>
     <% end %>
   </div>
 <% end %>
+
+<div class="rightCol-Filter rightCol-footer">
+
+  © 2016 Cliq.fm About Help Terms Privacy Cookies Ads info Brand Blog Status
+</div>
