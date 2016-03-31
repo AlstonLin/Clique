@@ -19,6 +19,12 @@ $(document).on('ready pjax:success', function() {
 			}
 		}
 	});
+	$("#volumeClick").click(function(){
+		$("#volumeBuffer").toggle();
+	});
+   $("#volumeClick #volumeBuffer").click(function(e) {
+        e.stopPropagation();
+   });
 	$("#repeat").click(function(){
 		$(this).toggleClass("repeatOn");
 		repeat = $(this).hasClass("repeatOn");
