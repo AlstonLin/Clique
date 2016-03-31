@@ -55,7 +55,7 @@ class CliqsController < ApplicationController
       :currencyCode => "USD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
-      :maxAmountPerPayment => 5,
+      :maxAmountPerPayment => 0.02,
       :maxTotalAmountOfAllPayments=> 100,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
