@@ -75,7 +75,7 @@ class CliqsController < ApplicationController
     if @preapproval_response.success?
       puts "APPRoved " + @preapproval_response.preapprovalKey
       current_user.preapprovalKey = @preapproval_response.preapprovalKey;
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
+      redirect_to "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
       return
     else
       puts "ERRRRRROR"
