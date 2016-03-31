@@ -55,8 +55,8 @@ class CliqsController < ApplicationController
       :currencyCode => "CAD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
-      :maxAmountPerPayment => 0.02,
-      :maxTotalAmountOfAllPayments=> 0.24,
+      :maxAmountPerPayment => 0.12,
+      :maxTotalAmountOfAllPayments=> 1.44,
       :maxNumberOfPaymentsPerPeriod => 2,
       :paymentPeriod => "MONTHLY",
       :returnUrl => root_url + cliq_joined_path(@clique),
@@ -75,6 +75,7 @@ class CliqsController < ApplicationController
     if @preapproval_response.success?
       puts "APPRoved " + @preapproval_response.preapprovalKey
       current_user.preapprovalKey = @preapproval_response.preapprovalKey;
+      current_user.save
       redirect_to "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
       return
     else
