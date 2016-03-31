@@ -52,7 +52,7 @@ class CliqsController < ApplicationController
     t = Time.now
     @preapproval = @api.build_preapproval({
       :cancelUrl => root_url + user_path(@clique.owner),
-      :currencyCode => "USD",
+      :currencyCode => "CAD",
       :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
       :maxAmountPerPayment => 5,
@@ -73,7 +73,7 @@ class CliqsController < ApplicationController
     if @preapproval_response.success?
       puts "APPRoved " + @preapproval_response.preapprovalKey
       current_user.preapprovalKey = @preapproval_response.preapprovalKey;
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
+      redirect_to "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
       return
     else
       puts "ERRRRRROR"
@@ -97,12 +97,12 @@ class CliqsController < ApplicationController
       :preapprovalKey => current_user.preapprovalKey,
       :receiverList => {
         :receiver => [{
-          :amount => 5.0,
+          :amount => 0.06,
           :email => "anmolmago-facilitator@hotmail.com",
           :primary => true,
           :paymentType => "DIGITALGOODS" },
           {
-          :amount => 2.0,
+          :amount => 0.03,
           :email => "donate-facilitator@artificialcraft.net",
           :primary => false,
           :paymentType => "DIGITALGOODS" }] },
@@ -137,8 +137,24 @@ class CliqsController < ApplicationController
   end
 
   def leave
+    @api = PayPal::SDK::AdaptivePayments::API.new
+
     @clique = Cliq.find(params[:cliq_id])
-    @clique.members.delete(current_user)
+    # Build request object
+    @cancel_preapproval = @api.build_cancel_preapproval({
+      :preapprovalKey => current_user.preapprovalKey})
+
+    # Make API call & get response
+    @cancel_preapproval_response = @api.cancel_preapproval(@cancel_preapproval)
+
+    # Access Response
+    if @cancel_preapproval_response.success?
+        @clique.members.delete(current_user)
+    else
+        @cancel_preapproval_response.error.each do |error|
+          puts error.message
+        end
+    end
     # Response
     redirect_to @clique.owner
   end
