@@ -26,12 +26,12 @@ soundManager.setup({
 $(document).on('ready pjax:success', function() {
   setupComments();
 
-    $(".newsfeed-title1, .newsfeed-title2").click(function(){
-      $(".newsfeed-active").each(function(){
-        $(this).removeClass("newsfeed-active");
-      });
-      $(this).addClass("newsfeed-active");
+  $(".newsfeed-title1, .newsfeed-title2").click(function(){
+    $(".newsfeed-active").each(function(){
+      $(this).removeClass("newsfeed-active");
     });
+    $(this).addClass("newsfeed-active");
+  });
 
   $(".modalClosable").click(function(){
     $('.modal-backdrop').remove();
