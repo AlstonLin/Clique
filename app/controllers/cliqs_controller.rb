@@ -65,7 +65,7 @@ class CliqsController < ApplicationController
       # TODO: Find a way to not have an ending date
       :endingDate => 1.year.from_now.strftime("%Y-%m-%d"),
       :feesPayer => "SENDER",
-      :feesPayer => "SECONDARYONLY",
+      :feesPayer => "EACHRECEIVER",
       :displayMaxTotalAmount => true })
 
     # Make API call & get response
@@ -91,26 +91,24 @@ class CliqsController < ApplicationController
     puts "FINALLY MOTHERFUCKING AT JOINED"
     @clique = Cliq.find(params[:cliq_id])
     @api = PayPal::SDK::AdaptivePayments::API.new
+    puts "EMAILLLL " + @clique.email
     @pay = @api.build_pay({
       :actionType => "PAY",
       :cancelUrl => root_url + user_path(@clique.owner),
       :currencyCode => "CAD",
-      :feesPayer => "SECONDARYONLY",
+      :feesPayer => "EACHRECEIVER",
       :ipnNotificationUrl => "https://paypal-sdk-samples.herokuapp.com/adaptive_payments/ipn_notify",
       :preapprovalKey => current_user.preapprovalKey,
       :receiverList => {
         :receiver => [{
           :amount => 0.06,
           :email => @clique.email,
-          :primary => true,
           :paymentType => "DIGITALGOODS" },
           {
           :amount => 0.03,
           :email => "everestmgteam@gmail",
-          :primary => false,
           :paymentType => "DIGITALGOODS" }] },
       :reverseAllParallelPaymentsOnError => true,
-      :senderEmail => current_user.email,
       :returnUrl => root_url + user_path(@clique.owner)
     })
 
@@ -120,13 +118,6 @@ class CliqsController < ApplicationController
     # Access Response
     if @pay_response.success?
       puts "SUCCESSSSSS"
-      puts @pay_response.payKey
-      puts @pay_response.paymentExecStatus
-      puts @pay_response.payErrorList
-      puts @pay_response.paymentInfoList
-      puts @pay_response.sender
-      puts @pay_response.defaultFundingPlan
-      puts @pay_response.warningDataList
       @clique.members << current_user
       flash[:notice] = "Joined " + @clique.name
     else
