@@ -287,18 +287,21 @@ background-color: #f5f5f5;
 
 
 .post-Btn{
-	float: right !important;	
-	width:80px !important;
-	min-width: 40px !important;
-	height:32px !important;
-	border-radius: 3px !important;
-	background-color: $primary-color !important;
-	margin-left: 10px !important;
-	border: 0px !important;
-	color: white;
-	margin-bottom: 0px !important;
-	font-size: 12px !important;
-	font-weight: bold;
+	float: right !important;
+    width: 80px !important;
+    min-width: 40px !important;
+    height: 32px !important;
+    border-radius: 3px !important;
+    background-color: #fe4641 !important;
+    margin-left: 0px !important;
+    border: 0px !important;
+    color: white;
+    margin-bottom: 0px !important;
+    font-size: 12px !important;
+    font-weight: bold;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    padding-left: 0px;
 }
 
 input[type=password], input[type=text], input[type=email], label{
@@ -358,3 +361,32 @@ input[type=checkbox]{
 	margin-top: 10px;
 	position: relative;
 }
+
+input[type="checkbox"] + label {
+	    font-size: 16px;
+	    color: #FE4641;
+	    margin-bottom: 0px;
+	    border: 1px solid #FE4641;
+	    padding: 5px 10px;
+	    border-top-left-radius: 3px;
+	    border-bottom-left-radius: 3px;
+	    font-weight: 100;
+}
+input[type="checkbox"]:checked + label {
+    background-color: #FE4641;
+    color: white;
+}
+
+input[type=checkbox] {
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    margin: 0px !important;
+    opacity: 0;
+}
+
+
+label{
+	margin: 0 !important;
+}
+
