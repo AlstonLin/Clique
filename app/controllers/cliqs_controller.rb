@@ -61,9 +61,9 @@ class CliqsController < ApplicationController
       :paymentPeriod => "MONTHLY",
       :returnUrl => root_url + cliq_joined_path(@clique),
       :ipnNotificationUrl => "http://cliq.fm/ipn_notify",
-      :startingDate => t.strftime("%Y-%m-%d"),
+      :startingDate => 5.seconds.from_now.strftime("%Y-%m-%d %H::%M::%S"),
       # TODO: Find a way to not have an ending date
-      :endingDate => 1.year.from_now.strftime("%Y-%m-%d"),
+      :endingDate => 11.months.from_now.strftime("%Y-%m-%d"),
       :feesPayer => "SENDER",
       :feesPayer => "EACHRECEIVER",
       :displayMaxTotalAmount => true })
