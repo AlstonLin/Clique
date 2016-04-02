@@ -16,12 +16,20 @@
 
 
     <div class="panel-Info">
-      <div class="panel-Info-Name">
-        <%= link_to artist.name, artist   %>
+      <div class="panel-Info-left">
+        <div class="panel-Info-Name">
+          <%= link_to artist.name, artist   %>
+        </div>
+        <div class="panel-Info-Clique">
+          <%= link_to artist.followers.count  %> Followers
+        </div>
       </div>
-      <div class="panel-Info-Clique">
-        <%= link_to artist.followers.count  %> Followers
+
+      <div class="panel-follow-btn">
+        <i class="fa fa-user-plus"></i>
       </div>
+
+
     </div>
     </div>
 
