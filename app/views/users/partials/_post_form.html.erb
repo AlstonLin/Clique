@@ -2,11 +2,11 @@
   <%= form.text_area :content, :class => 'post-Input', :placeholder => "What is on your mind?" %>
   <!-- Clique Only button-->
   <% if current_user.clique %>
-    <%= form.submit "Post", :class => 'post-Btn' %>
+    <%= form.submit "Post", :class => 'post-Btn cliq-pb' %>
     <div class="floatRight">
       <%= form.label :clique_only do %>
         <%= form.check_box :clique_only, :class => 'checkbox'  %>
-        Clique Only
+        <label>Cliq Only</label>
       <% end %>
     </div>
   <% else %>
