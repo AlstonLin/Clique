@@ -351,16 +351,27 @@ nav {
 	font-weight: 700;
 	margin-top: 35px;
 	color: white;
-
     border: 1px solid transparent;
     text-shadow: 0 1px rgba(0,0,0,0.1);
+    border: 1px solid transparent;
+    background-color: #d14836;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#d14836));
+    background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
+    background-image: -moz-linear-gradient(top,#dd4b39,#d14836);
+    background-image: -ms-linear-gradient(top,#dd4b39,#d14836);
+    background-image: -o-linear-gradient(top,#dd4b39,#d14836);
+    background-image: linear-gradient(top,#dd4b39,#d14836);
     &:hover{
-    	border: rgba(0,0,0,0) solid 1px;
-    	outline: rgba(0,0,0,0) 0;
-    }
-    &:hover{
-    	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
- 	background-image: -webkit-linear-gradient(top, #fe4641, #A52D2A);
+    outline: rgba(0,0,0,0) 0;
+    background-color: #c53727;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#c53727));
+    background-image: -webkit-linear-gradient(top,#dd4b39,#c53727);
+    background-image: -moz-linear-gradient(top,#dd4b39,#c53727);
+    background-image: -ms-linear-gradient(top,#dd4b39,#c53727);
+    background-image: -o-linear-gradient(top,#dd4b39,#c53727);
+    background-image: linear-gradient(top,#dd4b39,#c53727);
+    border: 1px solid #b0281a;
+    border-bottom: 1px solid #af301f;
     }
 
 
@@ -2486,7 +2497,7 @@ $border: #e5e5e5;
 
 .rightCol-Profile-Follow{
 	float:right;
-	padding: 0px 9px 0px 8px;
+	width: 70px;
 	height:22px;
 	border: 1px solid $border;
 	border-radius: 3px;
@@ -2504,7 +2515,7 @@ $border: #e5e5e5;
 
 .rightCol-Profile-Following{
 	float:right;
-	padding: 0px 9px 0px 8px;
+	width: 70px;
 	height:22px;
 	border: 1px solid $primary-color;
 	border-radius: 3px;
