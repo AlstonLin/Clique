@@ -1,6 +1,6 @@
 <!-- Creator Profile -->
 <div class="rightCol-singleSong">
-  <div class="song-Description">
+      <div class="rightCol-Filter">
     <div class="rightCol-profileAvi">
       <img src="<%= @track.owner.profile_picture_url %>">
     </div>
@@ -10,25 +10,25 @@
       </div>
       <% if current_user && current_user != @track.owner %>
         <% if is_following @user %>
-          <%= button_to "Unfollow", user_follow_path(@track.owner), :remote => true, :class => "button btn btn-info btn-lg btn-primary btn track-btn"  %>
+          <%= button_to "Unfollow", user_follow_path(@track.owner), :remote => true, :class => "button btn btn-info btn-lg btn-primary btn track-btn trackshow-btn"  %>
         <% else %>
           <%= button_to "Follow", user_follow_path(@track.owner), :remote => true, :class => "button btn btn-info btn-lg btn-primary btn track-btn"  %>
         <% end %>
       <% end %>
     </div>
     <% if @track.owner.bio %>
-      <div class="rightCol-Filter">
+
         <%= @track.owner.bio %>
       </div>
     <% end %>
-  </div>
+
 
   <!-- Other Songs -->
   <% if @more.count > 0 %>
-    <div class="rightCol-Filter" style="margin-top: 25px;  ">
+    <div class="rightCol-Filter">
       <div class="rightCol-Filter-Title">
         <div class="rightCol-Filter-Title-Name">
-         	<span aria-hidden="true" class="glyphicon glyphicon-heart"></span> More tracks
+         	More tracks
         </div>
         <div class="rightCol-Filter-Title-Stat">
           <%= link_to "See more", @track.owner %>
