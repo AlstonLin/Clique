@@ -1,25 +1,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- html,body{
-   margin:0;
-   padding:0;
-   padding-bottom: 10px;
-   height: auto;
- }
-
-body{
-  font-family: Proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
 
 
-.nav-margin{
-  margin-left: -7px !important;
-}
 
-.nav-margin-right{
-  margin-right: -1px !important;
-}
+
 
 
 /* Repeated Classes */
@@ -80,59 +65,11 @@ textarea:focus, input:focus{
 
 }
 
-/* Nav Bar */
-
-.navbar-nav > li > a{
-  padding-top: 8px;
-  padding-bottom: 8px;
-  line-height: 32px;
-
-}
-
-
-
-
-html {
-  box-sizing: border-box;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height:100%;
-}
-
-
-
-body {
-  background-color: white;
-  color: #555;
-  height:100%;
-}
-
 
 .footer{
   height: 100px;
 }
 
-.page-Bottom{
-  width: 100%;
-  display: inline-block;
-  padding-bottom: 100px;
-}
-
-.page-Bottom2{
-  width: 100%;
-  display: inline-block;
-  padding-bottom: 100px;
-  padding-top: 90px;
-  min-height: 700px;
-}
-
-.page-Bottom3{
-  width: 100%;
-  display: inline-block;
-  padding-bottom: 100px;
-  padding-top: 90px;
-  min-height: 700px;
-}
 
 
 
