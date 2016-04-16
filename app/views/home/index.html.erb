@@ -3,39 +3,6 @@
 
 
 
-	  	<div class="newsfeed-title">
-				<%= link_to all_path, :method => :get, :remote => true do %>
-					<div class="newsfeed-title1 newsfeed-active">
-						All Stream
-					</div>
-				<% end %>
-				<%= link_to tracks_path, :method => :get, :remote => true do %>
-					<div class="newsfeed-title2">
-						Tracks
-					</div>
-				<% end %>
-				<%= link_to posts_path, :method => :get, :remote => true do %>
-					<div class="newsfeed-title2">
-						Posts
-					</div>
-				<% end %>
-				<% if current_user %>
-					<%= link_to cliques_path, :method => :get, :remote => true do %>
-						<div class="newsfeed-title2">
-						  Cliques
-						</div>
-					<% end %>
-					<%= link_to favorites_path, :method => :get, :remote => true do %>
-						<div class="newsfeed-title2">
-						  Favorites
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-		<div class="newsfeed-subtitle">
-			See the latest posts from people you follow
-		</div>
-
 
 
 
@@ -65,6 +32,35 @@
 
 	  <div class="leftCol">
 
+	  	<div class="newsfeed-title">
+				<%= link_to all_path, :method => :get, :remote => true do %>
+					<div class="newsfeed-title1 newsfeed-active">
+						All
+					</div>
+				<% end %>
+				<%= link_to tracks_path, :method => :get, :remote => true do %>
+					<div class="newsfeed-title2">
+						Tracks
+					</div>
+				<% end %>
+				<%= link_to posts_path, :method => :get, :remote => true do %>
+					<div class="newsfeed-title2">
+						Posts
+					</div>
+				<% end %>
+				<% if current_user %>
+					<%= link_to cliques_path, :method => :get, :remote => true do %>
+						<div class="newsfeed-title2">
+						  Cliques
+						</div>
+					<% end %>
+					<%= link_to favorites_path, :method => :get, :remote => true do %>
+						<div class="newsfeed-title2">
+						  Favorites
+						</div>
+					<% end %>
+				<% end %>
+			</div>
 			<div id="home-content">
 			  <%= render :partial => "all", :locals => { content: @content } %>
 			</div>

@@ -9,11 +9,25 @@
 
 .textpost{
 	width:100%;
-	padding: 20px 20px 16px 20px;
+	padding: 12px 12px 12px 20px;
 	display: inline-block;
 	background-color: white;
 	border-radius: 5px;
 }
+
+
+
+.textpost:hover{
+	background-color: #F5F8FA;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
 
 
 .modal-textpost{
@@ -44,9 +58,9 @@
 
 
 .post-Content{
-	width:538px;
+	width:508px;
 	display: inline-block;
-	float: right;
+	float: left;
 	padding-left: 10px;
 	margin-top: 3px;
 }
@@ -76,8 +90,7 @@
 
 .textpost-Box{
 	border:1px solid #dce0e0;
-	border-radius: 5px;
-	margin-bottom: 10px;
+	margin-top: -1px;
 	width: 100%;
 	min-height: 50px;
 	display: inline-block;

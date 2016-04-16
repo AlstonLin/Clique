@@ -408,7 +408,7 @@ a:visited{
   .box {
 
   		margin: 0px 10px 10px 0px;
-	  width: 310px;
+	  width: 288px;
 
 	  border-radius: 7px;
 	  img {
@@ -1923,11 +1923,11 @@ div.mejs-speed-button {
 
 .rightCol-Index{
 	float:right;
-	width:310px;
+	width:288px;
 }
 
 .rightCol-Filter{
-	width: 310px;
+	width: 100%;
 	float: right;
 	margin-bottom: 10px;
 	background-color: white;
@@ -1951,7 +1951,6 @@ div.mejs-speed-button {
 	color: #333;
 	height: 30px;
 	font-weight: 500;
-	border-bottom: 1px solid #333;
 }
 
 .rightCol-Filter-Title-Name2{
@@ -2027,7 +2026,7 @@ div.mejs-speed-button {
 .rightCol-Profile-Name{
 	width:130px;
 	height:17px;
-	margin-top: 2px;
+	margin-top: -3px;
 	overflow: hidden;
 	font-weight: 500;
 
@@ -2469,7 +2468,7 @@ img{
 }
 
 .player1-Name{
-	margin-top: 8px;
+	margin-top: 12px;
 	height: 68px;
 	width: 30px;
 	float:left;
@@ -2478,6 +2477,7 @@ img{
 	padding-top: 2px;
 	font-size: 13px;
 	line-height: 20px;
+	margin-left: 10px;
 }
 
 
@@ -2510,26 +2510,26 @@ img{
 
 
 .player1-songName{
+	background: rgba(0, 0, 0, 0.8);
 	font-size: 14px;
-	margin-left: 46px;
 	margin-top: -2px;
-	width:300px;
+	color: white;
+	display: inline-block;
+	padding: 0px 5px 0px 5px;
 }
 
 .player1-songName:hover{
 	cursor: pointer;
-	color:#333;
 }
 
 .player1-artist{
-	margin-top: 6px;
-	margin-left: 46px;
+	background: rgba(0, 0, 0, 0.8);
 	font-weight: 500;
-	width:300px;
+	color: white;	
+	padding: 0px 5px 0px 5px;
 }
 
 .player1-artist:hover{
-	color:#333;
 	cursor: pointer;
 }
 
@@ -2633,7 +2633,11 @@ img{
 
 .player1-left-btn{
 	float:left;
-	width:30px;
+	position: absolute;
+	margin-left: 46px;
+	padding-left:5px;
+	padding-right: 20px;
+	margin-top: 10px;;
 }
 
 .player1-right-btn{
@@ -2735,12 +2739,12 @@ img{
 }
 
 .commentSection-name{
-	width:538px;
 	height: 16px;
-	margin-top: 2px;
+	margin-top: -3px;
 	font-weight: 500;
-	float: right;
+	float: left;
 	padding-left: 10px;
+	margin-right:4px;
 }
 
 

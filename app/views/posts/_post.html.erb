@@ -5,35 +5,38 @@
         <img src="<%= post.poster.profile_picture_url %>">
       </div>
       <div class="commentSection-name">
-        <div class="comment-time"><%= time_ago_in_words post.created_at %></div>
-        <%= link_to post.poster.name, post.poster %>
+        <%= link_to post.poster.name, post.poster %> 
+      </div>
+
+      <div class="player1-time">
+        • <%= time_ago_in_words post.created_at %>
       </div>
       <div class="post-Content">
         <%= post.content %>
       </div>
 		</div>
-		<div class="player1-right-btn2">
+		<!--<div class="player1-right-btn2">
 
 			<!-- <div class="player1-btn">
 				<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-			</div> -->
+			</div> --
 
 			<% if current_user %>
 				<% if post.poster == current_user %>
-					<!-- Buttons to show owner -->
+					<!-- Buttons to show owner --
 						<%= button_to post_delete_path(post), :remote => true, :class => "player1-btn2" do %>
 							<div class="glyphicon glyphicon-trash"></div>
 						<% end %>
 				<% else %>
 					<% if !post.clique_only %>
-						<!-- Buttons to show everyone else -->
+						<!-- Buttons to show everyone else --
 						<% if current_user.has_reposted? post %>
-							<!-- Un-repost button -->
+							<!-- Un-repost button --
 							<%= link_to post_repost_path(post), :remote => true, :class => "player1-btn redclass", :method => :post do %>
 								<div class="glyphicon glyphicon-refresh redclass"></div>
 							<% end %>
 						<% else %>
-							<!-- Repost button -->
+							<!-- Repost button --
 							<%= link_to post_repost_path(post), :remote => true, :class => "player1-btn", :method => :post do %>
 								<div class="glyphicon glyphicon-refresh"></div>
 							<% end %>
@@ -42,12 +45,12 @@
 				<% end %>
 
 				<% if post.favoriters.include? current_user %>
-					<!-- Unfavorite button -->
+					<!-- Unfavorite button --
 					<%= link_to post_favorite_path(post), :remote => true, :class => "player1-btn redclass", :method => :post do %>
 						<div class="glyphicon glyphicon-heart redclass"></div>
 					<% end %>
 				<% else %>
-					<!-- Favorite button -->
+					<!-- Favorite button --
 					<%= link_to post_favorite_path(post), :remote => true, :class => "player1-btn ", :method => :post do %>
 						<div class="glyphicon glyphicon-heart"></div>
 					<% end %>
@@ -71,6 +74,7 @@
 	    <% end %>
 	  </div>
 	<% end %>-->
+</div>
 </div>
 
 
