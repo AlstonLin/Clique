@@ -1,13 +1,12 @@
 <!--  Navbar -->
- <nav class="navbar navbar-default navbar-front">
+<nav class="navbar navbar-default navbar-front">
  	<div class="container3">
    <div class="container-fluid">
      <div class="navbar-header">
-
        <%= link_to "cliq", root_path, :class => "navbar-brand nav-margin" %>
      </div>
- 
      <div class="collapse navbar-collapse">
+
          <!-- Shown when signed out -->
          <ul class="nav navbar-nav navbar-right">
            <li><%= link_to "Log In", new_user_session_path, 'data-skip-pjax' => true %></li>
@@ -15,15 +14,10 @@
          </ul>
      </div>
    </div>
-</div>
- </nav>
+  </div>
+</nav>
+
  <!-- Content -->
-
-
-
-
-
-
 <div class="homepage-header">
   <div class="homepage-header-title">
     Support the music you love.
@@ -33,33 +27,18 @@
   </div>
   <%= link_to "Create acccount" , new_user_registration_path, class: "button btn primary-background", 'data-skip-pjax' => true %>
 </div>
-
-
-
-
-
 <div class="page-Bottom">
   <div class="container2">
-<div class="artist-Box">
-
 
 <!-- Content -->
-
-  <div class='home-Title'> New Artists </div>
-  <div class='home-Subtitle'> Discover the newest artists on Clique </div>
-
+  <div class='home-Subtitle'> Discover the top artists on Cliq </div>
 </div>
-
 <div class="artist-Box2">
 <div id="pins">
   <% @top.each do |t| %>
     <%= render :partial => '/home/artist_tile_no_pjax', :locals => { :artist => t } %>
-
   <% end %>
 </div>
-</div>
-
-
 </div>
 </div>
 </div>

@@ -6,115 +6,9 @@ $primary-hover: #A04444;
 $fbhover: #374F86;
 $fbblue: rgba(59, 89, 152,1);
 
-.track-btn{
-	width: 100px !important;
-	float: left !important;
-	margin-left: 0px !important;
-	border: 0px !important;
-}
-
-.redclass{
-	color: $primary-color !important;
-	border-color: $primary-color !important;
-}
-
-.rightCol {
-	width: 310px;
-	position: relative;
-	float: left;
-	margin-left: 10px;
-}
 
 
 
-textarea{
-	min-height: 0px !important;
- 	resize: none;
- 	    overflow: hidden;
-}
-
-
-a {
-   outline: 0 !important;
-}
-
-a:visited {
-	color: inherit !important;
-}
-a {
-	color: inherit !important;
-}
-
-a:hover, a:focus{
-	color: inherit !important;
-	text-decoration: none !important;
-}
-
-
-textarea:focus, input:focus{
-    outline: 0;
-}
-
-.primary-background {
-	background-color: $primary-color !important;
- 	color: white !important;
-}
-
-
-.floatright {
-	float:right;
-}
-
-
-.fa-lg {
-	color:#888;
-
-	&:hover{
-		color:#f50;
-	}
-
-}
-
-/* Nav Bar */
-
-.navbar-nav > li > a{
-	padding-top: 8px;
-	padding-bottom: 8px;
-	line-height: 32px;
-	margin-left: 7px;
-
-}
-
-
-
-
-html {
-	box-sizing: border-box;
- 	overflow-y: scroll;
- 	overflow-x: hidden;
- 	height:100%;
-
-}
-
-
-
-.footer{
-	height: 100px;
-}
-
-.page-Bottom{
-	width: 100%;
-	display: inline-block;
-	padding-bottom: 75px;
-}
-
-.page-Bottom2{
-	width: 100%;
-	display: inline-block;
-	padding-bottom: 75px;
-	padding-top: 90px;
-	min-height: 700px;
-}
 
 .signin-Bottom{
 	width: 100%;
@@ -124,401 +18,8 @@ html {
 	min-height:100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-weight: 100;
-}
 
-h2 {
-	font-size: 18px;
-}
 
-.margin-left10{
-	margin-left: 10px;
-}
-
-.alert {
-	width: 750px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.follow-btn {
-	background-color: #D7DADA;
-	outline: none;
-	color: #333;
-	font-size: 12px;
-	font-weight: bold;
-	letter-spacing: 0px;
-
-	&:visited {
-    color: white;
-	}
-}
-
-
-.btn {
-	background-color: #D7DADA;
-	outline: none;
-	color: #333;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-.btn:focus,.btn:active {
-   outline: none !important;
-}
-
-.btn-default {
-	border:none;
-	color: #333;
-	&:visited{
-		color: #333;
-	}
-}
-
-a {
-	outline: none;
-}
-
-a:visited {
-}
-
-
-a:hover {
-	background-color: none;
-	text-decoration: none;
-}
-
-.container {
-	margin-top: 90px;
-	margin-right: auto;
-	margin-left: auto;
-	width: 1040px;
-
-}
-
-
-
-
-
-/* Nav Bar */
-
-
-
-.navbar-form{
-	float: left;
-	.input-group{
-		padding: 0px;
-			.form-control{
-	width: 558px !important;
-	background-color: #F6F6F6 !important;
-	border-color: #E5E5E5 !important;
-	box-shadow: none;
-	color: #999;
-
-}
-	.input-group-btn{
-		.btn-default{
-			height:34px;
-			background-color: #F6F6F6;
-
-			color: #888;
-			border-top: 1px solid #E5E5E5;
-			border-right: 1px solid #E5E5E5;
-			border-bottom: 1px solid #E5E5E5;
-			border-left: none;
-		}
-
-	}
-
-	}
-
-}
-
-
-
-.input-group-btn{
-	height:100%;
-	padding: 0px;
-}
-
-.navbar-default{
-	background-color: white !important;
-	border: 0px;
-	width: 100%;
-	margin-bottom: 50px !important;
-	border-color: #e7e7e7!important;
-	box-shadow: none;
-}
-
-.navbar-nav>li>a{
-	color: #333f48;
-	font-weight: 600;
-	font-size: 14px;
-	&hover{
-		color: #222;
-		outline: -webkit-focus-ring-color auto 5px;
-    	outline-color: -webkit-focus-ring-color;
-    	outline-style: auto;
-    	outline-width: 5px;
-	}
-}
-
-
-
-
-.navbar-fixed-top{
-
-	.container {
-		width: 940px;
-		padding-left: 0px;
-		padding-right: 0px;
-		height: 100%;
-		margin-top: 0px;
-		display: block;
-	}
-	.navbar-brand {
-		margin-left: -75px;
-		padding-left: 0px;
-		font-weight: 600;
-		a {
-			color: $primary-color;
-			background: $primary-color;
-			font-weight: bold;
-  			-webkit-background-clip: text;
- 			-webkit-text-fill-color: transparent;
-
-
-			&:hover {
-				text-decoration: none;
-				background-color: none;
-			}
-		}
-	}
-}
-
-
-.nav > li > a:hover, .nav > li > a:focus{
-	background-color: white;
-}
-
-nav {
-}
-
-
-.login-btn {
-	color: white !important;
-	font-size: 13px;
-}
-
-
-.navbar-front{
-	height: 50px;
-	background: transparent !important;
-	background-color: transparent !important;
-	border: none !important;
-	color: white;
-	position: absolute !important;
-	margin-top: 10px;
-	box-shadow: none;
-	.navbar-nav > li > a{
-		color: white !important;
-	}
-}
-
-
-
-
-
-
-/* Homepage Header */
-
-.homepage-header {
-	width: 100%;
-	height: 400px;
-	background-color: #262626;
-	background-size: cover;
-	background-position: center top;
-	z-index: -1;
-	overflow:auto;
-	text-align: center;
-	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://scontent-lga3-1.cdninstagram.com/hphotos-xpf1/t51.2885-15/e35/11356567_1495676364069721_1859839623_n.jpg);
-	background-attachment: fixed;
-	margin-bottom: 50px;
-.btn {
-	padding: 20px 40px;
-	font-size: 16px;
-	font-weight: 700;
-	margin-top: 35px;
-	color: white;
-    border: 1px solid transparent;
-    text-shadow: 0 1px rgba(0,0,0,0.1);
-    border: 1px solid transparent;
-    background-color: #d14836;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#d14836));
-    background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
-    background-image: -moz-linear-gradient(top,#dd4b39,#d14836);
-    background-image: -ms-linear-gradient(top,#dd4b39,#d14836);
-    background-image: -o-linear-gradient(top,#dd4b39,#d14836);
-    background-image: linear-gradient(top,#dd4b39,#d14836);
-    &:active{
-    outline: rgba(0,0,0,0) 0;
-    background-color: #c53727;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#dd4b39),to(#c53727));
-    background-image: -webkit-linear-gradient(top,#dd4b39,#c53727);
-    background-image: -moz-linear-gradient(top,#dd4b39,#c53727);
-    background-image: -ms-linear-gradient(top,#dd4b39,#c53727);
-    background-image: -o-linear-gradient(top,#dd4b39,#c53727);
-    background-image: linear-gradient(top,#dd4b39,#c53727);
-    border: 1px solid #b0281a;
-    border-bottom: 1px solid #af301f;
-    }
-
-
-
-}
-a:visited{
-	color:white !important;
-}
-
-
-
-}
-
-
-.homepage-header-title {
-	font-weight: 700;
-	font-size: 34px;
-	color: white;
-	z-index: 10;
-	margin-top: 116px;
-	margin-left: auto;
-	margin-right: auto;
-	opacity: 1 !important;
-	letter-spacing: -1px;
-	text-shadow: 0 1px rgba(0,0,0,0.1);
-	-webkit-font-smoothing:antialiased;
-
-}
-
-
-/* Pin Section */
-
-.pin-section-title2 {
-	height: auto;
-	font-weight: 100;
-	font-size: 28px;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	margin-left: auto;
-	margin-right: auto;
-	letter-spacing: -1px;
-	text-align: center;
-}
-
-.pin-section-title {
-	height: auto;
-	font-weight: 100;
-	font-size: 28px;
-	margin-bottom: 50px;
-	margin-left: auto;
-	margin-right: auto;
-	letter-spacing: -1px;
-	text-align: center;
-	width: 940px;
-}
-
-.homepage-header-subtitle {
-	color: white;
-	font-size: 20px;
-	margin-top: 20px;
-}
-
-.box {
-	width: 304px;
-}
-
-
-.pin-image {
-	width: 100%;
-	height: 200px;
-	  overflow:hidden
-}
-
-
-.panel {
-	border: none;
-	box-shadow: 0px;
-}
-
-.panel-footer {
-	padding: 0px 15px 20px 15px;
-	background-color: white;
-	height: 143px;
-	border: 0px;
-	.btn{
-		float:right;
-	}
-	.pricebtn {
-		background-color: white !important;
-		float:left;
-		color: #333;
-		font-size: 16px;
-		padding-left: 0px;
-		padding-right: 0px;
-
-	}
-
-	p {
-		margin: 0;
-	}
-	.user {
-		padding-top: 8px;
-	}
-}
-
-.panel-footer2 {
-	padding: 0px 15px 20px 15px;
-	background-color: white;
-	height: 143px;
-	border: 0px;
-	border-radius: 3px;
-	.btn{
-		float:right;
-	}
-	.pricebtn {
-		background-color: white !important;
-		float:left;
-		color: #333;
-		font-size: 16px;
-		padding-left: 0px;
-		padding-right: 0px;
-
-	}
-
-	p {
-		margin: 0;
-	}
-	.user {
-		padding-top: 8px;
-	}
-}
-
-
-.transition{
-	-webkit-transition: .3s ease all !important;
-    -moz-transition: .3s ease all !important;
-    -ms-transition: .3s ease all !important;
-    -o-transition: .3s ease all !important;
-    transition: .3s ease all !important;
-    &:hover{
-    	-webkit-transition: .3s ease all !important;
-    -moz-transition: .3s ease all !important;
-    -ms-transition: .3s ease all !important;
-    -o-transition: .3s ease all !important;
-    transition: .3s ease all !important;
-    }
-}
 
 .signupform {
     margin: 0 auto;
@@ -556,11 +57,6 @@ a:visited{
     float: left;
 }
 
-.signbtn{
-    margin: 0 auto !important;
-    display: table !important;
-    float: none !important;
-}
 
 /* Login Page */
 
@@ -599,8 +95,6 @@ a:visited{
 }
 
 
-
-
 .panel-footer-CenterCol{
 	width:240px;
 	margin-right: auto;
@@ -608,7 +102,6 @@ a:visited{
 	height:auto;
 
 }
-
 
 
 .panel-user {
@@ -642,8 +135,6 @@ a:visited{
 }
 
 
-
-
 .panel-footer-divider {
 	width: 100%;
 	height:1px;
@@ -657,8 +148,8 @@ a:visited{
   width: 100%;
   .box {
 
-  		margin: 0px 15px 15px 0px;
-	  width: 306px;
+  		margin: 0px 10px 10px 0px;
+	  width: 288px;
 
 	  border-radius: 7px;
 	  img {
@@ -669,10 +160,6 @@ a:visited{
 	  	border-radius: 3px 3px 0px 0px;
 	  	background-position: cover;
 	  }
-
-
-
-
 	  h2 {
 	  	font-weight: 400;
 	  	font-size: 16px;
@@ -691,14 +178,14 @@ a:visited{
 	}
 
 	.box:nth-child(3){
-		margin: 0px 0px 20px 0px;
+		margin: 0px 0px 10px 0px;
 	}
 
 
 }
 
 	.box:nth-child(3n) {
-  		margin: 0px 0px 20px 0px !important;
+  		margin: 0px 0px 10px 0px !important;
 	}
 
 
@@ -745,16 +232,14 @@ a:visited{
 	&:hover{
 		background: $fbhover;
 	}
-
-
 }
+
 .panel-body {
 		padding: 20px 50px 35px 50px !important;
 }
 
 
 #pin_show {
-
 	.pin_image {
 		img {
 			max-width: 100%;
@@ -858,12 +343,6 @@ textarea {
 	margin-left: -200px;
 }
 
-
-
-
-
-
-
 .profile-location{
 	font-size: 18px;
 	margin-left: 176px;
@@ -872,10 +351,6 @@ textarea {
 	position: absolute;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
 }
-
-
-
-
 
 .user-middleCol {
 	width:100%;
@@ -892,10 +367,6 @@ textarea {
 
 
 }
-
-
-
-
 
 .user-divider {
 	width: 100%;
@@ -921,11 +392,7 @@ textarea {
 		border-bottom: 3px solid #f50;
 		text-decoration: none;
 		font-weight: bold;
-
-
 	}
-
-
 
 .user-bottomCol-social{
 	height: 100%;
@@ -936,19 +403,7 @@ textarea {
 		float:right;
 		color: #999;
 	}
-
-
 }
-
-
-
-
-
-
-
-
-
-
 	.btn{
 		margin-top: 11px;
 	}
@@ -958,13 +413,6 @@ textarea {
 .panel-footer2 {
 	height: 120px;
 }
-
-
-
-
-
-
-
 
 .pin-show-title2 {
 	height: 150px;
@@ -979,13 +427,6 @@ textarea {
 	width: auto;
 	width:940px;
 }
-
-
-
-
-
-
-
 
 .pin-section-title-rightCol{
 	width:620px;
@@ -1004,9 +445,6 @@ textarea {
 		padding: 6px 30px;
 	}
 }
-
-
-
 
 .btn-show-buy {
 	width:100%;
@@ -1029,108 +467,8 @@ a {
 
 
 
-/**Media changes**/
-
-@media(max-width: 957px){
-
-
-
-
-
-
-.navbar-brand {
-	margin-left: 16px;
-
-}
-
-
-
-
-
-
-
-
-.navbar-fixed-top{
-	padding-left: 16px;
-	padding-right: 16px;
-	position: relative;
-	.container {
-		width: 100%;
-	}
-}
-.centerCol {
-  width:100%;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.homepage-header {
-	height: 530px;
-	padding-left: 16px;
-	padding-right: 16px;
-}
-
-.homepage-header-title{
-	margin-top: 150px;
-	font-size: 30px
-}
-
-.homepage-header-subtitle{
-	font-size: 16px;
-}
-
-.pin-section-title {
-	width: 100%;
-}
-
-
-
-
-.col-md-6{
-	padding: 0px;
-}
-
-
-
-
-.mh {
-	display:none;
-}
-
-h1 {
-	font-size: 30px;
-}
-
-
-.container {
-	padding: 0px;
-}
-
-
-
-.rightCol-price {
-
-}
-
-
-
-
-}
-
-
-
-/**Media changes**/
-
-@media(min-width: 957px){
-.mv {
-	display:none;
-}
-
-}
-
 
 /* Following Section - Profile */
-
 
 
 .following-section {
@@ -2277,324 +1615,6 @@ div.mejs-speed-button {
 	color: #ffffff;
 }
 
-/* End: Skip Back */
-
-
-// Place all the styles related to the Pins controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-$primary-color: #fe4641;
-$border: #e5e5e5;
-
-.newsfeed-title{
-	width: 100%;
-	height: 50px;
-	margin-bottom: 20px;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-.newsfeed-active{
-	border-bottom: 1px solid $primary-color;
-	color: $primary-color;
-	font-weight: 600;
-}
-
-.newsfeed-title1{
-	height: 50px;
-	line-height: 50px;
-	font-size: 18px;
-	float: left;
-	font-weight: 600;
-}
-
-.newsfeed-title2{
-	margin-left: 20px;
-	height: 50px;
-	line-height: 50px;
-	font-size: 18px;
-	float: left;
-	font-weight: 600;
-
-}
-
-.newsfeed-title3{
-	height: 50px;
-	line-height: 50px;
-	font-size: 18px;
-	float: left;
-
-	color: $primary-color;
-	border-bottom: 1px solid $primary-color;
-	font-weight: 600;
-
-
-}
-
-
-
-.newsfeed-subtitle{
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
-	font-size: 16px;
-	margin-bottom: 20px;
-	color: #999;
-	-webkit-font-smoothing: antialiased;
-}
-
-
-
-
-.newsfeed-title2:hover{
-	margin-left: 20px;
-	height: 50px;
-	line-height: 50px;
-	font-size: 18px;
-	float: left;
-	border-bottom: 1px solid $primary-color;
-	color: $primary-color;
-	cursor: pointer;
-}
-
-
-.rightCol-Index{
-	float:right;
-	width:306px;
-}
-
-.rightCol-Filter{
-	width: 306px;
-	float: right;
-	margin-bottom: 15px;
-	background-color: white;
-	border-radius: 5px;
-	border: 1px solid $border;
-	padding: 20px 20px 16px 20px;
-
-}
-
-.rightCol-Filter-Title{
-	width: 100%;
-	height: 30px;
-	border-bottom: 1px solid $border;
-	margin-bottom: 20px;
-
-}
-
-.rightCol-Filter-Title-Name{
-	float: left;
-	font-size: 14px;
-	color: #333;
-	height: 30px;
-	font-weight: 600;
-	border-bottom: 1px solid #333;
-
-
-}
-
-.rightCol-Filter-Title-Stat{
-	float: right;
-	color: #999;
-	font-size: 14px;
-}
-
-.rightCol-Filter-Title-Stat:hover{
-	color: #333;
-}
-
-
-.rightCol-Clique-Title{
-	width: 100%;
-	height: 25px;
-	margin-bottom: 10px;
-	font-weight: 600;
-
-}
-
-
-.right-Clique-Btn{
-	width:100%;
-	height:40px;
-	background-color: #e8ebeb;
-	margin-top: 10px;
-	border-radius: 3px;
-	text-align: center;
-	line-height: 40px;
-	font-weight: bold;
-}
-
-
-
-
-
-
-
-.rightCol-Filter-Profile{
-	width: 100%;
-	height: 40px;
-	margin-bottom: 12px;
-	font-size: 14px;
-}
-
-
-
-.rightCol-footer{
-	color: #999;
-	font-size: 12px;
-}
-
-
-.rightCol-Profile-Avi{
-	float:left;
-	width:40px;
-	height:100%;
-	border-radius: 3px;
-	margin-right: 10px;
-	img{
-		border-radius: 3px;
-	}
-}
-
-.rightCol-Profile-Avi:hover{
-	cursor: pointer;
-}
-
-.rightCol-Profile-Bar{
-	width:100px;
-	height:100%;
-	float: left;
-}
-
-
-.rightCol-Profile-Name{
-	width:100px;
-	height:15px;
-	margin-top: 2px;
-
-}
-
-.rightCol-Profile-Name:hover{
-	cursor: pointer;
-	color: #333;
-
-}
-
-
-.rightCol-Followers{
-	width:140px;
-	height:15px;
-	font-size: 12px;
-	margin-top: 5px;
-	color: #999;
-	overflow:hidden;
-	.fa{
-		font-size: 12px;
-
-	}
-}
-
-
-.rightCol-Profile-Follow{
-	float:right;
-	width: 70px;
-	height:22px;
-	border: 1px solid $border;
-	border-radius: 3px;
-	font-size: 12px;
-	text-align: center;
-	line-height: 21px;
-	color: #999;
-}
-
-.rightCol-Profile-Follow:hover{
-	border: 1px solid $primary-color;
-	color: $primary-color;
-	cursor: pointer;
-}
-
-.rightCol-Profile-Following{
-	float:right;
-	width: 70px;
-	height:22px;
-	border: 1px solid $primary-color;
-	border-radius: 3px;
-	font-size: 12px;
-	text-align: center;
-	line-height: 21px;
-	color: $primary-color;
-}
-
-.rightCol-Profile-Following:hover{
-	border: 1px solid $primary-color;
-	color: $primary-color;
-	cursor: pointer;
-}
-
-
-.rightCol-Filter-seeMore{
-	width:100%;
-	height:26px;
-	border: 1px solid $border;
-	text-align: center;
-	line-height: 26px;
-	border-radius: 3px;
-	color: #999;
-	background-color: $border;
-}
-
-.rightCol-Filter-seeMore:hover{
-	color: #333;
-	cursor: pointer;
-}
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-$primary-color: #fe4641;
-
-
-
-
-.container2 {
-	width: 948px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.container3 {
-	width: 980px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.container4 {
-	width: 627px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.narrow-container {
-	width: 800px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-
-
-
-.leftCol {
-width: 627px;
-display: inline-block;
-}
-
-
-
-
-
-
-
 .rightBlock {
 border-radius: 3px;
 position: relative;
@@ -2606,9 +1626,6 @@ border-radius: 3px;
 padding: 20px;
 border: 1px solid #dce0e0;
 margin-bottom: 10px
-
-
-
 
 }
 
@@ -2626,8 +1643,6 @@ margin-bottom: 10px
 .rightBlock-Body{
 	width: 100%;
 	border-radius: 3px;
-
-
 }
 
 
@@ -2750,6 +1765,7 @@ img{
 	background-color: white;
 	border-bottom: 1px solid #E1E3ED;
 	border-top: 1px solid #E1E3ED;
+	font-weight: 500;
 }
 
 .stats1{
@@ -2800,101 +1816,11 @@ img{
 
 
 
-.btn-hollow.btn{
-	height:38px;
-	line-height: 33px;
-	width:150px;
-	color: #888;
-	float:right;
-	border: 1px solid;
-	border-radius: 3px;
-	text-align: center;
-	margin-top: 12.5px;
-	font-weight: bold;
-	font-size: 12px;
-	border-color: #d1d1d1;
-	padding: 0px;
-	margin-left: 10px;
-	background-color: white;
-	margin-bottom: 0px;
-}
 
 
 
 
 
-.btn-primary.btn{
-	height:38px;
-	line-height: 38px;
-	width:150px;
-	color: white !important;
-	float:right;
-	border: none;
-	border-radius: 3px;
-	text-align: center;
-	margin-top: 12.5px;
-	font-weight: bold;
-	font-size: 12px;
-	background-color: $primary-color;
-	padding: 0px;
-	margin-left: 10px;
-	margin-bottom: 0px;
-}
-
-.btn-primary.btn:hover{
-	background-color: $primary-hover;
-	border-color: none;
-	color: #fff;
-
-}
-
-.btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus, .open > .btn-primary.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus, .open > .btn-primary.dropdown-toggle.focus{
-	border-color: #e00007 !important;
-	background-color: #e00007 !important;
-}
-
-.btn-primary.btn:focus{
-	border-color: #e00007 !important;
-	background-color: #e00007 !important;
-}
-
-
-
-.btn-login.btn{
-	height:34px;
-	line-height: 33px;
-	width:100px;
-	color: white !important;
-	float:right;
-	border: 1px solid;
-	border-radius: 3px;
-	text-align: center;
-	margin-top: 6px;
-	font-weight: bold;
-	font-size: 12px;
-	background-color: $primary-color;
-	border-color: $primary-color;
-	padding: 0px;
-	margin-left: 10px;
-
-}
-
-.btn-login.btn:hover{
-	background-color: #ff7e82 !important;
-	border-color: #ff7e82 !important;
-	color: #fff;
-
-}
-
-.btn-login:active:hover, .btn-login:active:focus, .btn-login:active.focus, .btn-login.active:hover, .btn-login.active:focus, .btn-primary.active.focus, .open > .btn-login.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus, .open > .btn-primary.dropdown-toggle.focus{
-	border-color: #e00007 !important;
-	background-color: #e00007 !important;
-}
-
-.btn-login.btn:focus{
-	border-color: #e00007 !important;
-	background-color: #e00007 !important;
-}
 
 
 .modal-dialog{
@@ -2948,7 +1874,7 @@ img{
 	border: 1px solid #dce0e0;
 	border-radius: 5px;
 	background: white;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	position: relative;
 	width: 100%;
 }
@@ -3015,32 +1941,13 @@ img{
 	cursor: pointer;
 }
 
-.player1-Name{
-	margin-top: 10px;
-	height: 68px;
-	width: 30px;
-	float:left;
-	z-index: 10;
-	position: absolute;
-	padding-top: 2px;
-	font-size: 13px;
-	line-height: 20px;
-}
 
 
 
 
 
-.player1-play{
-	width:25px;
-	height:25px;
-
-	margin-bottom: 7px;
-	margin-left: 2px;
 
 
-
-}
 
 
 
@@ -3056,30 +1963,8 @@ img{
 
 
 
-.player1-songName{
-	font-size: 14px;
-	margin-left: 46px;
-	margin-top: -2px;
-	width:300px;
-}
 
-.player1-songName:hover{
-	cursor: pointer;
-	color:#333;
-}
 
-.player1-artist{
-	margin-top: 6px;
-	font-size: 12px;
-	margin-left: 46px;
-	color:#A5A5A5;
-	width:300px;
-}
-
-.player1-artist:hover{
-	color:#333;
-	cursor: pointer;
-}
 
 .player1-Stats{
 	line-height: 20px;
@@ -3175,22 +2060,10 @@ img{
 .player1-Section2-Middle{
 	width:100%;
 	height:100%;
-	font-size: 12px;
 	padding-top: 8px;
 
 }
 
-.player1-left-btn{
-	float:left;
-	width:30px;
-}
-
-.player1-right-btn{
-	float:right;
-	width:220px;
-	height:30px;
-	margin-top: 12px;
-}
 
 
 
@@ -3205,68 +2078,11 @@ img{
 
 }
 
-.player1-btn{
-	width: 27px;
-	height: 25px;
-	margin-left: 5px;
-	float: right;
-	border: 1px solid #d1d1d1;
-	border-radius: 3px;
-	font-size: 12px;
-	text-align: center;
-	line-height: 25px;
-
-
-}
 
 
 	.glyphicon{
 		color: #A5A5A5;
 	}
-
-.player1-btn:hover{
-	color: $primary-color;
-	border: 1px solid $primary-color;
-	cursor: pointer;
-		.glyphicon{
-		color: $primary-color !important;
-	}
-}
-
-.player1-btn2{
-	width: auto;
-	padding: 0px 5px;
-	height: 25px;
-	margin-left: 5px;
-	float: right;
-	border: 1px solid #d1d1d1;
-	border-radius: 3px;
-	font-size: 12px;
-	text-align: center;
-	line-height: 25px;
-	color: #A5A5A5;
-	background: white;
-
-input[type=submit]{
-	border: 0px;
-	padding: 0px;
-	font-size: 12px;
-	min-width: 0px;
-	margin: 0px;
-	height: 25px;
-}
-
-}
-
-.player1-btn2:hover{
-	color: $primary-color;
-	border: 1px solid $primary-color;
-	cursor: pointer;
-		.glyphicon{
-		color: $primary-color;
-	}
-}
-
 
 
 
@@ -3340,25 +2156,7 @@ input[type=submit]{
 	margin-bottom: 10px;
 }
 
-.commentSection-name{
-	width:542px;
-	height: 16px;
-	margin-top: 2px;
-	color: #999;
-	font-size: 12px;
-	float: right;
-	padding-left: 10px;
-}
 
-
-.comment-time{
-	float:right;
-	text-align: right;
-	width: 200px;
-	height:100%;
-	font-size: 12px;
-	color: #999;
-}
 
 .commentSection-comment{
 	width:542px;
@@ -3673,7 +2471,7 @@ glyphicon{
 
 
 .centerCol {
-	width:948px;
+	width:950px;
 	margin-right: auto;
 	margin-left: auto;
 	height:100%;
@@ -3682,15 +2480,9 @@ glyphicon{
 
 
 
-.leftCol {
-	width: 627px;
-	height: auto;
-	float:left;
-	position: relative;
-}
 
 .rightCol-singleSong {
-	width: 260px;
+	width: 288px;
 	height: auto;
 	float:right;
 	border-radius: 3px;
@@ -3701,16 +2493,17 @@ glyphicon{
 
 
 .rightCol-profileAvi{
-	width:80px;
-	height:80px;
+	width:60px;
+	height:60px;
 	background-color: $border;
 	float: left;
 	border-radius: 3px;
-	background-image: url(https://i1.sndcdn.com/avatars-000186622640-isz41l-t500x500.jpg);
 	background-size: cover;
+	border-radius: 3px;
+	overflow: hidden;
 	img{
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	background-size: cover;
 	background-position: center;
 	}
@@ -3718,14 +2511,14 @@ glyphicon{
 
 .rightCol-profileName{
 	width:180px;
-	height:80px;
+	margin-bottom: 16px;
 	float: left;
-	padding-left: 16px;
+	padding-left: 15px;
 
 
 .profileName-Artist{
 	width:100%;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .profileName-location{
@@ -4185,10 +2978,6 @@ glyphicon{
 	width: 650px;
 }
 
-.newsfeed-title a {
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-}
 
 .float-r{
 	float: right;

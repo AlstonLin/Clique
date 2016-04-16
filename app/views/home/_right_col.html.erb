@@ -11,7 +11,7 @@
   <% @top.each do |t| %>
     <div class="rightCol-Filter-Profile">
       <%= link_to t do %>
-        <div class="rightCol-Profile-Avi text-userPic">
+        <div class="rightCol-Profile-Avi text-userPic2">
           <%= image_tag t.profile_picture_url %>
         </div>
         <div class="rightCol-Profile-Bar">
@@ -58,7 +58,7 @@
     <% @favorites.each do |f| %>
       <div class="rightCol-Filter-Profile">
 
-          <div class="rightCol-Profile-Avi text-userPic">
+          <div class="rightCol-Profile-Avi text-userPic2">
             <%= image_tag f.get_pic_url %>
           </div>
 
@@ -76,7 +76,7 @@
 
 
 
-            <div class="rightCol-Followers">
+            <div class="rightCol-songname">
               <%= link_to f.name, f %>
             </div>
 

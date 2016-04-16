@@ -5,13 +5,13 @@ test: &default
   client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
 
   # Mode can be 'live' or 'sandbox'
-  mode: sandbox
+  mode: live
 
   # Credentials for Classic APIs
   app_id: APP-0SK00535KP286891S
-  username: anmolmago-facilitator_api1.hotmail.com
-  password: TUKAC7Q7Q7E9FHSU
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AsNh6yUArwCRkBDAYaaA2zdkAQel
+  username: contact_api1.everestmg.com
+  password: NY43859VYAEUWP4Q
+  signature: Axw3jMAg8yAPgNNLitT1yaBqgL3zA9VLNIWcOjFtw-oQMQ9-kp0FzE-y
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   sandbox_email_address: Platform.sdk.seller@gmail.com
