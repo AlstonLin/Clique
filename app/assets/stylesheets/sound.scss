@@ -48,6 +48,7 @@ body, html{
   display: flex;
   align-items: center;
   margin: auto 5px;
+  margin-top: 12px;
 }
 
 .abtn{
@@ -70,7 +71,7 @@ body, html{
 }
 
 .abtn:hover:not(.buffer):not(#status):not(#desc){
-  background:#ddd;
+  color: #333;
 }
 
 #status{
@@ -79,7 +80,7 @@ body, html{
   height:50px;
   line-height: 10px;
   //background:rgba(30,98,206,0.4);
-  padding:0 20px;
+  padding:0 20px 0px 30px;;
   padding-top: 2px;
   text-align:center;
 }
@@ -102,7 +103,7 @@ body, html{
     #F5F5F5 1px
   );
   height:5px;
-  margin:0px 20px 0px 30px;
+  margin:0px 20px 0px 20px;
   cursor:pointer;
   border:none;
 
