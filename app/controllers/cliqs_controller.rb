@@ -53,7 +53,6 @@ class CliqsController < ApplicationController
     @preapproval = @api.build_preapproval({
       :cancelUrl => root_url + user_path(@clique.owner),
       :currencyCode => "CAD",
-      :dateOfMonth => 1,
       :dayOfWeek => "NO_DAY_SPECIFIED",
       :maxAmountPerPayment => 0.12,
       :maxTotalAmountOfAllPayments=> 1.44,
