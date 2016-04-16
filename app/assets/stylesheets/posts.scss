@@ -7,25 +7,6 @@
 
 
 
-.textpost{
-	width:100%;
-	padding: 12px 20px;
-	display: inline-block;
-	background-color: white;
-	border-radius: 5px;
-}
-
-
-
-.textpost:hover{
-	background-color: #F5F8FA;
-	cursor: pointer;
-}
-
-
-
-
-
 
 
 
@@ -40,12 +21,7 @@
 
 
 
-.text-Post{
-	width: 100%;
-	display: inline-block;
-	margin-bottom: 10px;
 
-}
 
 
 .post-Comment{
@@ -57,13 +33,6 @@
 }
 
 
-.post-Content{
-	width:502px;
-	display: inline-block;
-	float: left;
-	padding-left: 10px;
-	margin-top: 3px;
-}
 
 
 
@@ -88,14 +57,6 @@
 	margin-top: 0px;
 }
 
-.textpost-Box{
-	border:1px solid #dce0e0;
-	margin-top: -1px;
-	width: 100%;
-	min-height: 50px;
-	display: inline-block;
-	background: white;
-}
 
 .textpost-Body{
 	padding: 20px;
@@ -118,26 +79,7 @@
 }
 
 
-.text-userPic{
-	width: 44px;
-	height:44px;
-	border-radius: 3px;
-	float: left;
-	overflow: hidden;
-	    justify-content:center;
-    align-items:center;
-    overflow:hidden;
 
-	img{
-		border-radius: 3px;
-    flex-shrink:0;
-    min-width:100%;
-    min-height:100%;
-    height: 100%;
-	}
-
-	
-}
 
 
 .text-profileName{
