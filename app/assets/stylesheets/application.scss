@@ -46,7 +46,6 @@ html,body{
    margin:0;
    padding:0;
    padding-bottom: 10px;
-   height: 100%;
  }
 
 textarea{
@@ -80,6 +79,9 @@ h2 {
   font-size: 18px;
 }
 
+
+
+
 /*----- Random Classes -----*/
 
 .redclass{
@@ -92,7 +94,21 @@ h2 {
   color: white !important;
 }
 
+.floatRight{
+  float:right;
+}
+
 /*----- Container -----*/
+
+#flash-container {
+  margin-top: 50px;
+}
+
+#pjax-container {
+  height: auto;
+  min-height: 100%;
+  background: #F5F8FA;
+}
 
 .container2 {
   width: 885px;
@@ -327,6 +343,7 @@ position: relative;
 }
 
 .player1-btn{
+  border: 1px solid #d1d1d1;
   height: 25px;
   width: 27px;
   margin-left: 5px;
@@ -348,6 +365,7 @@ position: relative;
 }
 
 .player1-btn2{
+  border: 1px solid #d1d1d1;
   width: 27px;
   padding: 0px 5px;
   height: 25px;
@@ -544,435 +562,6 @@ input[type=submit]{
   border-radius: 3px;
 }
 
-/*--- Newsfeed Title ----*/
-
-.newsfeed-title a {
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-}
-
-.newsfeed-title{
-  width: 100%;
-  height: 50px;
-  background-color: white;
-  border-top: 1px solid #dce0e0;
-  border-left: 1px solid #dce0e0;
-  border-right: 1px solid #dce0e0;
-  border-radius: 5px 5px 0px 0px;
-  padding-left: 20px;
-}
-
-.newsfeed-active{
-  color: $primary-color;
-  font-weight: 500;
-}
-
-.newsfeed-title1{
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
-  float: left;
-  font-weight: 500;
-}
-
-.newsfeed-title2{
-  margin-left: 20px;
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
-  float: left;
-  font-weight: 500;
-}
-
-.newsfeed-title3{
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
-  float: left;
-  color: $primary-color;
-  border-bottom: 1px solid $primary-color;
-  font-weight: 500;
-}
-
-.newsfeed-subtitle{
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #999;
-  -webkit-font-smoothing: antialiased;
-}
-
-.newsfeed-title2:hover{
-  color: $primary-color;
-}
-
-/*--- Text Post ----*/
-
-.textpost-Box{
-  border:1px solid #dce0e0;
-  margin-top: -1px;
-  width: 100%;
-  min-height: 50px;
-  display: inline-block;
-  background: white;
-}
-
-.textpost{
-  width:100%;
-  padding: 12px 20px 12px 20px;
-  display: inline-block;
-  background-color: white;
-  border-radius: 5px;
-}
-
-.textpost:hover{
-  background-color: #F5F8FA;
-  cursor: pointer;
-}
-
-.text-Post{
-  width: 100%;
-  display: inline-block;
-}
-
-.text-userPic{
-  width: 44px;
-  height:44px;
-  border-radius: 3px;
-  float: left;
-  overflow: hidden;
-      justify-content:center;
-    align-items:center;
-    overflow:hidden;
-  img{
-    border-radius: 3px;
-    flex-shrink:0;
-    min-width:100%;
-    min-height:100%;
-    height: 100%;
-  }
-}
-
-.text-userPic2{
-  width: 36px;
-  height:36px;
-  border-radius: 3px;
-  float: left;
-  overflow: hidden;
-      justify-content:center;
-    align-items:center;
-    overflow:hidden;
-
-  img{
-    border-radius: 3px;
-    flex-shrink:0;
-    min-width:100%;
-    min-height:100%;
-    height: 100%;
-  }
-}
-
-.commentSection-name{
-  height: 16px;
-  margin-top: -3px;
-  font-weight: 500;
-  float: left;
-  padding-left: 10px;
-  margin-right:4px;
-}
-
-.comment-time{
-  float:right;
-  text-align: right;
-  width: 200px;
-  height:100%;
-  font-size: 12px;
-  color: #999;
-}
-
-.player1-time{
-  float: left;
-  color: #999;
-  margin-top: -3px;
-}
-
-.post-Content{
-  width:502px;
-  display: inline-block;
-  float: left;
-  padding-left: 10px;
-}
-
-.post-track{
-  width: 100%;
-  height: 100px;
-  border-radius: 5px; 
-  overflow: hidden;
-  margin-top: 4px;
-  border: 1px solid $border;
-
-  img{
-  width: 100%;
-  height: auto;
-  }
-}
-
-.player1-Name{
-  margin-top: 12px;
-  height: 68px;
-  width: 30px;
-  float:left;
-  z-index: 10;
-  position: absolute;
-  padding-top: 2px;
-  font-size: 13px;
-  line-height: 20px;
-  margin-left: 10px;
-}
-
-.player1-play{
-  width:25px;
-  height:25px;
-  margin-bottom: 7px;
-  margin-left: 2px;
-}
-
-.play-Btn{
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  background-color: $primary-color;
-  text-align: center;
-  line-height: 28px;
-  color: white;
-  font-size: 10px;
-  .glyphicon{
-    margin-left: 2px;
-    color: white !important;
-  }
-}
-
-.player1-left-btn{
-  float:left;
-  position: absolute;
-  margin-left: 46px;
-  padding-left:5px;
-  padding-right: 20px;
-  margin-top: 10px;;
-}
-
-.player1-left-btn2{
-  float:left;
-  position: absolute;
-  margin-left: 46px;
-  padding-left:5px;
-  padding-right: 20px;
-  margin-top: 30px;;
-}
-
-.player1-artist{
-  background: rgba(0, 0, 0, 0.8);
-  font-weight: 500;
-  color: white; 
-  padding: 0px 5px 0px 5px;
-  display: inline-block;
-}
-
-.player1-artist:hover{
-  cursor: pointer;
-}
-
-.player1-songName{
-  background: rgba(0, 0, 0, 0.8);
-  font-size: 14px;
-  margin-top: -2px;
-  color: white;
-  display: inline-block;
-  padding: 0px 5px 0px 5px;
-}
-
-.player1-songName:hover{
-  cursor: pointer;
-}
-
-/*--- Right Column ----*/
-
-.rightCol-Index{
-  float:right;
-  width:288px;
-}
-
-.rightCol-Filter{
-  width: 100%;
-  float: right;
-  margin-bottom: 10px;
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid #dce0e0;
-  padding: 20px 20px 12px 20px;
-}
-
-.rightCol-Filter-Title{
-  width: 100%;
-  height: 30px;
-  border-bottom: 1px solid $border;
-  margin-bottom: 20px;
-}
-
-.rightCol-Filter-Title-Name{
-  float: left;
-  font-size: 14px;
-  color: #999;
-  height: 30px;
-  font-weight: 500;
-}
-
-.rightCol-Filter-Title-Name2{
-  float: left;
-  font-size: 14px;
-  color: #999;
-  height: 30px;
-}
-
-.rightCol-Filter-Title-Stat{
-  float: right;
-  color: #999;
-  font-size: 14px;
-}
-
-.rightCol-Filter-Title-Stat:hover{
-  color: #333;
-}
-
-.rightCol-Filter-Profile{
-  width: 100%;
-  height: 46px;
-  margin-bottom: 12px;
-  font-size: 14px;
-}
-
-.rightCol-Followers{
-  width:140px;
-  height:15px;
-  font-size: 12px;
-  margin-top: 5px;
-  color: #999;
-  overflow:hidden;
-  .fa{
-    font-size: 12px;
-  }
-}
-
-.rightCol-Profile-Avi{
-  float:left;
-  margin-right: 10px;
-  img{
-    border-radius: 50%;
-  }
-}
-
-.rightCol-Profile-Avi:hover{
-  cursor: pointer;
-}
-
-.rightCol-Filter-seeMore{
-  width:100%;
-  height:26px;
-  border: 1px solid $border;
-  text-align: center;
-  line-height: 26px;
-  border-radius: 3px;
-  color: #999;
-  background-color: $border;
-}
-
-.rightCol-Filter-seeMore:hover{
-  color: #333;
-  cursor: pointer;
-}
-
-.rightCol-Profile-Follow{
-  float:right;
-  width: 70px;
-  height:22px;
-  border: 1px solid $border;
-  border-radius: 3px;
-  font-size: 12px;
-  text-align: center;
-  line-height: 21px;
-  color: #999;
-}
-
-.rightCol-Profile-Follow:hover{
-  border: 1px solid $primary-color;
-  color: $primary-color;
-  cursor: pointer;
-}
-
-.rightCol-Profile-Following{
-  float:right;
-  width: 70px;
-  height:22px;
-  border: 1px solid $primary-color;
-  border-radius: 3px;
-  font-size: 12px;
-  text-align: center;
-  line-height: 21px;
-  color: $primary-color;
-}
-
-.rightCol-Profile-Following:hover{
-  border: 1px solid $primary-color;
-  color: $primary-color;
-  cursor: pointer;
-}
-
-
-.rightCol-Profile-Bar{
-  width:100px;
-  height:100%;
-  float: left;
-}
-
-.rightCol-Profile-Name{
-  width:130px;
-  height:17px;
-  margin-top: -3px;
-  overflow: hidden;
-  font-weight: 500;
-}
-
-.rightCol-Profile-Name:hover{
-  cursor: pointer;
-  color: #333;
-}
-
-.rightCol-songname{
-  width:120px;
-  height:15px;
-  margin-top: 1px;
-  color: #999;
-  overflow:hidden;
-  .fa{
-    font-size: 12px;
-  } 
-}
-
-
-.rightCol-footer{
-  color: #999;
-  font-size: 12px;
-}
-
-.rightCol-Clique-Title{
-  width: 100%;
-  height: 25px;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
 /*--- Homepage Header ----*/
 
 .homepage-header {
@@ -1160,78 +749,652 @@ a:visited{
   line-height: 30px;
 }
 
-/*--- Login Page  ----*/
+/*--- Login Page / Sign Up Page  ----*/
 
+.loginform {
+    margin: 0 auto;
+    width: 450px;
+    background-clip: padding-box;
+    background-color: #FFF;
+    border-radius: 5px !important;
+    border: none !important;
+}
 
+.fbc{
+  background: $fbblue;
+  color: white;
+  padding: 15px 50px !important;
+  &:hover{
+    background: $fbhover;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .panel-heading {
+    max-height:465px;
+    overflow: hidden;
+    border: 0px;
+    .cwf{
+      font-size: 16px;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+    h2{
+      font-size: 20px !important;
+      text-align: center;
+        -webkit-font-smoothing: antialiased;
+        color: #848F94;
+    }
+    .fa{
+      vertical-align: middle;
+    }
+  }
 
 .tva{
   display: inline-block;
   vertical-align: middle;
 }
 
-#flash-container {
-  margin-top: 50px;
+.panel-body {
+    padding: 20px 50px 35px 50px !important;
 }
 
-#pjax-container {
+/*--- Newsfeed  ----*/
+
+/*--- Newsfeed Right Column ----*/
+
+.rightCol-Index{
+  float:right;
+  width:288px;
+}
+
+.rightCol-Filter{
+  width: 100%;
+  float: right;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #dce0e0;
+  padding: 20px 20px 12px 20px;
+}
+
+.rightCol-Filter-Title{
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid $border;
+  margin-bottom: 20px;
+}
+
+.rightCol-Filter-Title-Name{
+  float: left;
+  font-size: 14px;
+  color: #999;
+  height: 30px;
+  font-weight: 500;
+}
+
+.rightCol-Filter-Title-Name2{
+  float: left;
+  font-size: 14px;
+  color: #999;
+  height: 30px;
+}
+
+.rightCol-Filter-Title-Stat{
+  float: right;
+  color: #999;
+  font-size: 14px;
+}
+
+.rightCol-Filter-Title-Stat:hover{
+  color: #333;
+}
+
+.rightCol-Filter-Profile{
+  width: 100%;
+  height: 46px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.rightCol-Followers{
+  width:140px;
+  height:15px;
+  font-size: 12px;
+  margin-top: 5px;
+  color: #999;
+  overflow:hidden;
+  .fa{
+    font-size: 12px;
+  }
+}
+
+.rightCol-Profile-Avi{
+  float:left;
+  margin-right: 10px;
+  img{
+    border-radius: 50%;
+  }
+}
+
+.rightCol-Profile-Avi:hover{
+  cursor: pointer;
+}
+
+.rightCol-Filter-seeMore{
+  width:100%;
+  height:26px;
+  border: 1px solid $border;
+  text-align: center;
+  line-height: 26px;
+  border-radius: 3px;
+  color: #999;
+  background-color: $border;
+}
+
+.rightCol-Filter-seeMore:hover{
+  color: #333;
+  cursor: pointer;
+}
+
+.rightCol-Profile-Follow{
+  float:right;
+  width: 70px;
+  height:22px;
+  border: 1px solid $border;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 21px;
+  color: #999;
+}
+
+.rightCol-Profile-Follow:hover{
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.rightCol-Profile-Following{
+  float:right;
+  width: 70px;
+  height:22px;
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 21px;
+  color: $primary-color;
+}
+
+.rightCol-Profile-Following:hover{
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+
+.rightCol-Profile-Bar{
+  width:100px;
+  height:100%;
+  float: left;
+}
+
+.rightCol-Profile-Name{
+  width:130px;
+  height:17px;
+  margin-top: -3px;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.rightCol-Profile-Name:hover{
+  cursor: pointer;
+  color: #333;
+}
+
+.rightCol-songname{
+  width:120px;
+  height:15px;
+  margin-top: 1px;
+  color: #999;
+  overflow:hidden;
+  .fa{
+    font-size: 12px;
+  } 
+}
+
+.rightCol-footer{
+  color: #999;
+  font-size: 12px;
+}
+
+.rightCol-Clique-Title{
+  width: 100%;
+  height: 25px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.text-userPic2{
+  width: 36px;
+  height:36px;
+  border-radius: 50%;
+  float: left;
+  overflow: hidden;
+      justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+  img{
+    border-radius: 3px;
+    flex-shrink:0;
+    min-width:100%;
+    min-height:100%;
+    height: 100%;
+  }
+}
+
+
+/*--- Newsfeed Left Column ----*/
+
+/*--- Newsfeed Title ----*/
+
+.newsfeed-title a {
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.newsfeed-title{
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-top: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
+  border-right: 1px solid #dce0e0;
+  border-radius: 5px 5px 0px 0px;
+  padding-left: 20px;
+}
+
+.newsfeed-active{
+  color: $primary-color;
+  font-weight: 500;
+}
+
+.newsfeed-title1{
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  float: left;
+  font-weight: 500;
+}
+
+.newsfeed-title2{
+  margin-left: 20px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  float: left;
+  font-weight: 500;
+}
+
+.newsfeed-title3{
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  float: left;
+  color: $primary-color;
+  border-bottom: 1px solid $primary-color;
+  font-weight: 500;
+}
+
+.newsfeed-subtitle{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #999;
+  -webkit-font-smoothing: antialiased;
+}
+
+.newsfeed-title2:hover{
+  color: $primary-color;
+}
+
+/*--- Text Post ----*/
+
+.textpost-Box{
+  border:1px solid #dce0e0;
+  margin-top: -1px;
+  width: 100%;
+  min-height: 50px;
+  display: inline-block;
+  background: white;
+}
+
+.textpost{
+  width:100%;
+  padding: 12px 20px 12px 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.textpost:hover{
+  background-color: #F5F8FA;
+  cursor: pointer;
+}
+
+.text-Post{
+  width: 100%;
+  display: inline-block;
+}
+
+.text-userPic{
+  width: 44px;
+  height:44px;
+  border-radius: 3px;
+  float: left;
+  overflow: hidden;
+      justify-content:center;
+    align-items:center;
+    overflow:hidden;
+  img{
+    border-radius: 3px;
+    flex-shrink:0;
+    min-width:100%;
+    min-height:100%;
+    height: 100%;
+  }
+}
+
+.commentSection-name{
+  height: 16px;
+  margin-top: -3px;
+  font-weight: 500;
+  float: left;
+  padding-left: 10px;
+  margin-right:4px;
+}
+
+.comment-time{
+  float:right;
+  text-align: right;
+  width: 200px;
+  height:100%;
+  font-size: 12px;
+  color: #999;
+}
+
+.player1-time{
+  float: left;
+  color: #999;
+  margin-top: -3px;
+}
+
+.post-Content{
+  width:502px;
+  display: inline-block;
+  float: left;
+  padding-left: 10px;
+}
+
+.post-track{
+  width: 100%;
+  height: 100px;
+  border-radius: 5px; 
+  overflow: hidden;
+  margin-top: 4px;
+  border: 1px solid $border;
+
+  img{
+  width: 100%;
   height: auto;
-  min-height: 100%;
-  background: #F5F8FA;
+  }
 }
 
-.scrollbar-measure {
-    height: 100px;
-    overflow: scroll;
-    position: absolute;
-    top: -9999px;
+
+
+
+.player1-Name{
+  margin-top: 12px;
+  height: 68px;
+  width: 30px;
+  float:left;
+  z-index: 10;
+  position: absolute;
+  padding-top: 2px;
+  font-size: 13px;
+  line-height: 20px;
+  margin-left: 10px;
+}
+
+.player1-play{
+  width:25px;
+  height:25px;
+  margin-bottom: 7px;
+  margin-left: 2px;
+}
+
+.play-Btn{
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: $primary-color;
+  text-align: center;
+  line-height: 28px;
+  color: white;
+  font-size: 10px;
+  .glyphicon{
+    margin-left: 2px;
+    color: white !important;
+  }
+}
+
+.player1-left-btn{
+  float:left;
+  position: absolute;
+  margin-left: 46px;
+  padding-left:5px;
+  padding-right: 20px;
+  margin-top: 10px;;
+}
+
+.player1-left-btn2{
+  float:left;
+  position: absolute;
+  margin-left: 46px;
+  padding-left:5px;
+  padding-right: 20px;
+  margin-top: 30px;;
+}
+
+.player1-artist{
+  background: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  color: white; 
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+}
+
+.player1-artist:hover{
+  cursor: pointer;
+}
+
+.player1-songName{
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  margin-top: -2px;
+  color: white;
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+}
+
+.player1-songName:hover{
+  cursor: pointer;
+}
+
+
+/*--- Profile Page Banner ----*/
+
+
+.topBanner {
+width: 100%;
+height: 350px;
+background: black;
+z-index: 1;
+background-size: cover;
+margin-top: 50px;
+overflow: hidden;
+position: relative;
+}
+
+.profile-Banner{
+  width:100%;
+  height: 350px;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner-Overlay{
+  height:220px;
+  width:100%;
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 1.0) 100%);
+  z-index: 10;
+  bottom: 0;
+}
+
+.user-picture {
+  margin-top:80px;
+  background-image: url(https://i1.sndcdn.com/avatars-000186622640-isz41l-t500x500.jpg);
+  width: 110px;
+  height: 110px;
+  float:left;
+  position: absolute;
+  overflow: hidden;
+  z-index: 10;
+  background-size: contain;
+  border-radius: 50%;
+  left: 50%;
+  margin-left: -55px;
+  background-position: center;
+  border: 3px solid white;
+    img {
+      width: auto;
+      height:110px;
+    }
+}
+
+.profile-pagename {
+  font-size: 24px;
+  color: white;
+  margin-top:200px;
+  position: absolute;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+  text-align: center;
+  width:100%;
+  z-index: 10;
+}
+
+
+.profile-Bio {
+  font-size: 16px;
+  color: white;
+  margin-top:240px;
+  position: absolute;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+  text-align: center;
+  width:100%;
+  z-index: 10;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+}
+
+.statsBar {
+  height: 63px;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-bottom: 1px solid #E1E3ED;
+  border-top: 1px solid #E1E3ED;
+  font-weight: 500;
+}
+
+/*--- Profile Page Stats Bar ----*/
+
+
+.stats1{
+  display:inline-block;
+  height: 62px;
+  float:left;
+  margin: 0px 15px 0px 0px;
+  text-align: center;
+  line-height: 64px;
+  font-size: 16px;
+}
+
+.stats-active{
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+
+}
+
+.stats1:hover{
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.stats2{
+  display:inline-block;
+  height: 62px;
+  float:left;
+  margin: 0px 15px 0px 15px;
+  text-align: center;
+  line-height: 64px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.stats2:hover{
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+  cursor: pointer;
+
+}
+
+
+/*--- Profile Page Bottom ---*/
+
+/*--- Profile Page Post Box ---*/
+
+
+.post-Box{
+  width:100%;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid  #dce0e0;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.post-Input{
+  width: 100%;
+  min-height: 40px;
+  display: inline-block;
+  float:left;
+  border-radius: 3px;
+  border: 1px solid #dce0e0;
+  background-color: #F6F6F6 !important;
+  margin-bottom: 10px;
+  padding:10px;
 }
 
 .no-post{
@@ -1248,7 +1411,6 @@ a:visited{
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 20px;
-
 }
 
 .no-post-btn{
@@ -1262,6 +1424,177 @@ a:visited{
 
 
 
+.post-Btn{
+  float: right !important;
+    width: 80px !important;
+    min-width: 40px !important;
+    height: 32px !important;
+    border-radius: 3px !important;
+    background-color: #fe4641 !important;
+    margin-left: 0px !important;
+    border: 0px !important;
+    color: white;
+    margin-bottom: 0px !important;
+    font-size: 12px !important;
+    font-weight: bold;
+}
+
+.cliq-pb{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    padding-left: 0px;
+}
+/*--- Profile Page Right Column ---*/
+
+.rightBlock {
+border-radius: 3px;
+position: relative;
+padding-bottom: 15px;
+width: 100%;
+float:right;
+background-color: white;
+border-radius: 3px;
+padding: 20px;
+border: 1px solid #dce0e0;
+margin-bottom: 10px
+}
+
+.rightBlock-Top{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.rightBlock-Body{
+  width: 100%;
+  border-radius: 3px;
+}
+
+
+.rightBlock-Body-Title{
+  font-weight:bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.right-Stats{
+  height: 45px;
+  width: 100%;
+  color: #999;
+  text-align: center;
+}
+
+.right-Stat1{
+  height: 100%;
+  width:71px;
+  border-right: 1px solid #dce0e0;
+  float: left;
+}
+
+.right-Stat2{
+  height: 100%;
+  width:89px;
+  float: left;
+  border-right: 1px solid #dce0e0;
+
+}
+
+
+.right-Stat3{
+  height: 100%;
+  width:83px;
+  float: left;
+
+}
+
+.right-Stat-Bottom{
+  font-size: 24px;
+}
+
+
+/*--- Track Modal  ---*/
+
+.modal-dialog{
+  width: 588px !important;
+}
+
+.modal-track-Top{
+  width: 100%;
+  height: 180px;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.model-track-background{
+  width: 100%;
+  height: 180px;
+  z-index: 1;
+  position: absolute;
+  overflow: hidden;
+      border-radius: 6px 6px 0px 0px;
+        img {
+      width: 100%;
+      margin-top: -50px;
+      border-radius: 6px 6px 0px 0px;
+    }
+}
+
+.modal-track-Genre{
+  padding: 0px 10px;
+  line-height: 20px;
+  color: #E1E3ED;
+  font-size: 12px;
+  height:20px;
+  background-color: #565a5c;
+  border-radius: 3px;
+  margin-top: 20px;
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  margin-right: 20px; 
+}
+
+
+.player1-artist2{
+  font-weight: 500;
+  padding: 0px 5px 0px 5px;
+}
+
+.player1-artist2:hover{
+  cursor: pointer;
+}
+
+.player1-songName2{
+  font-size: 14px;
+  margin-top: -2px;
+  padding: 0px 5px 0px 5px;
+}
+
+.player1-songName2:hover{
+  cursor: pointer;
+}
+
+
+.commentSection-name2{
+  height: 16px;
+  margin-top: -3px;
+  font-weight: 500;
+  float: left;
+  padding-left: 10px;
+  margin-right:4px;
+  width: 498px;
+}
+
+.commentSection-comment{
+  width:502px;
+  height:20px;
+  font-size: 14px;
+  float: right;
+  padding-left: 10px;
+}
 
 
 
@@ -1279,11 +1612,42 @@ a:visited{
 
 
 
- h1{
- font:42px/42px sans-serif;
- margin-left:50px;
- clear:both;
- }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scrollbar-measure {
+    height: 100px;
+    overflow: scroll;
+    position: absolute;
+    top: -9999px;
+}
+
+
+
+
+
  #navbar{
    width:100%;
    height:50px;
