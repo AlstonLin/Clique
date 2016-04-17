@@ -100,13 +100,16 @@
 $(document).ready(function(){
 
     $(".post-track").click(function(){
-        $(this).addClass('expand-post-track', 300); 
+        $(this).addClass("expand-post-track", 400); 
     });
 
     $('.post-track').click(function(e) {
         e.stopPropagation();
     });
 
+    $('.commentSection-name').click(function(e) {
+        e.stopPropagation();
+    });
 });
 </script>
 
