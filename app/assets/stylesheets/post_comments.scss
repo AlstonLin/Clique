@@ -1,0 +1,47 @@
+// Place all the styles related to the PostComments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-commentBox{
+	width:100%;
+	padding: 9px 20px 9px 20px;
+	display: inline-block;
+	border-top: 1px solid #e5e5e5;
+	background-color: white;
+}
+
+.modal-post-commentBox{
+	width:100%;
+	padding: 9px 20px 9px 20px;
+	display: inline-block;
+	border-top: 1px solid #e5e5e5;
+	background-color: white;
+	border-radius: 0px 0px 6px 6px;
+	min-height: 30px;
+}
+
+
+#post_comment_content{
+	width:542px;
+	margin-left: 10px !important;
+	float:right;
+	height:32px;
+	color: #C3C3C3;
+	font-size: 14px;
+	border: 0px;
+	padding: 5px 10px;
+	border: 1px solid #dcdee3;
+	border-radius: 3px;
+	background-color: white;
+	margin-top: 0px;
+}
+
+.post-comment-Btn{
+	width:20px;
+	float:right;
+	border:none;
+	background-color: red;
+	height: 32px;
+}
+
+	

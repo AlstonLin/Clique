@@ -27,23 +27,27 @@
 </div>
 
 <div class="profile-bottom">
-  <div class="container2">
-      <div id="container" class="container2">
 
-        <!-- Left Column -->      
-        <%= render :partial => '/users/partials/all' %>
+  <div class="container p-t-md">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-group media-list media-list-stream">
+          <!-- Post Form if own profile -->
+          <% if @user == current_user %>
+            <li class="media list-group-item p-a">
+                <%= render :partial => "/users/partials/post_form" %>
+            </li>
+          <% end %>
 
+          <!-- Left Column -->      
+          <%= render :partial => '/users/partials/all' %>
+        </ul>
 
-        <!-- Right Column -->
-        <div id="rightCol" class="rightCol">
-          <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
-        </div>
-
-
-
-
-
-
+          <!-- Right Column 
+          <div id="rightCol" class="rightCol">
+            <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
+          </div>-->
       </div>
+    </div>
   </div>
 </div>

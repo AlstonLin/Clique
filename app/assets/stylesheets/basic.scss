@@ -1,0 +1,59 @@
+
+.dropzone, .dropzone * {
+  box-sizing: border-box;
+}
+.dropzone {
+
+  position: relative;
+
+  .dz-preview {
+    position: relative;
+    display: table;
+    vertical-align: top;
+    margin: 0px;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    .dz-progress {
+      display: block;
+      height: 15px;
+      border: 1px solid #EFEFEF;
+      .dz-upload {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: green;
+      }
+    }
+
+    .dz-error-message {
+      color: red;
+      display: none;
+    }
+    &.dz-error {
+      .dz-error-message, .dz-error-mark {
+        display: block;
+      }
+    }
+    &.dz-success {
+      .dz-success-mark {
+        display: block;
+      }
+    }
+
+    .dz-error-mark, .dz-success-mark {
+      position: absolute;
+      display: none;
+      left: 30px;
+      top: 30px;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      margin-left: -(54px/2);
+    }
+
+
+  }
+
+}

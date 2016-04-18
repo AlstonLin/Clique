@@ -1,13 +1,5 @@
-<!-- Left Column  -->
-<div class="leftCol">
-<!-- Post Form if own profile -->
-  <% if @user == current_user %>
-    <div class="post-Box">
-      <%= render :partial => "/users/partials/post_form" %>
-    </div>
-  <% end %>
+
   <!-- Content -->
-  <div id="content">
     <% if @content.count == 0 %>
       <div class="no-post">
         <div class="no-post-img"></div>
@@ -31,5 +23,4 @@
         <%= render :partial => '/tracks/retrack', :locals => { :retrack => c } %>
       <% end %>
     <% end %>
-  </div>
-</div>
+

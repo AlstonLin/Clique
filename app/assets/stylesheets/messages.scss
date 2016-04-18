@@ -1,0 +1,290 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$primary-color: #fe4641;
+$border: #e5e5e5;
+
+.message-preview {
+	height: 3em;
+	overflow: hidden;
+}
+
+.message-Box{
+	.modal-content{
+		height: 515px;
+	}
+	.modal-dialog{
+		width:600px !important;
+	}
+}
+
+.message-Box-body{
+	overflow: auto;
+	width: 100%;
+	height: 450px;
+}
+
+.message-Box-body2{
+	overflow: auto;
+	width: 100%;
+	height: 390px;
+	padding: 15px 20px 30px 20px;
+}
+
+.message-textbox{
+	width: 100%;
+	height: 60px;
+	border-top: 1px solid #dce0e0;
+	background-color: #F6F6F6;
+	border-radius: 0px 0px 5px 5px;
+	padding: 10px 20px;
+}
+
+
+
+
+
+.message-Box-top{
+	width: 100%;
+	height: 65px;
+	border-bottom: 1px solid #dce0e0;
+	padding: 10px 20px;
+	font-size: 20px;
+	line-height: 45px;
+	.btn-primary{
+		margin-top: 4px !important;
+	}
+
+}
+
+.message-thread{
+	width: 100%;
+	height: 82px;
+	padding: 15px 20px;
+	border-bottom: 1px solid #e1e8ed;
+}
+
+.message-profile-image{
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	background-color: #dce0e0;
+	float: left;
+	margin-right: 10px;
+
+	overflow: hidden;
+	img{
+	width: 52px;
+	height: 52px;
+	}
+
+
+
+}
+
+.message-content-box{
+	width: 467px;
+	height:52px;
+}
+
+.message-content{
+	font-weight: 600;
+
+}
+
+
+.message_comment{
+	width:430px;
+	margin-left: 10px !important;
+	float:left;
+	height:36px;
+	color: #C3C3C3;
+	font-size: 14px;
+	border: 0px;
+	padding: 5px 10px;
+	border: 1px solid #dcdee3;
+	border-radius: 4px;
+	background-color: white;
+	margin-top: 0px;
+}
+
+.message-send{
+	width: 100px;
+	height: 36px !important;
+	background-color: $primary-color !important;
+	color: white;
+	border: 1px solid $primary-color !important;
+	border-radius: 3px !important;
+	float:left;
+	margin-left: 10px !important;
+	margin-bottom: 0px !important;
+	font-size: 12px !important;
+	font-weight: bold;
+
+}
+
+
+.message-send2{
+	width: 100px;
+	height: 36px !important;
+	background-color: $primary-color !important;
+	color: white;
+	border: 1px solid $primary-color !important;
+	border-radius: 3px !important;
+	float:left;
+	margin-left: 0px !important;
+	margin-bottom: 0px !important;
+	font-size: 12px !important;
+	font-weight: bold;	
+}
+
+
+
+
+
+
+.message-from-you{
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 12px;
+	line-height: 18px;
+
+
+	.message-text{
+		width: 318px;
+		height: auto;
+		background-color: #5A5A5A;
+		float:right;
+		margin-right: 10px;
+		border-radius: 4px;
+		color: white;
+		padding: 7px 15px;
+		position: relative;
+	}
+
+	.message-time{
+		width: 100%;
+		text-align: right;
+		float:right;
+		color: #999;
+		padding-right: 44px;
+		margin-top: 4px;
+	}
+
+
+	.message-profile-pic{
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		float:right;
+
+	overflow: hidden;
+	img{
+	height:34px;
+	width: 34px;
+	}
+
+
+
+
+
+	}
+
+
+}
+
+
+
+.caret-right {
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 8px solid #5A5A5A;
+    display: inline-block;
+    vertical-align: top;
+    width: 0;
+    position: absolute;
+    right: -6px;
+}
+
+
+
+
+
+
+
+
+.message-from-else{
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 12px;
+	line-height: 18px;
+
+
+
+	.message-text{
+		width: 318px;
+		height: auto;
+		background-color: #E1E8ED;
+		float:left;
+		margin-left: 10px;
+		border-radius: 4px;
+		padding: 7px 15px;
+		position: relative;
+	}
+
+	.message-time{
+		width: 100%;
+		text-align: left;
+		float:left;
+		color: #999;
+		padding-left: 44px;
+		margin-top: 4px;
+	}
+
+	.message-profile-pic{
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		float:left;
+
+
+	overflow: hidden;
+	img{
+	height:34px;
+	width: 34px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+}
+
+.caret-left {
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-right: 8px solid #E1E8ED;
+    display: inline-block;
+    vertical-align: top;
+    width: 0;
+    position: absolute;
+    left: -6px;
+}
+
+.glyphicon-menu-left{
+	font-size: 16px;
+}

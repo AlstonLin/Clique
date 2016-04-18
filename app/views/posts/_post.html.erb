@@ -1,112 +1,18 @@
-<div class="textpost-Box" data-toggle="modal" data-target="#modal<%= post.id %>">
-	<div class="textpost">
-		<div class="text-Post">
-      <div class="text-userPic">
-        <img src="<%= post.poster.profile_picture_url %>">
-      </div>
-      <div class="commentSection-name">
-        <%= link_to post.poster.name, post.poster %> 
-      </div>
-
-      <div class="player1-time">
-        • <%= time_ago_in_words post.created_at %>
-      </div>
-      <div class="post-Content">
-        <%= post.content %>
-      </div>
-		</div>
-		<!--<div class="player1-right-btn2">
-
-			<!-- <div class="player1-btn">
-				<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-			</div> --
-
-			<% if current_user %>
-				<% if post.poster == current_user %>
-					<!-- Buttons to show owner --
-						<%= button_to post_delete_path(post), :remote => true, :class => "player1-btn2" do %>
-							<div class="glyphicon glyphicon-trash"></div>
-						<% end %>
-				<% else %>
-					<% if !post.clique_only %>
-						<!-- Buttons to show everyone else --
-						<% if current_user.has_reposted? post %>
-							<!-- Un-repost button --
-							<%= link_to post_repost_path(post), :remote => true, :class => "player1-btn redclass", :method => :post do %>
-								<div class="glyphicon glyphicon-refresh redclass"></div>
-							<% end %>
-						<% else %>
-							<!-- Repost button --
-							<%= link_to post_repost_path(post), :remote => true, :class => "player1-btn", :method => :post do %>
-								<div class="glyphicon glyphicon-refresh"></div>
-							<% end %>
-						<% end %>
-					<% end %>
-				<% end %>
-
-				<% if post.favoriters.include? current_user %>
-					<!-- Unfavorite button --
-					<%= link_to post_favorite_path(post), :remote => true, :class => "player1-btn redclass", :method => :post do %>
-						<div class="glyphicon glyphicon-heart redclass"></div>
-					<% end %>
-				<% else %>
-					<!-- Favorite button --
-					<%= link_to post_favorite_path(post), :remote => true, :class => "player1-btn ", :method => :post do %>
-						<div class="glyphicon glyphicon-heart"></div>
-					<% end %>
-				<% end %>
-			<% end %>
-
-			<div class="player1-btn" data-toggle="modal" data-target="#modal<%= post.id %>">
-				<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-			</div>
-		</div>
- 	</div>
-	<!-- Comment form outside of modal -->
-	<!--<% if current_user %>
-	  <div class="post-Comment">
-	    <div class="user-avi1">
-	      <%= link_to image_tag(current_user.profile_picture_url), current_user %>
-	    </div>
-	    <%= form_for PostComment.new, :remote => true,  :html => { :id => "comment-form#{post.id}a" } do |form| %>
-	      <%= form.hidden_field :post_id, :value => post.id %>
-	      <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
-	    <% end %>
-	  </div>
-	<% end %>-->
-</div>
-</div>
-
-
-
-
-
-
-<!-- Modal -->
-<!-- TODO: Make this more efficient by having a single modal -->
-<!-- TODO: Cleanup the mess of code -->
-<div class="modal fade" id="modal<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-  		<div class="modal-textpost">
-    		<div class="text-Post">
-      		<div class="text-userPic">
-        		<img src="<%= post.poster.profile_picture_url %>">
-      		</div>
-		      <div class="commentSection-name">
-		        <div class="comment-time"><%= time_ago_in_words post.created_at %></div>
-		        <%= link_to post.poster.name, post.poster, :class => "modalClosable" %>
-		      </div>
-	        <div class="post-Content">
-	          <%= post.content %>
-	        </div>
-    		</div>
-    	</div>
-			<%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
-			<div id="comments<%= post.id %>">
-			  <!-- Comments -->
-				<%= render :partial => 'posts/comments', :locals => { :post => post} %>
-			</div>
-	  </div>
-  </div>
-</div>
+        <li class="media list-group-item p-a">
+          <a class="media-left" href="#">
+            <img
+              class="media-object img-circle"
+              src="<%= post.poster.profile_picture_url %>">
+          </a>
+          <div class="media-body">
+            <div class="media-body-text">
+              <div class="media-heading">
+                <small class="pull-right text-muted"><%= time_ago_in_words post.created_at %></small>
+                <h5><%= link_to post.poster.name, post.poster %></h5>
+              </div>
+              <p>
+                <%= post.content %>
+              </p>
+            </div>
+          </div>
+        </li>

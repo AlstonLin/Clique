@@ -15,3 +15,318 @@
  *= require jquery-ui
  *= require_self
  */
+
+
+$primary-color: #fe4641;
+$border: #dce0e0;
+
+/*--- Profile Page Banner ----*/
+
+
+.topBanner {
+width: 100%;
+height: 350px;
+background: black;
+z-index: 1;
+background-size: cover;
+margin-top: 50px;
+overflow: hidden;
+position: relative;
+}
+
+.profile-Banner{
+  width:100%;
+  height: 350px;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner-Overlay{
+  height:220px;
+  width:100%;
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 1.0) 100%);
+  z-index: 10;
+  bottom: 0;
+}
+
+.user-picture {
+  margin-top:80px;
+  background-image: url(https://i1.sndcdn.com/avatars-000186622640-isz41l-t500x500.jpg);
+  width: 110px;
+  height: 110px;
+  float:left;
+  position: absolute;
+  overflow: hidden;
+  z-index: 10;
+  background-size: contain;
+  border-radius: 50%;
+  left: 50%;
+  margin-left: -55px;
+  background-position: center;
+  border: 3px solid white;
+    img {
+      width: auto;
+      height:110px;
+    }
+}
+
+.profile-pagename {
+  font-size: 24px;
+  color: white;
+  margin-top:200px;
+  position: absolute;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+  text-align: center;
+  width:100%;
+  z-index: 10;
+}
+
+
+.profile-Bio {
+  font-size: 16px;
+  color: white;
+  margin-top:240px;
+  position: absolute;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+  text-align: center;
+  width:100%;
+  z-index: 10;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+}
+
+.statsBar {
+  height: 63px;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-bottom: 1px solid #E1E3ED;
+  border-top: 1px solid #E1E3ED;
+  font-weight: 500;
+}
+
+/*--- Profile Page Stats Bar ----*/
+
+
+.stats1{
+  display:inline-block;
+  height: 62px;
+  float:left;
+  margin: 0px 15px 0px 0px;
+  text-align: center;
+  line-height: 64px;
+  font-size: 16px;
+}
+
+.stats-active{
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+
+}
+
+.stats1:hover{
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.stats2{
+  display:inline-block;
+  height: 62px;
+  float:left;
+  margin: 0px 15px 0px 15px;
+  text-align: center;
+  line-height: 64px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.stats2:hover{
+  border-bottom: 1px solid $primary-color;
+  color: $primary-color;
+  cursor: pointer;
+
+}
+
+
+/*--- Profile Page Post Box ---*/
+
+
+.post-Box{
+  width:100%;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid  #dce0e0;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.post-Input{
+  width: 100%;
+  min-height: 40px;
+  display: inline-block;
+  float:left;
+  border-radius: 3px;
+  border: 1px solid #dce0e0;
+  background-color: #F6F6F6 !important;
+  margin-bottom: 10px;
+  padding:10px;
+}
+
+.no-post{
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.no-post-img{
+  background-image: url('https://static.xx.fbcdn.net/rsrc.php/v2/yX/r/yDHWjtlL3ff.png');
+  width: 136px;
+  height: 136px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.no-post-btn{
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  float: none !important;
+  margin-left: 0px !important;
+  margin-bottom: 100px !important;
+}
+
+
+
+.post-Btn{
+  float: right !important;
+    width: 80px !important;
+    min-width: 40px !important;
+    height: 32px !important;
+    border-radius: 3px !important;
+    background-color: #fe4641 !important;
+    margin-left: 0px !important;
+    border: 0px !important;
+    color: white;
+    margin-bottom: 0px !important;
+    font-size: 12px !important;
+    font-weight: bold;
+}
+
+.cliq-pb{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    padding-left: 0px;
+}
+
+
+
+/*--- Track Player ---*/
+
+
+
+.post-track{
+  width: 100%;
+  height: 100px;
+  border-radius: 5px; 
+  overflow: hidden;
+  margin-top: 4px;
+  border: 1px solid $border;
+
+  img{
+  width: 100%;
+  height: auto;
+  }
+}
+
+
+.post-track.expand-post-track{
+  height:300px;
+}
+
+.player1-Name{
+  margin-top: 12px;
+  height: 68px;
+  width: 30px;
+  float:left;
+  z-index: 10;
+  position: absolute;
+  padding-top: 2px;
+  font-size: 13px;
+  line-height: 20px;
+  margin-left: 10px;
+}
+
+.player1-play{
+  width:25px;
+  height:25px;
+  margin-bottom: 7px;
+  margin-left: 2px;
+}
+
+.play-Btn{
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background-color: $primary-color;
+  text-align: center;
+  line-height: 28px;
+  color: white;
+  font-size: 10px;
+  .glyphicon{
+    margin-left: 2px;
+    color: white !important;
+  }
+}
+
+.player1-left-btn{
+  float:left;
+  position: absolute;
+  margin-left: 46px;
+  padding-left:5px;
+  padding-right: 20px;
+  margin-top: 10px;;
+}
+
+.player1-left-btn2{
+  float:left;
+  position: absolute;
+  margin-left: 46px;
+  padding-left:5px;
+  padding-right: 20px;
+  margin-top: 30px;;
+}
+
+.player1-artist{
+  background: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  color: white; 
+  padding: 0px 5px 0px 5px;
+  display: inline-block;
+}
+
+.player1-artist:hover{
+  cursor: pointer;
+}
+
+.player1-songName{
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  margin-top: -2px;
+  color: white;
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+}
+
+.player1-songName:hover{
+  cursor: pointer;
+}

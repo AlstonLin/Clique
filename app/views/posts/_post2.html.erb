@@ -1,0 +1,50 @@
+<div class="textpost-Box" data-toggle="modal" data-target="#modal<%= post.id %>">
+	<div class="textpost">
+		<div class="text-Post">
+      <div class="text-userPic">
+        <img src="<%= post.poster.profile_picture_url %>">
+      </div>
+      <div class="commentSection-name">
+
+      </div>
+
+      <div class="player1-time">
+        
+      </div>
+      <div class="post-Content">
+        
+      </div>
+		</div>
+
+
+
+
+
+<!-- Modal -->
+<!-- TODO: Make this more efficient by having a single modal -->
+<!-- TODO: Cleanup the mess of code -->
+<div class="modal fade" id="modal<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+  		<div class="modal-textpost">
+    		<div class="text-Post">
+      		<div class="text-userPic">
+        		<img src="<%= post.poster.profile_picture_url %>">
+      		</div>
+		      <div class="commentSection-name">
+		        <div class="comment-time"><%= time_ago_in_words post.created_at %></div>
+		        <%= link_to post.poster.name, post.poster, :class => "modalClosable" %>
+		      </div>
+	        <div class="post-Content">
+	          <%= post.content %>
+	        </div>
+    		</div>
+    	</div>
+			<%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
+			<div id="comments<%= post.id %>">
+			  <!-- Comments -->
+				<%= render :partial => 'posts/comments', :locals => { :post => post} %>
+			</div>
+	  </div>
+  </div>
+</div>
