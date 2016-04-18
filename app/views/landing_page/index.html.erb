@@ -1,6 +1,6 @@
 <!--  Navbar -->
 <nav class="navbar navbar-default navbar-front">
- 	<div class="container3">
+ 	<div class="container">
    <div class="container-fluid">
      <div class="navbar-header">
        <%= link_to "cliq", root_path, :class => "navbar-brand nav-margin" %>
@@ -28,17 +28,15 @@
   <%= link_to "Create acccount" , new_user_registration_path, class: "button btn primary-background", 'data-skip-pjax' => true %>
 </div>
 <div class="page-Bottom">
-  <div class="container2">
+  <div class="container">
 
 <!-- Content -->
   <div class='home-Subtitle'> Discover the top artists on Cliq </div>
-</div>
-<div class="artist-Box2">
-<div id="pins">
+
+
   <% @top.each do |t| %>
     <%= render :partial => '/home/artist_tile_no_pjax', :locals => { :artist => t } %>
   <% end %>
-</div>
 </div>
 </div>
 </div>
