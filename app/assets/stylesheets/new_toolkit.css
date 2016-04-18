@@ -1976,7 +1976,7 @@ input[type="button"].btn-block {
 }
 @media (min-width: 1260px) {
   .container {
-    width: 1230px;
+    width: 859px;
   }
 }
 .container-fluid {
@@ -2332,7 +2332,7 @@ input[type="button"].btn-block {
     width: 58.33333333%;
   }
   .col-md-6 {
-    width: 50%;
+    width: 70%
   }
   .col-md-5 {
     width: 41.66666667%;
@@ -2341,7 +2341,7 @@ input[type="button"].btn-block {
     width: 33.33333333%;
   }
   .col-md-3 {
-    width: 25%;
+    width: 30%;
   }
   .col-md-2 {
     width: 16.66666667%;
@@ -3424,6 +3424,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 18px;
   line-height: 22px;
   height: 50px;
+  width: 90px;
+  background-color: #fe4641;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -3733,32 +3735,32 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #cccccc;
 }
 .navbar-inverse {
-  background-color: #3097d1;
-  border-color: #1c73a5;
+  background-color: #FFF;
+  border-color: #d4dbe0;
 }
 .navbar-inverse .navbar-brand {
-  color: rgba(255, 255, 255, 0.8);
+  color: #333;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ffffff;
+  color: #333;
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
-  color: #ffffff;
+  color: #333;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #333;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #333;
   background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #ffffff;
+  color: #333;
   background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
@@ -3775,7 +3777,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: #2d91ca;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #ffffff;
+  color: #333;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
@@ -7965,7 +7967,7 @@ fieldset[disabled] .btn-danger-outline.active {
 .navbar-inverse .navbar-brand-emphasized,
 .navbar-inverse .navbar-brand-emphasized:hover,
 .navbar-inverse .navbar-brand-emphasized:focus {
-  color: #fff;
+  color: #333;
   background-color: #1c73a5;
 }
 .navbar-padded .navbar-header {
@@ -7987,7 +7989,7 @@ fieldset[disabled] .btn-danger-outline.active {
 }
 .navbar-inverse .navbar-form-control:focus {
   color: #3097d1;
-  background-color: #fff;
+  background-color: #333;
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 .navbar-nav > .active > a,
@@ -8350,6 +8352,7 @@ img.zoom-img {
   }
   .media-list-stream .media-object {
     width: 60px;
+    height: 60px;
   }
 }
 .media-list-conversation .media-object {

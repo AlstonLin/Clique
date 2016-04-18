@@ -1,3 +1,4 @@
+
 <div class="growl" id="app-growl"></div>
 
 <nav class="navbar navbar-inverse navbar-fixed-top app-navbar">
@@ -10,7 +11,6 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.html">
-        <img src="assets/img/brand-white.png" alt="brand">
       </a>
     </div>
     <div class="navbar-collapse collapse" id="navbar-collapse-main">
@@ -38,8 +38,7 @@
           </li>
           <li>
             <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
-              <%= current_user.first_name %> <%= current_user.last_name %>
-              <%= link_to image_tag(current_user.profile_picture_url), current_user, :class => 'nav-pic' %>
+              <img class="img-circle" src="<%= current_user.profile_picture_url %>">
             </button>
           </li>
         </ul>
