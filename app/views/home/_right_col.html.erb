@@ -28,6 +28,7 @@
             </div>
           </li>
           <% end %>
+          <% end %>
         </ul>
       </div>
       <div class="panel-footer">
@@ -40,27 +41,24 @@
         <div class="panel-body">
           <h5 class="m-t-0">Favorites  <small>· <%= link_to "See more", favorites_path, :id=>"FavSeeMore",:method => :get, :remote => true %></small></h5>
           <ul class="media-list media-list-stream">
-            
             <% @favorites.each do |f| %>
             <li class="media m-b">
               <a class="media-left" href="#">
-                <%= image_tag f.get_pic_url %>
+                <%= image_tag f.get_pic_url , class: "media-object img-circle" %>
               </a>
               <div class="media-body">
-                <%= link_to f do %><strong><%= link_to f.name, f %></strong><% end %> <%= f.owner.name %>
+                <strong><%= link_to f.name, f %></strong><% end %> <%= f.owner.name %>
                 <div class="media-body-actions">
                         <%= link_to f.name, f %>
                         <button class="btn btn-primary-outline btn-sm">
                           <span class="icon icon-add-user"></span> View
                         </button>
-                        <% end %>
                 </div>
               </div>
             </li>
-            <% end %>
           </ul>
         </div>
   </div>  
+</div>
+</div>
 <% end %>
-</div>
-</div>

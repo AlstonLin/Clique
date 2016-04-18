@@ -1,27 +1,24 @@
-<div class="message-Box-top">
- 	Your Messages
-  <%= link_to "New Message", new_message_path, :remote => true, :class => "button btn btn-info btn-lg btn-primary btn" %>
-</div>
-<div class="message-Box-body">
-	<% @conversations.each do |conversation| %>
-	<div id="threads">
-		<%= link_to conversation, :remote => true do %>
-			<div class="message-thread">
-				<div class="message-profile-image">
-					<%= image_tag conversation.image_url current_user %>
-				</div>
-				<div class="message-content-box">
-					<div class="message-profile-name">
-						<div class="message-time">
-						</div>
-						<div class="message-content">
-							<%= conversation.get_name current_user %>
-              <%= time_ago_in_words conversation.messages.first.created_at %>
-						</div>
-            <%= simple_format conversation.messages.first.content, :class => "message-preview" %>
-					</div>
-				</div>
-			</div>
-		<% end %>
-	</div>
+<div class="modal-header">
+        <%= link_to "New Message", new_message_path, :remote => true, :class => "btn btn-sm btn-primary pull-right app-new-msg js-newMsg" %>
+        <h4 class="modal-title">Messages</h4>
+      </div>
+
+      <div class="modal-body p-a-0 js-modalBody message-Box-body">
+        <div class="modal-body-scroller">
+        <% @conversations.each do |conversation| %>
+          <div class="media-list media-list-users list-group js-msgGroup">
+          	<%= link_to conversation, :remote => true do %>
+              <div class="media">
+                <span class="media-left">
+                <%= image_tag conversation.image_url current_user, :class => "img-circle media-object" %>
+                </span>
+                <div class="media-body">
+                  <strong><%= conversation.get_name current_user %></strong> <%= time_ago_in_words conversation.messages.first.created_at %> 
+                  <div class="media-body-secondary">
+                    <%= simple_format conversation.messages.first.content, :class => "message-preview" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>            
+          </div>
 <% end %>
