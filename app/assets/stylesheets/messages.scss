@@ -6,6 +6,22 @@
 $primary-color: #fe4641;
 $border: #e5e5e5;
 
+
+.new_message{
+	height: 100%;
+    background-color: #F8F9F9;
+    border-radius: inherit;
+    .modal-body{
+	width:100%;
+
+	textarea.form-control {
+    min-height: 300px;
+}
+}
+}
+
+
+
 .message-preview {
 	height: 3em;
 	overflow: hidden;
@@ -257,18 +273,6 @@ $border: #e5e5e5;
 	height:34px;
 	width: 34px;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 	}
 
