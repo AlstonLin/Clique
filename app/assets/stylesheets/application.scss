@@ -18,6 +18,7 @@
 
 
 $primary-color: #fe4641;
+$primary-color-light: #FC6C68;
 $border: #dce0e0;
 
 /*--- Homepage Header ----*/
@@ -507,5 +508,86 @@ margin-bottom: 10px
 
 .right-Stat-Bottom{
   font-size: 24px;
+}
+
+.new_message .fa{
+    color: #C6C7C7;
+    &:hover{
+      color:#7C7D7D;
+    }
+  }
+
+
+.message-send2{
+    margin: 20px 25% !important;
+    width: 50%;
+    border: none !important;
+}
+
+@media (max-width: 767px){
+.message-Box .modal-content {
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+}
+
+.modal-dialog{
+  width: 100% !important;
+    margin: 0;
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+}
+
+.message-textbox {
+  border-radius: 0px;
+  position: fixed;
+  bottom: 0px;
+}
+
+.m-a{
+    height: 100%;
+    position: fixed;
+    top: 0;
+    padding-top: 94px !important;
+    padding-bottom: 60px !important;
+}
+
+.modal-header{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.message_comment{
+    width: 75%;
+    margin-left: 0px !important;
+    margin-right: 2%;
+}
+
+.message-send{
+    width: 23%;
+    margin-left: 0 !important;
+}
+
+.message-Box-body{
+  padding-top: 94px !important;
+  height: 100%;
+}
+
+.new_message .modal-body {
+    width: 100%;
+    height: 100%;
+    padding-top: 134px !important;
+}
+.new_message .fa{
+    font-size: 24px;
+  }
+
+.close{
+  font-size: 30px;
+}
+
 }
 

@@ -5028,6 +5028,9 @@ button.close {
   position: relative;
   width: auto;
   margin: 10px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .modal-content {
   position: relative;
@@ -7799,7 +7802,10 @@ fieldset[disabled] .btn-danger-outline.active {
   margin-bottom: 0 !important;
 }
 .m-a {
-  margin: 20px !important;
+    padding: 20px !important;
+    height: 379px;
+    overflow-y: scroll;
+    width: 100%;
 }
 .m-t {
   margin-top: 20px !important;
