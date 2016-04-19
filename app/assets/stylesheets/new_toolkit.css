@@ -316,9 +316,13 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* this is used to round edges now. instead of circle */
 .img-circle {
-  border-radius: 50%;
+  border-radius: 5px;
 }
+
+
 hr {
   margin-top: 22px;
   margin-bottom: 22px;
@@ -2332,7 +2336,7 @@ input[type="button"].btn-block {
     width: 58.33333333%;
   }
   .col-md-6 {
-    width: 70%
+    width: 68%
   }
   .col-md-5 {
     width: 41.66666667%;
@@ -2341,7 +2345,7 @@ input[type="button"].btn-block {
     width: 33.33333333%;
   }
   .col-md-3 {
-    width: 30%;
+    width: 32%;
   }
   .col-md-2 {
     width: 16.66666667%;
@@ -3124,6 +3128,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
+  font-weight: 600;
 }
 .nav > li {
   position: relative;
@@ -6203,6 +6208,7 @@ fieldset[disabled] .btn-danger-outline.active {
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+  width: 92px;
 }
 .btn-xs,
 .btn-group-xs > .btn {
@@ -8339,9 +8345,11 @@ img.zoom-img {
 .media-list-stream .media-list .media-object {
   display: none;
 }
-.media-list-stream .media-object {
+
+/* .media-list-stream .media-object {
   border-radius: 100%;
-}
+} */
+
 .media-list-stream .media .text-muted a {
   color: #9da9b0;
   font-weight: 700;
@@ -8358,8 +8366,8 @@ img.zoom-img {
     display: block;
   }
   .media-list-stream .media-object {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 }
 .media-list-conversation .media-object {
@@ -8451,7 +8459,8 @@ img.zoom-img {
   background-size: cover;
 }
 .panel-profile-img {
-  max-width: 100px;
+  width: 100px;
+  height: 100px;
   margin-top: -70px;
   margin-bottom: 5px;
   border: 3px solid #fff;
