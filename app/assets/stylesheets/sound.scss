@@ -26,7 +26,7 @@ $fbblue: rgba(59, 89, 152,1);
   border-top: 1px solid rgba(0,0,0,.05);
 
   .glyphicon{
-    color: #999;
+    color: #333;
   }
 }
 
@@ -170,9 +170,8 @@ $fbblue: rgba(59, 89, 152,1);
 }
 
 #desc{
-  min-width:240px;
-  width:240px;
-  max-width:240px;
+  width:200px;
+
   height:50px;
   color:black;
   display: flex;
@@ -188,7 +187,7 @@ $fbblue: rgba(59, 89, 152,1);
 }
 
 #desc img{
-  border-radius:50%;
+  border-radius:3px;
 }
 
 #desc h4{

@@ -19,6 +19,39 @@
 
 $primary-color: #fe4641;
 $border: #dce0e0;
+$fbhover: #374F86;
+$fbblue: rgba(59, 89, 152,1);
+
+
+.track-progress-box{
+  width: 100%;
+  bottom: 0;
+  height: 3px;
+  z-index: 100;
+  position: absolute;
+  margin-bottom: 35px;
+}
+
+.track-progress{
+  width: 77%;
+  margin-left:auto;
+  margin-right:auto;
+  height: 3px;
+  background: black;
+  border-radius: 5px;
+}
+
+
+.post-modal{
+  cursor: pointer;
+
+}
+
+.post-modal:hover{
+  background-color: #F5F8FA;
+}
+
+
 
 /*--- Homepage Header ----*/
 
@@ -88,6 +121,7 @@ a:visited{
   font-size: 18px;
   margin-bottom: 20px;
   color: #999;
+  padding-left: 5px;
 }
 
 
@@ -244,6 +278,11 @@ position: relative;
 /*--- Profile Page Stats Bar ----*/
 
 
+#buttons{
+  padding-left: 5px;
+}
+
+
 .stats1{
   display:inline-block;
   height: 62px;
@@ -373,21 +412,24 @@ position: relative;
 
 .post-track{
   width: 100%;
-  height: 100px;
+  height: 100px !important;
   border-radius: 5px; 
   overflow: hidden;
   margin-top: 4px;
   border: 1px solid $border;
+  position: relative;
+  background-size: cover;
+  cursor: pointer;
 
   img{
   width: 100%;
-  height: auto;
+  height: auto !important;
   }
 }
 
 
 .post-track.expand-post-track{
-  height:auto;
+  height:300px !important;
 }
 
 .player1-Name{
@@ -473,7 +515,7 @@ position: relative;
 .btn-hollow.btn{
   height:38px;
   line-height: 33px;
-  width:140px;
+  width:122px;
   color: #888;
   float:right;
   border: 1px solid;
@@ -488,6 +530,91 @@ position: relative;
   background-color: white;
   margin-bottom: 0px;
 }
+
+.right-Clique-Btn{
+  width:100%;
+  height:40px;
+  background-color: $primary-color;
+  color: white;
+  margin-top: 10px;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+
+.player1-btn{
+  border: 1px solid #d1d1d1;
+  height: 25px;
+  width: 27px;
+  margin-left: 5px;
+  float: right;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 27px;
+  border: 1px solid #d1d1d1;
+}
+
+.player1-btn:hover{
+  color: $primary-color;
+  cursor: pointer;
+  border: 1px solid $primary-color;
+    .glyphicon{
+    color: $primary-color !important;
+  }
+}
+
+.player1-btn2{
+  border: 1px solid #d1d1d1;
+  width: 27px;
+  padding: 0px 5px;
+  height: 25px;
+  margin-left: 5px;
+  float: right;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 27px;
+  color: #A5A5A5;
+  background: transparent;
+input[type=submit]{
+  border: 0px;
+  padding: 0px;
+  font-size: 12px;
+  min-width: 0px;
+  margin: 0px;
+  height: 25px;
+}
+}
+
+.player1-btn2:hover{
+  color: $primary-color;
+  cursor: pointer;
+    .glyphicon{
+    color: $primary-color;
+  }
+}
+
+
+/*--- Containers ---*/
+
+
+
+.audioplayer-container{
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+
+
+
+
+
+
 
 /*--- Profile Page Right Column ---*/
 
@@ -555,4 +682,59 @@ margin-bottom: 10px
 
 .right-Stat-Bottom{
   font-size: 24px;
+}
+
+/*--- Nav Bar ---*/
+
+.navbar-front{
+  position: absolute !important;
+  width: 100% !important;
+  background-color: transparent;
+  border: none;
+}
+
+/*--- Login Page / Sign Up Page  ----*/
+
+.loginform {
+    margin: 0 auto;
+    width: 450px;
+    background-clip: padding-box;
+    background-color: #FFF;
+    border-radius: 5px !important;
+    border: none !important;
+    max-width: 90%;
+}
+
+.fbc{
+  background: $fbblue;
+  color: white;
+  padding: 15px 50px !important;
+  &:hover{
+    background: $fbhover;
+  }
+}
+
+  .panel-heading {
+    max-height:465px;
+    overflow: hidden;
+    border: 0px;
+    .cwf{
+      font-size: 16px;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+    h2{
+      font-size: 20px !important;
+      text-align: center;
+        -webkit-font-smoothing: antialiased;
+        color: #848F94;
+    }
+    .fa{
+      vertical-align: middle;
+    }
+  }
+
+.tva{
+  display: inline-block;
+  vertical-align: middle;
 }

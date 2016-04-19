@@ -183,7 +183,7 @@ $(function () {
     },
     content: function () {
       var $nav = $('.app-navbar .navbar-nav:last-child').clone()
-      return '<div class="nav nav-stacked" style="width: 200px">' + $nav.html() + '</div>'
+      return '<div class="nav nav-stacked" style="width: 160px">' + $nav.html() + '</div>'
     }
   })
 
