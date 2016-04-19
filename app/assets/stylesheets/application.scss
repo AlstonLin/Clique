@@ -22,6 +22,13 @@ $border: #dce0e0;
 
 
 
+.modal-time-ago-text{
+  float: right;
+}
+
+.floatleft{
+  float: left;
+}
 
 
 
@@ -256,7 +263,7 @@ position: relative;
 
   img{
   width: 100%;
-  height: auto;
+  height: auto !important;
   }
 }
 

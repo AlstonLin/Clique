@@ -4094,6 +4094,12 @@ a.badge:focus {
   color: #3097d1;
   background-color: #ffffff;
 }
+.message-Box-body .list-group:nth-child(odd) >.list-group-item{
+  background-color: #f5f8fa;
+}
+
+
+
 .list-group-item > .badge {
   float: right;
 }
@@ -4398,7 +4404,7 @@ a.list-group-item:focus,
 button.list-group-item:focus {
   text-decoration: none;
   color: #555555;
-  background-color: #f5f8fa;
+  background-color: inherit; /*background-color: #f5f8fa;*/
 }
 button.list-group-item {
   width: 100%;
@@ -5054,6 +5060,7 @@ button.close {
 .modal-title {
   margin: 0;
   line-height: 1.6;
+  text-align: left;
 }
 .modal-body {
   position: relative;
