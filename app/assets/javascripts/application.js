@@ -14,7 +14,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.pjax
-//= require bootstrap-sprockets
 //= require_tree .
 
 $(function() {
@@ -183,7 +182,7 @@ $(function () {
     },
     content: function () {
       var $nav = $('.app-navbar .navbar-nav:last-child').clone()
-      return '<div class="nav nav-stacked" style="width: 160px">' + $nav.html() + '</div>'
+      return '<div class="nav nav-stacked" style="width: 185px">' + $nav.html() + '</div>'
     }
   })
 
