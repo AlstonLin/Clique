@@ -10,10 +10,12 @@ $dope-gray: #C6C7C7;
 
 
 body,html{
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   padding:0;
   margin: 0;
   background-color: #fff;
+  padding-bottom: 0px !important; 
 }
 
 #pjax-container{
@@ -21,6 +23,11 @@ body,html{
   height: auto;
   min-height: 100%;
   background: linear-gradient(to top, #fff, #f5f8fa);
+  padding-bottom: 50px;
+}
+
+.page-Bottom{
+  padding: 50px 0;
 }
 
 
