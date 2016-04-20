@@ -5,7 +5,29 @@
 
 $primary-color: #fe4641;
 $border: #e5e5e5;
+$dope-gray: #C6C7C7;
 
+
+
+body,html{
+  height: 100%;
+  padding:0;
+  margin: 0;
+  background-color: #fff;
+}
+
+#pjax-container{
+  padding-top: 50px; 
+  height: auto;
+  min-height: 100%;
+  background: linear-gradient(to top, #fff, #f5f8fa);
+}
+
+
+
+.navbar-inverse .navbar-toggle .icon-bar{
+  background-color: $dope-gray;
+}
 
 .primary-background {
   background-color: $primary-color !important;

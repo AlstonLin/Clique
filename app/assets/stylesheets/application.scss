@@ -20,6 +20,7 @@
 $primary-color: #fe4641;
 $primary-color-light: #FC6C68;
 $border: #dce0e0;
+$dope-gray: #C6C7C7;
 
 /*--- Homepage Header ----*/
 
@@ -510,7 +511,7 @@ margin-bottom: 10px
   font-size: 24px;
 }
 
-.new_message .fa{
+#messagesContent .fa{
     color: #C6C7C7;
     &:hover{
       color:#7C7D7D;
@@ -523,6 +524,54 @@ margin-bottom: 10px
     width: 50%;
     border: none !important;
 }
+
+/* NAVBAR */
+
+.nav .menu-item {
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #888;
+    display: block;
+    line-height: 1;
+    margin: 0;
+    padding: 8px 0 8px 20px !important;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 400;
+    background-color: #fff;
+}
+
+
+.popover{
+
+    margin-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    display: block;
+    text-align: left;
+    border: 0px;
+    margin: 0px;
+    height: auto;
+    border: 1px solid #cfd4db;
+    border-top: none;
+    padding: 0;
+    -webkit-box-shadow: 1px 6px 12px rgba(0,0,0,0.05);
+    box-shadow: 1px 6px 12px rgba(0,0,0,0.05);
+    position: absolute;
+    background-clip: padding-box;
+
+}
+
+.cdivider {
+    border-top: 1px solid rgba(0,0,0,0.05);
+    height: 0;
+    margin: 5px 0;
+}
+
 
 @media (max-width: 767px){
 .message-Box .modal-content {
@@ -581,7 +630,7 @@ margin-bottom: 10px
     height: 100%;
     padding-top: 134px !important;
 }
-.new_message .fa{
+#messagesContent .fa{
     font-size: 24px;
   }
 
@@ -590,4 +639,6 @@ margin-bottom: 10px
 }
 
 }
+
+
 
