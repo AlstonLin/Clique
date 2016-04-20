@@ -102,6 +102,7 @@
 }
 
 .dropzone {
+  margin-top: 20px;
   $image-size: 50px;
   $image-border-radius:0px;
   &::-webkit-scrollbar {

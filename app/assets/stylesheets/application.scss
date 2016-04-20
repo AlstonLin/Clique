@@ -18,10 +18,11 @@
 
 
 $primary-color: #fe4641;
+$primary-color-light: #FC6C68;
 $border: #dce0e0;
 $fbhover: #374F86;
 $fbblue: rgba(59, 89, 152,1);
-
+$dope-gray: #C6C7C7;
 
 .track-progress-box{
   width: 100%;
@@ -636,6 +637,7 @@ margin-bottom: 10px
   font-size: 24px;
 }
 
+
 /*--- Nav Bar ---*/
 
 .navbar-front{
@@ -822,4 +824,134 @@ margin-bottom: 10px
   height: auto;
   }
 }
+
+#messagesContent .fa{
+    color: #C6C7C7;
+    &:hover{
+      color:#7C7D7D;
+    }
+  }
+
+
+.message-send2{
+    margin: 20px 25% !important;
+    width: 50%;
+    border: none !important;
+}
+
+/* NAVBAR */
+
+.nav .menu-item {
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #888;
+    display: block;
+    line-height: 1;
+    margin: 0;
+    padding: 8px 0 8px 20px !important;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 400;
+    background-color: #fff;
+}
+
+
+.popover{
+
+    margin-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    display: block;
+    text-align: left;
+    border: 0px;
+    margin: 0px;
+    height: auto;
+    border: 1px solid #cfd4db;
+    border-top: none;
+    padding: 0;
+    -webkit-box-shadow: 1px 6px 12px rgba(0,0,0,0.05);
+    box-shadow: 1px 6px 12px rgba(0,0,0,0.05);
+    position: absolute;
+    background-clip: padding-box;
+
+}
+
+.cdivider {
+    border-top: 1px solid rgba(0,0,0,0.05);
+    height: 0;
+    margin: 5px 0;
+}
+
+
+@media (max-width: 767px){
+.message-Box .modal-content {
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+}
+
+.modal-dialog{
+  width: 100% !important;
+    margin: 0;
+    height: 100%;
+    border: none;
+    border-radius: 0px;
+}
+
+.message-textbox {
+  border-radius: 0px;
+  position: fixed;
+  bottom: 0px;
+}
+
+.m-a{
+    height: 100%;
+    position: fixed;
+    top: 0;
+    padding-top: 94px !important;
+    padding-bottom: 60px !important;
+}
+
+.modal-header{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.message_comment{
+    width: 75%;
+    margin-left: 0px !important;
+    margin-right: 2%;
+}
+
+.message-send{
+    width: 23%;
+    margin-left: 0 !important;
+}
+
+.message-Box-body{
+  padding-top: 94px !important;
+  height: 100%;
+}
+
+.new_message .modal-body {
+    width: 100%;
+    height: 100%;
+    padding-top: 134px !important;
+}
+#messagesContent .fa{
+    font-size: 24px;
+  }
+
+.close{
+  font-size: 30px;
+}
+
+}
+
 

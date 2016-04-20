@@ -15,11 +15,11 @@
                 <% if current_user %>
                     <%= link_to user_follow_path(t), :remote => true, :method => :post do %>
                     <% if is_following t %>
-                      <button class="btn btn-primary-outline btn-sm">
+                      <button class="btn btn-primary-outline btn-sm rightCol-Profile-Following">
                         <i class="fa fa-user-plus" aria-hidden="true"></i> Following
                       </button>
                     <% else %>
-                    <button class="btn btn-primary-outline btn-sm">
+                    <button class="btn btn-primary-outline btn-sm rightCol-Profile-Following">
                         <i class="fa fa-user-plus" aria-hidden="true"></i> Follow
                     </button>
                     <% end %>
