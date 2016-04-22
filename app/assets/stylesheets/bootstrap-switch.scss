@@ -106,17 +106,17 @@ $dark-primary: #F7403B;
 .bootstrap-switch-on{
   background-color:$primary-color;
   border-color: $primary-color; 
-  -webkit-transition: background-color 1s, border-color 1s;
-  -o-transition: background-color 1s, border-color 1s;
-  transition: background-color 1s, border-color 1s;
-  transition: all 1s;
+  -webkit-transition: background-color 0.5s, border-color 0.5s;
+  -o-transition: background-color 0.5s, border-color 0.5s;
+  transition: background-color 0.5s, border-color 0.5s;
+  transition: all 0.5s;
 }
 
 .bootstrap-switch-off{
-  -webkit-transition: background-color 1s, border-color 1s;
-  -o-transition: background-color 1s, border-color 1s;
-  transition: background-color 1s, border-color 1s;
-  transition: all 1s;
+  -webkit-transition: background-color 0.5s, border-color 0.5s;
+  -o-transition: background-color 0.5s, border-color 0.5s;
+  transition: background-color 0.5s, border-color 0.5s;
+  transition: all 0.5s;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on,
