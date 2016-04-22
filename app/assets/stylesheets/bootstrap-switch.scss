@@ -217,9 +217,9 @@ $dark-primary: #F7403B;
   cursor: default !important;
 }
 .bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
-  -webkit-transition: margin-left 0.5s;
-  -o-transition: margin-left 0.5s;
-  transition: margin-left 0.5s;
+  -webkit-transition: margin-left 0.2s;
+  -o-transition: margin-left 0.2s;
+  transition: margin-left 0.2s;
 }
 
 .bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-on {
