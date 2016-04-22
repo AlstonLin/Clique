@@ -23,6 +23,7 @@ $border: #dce0e0;
 $fbhover: #374F86;
 $fbblue: rgba(59, 89, 152,1);
 $dope-gray: #C6C7C7;
+$dark-primary: #F7403B;
 
 
 .img-size{
@@ -31,7 +32,15 @@ $dope-gray: #C6C7C7;
 }
 
 
+*:focus{
+  outline: none;
+}
 
+
+textarea:focus{
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
 
 
 
@@ -362,13 +371,6 @@ position: relative;
     font-weight: bold;
 }
 
-.cliq-pb{
-    border-top-left-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
-    padding-left: 0px;
-}
-
-
 
 /*--- Track Player ---*/
 
@@ -425,6 +427,9 @@ position: relative;
   line-height: 28px;
   color: white;
   font-size: 10px;
+  &:active{
+     background-color: $dark-primary;
+  }
   .fa {
     margin-left: 2px;
     color: white !important;
@@ -528,7 +533,8 @@ position: relative;
   font-size: 14px;
   text-align: center;
   line-height: 27px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
 }
 
 .player1-btn:hover{

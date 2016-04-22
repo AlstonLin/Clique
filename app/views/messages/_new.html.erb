@@ -7,13 +7,13 @@
 	 	</p>
 
 	 		<% if @user %>
-	 		<%= text_field_tag :username, params[:username], :value => @user.username, class: "form-control"  %>
+	 		<%= text_field_tag :username, params[:username], :value => @user.username, class: "form-control", :placeholder=> "Username" %>
 	 		<% else %>
-			<%= text_field_tag :username, params[:username], class: "form-control" , placeholer: "Message"  %>
+			<%= text_field_tag :username, params[:username], class: "form-control" ,:placeholder=> "Username"  %>
 		<% end %>
 	 	</div>
 	 	<div class="modal-body">
-	 		<%= f.text_area :content , class: "form-control" %>
+	 		<%= f.text_area :content , class: "form-control", :placeholder=> "Message" %>
 	 		<%= f.submit "Send" , class: "message-send2" %>
 	 	</div>
     	</div>
