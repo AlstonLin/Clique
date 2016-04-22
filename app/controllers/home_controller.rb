@@ -52,6 +52,14 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+
+  def notifications
+  end
+
+
+
+
   # -------------------- EXTERNALIZED FUNCTIONS --------------------------------
   private
     def get_tracks

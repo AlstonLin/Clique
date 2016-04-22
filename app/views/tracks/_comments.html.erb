@@ -1,5 +1,4 @@
-
-  <% track.comments.reverse_each do |c| %>
+<% track.comments.reverse_each do |c| %>
     <% if !c.removed %>
       <div class="text-Post">
       <a class="media-left" href="#">
@@ -10,13 +9,11 @@
       <div class="media-body">
         <div class="media-body-text">
           <div class="media-heading">
-            <small class="pull-right text-muted">• <%= time_ago_in_words c.created_at %>
+            <small class="pull-right text-muted">• <%= time_ago_in_words c.created_at %></small>
             <% if c.creator == current_user %>
               <%= button_to post_comment_delete_path(c), :remote => true, :class => "player1-btn2", data: { confirm: 'Are you certain you want to delete this?' } do %>
                 <div class="glyphicon glyphicon-trash"></div>
               <% end %>
-            </small>
-
             <h5><%= link_to c.creator.name, c.creator, :class => "modalClosable" %></h5>
           </div>
             <%= simple_format c.content %>

@@ -26,11 +26,6 @@
 <div class="modal fade" id="modal<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-
-
-
-
-
       <div class="modal-textpost">
           <a class="media-left" href="#">
             <img
@@ -49,13 +44,12 @@
             </div>
           </div>
       </div>
-
-
-      
       <%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
-      <div id="comments<%= post.id %>">
+      <div id="comments<%= post.id %>" class="modal-post-commentBox">
         <!-- Comments -->
         <%= render :partial => 'posts/comments', :locals => { :post => post} %>
+
+
       </div>
     </div>
   </div>
