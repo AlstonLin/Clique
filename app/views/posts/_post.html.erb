@@ -8,13 +8,21 @@
     <div class="media-body-text">
       <div class="media-heading">
         <small class="pull-right text-muted"> <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> 40 </small>
-        <h5><%= link_to post.poster.name, post.poster %> <small>• <%= time_ago_in_words post.created_at %></small></h5>
+        <h5><%= link_to post.poster.name, post.poster %><small> · <%= time_ago_in_words post.created_at %></small></h5>
       </div>
       <p>
         <%= post.content %>
       </p>
     </div>
+
+
+    <div class="button-popup"></div>
+
+
   </div>
+
+
+
 </li>
 
 

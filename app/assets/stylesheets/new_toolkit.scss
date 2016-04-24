@@ -1990,7 +1990,7 @@ input[type="button"].btn-block {
 }
 @media (min-width: 1260px) {
   .container {
-    width: 859px;
+    width: 900px;
   }
 }
 .container-fluid {
@@ -2346,7 +2346,7 @@ input[type="button"].btn-block {
     width: 58.33333333%;
   }
   .col-md-6 {
-    width: 68%
+    width: 67%
   }
   .col-md-5 {
     width: 41.66666667%;
@@ -2355,7 +2355,7 @@ input[type="button"].btn-block {
     width: 33.33333333%;
   }
   .col-md-3 {
-    width: 32%;
+    width: 33%;
   }
   .col-md-2 {
     width: 16.66666667%;
@@ -4367,6 +4367,7 @@ a.thumbnail.active {
 }
 .media-body {
   width: 10000px;
+  position: relative;
 }
 .media-object {
   display: block;

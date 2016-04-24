@@ -23,10 +23,23 @@ $dope-gray: #C6C7C7;
 }
 
 
+.button-popup{
+  position:absolute;
+  z-index: 10;
+  width:100px;
+  height:30px;
+  border-radius:30px;
+  background-color: white;
+  border: 1px solid #9da9b0;
+  bottom: 0;
+  right: 0;
+  display: none;
+}
 
 
-
-
+.list-group-item:hover .button-popup{
+  display: block;
+}
 
 
 
