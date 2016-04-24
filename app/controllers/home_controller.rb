@@ -62,6 +62,12 @@ end
 def dashboard_orders
 end
 
+  def notifications
+  end
+
+  def payment
+  end
+
 
   # -------------------- EXTERNALIZED FUNCTIONS --------------------------------
   private

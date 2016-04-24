@@ -28,13 +28,16 @@
           <li>
             <%= link_to "Upload", new_track_path %>
           </li>
+          <li>
+            <%= link_to "Payment", payment_path %>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right m-r-5 hidden-xs">
           <li >
-            <a class="app-notifications" href="notifications/index.html">
-              <i class="fa fa-bell-o" aria-hidden="true"></i>
-            </a>
+            <%= link_to notifications_path do %>
+              <i class="fa fa-bell-o app-notifications" aria-hidden="true"></i>
+            <% end %>
           </li>
           <li>
             <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
