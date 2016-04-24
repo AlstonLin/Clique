@@ -378,7 +378,7 @@ position: relative;
 
 .post-track{
   width: 100%;
-  height: 100px !important;
+  height: 60px;
   border-radius: 5px; 
   overflow: hidden;
   margin-top: 4px;
@@ -512,13 +512,13 @@ position: relative;
 
 .right-Clique-Btn{
   width:100%;
-  height:40px;
+  height:50px;
   background-color: $primary-color;
   color: white;
   margin-top: 10px;
   border-radius: 3px;
   text-align: center;
-  line-height: 40px;
+  line-height: 50px;
   font-weight: bold;
 }
 
@@ -838,19 +838,7 @@ margin-bottom: 10px
   padding-left: 10px;
 }
 
-.post-track{
-  width: 100%;
-  height: 100px;
-  border-radius: 5px; 
-  overflow: hidden;
-  margin-top: 4px;
-  border: 1px solid $border;
 
-  img{
-  width: 100%;
-  height: auto;
-  }
-}
 
 #messagesContent .fa{
     color: #C6C7C7;
@@ -1059,4 +1047,123 @@ margin-bottom: 10px
   font-size: 14px;
   float: right;
   padding-left: 10px;
+}
+
+/*--- Track Modal  ---*/
+
+.payment-due{
+  display: inline-block;
+}
+
+.payment-price{
+  color: #8fc243;
+  font-size: 1.75rem;
+  
+}
+
+.payment-panel{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.border-bottom-dotted{
+  border-bottom: 1px dashed rgba(0,0,0,0.2);
+}
+
+.no-pad{
+  padding: 0px;
+}
+
+.pad-bottom{
+  padding-bottom: 15px;
+}
+
+.check-circle{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background-color:#00B040;
+  margin-right:10px;
+  float:left;
+  line-height: 20px;
+  text-align: center;
+
+  .glyphicon{
+    color: white;
+    font-size: 9px;
+  }
+}
+
+.paypal-box{
+  width: 100%;
+  height: 50px;
+  background-color: #ECF0F1;
+  border: 1px solid #D8D8D8;
+  border-radius: 3px;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.paypal-icon{
+  width:66px;
+  height:18px;
+  background-image: url(https://d300b3jgvyc6sw.cloudfront.net/assets/images/checkout-paypal-logo-color.png);
+  background-size: 66px 18px;
+}
+
+
+
+
+
+
+.payment-icon-box{
+  width: 100%;
+  height: 50px;
+  border-radius: 3px;
+  padding: 15px;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+.payment-icon1{
+  height:24px;
+  width: 38px;
+  float:right;
+  margin-left: 4px;
+  background-image: url(https://cdn.shopify.com/s/assets/payment_icons/visa-bf29c175c020c2fbb499fa4b2d12258318ff9f8b26387dc00aeae02980fae0f2.svg);
+  background-size: 38px 24px;
+}
+
+.payment-icon2{
+  height:24px;
+  width: 38px;
+  float:right;
+  margin-left: 4px;
+  background-image: url(https://cdn.shopify.com/s/assets/payment_icons/master-5bd999784e40f839c90c804a4fe2847b6e2431c7b7138cfb22b23648aa300ea9.svg);
+  background-size: 38px 24px;
+}
+
+.payment-icon3{
+  height:24px;
+  width: 38px;
+  float:right;
+  margin-left: 4px;
+  background-image: url(https://cdn.shopify.com/s/assets/payment_icons/american-express-f80ce71c22ad10a4d52eb5714417d67d88365bcab346c2237a446bb8048f303d.svg);
+  background-size: 38px 24px;
+}
+
+.payment-icon4{
+  height:24px;
+  width: 38px;
+  float:right;
+  margin-left: 4px;
+  background-image: url(https://cdn.shopify.com/s/assets/payment_icons/visa-bf29c175c020c2fbb499fa4b2d12258318ff9f8b26387dc00aeae02980fae0f2.svg);
+  background-size: 38px 24px;
 }

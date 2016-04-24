@@ -57,6 +57,8 @@ class HomeController < ApplicationController
   def notifications
   end
 
+  def payment
+  end
 
 
 

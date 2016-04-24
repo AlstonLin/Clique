@@ -7,8 +7,8 @@
   <div class="media-body">
     <div class="media-body-text">
       <div class="media-heading">
-        <small class="pull-right text-muted">• <%= time_ago_in_words post.created_at %></small>
-        <h5><%= link_to post.poster.name, post.poster %></h5>
+        <small class="pull-right text-muted"> <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> 40 </small>
+        <h5><%= link_to post.poster.name, post.poster %> <small>• <%= time_ago_in_words post.created_at %></small></h5>
       </div>
       <p>
         <%= post.content %>
@@ -16,6 +16,7 @@
     </div>
   </div>
 </li>
+
 
 
 
@@ -48,8 +49,6 @@
       <div id="comments<%= post.id %>" class="modal-post-commentBox">
         <!-- Comments -->
         <%= render :partial => 'posts/comments', :locals => { :post => post} %>
-
-
       </div>
     </div>
   </div>

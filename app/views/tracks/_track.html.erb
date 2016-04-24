@@ -6,8 +6,8 @@
   </a>
   <div class="media-body">
     <div class="media-heading">
-      <small class="pull-right text-muted"> • <%= time_ago_in_words track.created_at %></small>
-      <h5><%= link_to track.owner.name, track.owner %> </h5>
+      <small class="pull-right text-muted"><span class="glyphicon glyphicon-play glyphicon-small" aria-hidden="true"></span> 10K •  <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> 40 </small>
+      <h5><%= link_to track.owner.name, track.owner %> <small>• <%= time_ago_in_words track.created_at %> </small></h5>
     </div>
 
     <div class="media-body-inline-grid" data-grid="images">
@@ -50,6 +50,8 @@
 </li>
 
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="track-modal<%= track.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -81,10 +83,7 @@
               <%= link_to track.name, track, :class => "modalClosable" %>
             </div>
           </div>
-
-
           <div class="player1-right-btn">
-
           </div>
         </div>
       </div>
@@ -96,8 +95,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 <script>

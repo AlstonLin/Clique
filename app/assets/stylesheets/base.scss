@@ -5,6 +5,33 @@ $border: #e5e5e5;
 $dope-gray: #C6C7C7;
 
 
+.background{
+  background: #333;
+  width: 60px;
+  height: 60px;
+}
+
+
+.bold{
+  font-weight:bold !important;
+}
+
+
+
+.glyphicon-small{
+  font-size:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 body,html{
   height: auto;
@@ -25,9 +52,7 @@ body,html{
   padding-bottom: 50px;
 }
 
-.page-Bottom{
-  padding: 50px 0;
-}
+
 
 
 

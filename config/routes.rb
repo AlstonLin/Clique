@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Home Page routes
   get "home" => "home#index"
   get "notifications" => "home#notifications" 
+  get "payment" => "home#payment"  
   get "all" => "home#all"
   get "explore" => "home#explore"
   get "tracks" => "home#tracks"
