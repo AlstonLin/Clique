@@ -357,18 +357,20 @@ position: relative;
 
 
 .post-Btn{
-  float: right !important;
+    float: right !important;
     width: 80px !important;
     min-width: 40px !important;
     height: 32px !important;
-    border-radius: 3px !important;
     background-color: #fe4641 !important;
     margin-left: 0px !important;
-    border: 0px !important;
     color: white;
     margin-bottom: 0px !important;
     font-size: 12px !important;
     font-weight: bold;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px -1px 0px;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 4px;
+    border: 1px solid #FF9E9E;
 }
 
 

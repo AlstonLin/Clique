@@ -18,7 +18,7 @@
  * limitations under the License.
  * ========================================================================
  */
-/* 
+ 
 
 (function() {
   var slice = [].slice;
@@ -742,4 +742,4 @@
     };
   })(window.jQuery, window);
 
-}).call(this);*/
+}).call(this);

@@ -5,8 +5,8 @@
     <%= form.submit "Post", :class => 'post-Btn cliq-pb' %>
     <div class="floatRight">
       <%= form.label :clique_only, :class=>'clique_only-switch' do %>
-        <%= form.check_box :clique_only, :class => 'switch', :name => "switcher", :data => { :state=>'true','on-text'=>'','off-text'=>''}, :'data-handle-width'=>20, :'data-label-width'=>14 %>
-        <label>Cliq Only</label>
+        <%= form.check_box :clique_only, :class => 'switch', :name => "switcher", :data => { :state=>'true','on-text'=>'','off-text'=>''}, :'data-handle-width'=>18, :'data-label-width'=>10 %>
+        <label class="cliq-text">Cliq</label>
         <label>Public</label>
       <% end %>
     </div>
