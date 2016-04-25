@@ -16,7 +16,11 @@
     </div>
 
 
-    <div class="button-popup"></div>
+    <div class="button-popup ">
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
+      <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> 
+      <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+    </div>
 
 
   </div>
@@ -61,3 +65,17 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+
+
+    $('.button-popup').click(function(e) {
+        e.stopPropagation();
+    });
+
+
+
+
+});
+</script>
