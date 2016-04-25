@@ -1,36 +1,20 @@
-<div class="box artist-Tile">
-  <div class="panel-Top">
-    <div class="panel-Cover">
-      <%= link_to (image_tag artist.cover_picture_url), artist %>
+<div class="col-md-4">
+  <div class="panel panel-default panel-profile">
+    <div class="panel-heading"
+         style="background-image: url(<%= artist.cover_picture_url %>);"></div>
+    <div class="panel-body text-center">
+      <img class="panel-profile-img" src="<%= artist.profile_picture_url %>">
+
+      <h5 class="panel-title"><%= link_to artist.name, artist %></h5>
+      <p class="m-b-md">Big belly rude boy, million dollar hustler. Unemployed.</p>
+
+      <button class="btn btn-primary-outline btn-sm">
+        <i class="fa fa-user-plus" aria-hidden="true"></i> Follow
+      </button>
     </div>
-    <!--<div class="panel-Overlay">
-    </div>-->
   </div>
-
-
-    <div class="panel-Bottom">
-    <div class="panel-ProfilePic">
-      <%= link_to (image_tag artist.profile_picture_url), artist %>
-    </div>
-
-
-
-    <div class="panel-Info">
-      <div class="panel-Info-left">
-        <div class="panel-Info-Name">
-          <%= link_to artist.name, artist   %>
-        </div>
-        <div class="panel-Info-Clique">
-          <%= link_to artist.followers.count  %> Followers
-        </div>
-      </div>
-
-      <div class="panel-follow-btn">
-        Follow
-      </div>
-
-
-    </div>
-    </div>
-
 </div>
+
+
+
+        

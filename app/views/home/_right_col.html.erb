@@ -1,93 +1,64 @@
 <!-- Top Artists -->
-<div class="rightCol-Filter">
-  <div class="rightCol-Filter-Title">
-    <div class="rightCol-Filter-Title-Name">
-     	Top Artists
-    </div>
-    <div class="rightCol-Filter-Title-Stat">
-      <%= link_to "See more", explore_path %>
-    </div>
-  </div>
-  <% @top.each do |t| %>
-    <div class="rightCol-Filter-Profile">
-      <%= link_to t do %>
-        <div class="rightCol-Profile-Avi text-userPic2">
-          <%= image_tag t.profile_picture_url %>
-        </div>
-        <div class="rightCol-Profile-Bar">
-          <div class="rightCol-Profile-Name">
-            <%= t.name %>
-          </div>
-          <div class="rightCol-Followers">
-            <i class="fa fa-user-plus"></i>
-            <%= t.followers.count %>
-          </div>
-        </div>
-      <% end %>
-      <% if current_user %>
-        <%= link_to user_follow_path(t), :remote => true, :method => :post do %>
-
-            <% if is_following t %>
-              <div class="rightCol-Profile-Following">
-                Following
+<div class="panel panel-default m-b-md hidden-xs">
+      <div class="panel-body">
+        <h5 class="m-t-0">Top Artists  <small>· <%= link_to "See more", explore_path %></small></h5>
+        <ul class="media-list media-list-stream">
+          
+          <% @top.each do |t| %>
+          <li class="media m-b">
+            <a class="media-left" href="#">
+              <%= image_tag t.profile_picture_url , class: "media-object img-circle" %>
+            </a>
+            <div class="media-body">
+              <strong><%= t.name %></strong> <!--<%= t.followers.count %> Followers-->
+              <div class="media-body-actions">
+                <% if current_user %>
+                    <%= link_to user_follow_path(t), :remote => true, :method => :post do %>
+                    <% if is_following t %>
+                      <button class="btn btn-primary-outline btn-sm rightCol-Profile-Following">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> Following
+                      </button>
+                    <% else %>
+                    <button class="btn btn-primary-outline btn-sm rightCol-Profile-Following">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> Follow
+                    </button>
+                    <% end %>
+                <% end %>
               </div>
-            <% else %>
-              <div class="rightCol-Profile-Follow">
-                Follow
-              </div>
-            <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+            </div>
+          </li>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="panel-footer">
+        © 2016 Cliq.fm About Help Terms Privacy Cookies Ads info Brand Blog Status
+      </div>
 </div>
 
-<!-- Favorites -->
 <% if @favorites.count > 0 %>
-  <div class="rightCol-Filter">
-    <div class="rightCol-Filter-Title">
-      <div class="rightCol-Filter-Title-Name">
-       	Favorites
-      </div>
-
-    <div class="rightCol-Filter-Title-Stat">
-      <%= link_to "See more", favorites_path, :id=>"FavSeeMore",:method => :get, :remote => true %>
-    </div>
-
-    </div>
-    <% @favorites.each do |f| %>
-      <div class="rightCol-Filter-Profile">
-
-          <div class="rightCol-Profile-Avi text-userPic2">
-            <%= image_tag f.get_pic_url %>
-          </div>
-
-
-        <div class="rightCol-Profile-Bar">
-
-        <!-- this should display the artist's name and link to their profile -->
-        <%= link_to f.owner  do %>
-          <div class="rightCol-Profile-Name">
-            <%= f.owner.name %>
-          </div>
-        <% end %>
-
-            <div class="rightCol-songname">
-              <%= link_to f.name, f %>
-            </div>
+  <div class="panel panel-default m-b-md hidden-xs">
+        <div class="panel-body">
+          <h5 class="m-t-0">Favorites  <small>· <%= link_to "See more", favorites_path, :id=>"FavSeeMore",:method => :get, :remote => true %></small></h5>
+          <ul class="media-list media-list-stream">
+            <% @favorites.each do |f| %>
+            <li class="media m-b">
+              <a class="media-left" href="#">
+                <%= image_tag f.get_pic_url , class: "media-object img-circle" %>
+              </a>
+              <div class="media-body">
+                <strong><%= link_to f.name, f %></strong><% end %> <%= f.owner.name %>
+                <div class="media-body-actions">
+                        <%= link_to f.name, f %>
+                        <button class="btn btn-primary-outline btn-sm">
+                          <span class="icon icon-add-user"></span> View
+                        </button>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-
-        <%= link_to f do %>
-          <div class="rightCol-Profile-Follow">
-            View
-          </div>
-        <% end %>
-
-      </div>
-    <% end %>
-  </div>
+  </div>  
+</div>
+</div>
 <% end %>
-
-<!-- <div class="rightCol-Filter rightCol-footer">
-  © 2016 Cliq.fm About Help Terms Privacy Cookies Ads info Brand Blog Status
-</div> -->

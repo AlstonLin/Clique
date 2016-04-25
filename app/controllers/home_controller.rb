@@ -52,6 +52,23 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+def dashboard
+end
+
+def dashboard_tracks
+end
+
+def dashboard_orders
+end
+
+  def notifications
+  end
+
+  def payment
+  end
+
+
   # -------------------- EXTERNALIZED FUNCTIONS --------------------------------
   private
     def get_tracks

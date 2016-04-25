@@ -1,42 +1,154 @@
-<div class="page-Bottom2">
-	<div class="container2">
-		<div id="right-col" class="rightCol-Index">
-		  <%= render "right_col" %>
-		</div>
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Users</h4>
+      </div>
 
-	  <div class="leftCol">
-	  	<div class="newsfeed-title">
-				<%= link_to all_path, :method => :get, :remote => true do %>
-					<div class="newsfeed-title1 newsfeed-active">
-						All Stream
-					</div>
-				<% end %>
-				<%= link_to tracks_path, :method => :get, :remote => true do %>
-					<div class="newsfeed-title2">
-						Tracks
-					</div>
-				<% end %>
-				<%= link_to posts_path, :method => :get, :remote => true do %>
-					<div class="newsfeed-title2">
-						Posts
-					</div>
-				<% end %>
-				<% if current_user %>
-					<%= link_to cliques_path, :method => :get, :remote => true do %>
-						<div class="newsfeed-title2">
-						  Cliques
-						</div>
-					<% end %>
-					<%= link_to favorites_path, :method => :get, :remote => true do %>
-						<div class="newsfeed-title2">
-						  Favorites
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-			<div id="home-content">
-			  <%= render :partial => "all", :locals => { content: @content } %>
-			</div>
-		</div>
-	</div>
+      <div class="modal-body p-a-0">
+        <div class="modal-body-scroller">
+          <ul class="media-list media-list-users list-group">
+            <li class="list-group-item">
+              <div class="media">
+                <a class="media-left" href="#">
+                  <img class="media-object img-circle" src="assets/img/avatar-fat.jpg">
+                </a>
+                <div class="media-body">
+                  <button class="btn btn-default btn-sm pull-right">
+                    <span class="glyphicon glyphicon-user"></span> Follow
+                  </button>
+                  <strong>Jacob Thornton</strong>
+                  <p>@fat - San Francisco</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="media">
+                <a class="media-left" href="#">
+                  <img class="media-object img-circle" src="assets/img/avatar-dhg.png">
+                </a>
+                <div class="media-body">
+                  <button class="btn btn-default btn-sm pull-right">
+                    <span class="glyphicon glyphicon-user"></span> Follow
+                  </button>
+                  <strong>Dave Gamache</strong>
+                  <p>@dhg - Palo Alto</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="media">
+                <a class="media-left" href="#">
+                  <img class="media-object img-circle" src="assets/img/avatar-mdo.png">
+                </a>
+                <div class="media-body">
+                  <button class="btn btn-default btn-sm pull-right">
+                    <span class="glyphicon glyphicon-user"></span> Follow
+                  </button>
+                  <strong>Mark Otto</strong>
+                  <p>@mdo - San Francisco</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<div class="container p-t-md">
+    <div class="col-md-6">
+      <ul class="list-group media-list media-list-stream">
+
+
+
+
+    <li class="media list-group-item p-a">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Message">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-default">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </li>
+        
+        <%= render :partial => "all", :locals => { content: @content } %>
+
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <div class="alert alert-warning alert-dismissible hidden-xs m-b-md" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <a class="alert-link" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking too good.
+      </div>
+
+
+      <div class="list-group m-b-md">
+        <a href="#" class="list-group-item">
+          <i class="fa fa-chevron-right pull-right text-muted" aria-hidden="true"></i>
+          All Stream
+        </a>
+        <a href="#" class="list-group-item">
+          <i class="fa fa-chevron-right pull-right text-muted" aria-hidden="true"></i>
+          Posts
+        </a>
+        <a href="#" class="list-group-item">
+          <i class="fa fa-chevron-right pull-right text-muted" aria-hidden="true"></i>
+          Tracks
+        </a>
+        <a href="#" class="list-group-item">
+          <i class="fa fa-chevron-right pull-right text-muted" aria-hidden="true"></i>
+          Cliques
+        </a>
+        <a href="#" class="list-group-item">
+          <i class="fa fa-chevron-right pull-right text-muted" aria-hidden="true"></i>
+          Favorites
+        </a>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--      <div class="panel panel-default m-b-md hidden-xs">
+        <div class="panel-body">
+          <h5 class="m-t-0">Sponsored</h5>
+          <div data-grid="images" data-target-height="150">
+            <img class="media-object" data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_2.jpg">
+          </div>
+          <p><strong>It might be time to visit Iceland.</strong> Iceland is so chill, and everything looks cool here. Also, we heard the people are pretty nice. What are you waiting for?</p>
+          <button class="btn btn-primary-outline btn-sm">Buy a ticket</button>
+        </div>
+      </div> -->
+
+      <%= render "right_col" %>
+
+
+    </div> 
+</div>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/toolkit.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script>
+      // execute/clear BS loaders for docs
+      $(function(){
+        if (window.BS&&window.BS.loader&&window.BS.loader.length) {
+          while(BS.loader.length){(BS.loader.pop())()}
+        }
+      })
+    </script>

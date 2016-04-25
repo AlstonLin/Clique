@@ -1,11 +1,18 @@
-<div class="message-Box-top">
-	<%= link_to "", messages_path, :remote => true, :class => "fa fa-angle-left fa-1x" %> 	
-	<%= @conversation.get_name current_user %>
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <%= link_to "", messages_path, :remote => true, :class => "fa fa-angle-left fa-1x floatleft" %> 	
+        <p>
+        
+	 	<%= @conversation.get_name current_user %>
+	 	</p>
 </div>
-<div class="message-Box-body2">
-	<% @conversation.messages.reverse_each do |m| %>
-	  <%= render :partial => "messages/message", :locals => { :message => m }%>
-	<% end %>
+
+<div class="m-a js-conversation">
+	<ul class="media-list media-list-conversation">
+		<% @conversation.messages.reverse_each do |m| %>
+	  		<%= render :partial => "messages/message", :locals => { :message => m }%>
+		<% end %>
+	</ul>
 </div>
 <div class="message-textbox">
 	<%= form_for Message.new, :remote => true do |f| %>

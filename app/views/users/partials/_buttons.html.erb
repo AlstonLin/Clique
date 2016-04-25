@@ -35,7 +35,7 @@
     </div>
   <% end %>
   <div class="edit-Profile">
-    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn"  %>
+    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn m-r-5"  %>
   </div>
 
 
@@ -49,13 +49,13 @@
 <!-- Others profile -->
   <!-- Follow -->
   <% if is_following @user %>
-    <%= button_to "Unfollow", user_follow_path(user), :remote => true, :class => "btn-hollow btn"  %>
+    <%= button_to "Unfollow", user_follow_path(user), :remote => true, :class => "btn-hollow btn m-r-5"  %>
   <% else %>
-    <%= button_to "Follow", user_follow_path(user), :remote => true, :class => "btn-hollow btn"  %>
+    <%= button_to "Follow", user_follow_path(user), :remote => true, :class => "btn-hollow btn m-r-5"  %>
   <% end %>
 
   <% if is_following current_user, @user %>
-    <%= button_to "Message", user_message_path(user), :method => :get, :remote => true, :class => "btn-hollow btn"  %>
+    <%= button_to "Message", user_message_path(user), :method => :get, :remote => true, :class => "btn-hollow btn "  %>
   <% end %>
   <!-- Clique-->
   <% if @user.clique %>

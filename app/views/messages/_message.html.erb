@@ -1,39 +1,34 @@
-<% if message.creator == current_user %>
-  <div class="message-from-you">
-  <div class="message-profile-pic">
-    <%= image_tag message.creator.profile_picture_url %>
-  </div>
-  <div class="message-text">
-    <b class="caret-right"></b>
-    <%= message.content %>
-  </div>
-  <div class="message-time">
-    <%= time_ago_in_words message.created_at %>
-  </div>
+          <% if message.creator == current_user %>
+              <li class="media media-current-user m-b-md">
+                <div class="media-body">
+                  <div class="media-body-text">
+                    <%= message.content %>
+                  </div>
+                  <div class="media-footer">
+                    <small class="text-muted">
+                      <%= time_ago_in_words message.created_at %>
+                    </small>
+                  </div>
+                </div>
+                <a class="media-right" href="#">
+                  <%= image_tag message.creator.profile_picture_url, class: "img-circle media-object" %>
+                </a>
+              </li>
 
-
-
-<% else %>
-  <div class="message-from-else">
-  <div class="message-profile-pic">
-    <%= image_tag message.creator.profile_picture_url %>
-  </div>
-  <div class="message-text">
-
-    <b class="caret-left"></b>
-    <%= message.content %>
-
-  </div>
-  <div class="message-time">
-    <%= time_ago_in_words message.created_at %>
-  </div>
-
-
-
-
-
-
-
-<% end %>
-
-</div>
+          <% else %>
+              <li class="media m-b-md">
+                <a class="media-left" href="#">
+                  <%= image_tag message.creator.profile_picture_url, class: "img-circle media-object" %>
+                </a>
+                <div class="media-body">
+                  <div class="media-body-text">
+                   <%= message.content %>
+                  </div>
+                  <div class="media-footer">
+                    <small class="text-muted">
+                      <%= time_ago_in_words message.created_at %>
+                    </small>
+                  </div>
+                </div>
+              </li>
+          <% end %>

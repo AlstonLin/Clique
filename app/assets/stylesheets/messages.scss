@@ -2,9 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+$primary-color-light: #FC6C68;
 $primary-color: #fe4641;
 $border: #e5e5e5;
+
+
+.new_message{
+	height: 100%;
+    background-color: #F8F9F9;
+    border-radius: inherit;
+    .modal-body{
+	width:100%;
+
+	textarea.form-control {
+    min-height: 300px;
+}
+}
+}
+
 
 .message-preview {
 	height: 3em;
@@ -16,7 +31,7 @@ $border: #e5e5e5;
 		height: 515px;
 	}
 	.modal-dialog{
-		width:600px !important;
+		width:600px;
 	}
 }
 
@@ -97,7 +112,6 @@ $border: #e5e5e5;
 
 .message_comment{
 	width:430px;
-	margin-left: 10px !important;
 	float:left;
 	height:36px;
 	color: #C3C3C3;
@@ -113,7 +127,7 @@ $border: #e5e5e5;
 .message-send{
 	width: 100px;
 	height: 36px !important;
-	background-color: $primary-color !important;
+	background-color: $primary-color-light !important;
 	color: white;
 	border: 1px solid $primary-color !important;
 	border-radius: 3px !important;
@@ -129,7 +143,7 @@ $border: #e5e5e5;
 .message-send2{
 	width: 100px;
 	height: 36px !important;
-	background-color: $primary-color !important;
+	background-color: $primary-color-light !important;
 	color: white;
 	border: 1px solid $primary-color !important;
 	border-radius: 3px !important;
@@ -258,18 +272,6 @@ $border: #e5e5e5;
 	width: 34px;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 
 }
@@ -288,3 +290,5 @@ $border: #e5e5e5;
 .glyphicon-menu-left{
 	font-size: 16px;
 }
+
+

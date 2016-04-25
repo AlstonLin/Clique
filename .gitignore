@@ -26,3 +26,4 @@ public/system/*
 !.elasticbeanstalk/*.global.yml
 
 *.pem
+app/views/tracks/new.html.erb

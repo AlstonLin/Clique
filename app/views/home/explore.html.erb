@@ -1,27 +1,13 @@
-
-
-<div class="page-Bottom2">
-<div class="container2">
-
-<div class="artist-Box">
-
-
-<!-- Content -->
-
-
-		<div class="newsfeed-subtitle">
+<div class="container p-t-md">
+		<div class="home-Subtitle">
 			Discover new music and top artists
 		</div>
-	</div>
-</div>
-<div class="artist-Box2">
-<div id="pins">
+
+
+
   <% @top.each do |t| %>
     <%= render :partial => 'artist_tile', :locals => { :artist => t } %>
   <% end %>
-</div>
-</div>
-</div>
-</div>
-</div>
+
+
 </div>
