@@ -3,9 +3,20 @@ class HomeController < ApplicationController
   ITEMS_HOME = 4
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
-    @content = current_user.get_following_all
+    # Reloads sidebar stuff
     @top = get_top ITEMS_HOME
     @favorites = current_user.favorite_tracks.select{ |t| !t.removed }.take ITEMS_HOME
+    # Loads content variable if applicable
+    if @content == nil
+      @content = current_user.get_following_all
+    end
+    # Sets the variable determining which partial to show
+    @partial = session[:partial]
+    session[:partial] = nil
+    if @partial == nil
+      # Default is the "all" partial
+      @partial = "all"
+    end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def explore
@@ -13,24 +24,23 @@ class HomeController < ApplicationController
   end
 
   def all
-    @content = current_user.get_following_all
-    respond_to do |format|
-      format.js
-    end
+    @partial = "all"
+    index
+    render :action => :index
   end
 
   def tracks
-    @tracks = current_user.get_following_tracks
-    respond_to do |format|
-      format.js
-    end
+    @content = current_user.get_following_tracks
+    session[:partial] = "tracks"
+    index
+    render :action => :index
   end
 
   def posts
-    @posts = current_user.get_following_posts
-    respond_to do |format|
-      format.js
-    end
+    @content = current_user.get_following_posts
+    session[:partial] = "posts"
+    index
+    render :action => :index
   end
 
   def cliques
@@ -41,26 +51,27 @@ class HomeController < ApplicationController
     end
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @content = @content.first(MAX_ITEMS)
-    respond_to do |format|
-      format.js
-    end
+
+    session[:partial] = "cliques"
+    index
+    render :action => :index
   end
 
   def favorites
-    @favorites = current_user.get_favorites
-    respond_to do |format|
-      format.js
-    end
+    @content = current_user.get_favorites
+    session[:partial] = "favorites"
+    index
+    render :action => :index
   end
 
-def dashboard
-end
+  def dashboard
+  end
 
-def dashboard_tracks
-end
+  def dashboard_tracks
+  end
 
-def dashboard_orders
-end
+  def dashboard_orders
+  end
 
   def notifications
   end

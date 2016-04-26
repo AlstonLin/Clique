@@ -1,6 +1,5 @@
-
 <!-- No tracks to display -->
-<% if tracks.count == 0 %>
+<% if @content.count == 0 %>
   <div class="no-post">
     <div class="no-post-img"></div>
     No tracks to show</br>
@@ -8,7 +7,7 @@
   </div>
 <% else %>
     <!-- Displays each track on the list -->
-  <% tracks.each do |track| %>
+  <% @content.each do |track| %>
     <% if track.is_a? Track %>
       <%= render :partial => '/tracks/track', :locals => { :track => track } %>
     <% else %>
