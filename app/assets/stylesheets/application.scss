@@ -380,7 +380,7 @@ position: relative;
 
 .post-track{
   width: 100%;
-  height: 60px;
+  height: 300px;
   border-radius: 5px; 
   overflow: hidden;
   margin-top: 4px;
@@ -1169,3 +1169,54 @@ margin-bottom: 10px
   background-image: url(https://cdn.shopify.com/s/assets/payment_icons/visa-bf29c175c020c2fbb499fa4b2d12258318ff9f8b26387dc00aeae02980fae0f2.svg);
   background-size: 38px 24px;
 }
+
+/*--- Show Page  ---*/
+
+.show-media{
+  width:465px;
+  height:465px;
+  float:left;
+  background: gray;
+  overflow: hidden;
+  img{
+  width:100%;
+  height:auto;
+  }
+}
+
+.show-right-col{
+  height:465px;
+  width:248px;
+  background: white;
+  float:left;
+}
+
+
+.show-right-col-top{
+  width:100%;
+  height: 70px;
+  padding-right: 20px;
+  border-bottom: 1px solid $border;
+  padding-top: 20px;
+  padding-left:20px;
+}
+
+
+.show-right-col-middle{
+  height: 320px;
+  width: 100%;
+  padding-top: 20px;
+  overflow-y: scroll;
+  padding-left: 20px;
+}
+
+.show-right-col-bottom{
+  height:35px;
+  width:100%;
+}
+
+.profile-img{
+  width:35px;
+  height:35px;
+}
+
