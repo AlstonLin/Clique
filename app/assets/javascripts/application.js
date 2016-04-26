@@ -76,6 +76,10 @@ $(document).on('ready pjax:success', function() {
     $profilePic.css("background-size", "cover");
     $profilePic.css("background-position", "50%");
   }
+
+  // try{
+  //   Typekit.load({ async: true });
+  // }catch(e){}
 });
 
 window.jQuery(function() {

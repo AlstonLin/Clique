@@ -11,9 +11,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
 # Websocket
-
-
-
 # Default Gems
 gem 'rails'
 gem 'sass-rails'

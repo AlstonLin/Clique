@@ -3937,13 +3937,11 @@ $(function () {
     }
   }
 
-  $(document)
-    .on('redraw.bs.charts', function () {
-      $('[data-chart]').each(function () {
-        if ($(this).is(':visible')) {
-          Charts[$(this).attr('data-chart')](this)
-        }
-      })
-    })
-    .trigger('redraw.bs.charts')
+  // $(document).on('redraw.bs.charts', function () {
+  //     $('[data-chart]').each(function () {
+  //       if ($(this).is(':visible')) {
+  //         Charts[$(this).attr('data-chart')](this)
+  //       }
+  //     })
+  //   }).trigger('redraw.bs.charts')
 });

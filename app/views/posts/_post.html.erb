@@ -7,31 +7,52 @@
   <div class="media-body">
     <div class="media-body-text">
       <div class="media-heading">
-        <small class="pull-right text-muted"> <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> 40 </small>
+        <small class="pull-right text-muted"> <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span><%= post.favoriters.count %></small>
         <h5><%= link_to post.poster.name, post.poster %><small> · <%= time_ago_in_words post.created_at %></small></h5>
       </div>
       <p>
         <%= post.content %>
       </p>
     </div>
-
-
     <div class="button-popup ">
-      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
-      <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> 
-      <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 
+      <% if current_user %>
+        <!-- Favorite / Unfavorite button -->
+        <% if post.favoriters.include? current_user %>
+          <%= link_to post_favorite_path(post), :remote => true, :method => :post do %>
+            <div class="glyphicon glyphicon-heart redclass" aria-hidden="true"></div>
+          <% end %>
+        <% else %>
+          <%= link_to post_favorite_path(post), :remote => true, :method => :post do %>
+            <div class="glyphicon glyphicon-heart" aria-hidden="true"></div>
+          <% end %>
+        <% end %>
+      	<% if post.poster == current_user %>
+            <!-- Delete button -->
+      			<%= link_to post_delete_path(post), :remote => true, :method => :post do %>
+      				<div class="glyphicon glyphicon-trash" aria-hidden="true"></div>
+      			<% end %>
+      	<% else %>
+          <!-- Repost / Unrepost button -->
+      		<% if !post.clique_only %>
+      			<% if current_user.has_reposted? post %>
+      				<%= link_to post_repost_path(post), :remote => true, :method => :post do %>
+      					<div class="glyphicon glyphicon-retweet redclass" aria-hidden="true"></div>
+      				<% end %>
+      			<% else %>
+      				<%= link_to post_repost_path(post), :remote => true, :method => :post do %>
+      					<div class="glyphicon glyphicon-retweet" aria-hidden="true"></div>
+      				<% end %>
+      			<% end %>
+      		<% end %>
+      	<% end %>
+      <% end %>
+      <!-- Share button -->
+      <% if !post.clique_only %>
+        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+      <% end %>
     </div>
-
-
   </div>
-
-
-
 </li>
-
-
-
-
 
 <!-- Modal -->
 <!-- TODO: Make this more efficient by having a single modal -->
