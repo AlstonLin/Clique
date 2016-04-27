@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cliq</title>
-    <!-- Stylesheets -->
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' %>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto:400,700,500' %>
-    <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' %>
-    <!-- Js files -->
-    <%= javascript_include_tag 'https://use.typekit.net/qdb2kmm.js' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <!-- Browser Icons -->
-    <%= favicon_link_tag 'favicon-16.png', :size=>'16' %>
-    <%= favicon_link_tag 'favicon-32.png', :size=>'32' %>
-    <%= favicon_link_tag 'favicon-96.png', :size=>'96' %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <%= csrf_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, , minimal-ui">
+    <title>Cliq</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+  <script src="https://use.typekit.net/qdb2kmm.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <%= favicon_link_tag 'favicon-16.png', :size=>'16' %>
+  <%= favicon_link_tag 'favicon-32.png', :size=>'32' %>
+  <%= favicon_link_tag 'favicon-96.png', :size=>'96' %>
   </head>
   <body class="with-top-navbar">
     <!-- Navbar -->
