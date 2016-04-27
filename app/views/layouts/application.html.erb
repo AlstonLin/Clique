@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>Cliq</title>
     <!-- Stylesheets -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,13 +8,16 @@
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto:400,700,500' %>
     <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' %>
     <!-- Js files -->
-    <!-- <%= javascript_include_tag 'https://use.typekit.net/qdb2kmm.js' %> -->
+    <%= javascript_include_tag 'https://use.typekit.net/qdb2kmm.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <!-- Browser Icons -->
     <%= favicon_link_tag 'favicon-16.png', :size=>'16' %>
     <%= favicon_link_tag 'favicon-32.png', :size=>'32' %>
     <%= favicon_link_tag 'favicon-96.png', :size=>'96' %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
   </head>
   <body class="with-top-navbar">
     <!-- Navbar -->

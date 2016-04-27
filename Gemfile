@@ -11,6 +11,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
 # Websocket
+# Bootstrap
+gem "twitter-bootstrap-rails"
 # Default Gems
 gem 'rails'
 gem 'sass-rails'
