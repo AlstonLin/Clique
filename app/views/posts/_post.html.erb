@@ -7,7 +7,17 @@
   <div class="media-body">
     <div class="media-body-text">
       <div class="media-heading">
-        <small class="pull-right text-muted"> <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span><%= post.favoriters.count %></small>
+       <% if post.favoriters.include? current_user %>
+        <small class="pull-right redclass"> 
+        <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= post.favoriters.count %></small>
+      <% else %>
+        <small class="pull-right text-muted"> 
+        <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= post.favoriters.count %></small>
+      <% end %>
+
+
+
+
         <h5><%= link_to post.poster.name, post.poster %><small> · <%= time_ago_in_words post.created_at %></small></h5>
       </div>
       <p>
@@ -36,20 +46,20 @@
       		<% if !post.clique_only %>
       			<% if current_user.has_reposted? post %>
       				<%= link_to post_repost_path(post), :remote => true, :method => :post do %>
-      					<div class="glyphicon glyphicon-retweet redclass" aria-hidden="true"></div>
+      					<div class="glyphicon glyphicon-refresh greenclass" aria-hidden="true"></div>
       				<% end %>
       			<% else %>
       				<%= link_to post_repost_path(post), :remote => true, :method => :post do %>
-      					<div class="glyphicon glyphicon-retweet" aria-hidden="true"></div>
+      					<div class="glyphicon glyphicon-refresh" aria-hidden="true"></div>
       				<% end %>
       			<% end %>
       		<% end %>
       	<% end %>
       <% end %>
-      <!-- Share button -->
+      <!-- Share button 
       <% if !post.clique_only %>
         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-      <% end %>
+      <% end %>-->
     </div>
   </div>
 </li>
@@ -90,13 +100,9 @@
 <script>
 $(document).ready(function(){
 
-
-    $('.button-popup').click(function(e) {
+    $('h5').click(function(e) {
         e.stopPropagation();
     });
-
-
-
 
 });
 </script>
