@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.pjax
+//= require bootstrap-sprockets
 //= require_tree .
 
 $(function() {

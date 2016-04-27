@@ -1,15 +1,15 @@
 <!-- Content Filters -->
-<%= link_to user_all_path(user), :method => :get, :remote => true do %>
+<%= link_to user_all_path(user), :method => :get do %>
   <div class="stats1 stats-active">
     All Stream
   </div>
 <% end %>
-<%= link_to user_posts_path(user), :method => :get, :remote => true do %>
+<%= link_to user_posts_path(user), :method => :get do %>
   <div class="stats2">
     Posts
   </div>
 <% end %>
-<%= link_to user_songs_path(user), :method => :get, :remote => true do %>
+<%= link_to user_tracks_path(user), :method => :get do %>
   <div class="stats2">
     Tracks
   </div>
@@ -18,18 +18,18 @@
 <!-- Own profile -->
 <% if @user == current_user %>
   <% if @user.clique %>
-    <%= link_to user_clique_path(user), :method => :get, :remote => true do %>
+    <%= link_to user_clique_path(user), :method => :get do %>
       <div class="stats2">
         Clique
       </div>
     <% end %>
   <% end %>
-  <%= link_to user_followers_path(user), :method => :get, :remote => true do %>
+  <%= link_to user_followers_path(user), :method => :get do %>
     <div class="stats2">
       Followers
     </div>
   <% end %>
-  <%= link_to user_following_path(user), :method => :get, :remote => true do %>
+  <%= link_to user_following_path(user), :method => :get do %>
     <div class="stats2">
       Following
     </div>
@@ -61,7 +61,7 @@
   <% if @user.clique %>
     <% if current_user.cliques.include? user.clique %>
       <div class="stats2">
-          <%= link_to "Clique", user_clique_path(user), :method => :get, :remote => true %>
+          <%= link_to "Clique", user_clique_path(user), :method => :get %>
       </div>
     <% end %>
   <% end %>

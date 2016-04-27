@@ -11,10 +11,7 @@ class HomeController < ApplicationController
       @content = current_user.get_following_all
     end
     # Sets the variable determining which partial to show
-    @partial = session[:partial]
-    session[:partial] = nil
     if @partial == nil
-      # Default is the "all" partial
       @partial = "all"
     end
   end

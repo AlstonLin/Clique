@@ -1,15 +1,9 @@
 <!-- Left Column  -->
 <div class="leftCol">
-<!-- Post Form if own profile -->
-  <% if @user == current_user %>
-    <div class="post-Box">
-      <%= render :partial => "/users/partials/post_form" %>
-    </div>
-  <% end %>
   <!-- Content -->
   <div id="content">
-    <% if @songs %>
-      <% if @songs.count == 0 %>
+    <% if @tracks %>
+      <% if @tracks.count == 0 %>
           <div class="no-post">
             <div class="no-post-img"></div>
             <% if @user == current_user %>
@@ -21,8 +15,7 @@
             <% end %>
          </div>
       <% end %>
-
-      <% @songs.each do |t| %>
+      <% @tracks.each do |t| %>
         <% if t.is_a? Track %>
           <%= render :partial => '/tracks/track', :locals => { :track => t } %>
         <% else %>
@@ -31,8 +24,4 @@
       <% end %>
     <% end %>
   </div>
-</div>
-<!-- Right Column -->
-<div id="rightCol" class="rightCol">
-  <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
 </div>
