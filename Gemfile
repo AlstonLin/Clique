@@ -14,6 +14,7 @@ gem 'omniauth-soundcloud'
 # Bootstrap
 gem "twitter-bootstrap-rails"
 # Default Gems
+gem 'bootstrap-sass'
 gem 'rails'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'

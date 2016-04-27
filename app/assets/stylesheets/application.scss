@@ -15,7 +15,8 @@
  *= require jquery-ui
  *= require_self
  */
-
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
 $primary-color: #fe4641;
 $primary-color-light: #FC6C68;
