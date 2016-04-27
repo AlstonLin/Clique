@@ -1,4 +1,4 @@
-<% if content.count == 0 %>
+<% if @content.count == 0 %>
   <div class="no-post">
     <div class="no-post-img"></div>
     <% if @user == current_user %>
@@ -10,7 +10,7 @@
     <% end %>
  </div>
 <% end %>
-<% content.each do |c| %>
+<% @content.each do |c| %>
   <% if c.is_a? Post %>
     <%= render :partial => '/posts/post', :locals => { :post => c } %>
   <% else %>
