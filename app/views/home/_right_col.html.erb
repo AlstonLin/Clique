@@ -75,12 +75,14 @@
             <%= image_tag f.get_pic_url , class: "media-object img-circle" %>
           </a>
           <div class="media-body">
-            <strong><%= link_to f.name, f %></strong><% end %> <%= f.owner.name %>
+          <%= link_to f.owner  do %>
+            <strong><%= link_to f.name, f %></strong>
+          <% end %> <%= f.owner.name %>
             <div class="media-body-actions">
-                    <%= link_to f.name, f %>
                     <button class="btn btn-primary-outline btn-sm">
-                      <span class="icon icon-add-user"></span> View
+                      <span class="fa fa-add-user"></span> View
                     </button>
+          <% end %>
             </div>
           </div>
         </li>
