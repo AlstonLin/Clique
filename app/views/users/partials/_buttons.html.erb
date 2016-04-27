@@ -1,16 +1,16 @@
 <!-- Content Filters -->
 <%= link_to user_all_path(user), :method => :get do %>
-  <div class="stats1 stats-active">
+  <div class="<%= @partial == 'all' ? 'stats2 stats-active' : 'stats2' %>">
     All Stream
   </div>
 <% end %>
 <%= link_to user_posts_path(user), :method => :get do %>
-  <div class="stats2">
+  <div class="<%= @partial == 'posts' ? 'stats2 stats-active' : 'stats2' %>">
     Posts
   </div>
 <% end %>
 <%= link_to user_tracks_path(user), :method => :get do %>
-  <div class="stats2">
+  <div class="<%= @partial == 'tracks' ? 'stats2 stats-active' : 'stats2' %>">
     Tracks
   </div>
 <% end %>
@@ -19,18 +19,18 @@
 <% if @user == current_user %>
   <% if @user.clique %>
     <%= link_to user_clique_path(user), :method => :get do %>
-      <div class="stats2">
+      <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
         Clique
       </div>
     <% end %>
   <% end %>
   <%= link_to user_followers_path(user), :method => :get do %>
-    <div class="stats2">
+    <div class="<%= @partial == 'followers' ? 'stats2 stats-active' : 'stats2' %>">
       Followers
     </div>
   <% end %>
   <%= link_to user_following_path(user), :method => :get do %>
-    <div class="stats2">
+    <div class="<%= @partial == 'following' ? 'stats2 stats-active' : 'stats2' %>">
       Following
     </div>
   <% end %>
@@ -60,7 +60,7 @@
   <!-- Clique-->
   <% if @user.clique %>
     <% if current_user.cliques.include? user.clique %>
-      <div class="stats2">
+      <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
           <%= link_to "Clique", user_clique_path(user), :method => :get %>
       </div>
     <% end %>
