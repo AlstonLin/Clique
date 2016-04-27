@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get "dashboard" => "home#dashboard"
   get "dashboard_tracks" => "home#dashboard_tracks"
   get "dashboard_orders" => "home#dashboard_orders"
-  get "notifications" => "home#notifications" 
-  get "payment" => "home#payment"  
+  get "notifications" => "home#notifications"
+  get "payment" => "home#payment"
   get "all" => "home#all"
   get "explore" => "home#explore"
   get "tracks" => "home#tracks"
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get 'all'
     get 'posts'
     get 'clique'
-    get 'songs'
+    get 'tracks'
     get 'followers'
     get 'following'
   end

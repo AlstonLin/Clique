@@ -1,11 +1,5 @@
 <!-- Left Column  -->
 <div class="leftCol">
-<!-- Post Form if own profile -->
-  <% if @user == current_user %>
-    <div class="post-Box">
-      <%= render :partial => "/users/partials/post_form" %>
-    </div>
-  <% end %>
   <!-- Content -->
   <div id="content">
     <% if @posts.count == 0 %>
@@ -28,8 +22,4 @@
       <% end %>
     <% end %>
   </div>
-</div>
-<!-- Right Column -->
-<div id="rightCol" class="rightCol">
-  <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
 </div>

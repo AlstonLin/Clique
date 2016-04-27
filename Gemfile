@@ -12,10 +12,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
 # Websocket
 # Bootstrap
-gem "twitter-bootstrap-rails"
-# Default Gems
 gem 'bootstrap-sass'
+# Default Gems
 gem 'rails'
+gem 'turbolinks'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'

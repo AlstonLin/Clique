@@ -1,19 +1,12 @@
 <div class="artist-Box3">
-<div id="pins">
-
-<% if @following %>
-  <% if @following.count == 0 %>
-    You are not following anyone
-  <% end %>
-  <% @following.each do |f| %>
-    <%= render :partial => 'home/artist_tile', :locals => { :artist => f.following } %>
-  <% end %>
-<% end %>
-
-
-</div>
-</div>
-</div>
-</div>
-
+  <div id="pins">
+    <% if @following %>
+      <% if @following.count == 0 %>
+        You are not following anyone
+      <% end %>
+      <% @following.each do |f| %>
+        <%= render :partial => 'home/artist_tile', :locals => { :artist => f.following } %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
