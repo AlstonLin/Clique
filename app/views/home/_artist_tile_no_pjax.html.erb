@@ -1,12 +1,13 @@
 <div class="col-md-4">
-  <%= link_to artist, 'data-skip-pjax' => true do %>
-    <div class="panel panel-default panel-profile">
-      <div class="panel-heading" style="background-image: url(<%= artist.cover_picture_url %>);"></div>
-      <div class="panel-body text-center">
-        <img class="panel-profile-img" src="<%= artist.profile_picture_url %>">
-        <h5 class="panel-title"><%= artist.name %></h5>
-        <p class="m-b-md"><%= artist.bio %></p>
-      </div>
+  <div class="panel panel-default panel-profile">
+    <div class="panel-heading"
+         style="background-image: url(<%= artist.cover_picture_url %>);"></div>
+    <div class="panel-body text-center">
+      <img class="panel-profile-img" src="<%= artist.profile_picture_url %>">
+
+      <h5 class="panel-title"><%= link_to artist.name, artist %></h5>
+      <p class="m-b-md">Big belly rude boy, million dollar hustler. Unemployed.</p>
+
     </div>
-  <% end %>
+  </div>
 </div>

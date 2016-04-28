@@ -1,16 +1,16 @@
 <!-- Content Filters -->
-<%= link_to user_all_path(user), :method => :get, :remote => true do %>
-  <div class="stats2 stats-active">
+<%= link_to user_all_path(user), :method => :get do %>
+  <div class="<%= @partial == 'all' ? 'stats2 stats-active' : 'stats2' %>">
     All Stream
   </div>
 <% end %>
-<%= link_to user_posts_path(user), :method => :get, :remote => true do %>
-  <div class="stats2">
+<%= link_to user_posts_path(user), :method => :get do %>
+  <div class="<%= @partial == 'posts' ? 'stats2 stats-active' : 'stats2' %>">
     Posts
   </div>
 <% end %>
-<%= link_to user_tracks_path(user), :method => :get, :remote => true do %>
-  <div class="stats2">
+<%= link_to user_tracks_path(user), :method => :get do %>
+  <div class="<%= @partial == 'tracks' ? 'stats2 stats-active' : 'stats2' %>">
     Tracks
   </div>
 <% end %>
@@ -18,19 +18,19 @@
 <!-- Own profile -->
 <% if @user == current_user %>
   <% if @user.clique %>
-    <%= link_to user_clique_path(user), :method => :get, :remote => true do %>
-      <div class="stats2">
+    <%= link_to user_clique_path(user), :method => :get do %>
+      <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
         Clique
       </div>
     <% end %>
   <% end %>
-  <%= link_to user_followers_path(user), :method => :get, :remote => true do %>
-    <div class="stats2">
+  <%= link_to user_followers_path(user), :method => :get do %>
+    <div class="<%= @partial == 'followers' ? 'stats2 stats-active' : 'stats2' %>">
       Followers
     </div>
   <% end %>
-  <%= link_to user_following_path(user), :method => :get, :remote => true do %>
-    <div class="stats2">
+  <%= link_to user_following_path(user), :method => :get do %>
+    <div class="<%= @partial == 'following' ? 'stats2 stats-active' : 'stats2' %>">
       Following
     </div>
   <% end %>
@@ -60,8 +60,8 @@
   <!-- Clique-->
   <% if @user.clique %>
     <% if current_user.cliques.include? user.clique %>
-      <div class="stats2">
-          <%= link_to "Clique", user_clique_path(user), :method => :get, :remote => true %>
+      <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
+          <%= link_to "Clique", user_clique_path(user), :method => :get %>
       </div>
     <% end %>
   <% end %>
