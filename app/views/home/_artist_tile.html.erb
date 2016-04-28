@@ -3,18 +3,16 @@
     <div class="panel-heading"
          style="background-image: url(<%= artist.cover_picture_url %>);"></div>
     <div class="panel-body text-center">
-      <img class="panel-profile-img" src="<%= artist.profile_picture_url %>">
-
-      <h5 class="panel-title"><%= link_to artist.name, artist %></h5>
-      <p class="m-b-md">Big belly rude boy, million dollar hustler. Unemployed.</p>
-
-      <button class="btn btn-primary-outline btn-sm">
-        <i class="fa fa-user-plus" aria-hidden="true"></i> Follow
-      </button>
+      <%= link_to artist do %>
+        <img class="panel-profile-img" src="<%= artist.profile_picture_url %>">
+        <h5 class="panel-title"><%= artist.name %></h5>
+        <p class="m-b-md"><%= artist.bio %></p>
+      <% end %>
+      <% if current_user %>
+        <%= button_to user_follow_path (artist), :class => "btn btn-primary-outline btn-sm", :method => :get do %>
+          <i class="fa fa-user-plus" aria-hidden="true"></i> Follow
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
-
-
-
-        

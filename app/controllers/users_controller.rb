@@ -16,8 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
-    @content = get_all_content
-    @partial = "all"
+    get_all_content
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def message
@@ -60,46 +59,49 @@ class UsersController < ApplicationController
   end
 
   def all
-    @partial = "all"
     @user = User.find_by_username(params[:user_id])
-    @content = get_all_content
-    render :action => :show
+    get_all_content
   end
 
   def posts
     @user = User.find_by_username(params[:user_id])
-    @posts = @user.get_posts(false)
-    @partial = "posts"
-    render :action => :show
+    @content = @user.get_posts(false)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def clique
     @user = User.find_by_username(params[:user_id])
     @content = @user.get_tracks(true) + @user.get_posts(true)
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
-    @partial = "clique"
-    render :action => :show
+    respond_to do |format|
+      format.js
+    end
   end
 
   def tracks
     @user = User.find_by_username(params[:user_id])
-    @tracks = @user.get_tracks(false)
-    @partial = "tracks"
-    render :action => :show
+    @content = @user.get_tracks(false)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def followers
     @user = User.find_by_username(params[:user_id])
     @followers = @user.followers
-    @partial = "followers"
-    render :action => :show
+    respond_to do |format|
+      format.js
+    end
   end
 
   def following
     @user = User.find_by_username(params[:user_id])
     @following = @user.following
-    @partial = "following"
-    render :action => :show
+    respond_to do |format|
+      format.js
+    end
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
   private

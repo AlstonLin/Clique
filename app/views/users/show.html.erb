@@ -21,30 +21,29 @@
   <div class="container">
   <!-- Buttons -->
     <div id="buttons">
-      <%= render :partial => "/users/partials/buttons", :locals => { user: @user } %>
+      <%= render :partial => "buttons", :locals => { user: @user } %>
     </div>
   </div>
 </div>
 
 <div class="profile-bottom">
-
   <div class="container">
     <div class="col-md-6">
       <ul class="list-group media-list media-list-stream">
         <!-- Post Form if own profile -->
         <% if @user == current_user %>
           <li class="media list-group-item p-a post-height">
-              <%= render :partial => "/users/partials/post_form" %>
+              <%= render :partial => "post_form" %>
           </li>
         <% end %>
-
-        <!-- Left Column -->
-        <%= render :partial => '/users/partials/' + @partial %>
+        <div id="container">
+          <%= render :partial => '/users/tabs/all' %>
+        </div>
       </ul>
     </div>
         <!-- Right Column -->
     <div class="col-md-3">
-      <%= render :partial => "/users/partials/profile_right", :locals => { user: @user } %>
+      <%= render :partial => "profile_right", :locals => { user: @user } %>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
 <div class="leftCol">
   <!-- Content -->
   <div id="content">
-    <% if @posts.count == 0 %>
+    <% if @content.count == 0 %>
       <div class="no-post">
       <div class="no-post-img"></div>
         <% if @user == current_user %>
@@ -14,7 +14,7 @@
       </div>
     <% end %>
 
-    <% @posts.each do |p| %>
+    <% @content.each do |p| %>
       <% if p.is_a? Post %>
         <%= render :partial => '/posts/post', :locals => { :post => p } %>
       <% else %>

@@ -3,17 +3,9 @@ class HomeController < ApplicationController
   ITEMS_HOME = 4
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
-    # Reloads sidebar stuff
+    @content = current_user.get_following_all
     @top = get_top ITEMS_HOME
     @favorites = current_user.favorite_tracks.select{ |t| !t.removed }.take ITEMS_HOME
-    # Loads content variable if applicable
-    if @content == nil
-      @content = current_user.get_following_all
-    end
-    # Sets the variable determining which partial to show
-    if @partial == nil
-      @partial = "all"
-    end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def explore
@@ -21,23 +13,24 @@ class HomeController < ApplicationController
   end
 
   def all
-    @partial = "all"
-    index
-    render :action => :index
+    @content = current_user.get_following_all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def tracks
     @content = current_user.get_following_tracks
-    session[:partial] = "tracks"
-    index
-    render :action => :index
+    respond_to do |format|
+      format.js
+    end
   end
 
   def posts
     @content = current_user.get_following_posts
-    session[:partial] = "posts"
-    index
-    render :action => :index
+    respond_to do |format|
+      format.js
+    end
   end
 
   def cliques
@@ -48,35 +41,17 @@ class HomeController < ApplicationController
     end
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @content = @content.first(MAX_ITEMS)
-
-    session[:partial] = "cliques"
-    index
-    render :action => :index
+    respond_to do |format|
+      format.js
+    end
   end
 
   def favorites
     @content = current_user.get_favorites
-    session[:partial] = "favorites"
-    index
-    render :action => :index
+    respond_to do |format|
+      format.js
+    end
   end
-
-  def dashboard
-  end
-
-  def dashboard_tracks
-  end
-
-  def dashboard_orders
-  end
-
-  def notifications
-  end
-
-  def payment
-  end
-
-
   # -------------------- EXTERNALIZED FUNCTIONS --------------------------------
   private
     def get_tracks
