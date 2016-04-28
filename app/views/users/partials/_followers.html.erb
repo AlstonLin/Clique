@@ -1,5 +1,4 @@
-<div class="artist-Box3">
-  <div id="pins">
+
     <% if @followers %>
       <% if @followers.count == 0 %>
         You have no followers
@@ -8,5 +7,4 @@
         <%= render :partial => 'home/artist_tile', :locals => { :artist => f.follower } %><br>
       <% end %>
     <% end %>
-  </div>
-</div>
+
