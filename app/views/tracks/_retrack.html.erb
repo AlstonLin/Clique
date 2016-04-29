@@ -119,9 +119,9 @@
         </div>
       </div>
       <!-- Comments -->
-      <%= render :partial => 'comments/comment_form', :locals => { :track => track } %>
+      <%= render :partial => 'comments/comment_form', :locals => { :commentable => track } %>
       <div id=" <%=comment_form_id (track) %>" class="modal-post-commentBox">
-        <%= render :partial => 'comments/comments_list', :locals => { :track => track } %>
+        <%= render :partial => 'comments/comments_list', :locals => { :commentable => track } %>
       </div>
     </div>
   </div>

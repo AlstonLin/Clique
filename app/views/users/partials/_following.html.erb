@@ -1,10 +1,8 @@
-
-    <% if @following %>
-      <% if @following.count == 0 %>
-        You are not following anyone
-      <% end %>
-      <% @following.each do |f| %>
-        <%= render :partial => 'home/artist_tile', :locals => { :artist => f.following } %>
-      <% end %>
-    <% end %>
-
+<% if @following %>
+  <% if @following.count == 0 %>
+    You are not following anyone
+  <% end %>
+  <% @following.each do |f| %>
+    <%= render :partial => 'home/artist_tile', :locals => { :artist => f.following } %>
+  <% end %>
+<% end %>
