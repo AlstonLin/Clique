@@ -26,6 +26,10 @@ soundManager.setup({
 $(document).on('ready pjax:success', function() {
   setupComments();
 
+  $(".stop-propagation").click(function(event){
+    event.stopPropagation();
+  });
+
   $(".newsfeed-title1, .newsfeed-title2").click(function(){
     $(".newsfeed-active").each(function(){
       $(this).removeClass("newsfeed-active");

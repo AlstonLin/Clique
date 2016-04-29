@@ -20,8 +20,8 @@
         <%= post.content %>
       </p>
     </div>
-    <div class="button-popup ">
-      <% if current_user %>
+    <% if current_user %>
+      <div class="button-popup ">
         <!-- Favorite / Unfavorite button -->
         <% if post.favoriters.include? current_user %>
           <%= link_to post_favorite_path(post), :remote => true, :method => :post do %>
@@ -51,12 +51,12 @@
       			<% end %>
       		<% end %>
       	<% end %>
-      <% end %>
-      <!-- Share button
-      <% if !post.clique_only %>
-        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-      <% end %>-->
-    </div>
+        <!-- Share button
+        <% if !post.clique_only %>
+          <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+        <% end %>-->
+      </div>
+    <% end %>
   </div>
 </li>
 
