@@ -1,62 +1,22 @@
 <div class="container p-t-md">
-      <div class="show-track-box">
-        <div class="show-media">
-          <%= image_tag @track.get_pic_url %>
-        </div>
-        <div class="show-right-col">
-          <div class="show-right-col-top">
-
-            <a class="media-left pull-left" href="#">
-              <img
-                class="media-object img-circle profile-img"
-                src="<%= @track.owner.profile_picture_url %>">
-            </a>
-            <h5><%= link_to @track.owner.name, @track.owner %></h5>
-                <%= link_to @track.name %>
-          </div>
-          <div class="show-right-col-middle">
-
-<% @track.comments.reverse_each do |c| %>
-  <% if !c.removed %>
-    <div class="text-Post">
-      <div class="media-body">
-        <div class="media-body-text">
-          <div class="media-heading">
-            <% if c.creator == current_user %>
-              <%= button_to post_comment_delete_path(c), :remote => true, :class => "player1-btn2", data: { confirm: 'Are you certain you want to delete this?' } do %>
-                x
-              <% end %>
-            <% end %>
-            <h5><%= link_to c.creator.name, c.creator, :class => "modalClosable" %></h5>
-          </div>
-          <%= simple_format c.content %>
-        </div>
-      </div>
-    </div>  
-  <% end %>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-          </div>
-          <div class="show-right-col-bottom">
-            <% if current_user %>
-            <%= form_for TrackComment.new, :remote => true, :html => { :id => "track-comment-form#{@track.id}" } do |form| %>
-              <%= form.hidden_field :track_id, :value => @track.id %>
-              <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
-            <% end %>
+  <div class="show-track-box">
+    <div class="show-media">
+      <%= image_tag @track.get_pic_url %>
+    </div>
+    <div class="show-right-col">
+      <div class="show-right-col-top">
+        <%= link_to @track.owner, :class => "media-left pull-left" do %>
+          <%= image_tag @track.owner.profile_picture_url, :class => "media-object img-circle profile-img" %>
         <% end %>
-          </div>
-        </div>
+        <h5><%= link_to @track.owner.name, @track.owner %></h5>
+        <%= @track.name %>
+      </div>
+      <div id="<%= comment_form_id @track %>-show" class="show-right-col-middle">
+        <%= render :partial => "show_comments", :locals => { :track => @track } %>
+      </div>
+      <div class="show-right-col-bottom">
+        <%= render :partial => 'comments/comment_form', :locals => { :commentable => @track } %>
       </div>
     </div>
-
+  </div>
+</div>
