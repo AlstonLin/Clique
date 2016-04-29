@@ -57,10 +57,7 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:index, :new, :create]
   resources :conversations, :only => [:show]
-  resources :post_comments, :only => :create do
-    post 'delete'
-  end
-  resources :track_comments, :only => :create do
+  resources :comments, :only => :create do
     post 'delete'
   end
   # Auth

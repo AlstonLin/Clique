@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def comment_form_id(commentable)
+    return "#{commentable.class.name}-comment-form#{commentable.id}"
+  end
+  helper_method :comment_form_id
+
   def is_following(following, user = nil)
     if user == nil
       user = current_user

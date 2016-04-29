@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329190922) do
+ActiveRecord::Schema.define(version: 20160429023809) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20160329190922) do
     t.integer "user_id"
     t.integer "cliq_id"
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.datetime "created_at",                       null: false
+    t.text     "content"
+    t.boolean  "removed",          default: false
+    t.integer  "creator_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
 
   create_table "conversations", force: :cascade do |t|
     t.string   "name"
@@ -65,21 +77,17 @@ ActiveRecord::Schema.define(version: 20160329190922) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "mentions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text     "content"
     t.integer  "creator_id"
     t.integer  "conversation_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "post_comments", force: :cascade do |t|
-    t.datetime "created_at",                 null: false
-    t.text     "content"
-    t.boolean  "removed",    default: false
-    t.integer  "creator_id"
-    t.integer  "post_id"
-    t.datetime "updated_at",                 null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -108,15 +116,6 @@ ActiveRecord::Schema.define(version: 20160329190922) do
     t.integer  "track_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "track_comments", force: :cascade do |t|
-    t.datetime "created_at",                 null: false
-    t.text     "content"
-    t.boolean  "removed",    default: false
-    t.integer  "creator_id"
-    t.integer  "track_id"
-    t.datetime "updated_at",                 null: false
   end
 
   create_table "tracks", force: :cascade do |t|

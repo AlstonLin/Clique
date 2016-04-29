@@ -9,16 +9,12 @@
     <div class="media-body-text">
       <div class="media-heading">
        <% if post.favoriters.include? current_user %>
-        <small class="pull-right redclass"> 
+        <small class="pull-right redclass">
         <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= post.favoriters.count %></small>
-      <% else %>
-        <small class="pull-right text-muted"> 
-        <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= post.favoriters.count %></small>
-      <% end %>
-
-
-
-
+        <% else %>
+          <small class="pull-right text-muted">
+          <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= post.favoriters.count %></small>
+        <% end %>
         <h5><%= link_to post.poster.name, post.poster %> <div class="glyphicon glyphicon-refresh greenclass"></div> <%= link_to repost.reposter.name, repost.reposter %>  <small> · <%= time_ago_in_words post.created_at %></small></h5>
       </div>
       <p>
@@ -57,7 +53,7 @@
       		<% end %>
       	<% end %>
       <% end %>
-      <!-- Share button 
+      <!-- Share button
       <% if !post.clique_only %>
         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
       <% end %>-->
@@ -89,10 +85,10 @@
             </div>
           </div>
       </div>
-      <%= render :partial => 'posts/comment_form', :locals => { :post => post} %>
-      <div id="comments<%= post.id %>" class="modal-post-commentBox">
+      <%= render :partial => 'comments/comment_form', :locals => { :commentable => post } %>
+      <div id="<%=comment_form_id (post) %>" class="modal-post-commentBox">
         <!-- Comments -->
-        <%= render :partial => 'posts/comments', :locals => { :post => post} %>
+        <%= render :partial => 'comments/comments_list', :locals => { :commentable => post } %>
       </div>
     </div>
   </div>
@@ -101,10 +97,8 @@
 
 <script>
 $(document).ready(function(){
-
     $('h5').click(function(e) {
         e.stopPropagation();
     });
-
 });
 </script>

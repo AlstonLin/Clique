@@ -3,8 +3,9 @@
     <div class="user-avi1">
       <%= link_to image_tag(current_user.profile_picture_url), current_user %>
     </div>
-    <%= form_for PostComment.new, :remote => true,  :html => { :id => "comment-form#{post.id}" } do |form| %>
-      <%= form.hidden_field :post_id, :value => post.id %>
+    <%= form_for Comment.new, :remote => true do |form| %>
+      <%= form.hidden_field :commentable_id, :value => commentable.id %>
+      <%= form.hidden_field :commentable_type, :value => commentable.class.name%>
       <%= form.text_area :content, :placeholder => "Comment", :class => "comment-field" %>
     <% end %>
   </div>

@@ -1,0 +1,3 @@
+$("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
+$('<%= "##{comment_form_id @commentable}" %>').html('<%= j render :partial => "comments/comments_list", :locals => { commentable: @commentable } %>');
+$(".comment-field").val("");

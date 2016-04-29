@@ -1,4 +1,0 @@
-$("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
-$("#comments<%= @post.id %>").html('<%= j render :partial => "posts/comments", :locals => { post: @post } %>');
-$(".comment-field").val("");
-$("#modal<%= @post.id %>").modal();
