@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     @top = get_top HomeController::ITEMS_HOME
     @favorites = current_user.favorite_tracks.take HomeController::ITEMS_HOME
     respond_to do |format|
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
 

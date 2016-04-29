@@ -27,7 +27,7 @@ class TracksController < ApplicationController
     @track.removed = true
     @track.save
     respond_to do |format|
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
 
@@ -48,7 +48,7 @@ class TracksController < ApplicationController
       end
     end
     respond_to do |format|
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
 
@@ -66,7 +66,7 @@ class TracksController < ApplicationController
       else
         flash[:error] = "An Error has occured"
       end
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
   # --------------------------------- Other-------------------------------------

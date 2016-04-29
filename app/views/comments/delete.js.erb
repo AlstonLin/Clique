@@ -5,3 +5,4 @@ if ($track_comments.size() > 0){
 } else{
   $('<%= "##{comment_form_id @commentable}" %>').html('<%= j render :partial => "comments/comments_list", :locals => { commentable: @commentable } %>');
 }
+<% flash.discard %>

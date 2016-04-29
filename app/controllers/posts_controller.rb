@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       @user = current_user
       @post = Post.new
       # JS Reponse
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       @posts = current_user.get_posts(false) + current_user.get_posts(nil)
       @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
       # JS Reponse
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
 
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
       @content = current_user.get_tracks(nil) + current_user.get_posts(nil)
       @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
       # JS Reponse
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
@@ -67,7 +67,7 @@ class PostsController < ApplicationController
       end
     end
     respond_to do |format|
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
 
@@ -85,7 +85,7 @@ class PostsController < ApplicationController
       else
         flash[:error] = "An Error has occured"
       end
-      format.js
+      format.js { render 'shared/reload.js.erb' }
     end
   end
   # --------------------------------- Other-------------------------------------
