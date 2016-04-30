@@ -1,81 +1,80 @@
 <li class="media list-group-item p-a post-modal">
-  <%= link_to track_load_modal_path(track), :remote => true, :method => :post do %>
-    <a class="media-left" href="#">
-      <%= image_tag track.owner.profile_picture_url, :class => "media-object img-circle" %>
-    </a>
-    <div class="media-body">
-      <div class="media-heading">
-        <!-- Favorite button -->
-        <% if track.favoriters.include? current_user %>
-          <small class="pull-right redclass">
-          <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= track.favoriters.count %></small>
-        <% else %>
-          <small class="pull-right text-muted">
-          <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= track.favoriters.count %></small>
-        <% end %>
-        <!--<small class="pull-right text-muted">
-          <span class="glyphicon glyphicon-play glyphicon-small" aria-hidden="true"></span> 10
-        </small>-->
-        <%= yield :title %>
-      </div>
+  <%= link_to "", track_load_modal_path(track), :remote => true, :method => :post, :class => "comments-link" %>
+  <%= link_to track.owner, :class => "media-left over-comments-link" do %>
+    <%= image_tag track.owner.profile_picture_url, :class => "media-object img-circle" %>
+  <% end %>
+  <div class="media-body">
+    <div class="media-heading">
+      <!-- Favorite button -->
+      <% if track.favoriters.include? current_user %>
+        <small class="pull-right redclass">
+        <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= track.favoriters.count %></small>
+      <% else %>
+        <small class="pull-right text-muted">
+        <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= track.favoriters.count %></small>
+      <% end %>
+      <!--<small class="pull-right text-muted">
+        <span class="glyphicon glyphicon-play glyphicon-small" aria-hidden="true"></span> 10
+      </small>-->
+      <%= yield :title %>
+    </div>
 
-      <div class="media-body-inline-grid" data-grid="images">
-        <div class="post-track" style="background-image: url(<%= track.get_pic_url %>);">
-          <div class="track-progress-box hide">
-            <div class="track-progress"></div>
-          </div>
-          <div class="player1-Name">
-            <div class="player1-play">
-              <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%=track_path(track)%>" ownerLink="<%=user_path(track.owner)%>">
-                <div class="play-Btn">
-                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                </div>
+    <div class="media-body-inline-grid" data-grid="images">
+      <div class="post-track" style="background-image: url(<%= track.get_pic_url %>);">
+        <div class="track-progress-box hide">
+          <div class="track-progress"></div>
+        </div>
+        <div class="player1-Name">
+          <div class="player1-play">
+            <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%=track_path(track)%>" ownerLink="<%=user_path(track.owner)%>">
+              <div class="play-Btn">
+                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
               </div>
             </div>
           </div>
-          <div class="player1-left-btn2">
-            <div class="player1-songName">
-              <%= link_to track.name, track %>
-            </div>
+        </div>
+        <div class="player1-left-btn2">
+          <div class="player1-songName">
+            <%= link_to track.name, track %>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="button-popup track-button-popup">
-        <!-- Favorite / Unfavorite button -->
-        <% if current_user %>
-          <% if track.favoriters.include? current_user %>
-            <%= link_to track_favorite_path(track), :remote => true, :method => :post do %>
-              <div class="glyphicon glyphicon-heart redclass"></div>
+    <div class="button-popup track-button-popup">
+      <!-- Favorite / Unfavorite button -->
+      <% if current_user %>
+        <% if track.favoriters.include? current_user %>
+          <%= link_to track_favorite_path(track), :remote => true, :method => :post do %>
+            <div class="glyphicon glyphicon-heart redclass"></div>
+          <% end %>
+        <% else %>
+          <%= link_to track_favorite_path(track), :remote => true, :method => :post do %>
+            <div class="glyphicon glyphicon-heart"></div>
+          <% end %>
+        <% end %>
+        <% if track.owner == current_user %>
+          <!-- Delete button -->
+          <%= link_to "", track_delete_path(track), :remote => true, :method => :post, :class => "glyphicon glyphicon-trash", data: { confirm: 'Are you certain you want to delete this?' } %>
+        <% elsif !track.clique_only %>
+          <!-- Repost / Unrepost button -->
+          <% if current_user.has_retracked? track %>
+            <%= link_to track_repost_path(track), :remote => true, :method => :post do %>
+              <div class="glyphicon glyphicon-refresh greenclass"></div>
             <% end %>
           <% else %>
-            <%= link_to track_favorite_path(track), :remote => true, :method => :post do %>
-              <div class="glyphicon glyphicon-heart"></div>
-            <% end %>
-          <% end %>
-          <% if track.owner == current_user %>
-            <!-- Delete button -->
-            <%= link_to "", track_delete_path(track), :remote => true, :method => :post, :class => "glyphicon glyphicon-trash", data: { confirm: 'Are you certain you want to delete this?' } %>
-          <% elsif !track.clique_only %>
-            <!-- Repost / Unrepost button -->
-            <% if current_user.has_retracked? track %>
-              <%= link_to track_repost_path(track), :remote => true, :method => :post do %>
-                <div class="glyphicon glyphicon-refresh greenclass"></div>
-              <% end %>
-            <% else %>
-              <%= link_to track_repost_path(track), :remote => true, :method => :post do %>
-                <div class="glyphicon glyphicon-refresh"></div>
-              <% end %>
+            <%= link_to track_repost_path(track), :remote => true, :method => :post do %>
+              <div class="glyphicon glyphicon-refresh"></div>
             <% end %>
           <% end %>
         <% end %>
-        <!-- Download button -->
-        <% if track.downloadable %>
-          <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
-            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-          </div>
-        <% end %>
-      </div>
+      <% end %>
+      <!-- Download button -->
+      <% if track.downloadable %>
+        <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
+          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </li>

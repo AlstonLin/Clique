@@ -1,4 +1,4 @@
 <% content_for :title, :flush => true do %>
-  <h5><%= link_to track.owner.name, track.owner %><small> · <%= time_ago_in_words track.created_at %> </small></h5>
+  <h5><%= link_to track.owner.name, track.owner, :class => "over-comments-link" %><small> · <%= time_ago_in_words track.created_at %> </small></h5>
 <% end %>
 <%= render :partial => "tracks/common", :locals => { :track => track } %>

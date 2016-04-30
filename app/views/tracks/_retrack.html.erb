@@ -1,6 +1,6 @@
 <% content_for :title, :flush => true do %>
-  <h5><%= link_to retrack.track.owner.name, retrack.track.owner %> <div class="glyphicon glyphicon-refresh greenclass"></div>
-      <%= retrack.reposter.name %>
+  <h5><%= link_to retrack.track.owner.name, retrack.track.owner, :class => "over-comments-link" %> <div class="glyphicon glyphicon-refresh greenclass"></div>
+      <%= link_to retrack.reposter.name, retrack.reposter, :class => "over-comments-link" %>
     <small> · <%= time_ago_in_words retrack.track.created_at %> </small></h5>
 <% end %>
 <%= render :partial => "tracks/common", :locals => { :track => retrack.track } %>
