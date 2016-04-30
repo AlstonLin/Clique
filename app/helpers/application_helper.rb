@@ -22,7 +22,7 @@ module ApplicationHelper
 
   def show_mentions(text, mentions)
     mentions.each do |m|
-      text.gsub!(/@#{m.mentioned.username}/i, link_to("@#{m.mentioned.username}", m.mentioned, :class => "stop-propagation mention-link"))
+      text.gsub!(/@#{m.mentioned.username}/i, link_to("@#{m.mentioned.username}", m.mentioned, :class => "stop-propagation mention-link over-comments-link"))
     end
     return text
   end

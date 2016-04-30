@@ -44,11 +44,13 @@ Rails.application.routes.draw do
     post 'delete'
     post 'repost'
     post 'favorite'
+    post 'load_modal'
   end
   resources :posts, :only => [:create, :update] do
     post 'delete'
     post 'repost'
     post 'favorite'
+    post 'load_modal'
   end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
     get 'join'

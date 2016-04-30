@@ -69,6 +69,13 @@ class TracksController < ApplicationController
       format.js { render 'shared/reload.js.erb' }
     end
   end
+
+  def load_modal
+    @track = Track.find(params[:track_id])
+    respond_to do |format|
+      format.js
+    end
+  end
   # --------------------------------- Other-------------------------------------
   private
   def track_params

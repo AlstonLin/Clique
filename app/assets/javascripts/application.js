@@ -24,68 +24,11 @@ soundManager.setup({
   url: '/app/assets/javascripts/swf/'
 });
 $(document).on('ready pjax:success', function() {
+  // Closes any open modals
+  $('.modal-backdrop').remove();
+  $('body').removeClass('modal-open');
   setupComments();
-
-  $('h5').click(function(e) {
-      e.stopPropagation();
-  });
-
-  $(".stop-propagation").click(function(event){
-    event.stopPropagation();
-  });
-
-  $(".newsfeed-title1, .newsfeed-title2").click(function(){
-    $(".newsfeed-active").each(function(){
-      $(this).removeClass("newsfeed-active");
-    });
-    $(this).addClass("newsfeed-active");
-  });
-
-  $(".modalClosable").on("click", "a", function(e){
-    $('.modal-backdrop').remove();
-    $('body').removeClass('modal-open');
-  });
-
-  $("#FavSeeMore").click(function(){
-    $(".newsfeed-active").each(function(){
-      $(this).removeClass("newsfeed-active");
-    });
-    $(".newsfeed-title2:last").addClass("newsfeed-active");
-  });
-
-  $(".stats1, .stats2").click(function(){
-    $(".stats-active").each(function(){
-      $(this).removeClass("stats-active");
-    });
-    $(this).addClass("stats-active");
-  });
-
-  if($(".artist-Tile .panel-ProfilePic")){
-    $(".artist-Tile .panel-ProfilePic").each(function(){
-      $profileIcon = $(this);
-      $profileIcon.find("img").css("display", "none");
-      $profileIcon.css("background", "url(" + $profileIcon.find("img").attr("src") + ") no-repeat");
-      $profileIcon.css("background-size", "cover");
-      $profileIcon.css("background-position", "50%");
-    });
-  }
-
-  if($(".profile-Banner")){
-    $(".profile-Banner img").css("display", "none");
-    $banner = $(".profile-Banner");
-    $banner.css("background", "url(" + $(".profile-Banner img").attr("src") + ") no-repeat");
-    $banner.css("background-size", "cover");
-    $banner.css("background-position", "50%");
-  }
-
-  if($(".user-picture")){
-    $(".user-picture img").css("display", "none");
-    $profilePic = $(".user-picture");
-    $profilePic.css("background", "url(" + $(".user-picture img").attr("src") + ") no-repeat");
-    $profilePic.css("background-size", "cover");
-    $profilePic.css("background-position", "50%");
-  }
-
+  setupClasses();
   // try{
   //   Typekit.load({ async: true });
   // }catch(e){}
@@ -127,40 +70,64 @@ function setupComments(){
   });
 }
 
+function setupClasses(){
+  $('h5').click(function(e) {
+      e.stopPropagation();
+  });
+  $(".stop-propagation").click(function(event){
+    event.stopPropagation();
+  });
+  $('.post-track').click(function(e) {
+    e.stopPropagation();
+  });
 
+  $(".newsfeed-title1, .newsfeed-title2").click(function(){
+    $(".newsfeed-active").each(function(){
+      $(this).removeClass("newsfeed-active");
+    });
+    $(this).addClass("newsfeed-active");
+  });
 
+  $("#FavSeeMore").click(function(){
+    $(".newsfeed-active").each(function(){
+      $(this).removeClass("newsfeed-active");
+    });
+    $(".newsfeed-title2:last").addClass("newsfeed-active");
+  });
 
+  $(".stats1, .stats2").click(function(){
+    $(".stats-active").each(function(){
+      $(this).removeClass("stats-active");
+    });
+    $(this).addClass("stats-active");
+  });
 
+  if($(".artist-Tile .panel-ProfilePic")){
+    $(".artist-Tile .panel-ProfilePic").each(function(){
+      $profileIcon = $(this);
+      $profileIcon.find("img").css("display", "none");
+      $profileIcon.css("background", "url(" + $profileIcon.find("img").attr("src") + ") no-repeat");
+      $profileIcon.css("background-size", "cover");
+      $profileIcon.css("background-position", "50%");
+    });
+  }
 
+  if($(".profile-Banner")){
+    $(".profile-Banner img").css("display", "none");
+    $banner = $(".profile-Banner");
+    $banner.css("background", "url(" + $(".profile-Banner img").attr("src") + ") no-repeat");
+    $banner.css("background-size", "cover");
+    $banner.css("background-position", "50%");
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  if($(".user-picture")){
+    $(".user-picture img").css("display", "none");
+    $profilePic = $(".user-picture");
+    $profilePic.css("background", "url(" + $(".user-picture img").attr("src") + ") no-repeat");
+    $profilePic.css("background-size", "cover");
+    $profilePic.css("background-position", "50%");
+  }
+}
 
 var $input = $('<div class="modal-body"><input type="text" class="form-control" placeholder="Message"></div>')
 

@@ -88,6 +88,13 @@ class PostsController < ApplicationController
       format.js { render 'shared/reload.js.erb' }
     end
   end
+
+  def load_modal
+    @post = Post.find(params[:post_id])
+    respond_to do |format|
+      format.js
+    end
+  end
   # --------------------------------- Other-------------------------------------
   private
   def post_params

@@ -1,5 +1,5 @@
 <% if @conversation %>
-  $('#messagesContent').html("<%= j render :partial => 'conversations/show' %>");
+  $('#messages-content').html("<%= j render :partial => 'conversations/show' %>");
   $(".message-Box-body2").scrollTop($(".message-Box-body2")[0].scrollHeight);
 <% else %>
   $("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');

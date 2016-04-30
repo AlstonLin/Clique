@@ -29,7 +29,8 @@
       <!-- Flash Box -->
       <!--<%= render :partial => "shared/flash_box" %>-->
       <%= yield %>
+      <%= render :partial => 'shared/messages_modal' %>
+      <%= render :partial => 'shared/comments_modal' %>
     </div>
-    <%= render :partial => 'shared/messages_modal' %>
   </body>
 </html>

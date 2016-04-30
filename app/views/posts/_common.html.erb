@@ -1,9 +1,8 @@
-<li class="media list-group-item p-a post-modal" data-toggle="modal" data-target="#modal<%= post.id %>">
-  <a class="media-left" href="#">
-    <img
-      class="media-object img-circle"
-      src="<%= post.poster.profile_picture_url %>">
-  </a>
+<li class="media list-group-item p-a post-modal">
+  <%= link_to "", post_load_modal_path(post), :remote => true, :method => :post, :class => "comments-link" %>
+  <%= link_to post.poster, :class => "media-left over-comments-link" do %>
+    <%= image_tag post.poster.profile_picture_url, :class => "media-object img-circle" %>
+  <% end %>
   <div class="media-body">
     <div class="media-body-text">
       <div class="media-heading">
@@ -59,36 +58,3 @@
     <% end %>
   </div>
 </li>
-
-<!-- Modal -->
-<!-- TODO: Make this more efficient by having a single modal -->
-<!-- TODO: Cleanup the mess of code -->
-<div class="modal fade" id="modal<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-textpost">
-          <a class="media-left" href="#">
-            <img
-              class="media-object img-circle"
-              src="<%= post.poster.profile_picture_url %>">
-          </a>
-          <div class="media-body">
-            <div class="media-body-text">
-              <div class="media-heading">
-                <small class="pull-right text-muted">• <%= time_ago_in_words post.created_at %></small>
-                <h5><%= link_to post.poster.name, post.poster %></h5>
-              </div>
-              <p>
-                <%= show_mentions(post.content, post.mentions).html_safe %>
-              </p>
-            </div>
-          </div>
-      </div>
-      <%= render :partial => 'comments/comment_form', :locals => { :commentable => post } %>
-      <div id="<%=comment_form_id (post) %>" class="modal-post-commentBox">
-        <!-- Comments -->
-        <%= render :partial => 'comments/comments_list', :locals => { :commentable => post } %>
-      </div>
-    </div>
-  </div>
-</div>
