@@ -25,7 +25,7 @@ soundManager.setup({
 });
 $(document).on('ready pjax:success', function() {
   setupComments();
-  
+
   $('h5').click(function(e) {
       e.stopPropagation();
   });
@@ -41,7 +41,7 @@ $(document).on('ready pjax:success', function() {
     $(this).addClass("newsfeed-active");
   });
 
-  $(".modalClosable").click(function(){
+  $(".modalClosable").on("click", "a", function(e){
     $('.modal-backdrop').remove();
     $('body').removeClass('modal-open');
   });

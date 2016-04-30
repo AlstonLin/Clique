@@ -17,7 +17,7 @@ module ApplicationHelper
       mention.save
       mentions << mention
     end
-    return mentions
+    return mentions.uniq
   end
 
   def show_mentions(text, mentions)

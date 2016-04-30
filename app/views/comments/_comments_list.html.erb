@@ -15,7 +15,7 @@
             <% end %>
             <h5><%= link_to c.creator.name, c.creator, :class => "modalClosable" %></h5>
             </div>
-          <%= simple_format c.content %>
+          <%= simple_format show_mentions(c.content, c.mentions).html_safe %>
         </div>
       </div>
     </div>

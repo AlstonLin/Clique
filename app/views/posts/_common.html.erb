@@ -79,7 +79,7 @@
                 <h5><%= link_to post.poster.name, post.poster %></h5>
               </div>
               <p>
-                <%= post.content %>
+                <%= show_mentions(post.content, post.mentions).html_safe %>
               </p>
             </div>
           </div>

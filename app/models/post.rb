@@ -1,6 +1,7 @@
 include ApplicationHelper
 class Post < ActiveRecord::Base
   after_commit :add_mentions
+  
   # Sorting
   default_scope { order :created_at => :desc }
   # Relationships
