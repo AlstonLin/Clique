@@ -78,9 +78,14 @@ ActiveRecord::Schema.define(version: 20160429023809) do
   end
 
   create_table "mentions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "mentionable_id"
+    t.string   "mentionable_type"
+    t.integer  "mentioned_id"
   end
+
+  add_index "mentions", ["mentionable_type", "mentionable_id"], name: "index_mentions_on_mentionable_type_and_mentionable_id"
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"

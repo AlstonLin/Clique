@@ -25,6 +25,10 @@ soundManager.setup({
 });
 $(document).on('ready pjax:success', function() {
   setupComments();
+  
+  $('h5').click(function(e) {
+      e.stopPropagation();
+  });
 
   $(".stop-propagation").click(function(event){
     event.stopPropagation();

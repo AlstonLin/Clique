@@ -6,6 +6,7 @@ class Track < ActiveRecord::Base
   has_attached_file :pic
   belongs_to :owner, :class_name => 'User'
   has_many :comments, :as => :commentable, :class_name => "Comment"
+  has_many :mention, :as => :mentionable, :class_name => "Mention"
   has_many :retracks
   has_and_belongs_to_many :favoriters, :class_name => 'User', :join_table => 'fav_tracks_users', \
     :foreign_key => :track_id, :association_foreign_key => :user_id
