@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     # Reloads sidebar stuff
     @top = get_top ITEMS_HOME
-    @favorites = current_user.favorite_tracks.select{ |t| !t.removed }.take ITEMS_HOME
+    @favorites = current_user.favourites.select{ |f| f.favouritable.is_a?(Track) && !f.favouritable.removed }.take(ITEMS_HOME).map(&:favouritable)
     # Loads content variable if applicable
     if @content == nil
       @content = current_user.get_following_all

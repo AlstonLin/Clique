@@ -73,18 +73,22 @@ class PostsController < ApplicationController
 
   def favorite
     @post = Post.find(params[:post_id])
-    if @post.favoriters.include? current_user
-      @post.favoriters.delete(current_user)
+    favourite = Favourite.where(:favouritable => @post, :favouriter => current_user)
+    if favourite.count > 0
+      if favourite[0].destroy
+        flash[:notice] = "Unfavorited!"
+      else
+        flash[:error] = "An error has occured"
+      end
     else
-      @post.favoriters << current_user
-    end
-    @favorites = current_user.get_favorites
-    respond_to do |format|
-      if @post.save
+      favourite = Favourite.new :favouritable => @post, :favouriter => current_user
+      if favourite.save
         flash[:notice] = "Favorited!"
       else
-        flash[:error] = "An Error has occured"
+        flash[:error] = "An error has occured"
       end
+    end
+    respond_to do |format|
       format.js { render 'shared/reload.js.erb' }
     end
   end

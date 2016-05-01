@@ -5,11 +5,10 @@ class Track < ActiveRecord::Base
   has_attached_file :song
   has_attached_file :pic
   belongs_to :owner, :class_name => 'User'
+  has_many :retracks
   has_many :comments, :as => :commentable, :class_name => "Comment"
   has_many :mention, :as => :mentionable, :class_name => "Mention"
-  has_many :retracks
-  has_and_belongs_to_many :favoriters, :class_name => 'User', :join_table => 'fav_tracks_users', \
-    :foreign_key => :track_id, :association_foreign_key => :user_id
+  has_many :favourites, :as => :favouritable, :class_name => "Favourite"
   # Validation
   validates_attachment_content_type :song, :content_type => [ 'audio/mpeg',
     'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]

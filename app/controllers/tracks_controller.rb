@@ -30,7 +30,9 @@ class TracksController < ApplicationController
       format.js { render 'shared/reload.js.erb' }
     end
   end
+  # ----------------------- Custom RESTFUL Actions------------------------------
 
+  # Remark: This controller is almost the exact same as Posts. Look into externalizing code
   def repost
     @track = Track.find(params[:track_id])
     @retrack = Retrack.where(:track => @track).where(:reposter => current_user)
@@ -54,18 +56,22 @@ class TracksController < ApplicationController
 
   def favorite
     @track = Track.find(params[:track_id])
-    if @track.favoriters.include? current_user
-      @track.favoriters.delete(current_user)
-    else
-      @track.favoriters << current_user
-    end
-    @favorites = current_user.get_favorites
-    respond_to do |format|
-      if @track.save
-        flash[:notice] = "Reposted!"
+    favourite = Favourite.where(:favouritable => @track, :favouriter => current_user)
+    if favourite.count > 0
+      if favourite[0].destroy
+        flash[:notice] = "Unfavorited!"
       else
-        flash[:error] = "An Error has occured"
+        flash[:error] = "An error has occured"
       end
+    else
+      favourite = Favourite.new :favouritable => @track, :favouriter => current_user
+      if favourite.save
+        flash[:notice] = "Unfavorited!"
+      else
+        flash[:error] = "An error has occured"
+      end
+    end
+    respond_to do |format|
       format.js { render 'shared/reload.js.erb' }
     end
   end

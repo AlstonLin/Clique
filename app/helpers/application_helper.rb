@@ -26,4 +26,8 @@ module ApplicationHelper
     end
     return text
   end
+
+  def has_favourited(favouritable)
+    Favourite.where(:favouritable => favouritable, :favouriter => current_user).count > 0
+  end
 end

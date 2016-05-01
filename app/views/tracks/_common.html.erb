@@ -6,12 +6,12 @@
   <div class="media-body">
     <div class="media-heading">
       <!-- Favorite button -->
-      <% if track.favoriters.include? current_user %>
+      <% if has_favourited track %>
         <small class="pull-right redclass">
-        <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= track.favoriters.count %></small>
+        <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= track.favourites.count %></small>
       <% else %>
         <small class="pull-right text-muted">
-        <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= track.favoriters.count %></small>
+        <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= track.favourites.count %></small>
       <% end %>
       <!--<small class="pull-right text-muted">
         <span class="glyphicon glyphicon-play glyphicon-small" aria-hidden="true"></span> 10
@@ -44,7 +44,7 @@
     <div class="button-popup track-button-popup">
       <!-- Favorite / Unfavorite button -->
       <% if current_user %>
-        <% if track.favoriters.include? current_user %>
+        <% if has_favourited track %>
           <%= link_to track_favorite_path(track), :remote => true, :method => :post do %>
             <div class="glyphicon glyphicon-heart redclass"></div>
           <% end %>

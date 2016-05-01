@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429023809) do
+ActiveRecord::Schema.define(version: 20160501030823) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -60,15 +60,15 @@ ActiveRecord::Schema.define(version: 20160429023809) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "fav_posts_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+  create_table "favourites", force: :cascade do |t|
+    t.integer  "favouritable_id"
+    t.string   "favouritable_type"
+    t.integer  "favouriter_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "fav_tracks_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "track_id"
-  end
+  add_index "favourites", ["favouritable_type", "favouritable_id"], name: "index_favourites_on_favouritable_type_and_favouritable_id"
 
   create_table "follows", force: :cascade do |t|
     t.integer  "follower_id"
@@ -94,6 +94,18 @@ ActiveRecord::Schema.define(version: 20160429023809) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.integer  "initiator_id"
+    t.text     "message"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"

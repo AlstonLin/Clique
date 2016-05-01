@@ -15,12 +15,11 @@ class User < ActiveRecord::Base
   has_many :retracks, :class_name => 'Retrack', :foreign_key => 'reposter_id'
   has_many :messages, :class_name => 'Message', :foreign_key => 'creator_id'
   has_many :mentions, :class_name => 'Mention', :foreign_key => 'mentioned_id'
+  has_many :notifications, :class_name => 'Notification', :foreign_key => 'user_id'
+  has_many :notifications_initiated, :class_name => 'Notification', :foreign_key => 'initiator_id'
+  has_many :favourites, :class_name => 'Favourite', :foreign_key => 'favouriter_id'
   has_and_belongs_to_many :conversations, :class_name => 'Conversation', :join_table => 'conversations_users', \
     :foreign_key => :user_id, :association_foreign_key => :conversation_id
-  has_and_belongs_to_many :favorite_posts, :class_name => 'Post', :join_table => 'fav_posts_users', \
-    :foreign_key => :user_id, :association_foreign_key => :post_id
-  has_and_belongs_to_many :favorite_tracks, :class_name => 'Track', :join_table => 'fav_tracks_users', \
-    :foreign_key => :user_id, :association_foreign_key => :track_id
   has_and_belongs_to_many :cliques, :class_name => 'Cliq'
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
@@ -81,9 +80,7 @@ class User < ActiveRecord::Base
   end
 
   def get_favorites
-    favorites = self.favorite_posts + self.favorite_tracks
-    favorites = favorites.select { |f| !f.removed }.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
-    return favorites
+    return self.favourites.select { |f| !f.removed }.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
   end
 
   def get_following_all
