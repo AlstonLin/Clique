@@ -46,14 +46,9 @@ class UsersController < ApplicationController
     if follows.count > 0 # Unfollow
       follows.destroy_all
     else # Follow
-      follow = Follow.new
-      follow.follower = current_user
-      follow.following = @user
-      follow.save
+      Follow.create :follower => current_user, :following => @user
     end
     # Response
-    @top = get_top HomeController::ITEMS_HOME
-    @favorites = current_user.favorite_tracks.take HomeController::ITEMS_HOME
     respond_to do |format|
       format.js { render 'shared/reload.js.erb' }
     end

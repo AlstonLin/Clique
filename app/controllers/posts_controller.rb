@@ -57,10 +57,7 @@ class PostsController < ApplicationController
       @repost.first.destroy
       flash[:notice] = "Repost deleted"
     else
-      @repost = Repost.new
-      @repost.post = @post
-      @repost.reposter = current_user
-      if @repost.save
+      if Repost.create :post => @post, :reposter => current_user
         flash[:notice] = "Reposted!"
       else
         flash[:error] = "An Error has occured"
@@ -81,8 +78,7 @@ class PostsController < ApplicationController
         flash[:error] = "An error has occured"
       end
     else
-      favourite = Favourite.new :favouritable => @post, :favouriter => current_user
-      if favourite.save
+      if Favourite.create :favouritable => @post, :favouriter => current_user
         flash[:notice] = "Favorited!"
       else
         flash[:error] = "An error has occured"

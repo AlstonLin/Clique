@@ -42,10 +42,7 @@ class CliqsController < ApplicationController
     # Follows owner
     @user = @clique.owner
     if !is_following @user
-      follow = Follow.new
-      follow.follower = current_user
-      follow.following = @user
-      follow.save
+      follow = Follow.create :follower => current_user, :following => @user
     end
     # Payment stuff
     @api = PayPal::SDK::AdaptivePayments::API.new
@@ -131,22 +128,19 @@ class CliqsController < ApplicationController
 
   def leave
     @api = PayPal::SDK::AdaptivePayments::API.new
-
     @clique = Cliq.find(params[:cliq_id])
     # Build request object
     @cancel_preapproval = @api.build_cancel_preapproval({
       :preapprovalKey => current_user.preapprovalKey})
-
     # Make API call & get response
     @cancel_preapproval_response = @api.cancel_preapproval(@cancel_preapproval)
-
     # Access Response
     if @cancel_preapproval_response.success?
         @clique.members.delete(current_user)
     else
-        @cancel_preapproval_response.error.each do |error|
-          puts error.message
-        end
+      @cancel_preapproval_response.error.each do |error|
+        puts error.message
+      end
     end
     # Response
     redirect_to @clique.owner

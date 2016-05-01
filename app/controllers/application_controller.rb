@@ -23,22 +23,10 @@ class ApplicationController < ActionController::Base
   def get_top(num)
     # TODO: There's probably a more efficient way of doing this
     top = User.where(:id => Follow.group(:following_id).order("count(*) desc").limit(num).count.keys)
-    # If there is not enough followers to fill the list, add fill it with people with none
     if top.count < num
       top = top + User.all
       top = top.select{ |t| t != current_user }.uniq.first(num)
     end
     return top
   end
-
-  # def get_top_tracks(num)
-  #   # TODO: There's probably a more efficient way of doing this
-  #   top = Track.where(:id => Follow.group(:following_id).order("count(*) desc").limit(num).count.keys)
-  #   # If there is not enough followers to fill the list, add fill it with people with none
-  #   if top.count < num
-  #     top = top + User.all
-  #     top = top.select{ |t| t != current_user }.uniq.first(num)
-  #   end
-  #   return top
-  # end
 end

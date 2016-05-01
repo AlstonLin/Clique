@@ -40,10 +40,7 @@ class TracksController < ApplicationController
       @retrack.first.destroy
       flash[:notice] = "Repost deleted"
     else
-      @retrack = Retrack.new
-      @retrack.track = @track
-      @retrack.reposter = current_user
-      if @retrack.save
+      if Retrack.create :track => @track, :reposter => current_user
         flash[:notice] = "Reposted!"
       else
         flash[:error] = "An Error has occured"
