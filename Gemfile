@@ -13,9 +13,6 @@ gem 'omniauth-soundcloud'
 # Websocket
 # Bootstrap
 gem 'bootstrap-sass'
-# Coffeescript
-gem 'barista'
-gem 'therubyracer', :require => nil
 # Default Gems
 gem 'rails'
 gem 'turbolinks'
