@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160501030823) do
     t.datetime "created_at",                       null: false
     t.text     "content"
     t.boolean  "removed",          default: false
-    t.integer  "creator_id"
+    t.integer  "owner_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.datetime "updated_at",                       null: false
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20160501030823) do
     t.text     "content"
     t.boolean  "clique_only", default: false
     t.boolean  "removed",     default: false
-    t.integer  "poster_id"
+    t.integer  "owner_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

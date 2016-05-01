@@ -4,6 +4,6 @@
 <div class="media-body">
   <small class="pull-right text-muted"><%= time_ago_in_words notification.created_at %></small>
   <div class="media-heading">
-    <%= link_to notification.notifiable.follower.name, notification.notifiable.follower %> has followed you!
+    <%= notification.initiator.name %> has followed you!
   </div>
 </div>

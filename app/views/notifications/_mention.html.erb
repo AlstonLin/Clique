@@ -1,0 +1,9 @@
+<div class="media-left">
+  <span class="icon icon-globe text-muted"></span>
+</div>
+<div class="media-body">
+  <small class="pull-right text-muted"><%= time_ago_in_words notification.created_at %></small>
+  <div class="media-heading">
+    You were mentioned by <%= notification.initiator.name %> in a <%= notification.notifiable.mentionable.class.name %>!
+  </div>
+</div>

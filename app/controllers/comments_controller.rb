@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     end
     # Creates the Comment
     @comment = Comment.new(comment_params)
-    @comment.creator = current_user
+    @comment.owner = current_user
     @comment.commentable = @commentable
     respond_to do |format|
       if !@comment.save

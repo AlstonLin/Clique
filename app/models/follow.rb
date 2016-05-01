@@ -1,5 +1,5 @@
 class Follow < ActiveRecord::Base
-  after_commit :generate_notification
+  after_commit :create_notification
   # Relationships
   belongs_to :follower, :class_name => 'User', :foreign_key => 'follower_id'
   belongs_to :following, :class_name => 'User', :foreign_key => 'following_id'
@@ -8,7 +8,7 @@ class Follow < ActiveRecord::Base
   validates :following, :presence => true
 
   private
-    def generate_notification
+    def create_notification
       Notification.create :notifiable => self, :user => self.following, :initiator => self.follower
     end
 end

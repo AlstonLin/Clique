@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.boolean :clique_only, default: false
       t.boolean :removed, default: false
-      t.belongs_to :poster
+      t.belongs_to :owner
       t.datetime :created_at
       t.timestamps null: false
     end

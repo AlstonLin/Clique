@@ -1,12 +1,12 @@
 <div class="modal-textpost">
-  <%= link_to @post.poster do %>
-    <%= image_tag @post.poster.profile_picture_url, :class => "media-object img-circle modal-closable" %>
+  <%= link_to @post.owner do %>
+    <%= image_tag @post.owner.profile_picture_url, :class => "media-object img-circle modal-closable" %>
   <% end %>
   <div class="media-body">
     <div class="media-body-text">
       <div class="media-heading">
         <small class="pull-right text-muted">• <%= time_ago_in_words @post.created_at %></small>
-        <h5><%= link_to @post.poster.name, @post.poster %></h5>
+        <h5><%= link_to @post.owner.name, @post.owner %></h5>
       </div>
       <p>
         <%= show_mentions(@post.content, @post.mentions).html_safe %>

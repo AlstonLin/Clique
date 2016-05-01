@@ -1,7 +1,7 @@
 <li class="media list-group-item p-a post-modal">
   <%= link_to "", post_load_modal_path(post), :remote => true, :method => :post, :class => "comments-link" %>
-  <%= link_to post.poster, :class => "media-left over-comments-link" do %>
-    <%= image_tag post.poster.profile_picture_url, :class => "media-object img-circle" %>
+  <%= link_to post.owner, :class => "media-left over-comments-link" do %>
+    <%= image_tag post.owner.profile_picture_url, :class => "media-object img-circle" %>
   <% end %>
   <div class="media-body">
     <div class="media-body-text">
@@ -31,7 +31,7 @@
             <div class="glyphicon glyphicon-heart" aria-hidden="true"></div>
           <% end %>
         <% end %>
-      	<% if post.poster == current_user %>
+      	<% if post.owner == current_user %>
             <!-- Delete button -->
       			<%= link_to post_delete_path(post), :remote => true, :method => :post do %>
       				<div class="glyphicon glyphicon-trash" aria-hidden="true"></div>

@@ -63,22 +63,23 @@
         <h5 class="m-t-0">Favorites  <small>· <%= link_to "See more", favorites_path, :id=>"FavSeeMore",:method => :get, :remote => true %></small></h5>
         <ul class="media-list media-list-stream">
           <% @favorites.each do |f| %>
-          <li class="media m-b">
-            <a class="media-left" href="#">
-              <%= image_tag f.get_pic_url , class: "media-object img-circle" %>
-            </a>
-            <div class="media-body">
-            <%= link_to f.owner  do %>
-              <strong><%= link_to f.name, f %></strong>
-            <% end %> <%= f.owner.name %>
-              <div class="media-body-actions">
-                <button class="btn btn-primary-outline btn-sm">
-                  <span class="fa fa-add-user"></span> View
-                </button>
-            <% end %>
+            <li class="media m-b">
+              <a class="media-left" href="#">
+                <%= image_tag f.get_pic_url , class: "media-object img-circle" %>
+              </a>
+              <div class="media-body">
+                <%= link_to f.owner  do %>
+                  <strong><%= link_to f.name, f %></strong>
+                <% end %>
+                <%= f.owner.name %>
+                <div class="media-body-actions">
+                  <%= button_to f, :class => "btn btn-primary-outline btn-sm", :method => :get do %>
+                    <span class="fa fa-add-user"></span> View
+                  <% end %>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>

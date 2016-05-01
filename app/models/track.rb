@@ -7,7 +7,6 @@ class Track < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User'
   has_many :retracks
   has_many :comments, :as => :commentable, :class_name => "Comment"
-  has_many :mention, :as => :mentionable, :class_name => "Mention"
   has_many :favourites, :as => :favouritable, :class_name => "Favourite"
   # Validation
   validates_attachment_content_type :song, :content_type => [ 'audio/mpeg',

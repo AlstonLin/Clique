@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
   def create
     @post = Post.new(post_params)
-    @post.poster = current_user
+    @post.owner = current_user
     respond_to do |format|
       if @post.save
         flash[:notice] = "Post Created!"

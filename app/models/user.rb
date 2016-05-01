@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
   has_many :followers, :class_name => 'Follow', :foreign_key => 'following_id'
   has_many :tracks, :class_name => 'Track', :foreign_key => 'owner_id'
-  has_many :posts, :class_name => 'Post', :foreign_key => 'poster_id'
+  has_many :posts, :class_name => 'Post', :foreign_key => 'owner_id'
   has_many :post_comments, :class_name => 'PostComment'
   has_many :track_comments, :class_name => 'TrackComment'
   has_many :reposts, :class_name => 'Repost', :foreign_key => 'reposter_id'

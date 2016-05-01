@@ -70,8 +70,21 @@
       </li>
       <% @notifications.each do |n| %>
         <li class="list-group-item media p-a">
-          <% if n.notifiable.is_a? Follow %>
+          <% if n.notifiable.is_a? Comment %>
+            <%= render :partial => "comment", :locals => { :notification => n } %>
+          <% elsif n.notifiable.is_a? Favourite %>
+            <%= render :partial => "favourite", :locals => { :notification => n } %>
+          <% elsif n.notifiable.is_a? Follow %>
             <%= render :partial => "follow", :locals => { :notification => n } %>
+          <% elsif n.notifiable.is_a? Cliq %>
+            <%= render :partial => "join_cliq", :locals => { :notification => n } %>
+          <% elsif n.notifiable.is_a? Mention %>
+            <%= render :partial => "mention", :locals => { :notification => n } %>
+          <% elsif n.notifiable.is_a? Repost %>
+            <%= render :partial => "repost", :locals => { :notification => n } %>
+          <% elsif n.notifiable.is_a? Retrack %>
+            <%= render :partial => "retrack", :locals => { :notification => n } %>
+          <% else raise "Illegal type of notifiable: #{n.notifiable.class.name} "%>
           <% end %>
         </li>
       <% end %>

@@ -4,13 +4,13 @@ class Post < ActiveRecord::Base
   # Sorting
   default_scope { order :created_at => :desc }
   # Relationships
-  belongs_to :poster, :class_name => 'User'
+  belongs_to :owner, :class_name => 'User'
   has_many :reposts
   has_many :comments, :as => :commentable, :class_name => "Comment"
   has_many :mentions, :as => :mentionable, :class_name => "Mention"
   has_many :favourites, :as => :favouritable, :class_name => "Favourite"
   # Validation
-  validates :poster, :presence => true
+  validates :owner, :presence => true
   validates :content, :presence => true
 
   def add_mentions

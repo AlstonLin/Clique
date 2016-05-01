@@ -1,5 +1,5 @@
 <% content_for :title, :flush => true do %>
-  <h5><%= link_to repost.post.poster.name, repost.post.poster, :class => "over-comments-link" %>
+  <h5><%= link_to repost.post.owner.name, repost.post.owner, :class => "over-comments-link" %>
     <div class="glyphicon glyphicon-refresh greenclass"></div>
     <%= link_to repost.reposter.name, repost.reposter, :class => "over-comments-link" %>  <small> · <%= time_ago_in_words repost.post.created_at %></small></h5>
 <% end %>
