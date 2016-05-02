@@ -2,7 +2,7 @@
   <!-- Something? -->
   <div class="alert alert-warning alert-dismissible hidden-xs m-b-md" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <a class="alert-link" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking too good.
+    <a class="alert-link" href="profile/index.html">Visit your profile!</a> Post new updates for your fans.
   </div>
   <!-- Home buttons -->
   <div class="list-group m-b-md">
@@ -34,9 +34,9 @@
       <ul class="media-list media-list-stream">
         <% @top.each do |t| %>
           <li class="media m-b">
-            <%= link_to t do %>
+            <a class="media-left" href="#">
               <%= image_tag t.profile_picture_url , class: "media-object img-circle" %>
-            <% end %>
+            </a>
             <div class="media-body">
               <strong><%= t.name %></strong>
               <div class="media-body-actions">
