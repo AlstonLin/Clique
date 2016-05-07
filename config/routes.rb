@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   get 'clique_orders' => 'settings#clique_orders'
   # Dashboard routes
   get "dashboard" => "dashboard#main"
-  get "dashboard_tracks" => "dashboard#tracks"
-  get "dashboard_orders" => "dashboard#orders"
+  get "dashboard_monthly" => "dashboard#monthly", :path => 'dashboard/monthly'
+  get "dashboard_daily" => "dashboard#daily", :path => 'dashboard/daily'
+  get "dashboard_tracks" => "dashboard#tracks", :path => 'dashboard/tracks'
+  get "dashboard_orders" => "dashboard#orders", :path => 'dashboard/orders'
 
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do

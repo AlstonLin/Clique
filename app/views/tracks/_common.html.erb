@@ -26,7 +26,7 @@
         </div>
         <div class="player1-Name">
           <div class="player1-play">
-            <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%=track_path(track)%>" ownerLink="<%=user_path(track.owner)%>">
+            <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%= track_path(track) %>" ownerLink="<%=user_path(track.owner)%>">
               <div class="play-Btn">
                 <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
               </div>

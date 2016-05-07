@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Javascript
+gem 'gon'
 # Paypal
 gem 'paypal-sdk-adaptivepayments'
 # Uploading
@@ -10,7 +12,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-soundcloud'
-# Websocket
 # Bootstrap
 gem 'bootstrap-sass'
 # Default Gems
