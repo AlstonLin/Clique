@@ -60,16 +60,7 @@ class HomeController < ApplicationController
     index
     render :action => :index
   end
-
-  def dashboard
-  end
-
-  def dashboard_tracks
-  end
-
-  def dashboard_orders
-  end
-
+  
   def notifications
   end
 

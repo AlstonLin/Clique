@@ -1,0 +1,125 @@
+<div class="dashboard">
+  <div class="container">
+    <div class="row">
+      <%= render :partial => "side_bar", :locals => { :partial => "main" } %>
+
+      <div class="col-sm-9 content">
+        <div class="dashhead">
+            <div class="dashhead-titles">
+              <h6 class="dashhead-subtitle">Dashboards</h6>
+              <h2 class="dashhead-title">Overview</h2>
+            </div>
+
+          <div class="btn-group btn-group-xs date-select" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Today</button>
+            <button type="button" class="btn btn-default">Week</button>
+            <button type="button" class="btn btn-default">Month</button>
+          </div>
+        </div>
+
+        <div class="hr-divider m-t-md m-b">
+          <h3 class="hr-divider-content hr-divider-heading">Statistics</h3>
+        </div>
+
+        <div class="row statcards">
+          <div class="col-sm-6 col-lg-3 m-b">
+            <div class="statcard statcard-success">
+              <div class="p-a">
+                <span class="statcard-desc">Plays</span>
+                <h2 class="statcard-number">
+                  12,938
+                  <small class="delta-indicator delta-positive">5%</small>
+                </h2>
+                <hr class="statcard-hr m-b-0">
+              </div>
+              <canvas id="sparkline1" width="378" height="94" class="sparkline" data-chart="spark-line" data-value="[{data:[28,68,41,43,96,45,100]}]" data-labels="['a','b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 m-b">
+            <div class="statcard statcard-danger">
+              <div class="p-a">
+                <span class="statcard-desc">Cliq</span>
+                <h2 class="statcard-number">
+                  758
+                  <small class="delta-indicator delta-negative">1.3%</small>
+                </h2>
+                <hr class="statcard-hr m-b-0">
+              </div>
+              <canvas id="sparkline1" width="378" height="94" class="sparkline" data-chart="spark-line" data-value="[{data:[4,34,64,27,96,50,80]}]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 m-b">
+            <div class="statcard statcard-info">
+              <div class="p-a">
+                <span class="statcard-desc">Followers</span>
+                <h2 class="statcard-number">
+                  1,293
+                  <small class="delta-indicator delta-positive">6.7%</small>
+                </h2>
+                <hr class="statcard-hr m-b-0">
+              </div>
+              <canvas id="sparkline1" width="378" height="94" class="sparkline" data-chart="spark-line" data-value="[{data:[12,38,32,60,36,54,68]}]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 m-b">
+            <div class="statcard statcard-warning">
+              <div class="p-a">
+                <span class="statcard-desc">Downloads</span>
+                <h2 class="statcard-number">
+                  758
+                  <small class="delta-indicator delta-negative">1.3%</small>
+                </h2>
+                <hr class="statcard-hr m-b-0">
+              </div>
+              <canvas id="sparkline1" width="378" height="94" class="sparkline" data-chart="spark-line" data-value="[{data:[43,48,52,58,50,95,100]}]" data-labels="['a', 'b','c','d','e','f','g']" style="width: 189px; height: 47px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <hr class="m-t">
+
+        <div class="row">
+          <div class="col-md-6 m-b-md">
+            <div class="list-group">
+              <h4 class="list-group-header">
+                Cliq Leaderboard
+              </h4>
+              <a class="list-group-item" href="#">
+                <span class="list-group-progress" style="width: 62.4%;"></span>
+                <span class="pull-right text-muted">10538</span>
+                Trey Songs
+              </a>
+
+              <a class="list-group-item" href="#">
+                <span class="list-group-progress" style="width: 15.0%;"></span>
+                <span class="pull-right text-muted">8420</span>
+                Chris Brown
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-6 m-b-md">
+            <div class="list-group">
+              <h4 class="list-group-header">
+                Top Tracks
+              </h4>
+
+              <a class="list-group-item" href="#">
+                <span class="pull-right text-muted">5203 Boosts</span>
+                The real Recognize the real
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // execute/clear BS loaders for docs
+  $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+</script>

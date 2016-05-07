@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   end
   # Home Page routes
   get "home" => "home#index"
-  get "dashboard" => "home#dashboard"
-  get "dashboard_tracks" => "home#dashboard_tracks"
-  get "dashboard_orders" => "home#dashboard_orders"
   get "payment" => "home#payment"
   get "all" => "home#all"
   get "explore" => "home#explore"
@@ -27,6 +24,11 @@ Rails.application.routes.draw do
   get 'edit_clique' => 'settings#edit_clique'
   get 'clique_members' => 'settings#clique_members'
   get 'clique_orders' => 'settings#clique_orders'
+  # Dashboard routes
+  get "dashboard" => "dashboard#main"
+  get "dashboard_tracks" => "dashboard#tracks"
+  get "dashboard_orders" => "dashboard#orders"
+
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'
