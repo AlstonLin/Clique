@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501030823) do
+ActiveRecord::Schema.define(version: 20160507210024) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20160501030823) do
     t.text     "thank_you_message"
     t.decimal  "price",             precision: 8, scale: 2
     t.integer  "owner_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.string   "email"
+    t.integer  "members_count",                             default: 0
   end
 
   create_table "cliqs_users", id: false, force: :cascade do |t|
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160501030823) do
     t.boolean  "clique_only",       default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "favourites_count",  default: 0
   end
 
   create_table "users", force: :cascade do |t|

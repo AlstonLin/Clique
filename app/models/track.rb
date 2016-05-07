@@ -1,6 +1,4 @@
 class Track < ActiveRecord::Base
-  # Sorting
-  default_scope { order :created_at => :desc }
   # Relationships
   has_attached_file :song
   has_attached_file :pic

@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-# Javascript
-gem 'gon'
 # Paypal
 gem 'paypal-sdk-adaptivepayments'
 # Uploading

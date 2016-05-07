@@ -1,7 +1,7 @@
 class Favourite < ActiveRecord::Base
   after_commit :create_notification
 
-  belongs_to :favouritable, :polymorphic => true
+  belongs_to :favouritable, :polymorphic => true, :counter_cache => true
   belongs_to :favouriter, :class_name => 'User'
   has_one :notification, :as => :notifiable, :class_name => "Notification"
   validates :favouritable, :presence => true

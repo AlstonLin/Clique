@@ -27,17 +27,13 @@
               <h4 class="list-group-header">
                 Cliq Leaderboard
               </h4>
-              <a class="list-group-item" href="#">
-                <span class="list-group-progress" style="width: 62.4%;"></span>
-                <span class="pull-right text-muted">10538</span>
-                Trey Songs
-              </a>
-
-              <a class="list-group-item" href="#">
-                <span class="list-group-progress" style="width: 15.0%;"></span>
-                <span class="pull-right text-muted">8420</span>
-                Chris Brown
-              </a>
+              <% @top_cliques.each do |cliq| %>
+                <%= link_to cliq.owner, :class => "list-group-item" do %>
+                  <span class="list-group-progress" style="width: 62.4%;"></span>
+                  <span class="pull-right text-muted"><%= cliq.members_count %></span>
+                  <%= cliq.name %>
+                <% end %>
+              <% end %>
             </div>
           </div>
 
@@ -46,11 +42,12 @@
               <h4 class="list-group-header">
                 Top Tracks
               </h4>
-
-              <a class="list-group-item" href="#">
-                <span class="pull-right text-muted">5203 Boosts</span>
-                The real Recognize the real
-              </a>
+              <% @top_tracks.each do |track| %>
+                <%= link_to track, :class => "list-group-item" do %>
+                  <span class="pull-right text-muted"><%= track.favourites_count %> Likes</span>
+                  <%= track.name %>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

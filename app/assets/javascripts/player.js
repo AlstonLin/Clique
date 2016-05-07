@@ -122,7 +122,7 @@ $(document).on('ready pjax:success', function() {
 		url: 'swfs/',
 		flashVersion: 9,
 		preferFlash: false, // prefer 100% HTML5 mode, where both supported
-		debugMode: falses,
+		debugMode: false,
 		onready: function() {
 			if(nowPlaying !== null)
 				 return;
