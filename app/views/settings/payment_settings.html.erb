@@ -1,0 +1,19 @@
+<div class="page-Bottom2">
+	<div class="container">
+		<div class="col-md-8 col-md-offset-2 p-t-md">
+		  <div class="row">
+		    <div class="panel panel-default" id="content">
+          <div class="panel-heading panel-heading-no-bottom">
+            <%# if !current_user.uid %>
+              <%= button_to "Change Password", change_password_path, :remote => true, :method => :get, :class => "settings-tabs" %>
+            <%# end %>
+            <%= button_to "Payment Settings", payment_settings_path, :remote => true, :method => :get, :class => "settings-tabs1" %>
+          </div>
+          <div class="panel-body">
+            <%= link_to "Stripe", user_omniauth_authorize_path(:stripe_connect) %>
+          </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

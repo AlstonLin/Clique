@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   get "favorites" => "home#favorites"
   # Settings routes
   get 'settings' => 'settings#account_settings'
-  get 'change_password' => 'settings#change_password'
+  get 'change_password' => 'settings#account_settings'
+  get 'payment_settings' => 'settings#payment_settings'
   get 'clique_settings' => 'settings#clique_settings'
   get 'edit_profile' => 'settings#edit_profile'
   get 'orders' => 'settings#orders'

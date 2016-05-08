@@ -3,6 +3,12 @@
 		<div class="col-md-8 col-md-offset-2 p-t-md">
 		  <div class="row">
 		    <div class="panel panel-default" id="content">
+            <div class="panel-heading panel-heading-no-bottom">
+              <%# if !current_user.uid %>
+                <%= button_to "Change Password", change_password_path, :method => :get, :class => "settings-tabs1" %>
+              <%# end %>
+              <%= button_to "Payment Settings", payment_settings_path, :method => :get, :class => "settings-tabs" %>
+            </div>
 						<%= render :template => "passwords/edit", :locals => { :resource => current_user, :resource_name => "user" } %>
 				</div>
 			</div>

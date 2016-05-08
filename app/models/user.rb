@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   # Auth
   devise :omniauthable, :database_authenticatable, :registerable, \
   :recoverable, :rememberable, :trackable, :validatable, :lockable,
-  :omniauth_providers => [:facebook]
+  :omniauth_providers => [:facebook, :stripe_connect]
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true

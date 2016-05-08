@@ -3,6 +3,9 @@ class SettingsController < ApplicationController
   def account_settings
   end
 
+  def payment_settings
+  end
+
   def edit_profile
   end
 
@@ -24,12 +27,6 @@ class SettingsController < ApplicationController
   end
 
   def clique_orders
-  end
-
-  def change_password
-    respond_to do |format|
-      format.js
-    end
   end
 
   def clique_settings
