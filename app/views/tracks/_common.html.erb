@@ -71,9 +71,15 @@
       <% end %>
       <!-- Download button -->
       <% if track.downloadable %>
-        <div class="player1-btn" onclick='myDownload("<%=track.song.url%>","<%=track.name%>")'>
-          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-        </div>
+        <% if current_user %>
+          <%= link_to downloads_path(:track_id => track.id), :method => :post, :class => "player1-btn", :remote => :true do %>
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, :class => "player1-btn" do %>
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>

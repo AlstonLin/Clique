@@ -5,11 +5,10 @@
 
       <div class="col-sm-9 content">
         <div class="dashhead">
-            <div class="dashhead-titles">
-              <h6 class="dashhead-subtitle">Dashboards</h6>
-              <h2 class="dashhead-title">Overview</h2>
-            </div>
-
+          <div class="dashhead-titles">
+            <h6 class="dashhead-subtitle">Dashboards</h6>
+            <h2 class="dashhead-title">Overview</h2>
+          </div>
           <div class="btn-group btn-group-xs date-select" role="group" aria-label="...">
             <%= link_to "Today", dashboard_daily_path, :class => "btn btn-default", :method => :get %>
             <%= link_to "Month", dashboard_monthly_path, :class => "btn btn-default", :method => :get %>
@@ -17,10 +16,11 @@
           </div>
         </div>
 
+        <!-- Header for Stats -->
         <%= render :partial => @partial %>
+        <%= render :partial => "stats" %>
 
         <hr class="m-t">
-
         <div class="row">
           <div class="col-md-6 m-b-md">
             <div class="list-group">

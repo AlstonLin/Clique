@@ -234,13 +234,6 @@ function createMySound(myurl, image, artist, songName, trackLink, ownerLink){
 	return sound;
 }
 
-function myDownload(uri, name) {
-  var link = document.createElement("a");
-  link.download = name;
-  link.href = uri;
-  link.click();
-}
-
 function getTime(msec, useString) {
 
 	// convert milliseconds to hh:mm:ss, return as object literal or string

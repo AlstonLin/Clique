@@ -114,16 +114,16 @@ class CliqsController < ApplicationController
     # Access Response
     if @pay_response.success?
       puts "SUCCESSSSSS"
-      @clique.members << current_user
       flash[:notice] = "Joined " + @clique.name
-      # Creates a notification
-      Notification.create :notifiable => @clique, :user => @clique.owner, :initiator => current_user
     else
       flash[:alert] = "An error has occured"
       puts "ERRRRRROR 22222222"
       @pay_response.error.each do |error|
         puts error.message
       end
+      @clique.members << current_user
+      # Creates a notification
+      Notification.create :notifiable => @clique, :user => @clique.owner, :initiator => current_user
     end
     redirect_to @clique.owner
   end

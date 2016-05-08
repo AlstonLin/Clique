@@ -4,6 +4,7 @@ class Track < ActiveRecord::Base
   has_attached_file :pic
   belongs_to :owner, :class_name => 'User'
   has_many :retracks
+  has_many :downloads
   has_many :comments, :as => :commentable, :class_name => "Comment"
   has_many :favourites, :as => :favouritable, :class_name => "Favourite"
   # Validation

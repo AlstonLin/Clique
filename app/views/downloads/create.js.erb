@@ -1,0 +1,4 @@
+var link = document.createElement("a");
+link.download = "<%= @track.name %>";
+link.href = "<%= @track.song.url %>";
+link.click();

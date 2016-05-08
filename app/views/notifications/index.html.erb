@@ -69,24 +69,36 @@
         <h3 class="m-a-0">Notifications</h3>
       </li>
       <% @notifications.each do |n| %>
-        <li class="list-group-item media p-a">
           <% if n.notifiable.is_a? Comment %>
-            <%= render :partial => "comment", :locals => { :notification => n } %>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "comment", :locals => { :notification => n } %>
+            </li>
           <% elsif n.notifiable.is_a? Favourite %>
-            <%= render :partial => "favourite", :locals => { :notification => n } %>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "favourite", :locals => { :notification => n } %>
+            </li>
           <% elsif n.notifiable.is_a? Follow %>
-            <%= render :partial => "follow", :locals => { :notification => n } %>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "follow", :locals => { :notification => n } %>
+            </li>
           <% elsif n.notifiable.is_a? Cliq %>
-            <%= render :partial => "join_cliq", :locals => { :notification => n } %>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "join_cliq", :locals => { :notification => n } %>
+            </li>
           <% elsif n.notifiable.is_a? Mention %>
-            <%= render :partial => "mention", :locals => { :notification => n } %>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "mention", :locals => { :notification => n } %>
+            </li>
           <% elsif n.notifiable.is_a? Repost %>
-            <%= render :partial => "repost", :locals => { :notification => n } %>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "repost", :locals => { :notification => n } %>
+            </li>
           <% elsif n.notifiable.is_a? Retrack %>
-            <%= render :partial => "retrack", :locals => { :notification => n } %>
-          <% else raise "Illegal type of notifiable: #{n.notifiable.class.name} "%>
+            <li class="list-group-item media p-a">
+              <%= render :partial => "retrack", :locals => { :notification => n } %>
+            </li>
+          <%# else raise "Illegal type of notifiable: #{n.notifiable.class.name} "%>
           <% end %>
-        </li>
       <% end %>
     </ul>
   </div>

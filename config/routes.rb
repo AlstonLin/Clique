@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   resources :comments, :only => :create do
     post 'delete'
   end
+  resources :downloads, :only => :create
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations", :passwords => "passwords"}

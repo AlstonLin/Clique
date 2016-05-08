@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   after_commit :generate_urls
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
+  has_many :downloaded, :class_name => 'Download', :foreign_key => 'downloader_id'
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
   has_many :followers, :class_name => 'Follow', :foreign_key => 'following_id'
   has_many :tracks, :class_name => 'Track', :foreign_key => 'owner_id'
@@ -20,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :favourites, :class_name => 'Favourite', :foreign_key => 'favouriter_id'
   has_and_belongs_to_many :conversations, :class_name => 'Conversation', :join_table => 'conversations_users', \
     :foreign_key => :user_id, :association_foreign_key => :conversation_id
-  has_and_belongs_to_many :cliques, :class_name => 'Cliq', :counter_cache => true
+  has_and_belongs_to_many :cliques, :class_name => 'Cliq', :uniq => true
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
                   :url  => "/assets/users/:id/:style/:basename.:extension",

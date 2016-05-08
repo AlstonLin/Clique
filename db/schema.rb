@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507210024) do
+ActiveRecord::Schema.define(version: 20160508001747) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -54,8 +54,7 @@ ActiveRecord::Schema.define(version: 20160507210024) do
   end
 
   create_table "downloads", force: :cascade do |t|
-    t.integer  "song_id"
-    t.integer  "clique_id"
+    t.integer  "track_id"
     t.integer  "downloader_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -154,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160507210024) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "favourites_count",  default: 0
+    t.integer  "downloads_count",   default: 0
   end
 
   create_table "users", force: :cascade do |t|
