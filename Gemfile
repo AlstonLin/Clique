@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-# Paypal
-gem 'paypal-sdk-adaptivepayments'
+# Payments
+gem 'omniauth-stripe-connect'
 # Uploading
 gem 'paperclip', '~> 4.2.0'
 # Auth

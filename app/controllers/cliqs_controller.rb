@@ -1,5 +1,3 @@
-require 'paypal-sdk-adaptivepayments'
-
 class CliqsController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
   def new
@@ -45,106 +43,22 @@ class CliqsController < ApplicationController
       follow = Follow.create :follower => current_user, :following => @user
     end
     # Payment stuff
-    @api = PayPal::SDK::AdaptivePayments::API.new
-    t = Time.now
-    @preapproval = @api.build_preapproval({
-      :cancelUrl => root_url + user_path(@clique.owner),
-      :currencyCode => "CAD",
-      :dayOfWeek => "NO_DAY_SPECIFIED",
-      :maxAmountPerPayment => 0.12,
-      :maxTotalAmountOfAllPayments=> 1.44,
-      :maxNumberOfPaymentsPerPeriod => 2,
-      :paymentPeriod => "MONTHLY",
-      :returnUrl => root_url + cliq_joined_path(@clique),
-      :ipnNotificationUrl => "http://cliq.fm/ipn_notify",
-      :startingDate => 5.seconds.from_now.strftime("%Y-%m-%d %H::%M::%S"),
-      # TODO: Find a way to not have an ending date
-      :endingDate => 11.months.from_now.strftime("%Y-%m-%d"),
-      :feesPayer => "SENDER",
-      :feesPayer => "EACHRECEIVER",
-      :displayMaxTotalAmount => true })
-
-    # Make API call & get response
-    @preapproval_response = @api.preapproval(@preapproval)
-
-    # Access Response
-    if @preapproval_response.success?
-      puts "APPRoved " + @preapproval_response.preapprovalKey
-      current_user.preapprovalKey = @preapproval_response.preapprovalKey;
-      current_user.save
-      redirect_to "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-preapproval&preapprovalkey=" + @preapproval_response.preapprovalKey
-      return
-    else
-      puts "ERRRRRROR"
-      @preapproval_response.error.each do |error|
-        puts error.message
-      end
-    end
-    redirect_to @clique.owner
+    # Redirect
+    joined # TODO: Have a callback call this
   end
 
   def joined
-    puts "FINALLY MOTHERFUCKING AT JOINED"
-    @clique = Cliq.find(params[:cliq_id])
-    @api = PayPal::SDK::AdaptivePayments::API.new
-    puts "EMAILLLL " + @clique.email
-    @pay = @api.build_pay({
-      :actionType => "PAY",
-      :cancelUrl => root_url + user_path(@clique.owner),
-      :currencyCode => "CAD",
-      :feesPayer => "EACHRECEIVER",
-      :ipnNotificationUrl => "https://paypal-sdk-samples.herokuapp.com/adaptive_payments/ipn_notify",
-      :preapprovalKey => current_user.preapprovalKey,
-      :receiverList => {
-        :receiver => [{
-          :amount => 0.06,
-          :email => @clique.email,
-          :paymentType => "DIGITALGOODS" },
-          {
-          :amount => 0.03,
-          :email => "everestmgteam@gmail",
-          :paymentType => "DIGITALGOODS" }] },
-      :reverseAllParallelPaymentsOnError => true,
-      :returnUrl => root_url + user_path(@clique.owner)
-    })
-
-    # Make API call & get response
-    @pay_response = @api.pay(@pay)
-
-    # Access Response
-    if @pay_response.success?
-      puts "SUCCESSSSSS"
-      flash[:notice] = "Joined " + @clique.name
-    else
-      flash[:alert] = "An error has occured"
-      puts "ERRRRRROR 22222222"
-      @pay_response.error.each do |error|
-        puts error.message
-      end
-      @clique.members << current_user
-      # Creates a notification
-      Notification.create :notifiable => @clique, :user => @clique.owner, :initiator => current_user
-    end
+    # Joins cliq and redirects
+    @clique.members << current_user
     redirect_to @clique.owner
   end
 
+
   def leave
-    @api = PayPal::SDK::AdaptivePayments::API.new
     @clique = Cliq.find(params[:cliq_id])
-    # Build request object
-    @cancel_preapproval = @api.build_cancel_preapproval({
-      :preapprovalKey => current_user.preapprovalKey})
-    # Make API call & get response
-    @cancel_preapproval_response = @api.cancel_preapproval(@cancel_preapproval)
-    # Access Response
-    if @cancel_preapproval_response.success?
-        @clique.members.delete(current_user)
-    else
-      @cancel_preapproval_response.error.each do |error|
-        puts error.message
-      end
-    end
-    # Response
+    # Payment stuff
+    # Removes and redirects
+    @clique.members.delete(current_user)
     redirect_to @clique.owner
   end
 
