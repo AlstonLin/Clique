@@ -21,7 +21,7 @@ Devise.setup do |config|
     info_fields: 'email, first_name, last_name',
     :image_size => 'large'
   config.omniauth :stripe_connect,
-      ENV['CLIQUE_STIPE_ID'],
+      ENV['CLIQUE_STRIPE_ID'],
       ENV['CLIQUE_STRIPE_SECRET'],
       :scope => 'read_write',
       :stripe_landing => 'register'
