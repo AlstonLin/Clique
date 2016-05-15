@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Payments
 gem 'omniauth-stripe-connect'
+gem 'rest-client'
 # Uploading
 gem 'paperclip', '~> 4.2.0'
 # Auth

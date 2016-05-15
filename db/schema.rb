@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508210909) do
+ActiveRecord::Schema.define(version: 20160508001747) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "name"
@@ -164,6 +164,8 @@ ActiveRecord::Schema.define(version: 20160508210909) do
     t.string   "phone"
     t.string   "username"
     t.integer  "type"
+    t.string   "customer_id"
+    t.string   "refresh_token"
     t.string   "profile_picture_file_name"
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
@@ -202,8 +204,6 @@ ActiveRecord::Schema.define(version: 20160508210909) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "preapprovalKey"
-    t.string   "publishable_key"
-    t.string   "access_code"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -9,6 +9,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :username
       t.integer :type
+      # Stripe
+      t.string :customer_id
+      t.string :refresh_token
       # Pictures
       t.attachment :profile_picture
       t.attachment :cover_picture

@@ -20,18 +20,9 @@ Devise.setup do |config|
     scope: 'email, user_birthday, user_location',
     info_fields: 'email, first_name, last_name',
     :image_size => 'large'
-  config.omniauth :stripe_connect,
-      ENV['CLIQUE_STRIPE_ID'],
-      ENV['CLIQUE_STRIPE_SECRET'],
-      :scope => 'read_write',
-      :stripe_landing => 'register'
+  config.omniauth :stripe_connect, ENV['CLIQUE_STRIPE_ID'],
+    ENV['CLIQUE_STRIPE_SECRET'], :scope => 'read_write'
+
   config.secret_key = '4a978b9436fc6f4ac7bc0969083d1265d69db598e6a8c276921b5be4f618675d6d8
 284a9efa078642b983af01ad993a61eafb421a5574e847dac3ad3726d1eac'
-
-
-
-
-
-
-
 end

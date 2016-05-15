@@ -10,7 +10,11 @@
             <%= button_to "Payment Settings", payment_settings_path, :remote => true, :method => :get, :class => "settings-tabs1" %>
           </div>
           <div class="panel-body">
-            <%= link_to "Stripe", user_omniauth_authorize_path(:stripe_connect) %>
+						<% if current_user.customer_id %>
+							Stuff thats shown when Stripe is set up
+						<% else %>
+	            <%= link_to "Setup Stripe", user_omniauth_authorize_path(:stripe_connect) %>
+						<% end %>
           </div>
 				</div>
 			</div>
