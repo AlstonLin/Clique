@@ -6,6 +6,16 @@ class SettingsController < ApplicationController
   def payment_settings
   end
 
+  def setup_payment
+    customer = Stripe::Customer.create(
+      :description => "Customer for User ID##{current_user.id}",
+      :source  => params[:stripeToken]
+    )
+    current_user.customer_id = customer.id
+    current_user.save
+    redirect_to payment_settings_path
+  end
+
   def edit_profile
   end
 
@@ -14,16 +24,10 @@ class SettingsController < ApplicationController
 
   def edit_clique
     @clique = current_user.clique
-    respond_to do |format|
-      format.js
-    end
   end
 
   def clique_members
     @clique = current_user.clique
-    respond_to do |format|
-      format.js
-    end
   end
 
   def clique_orders

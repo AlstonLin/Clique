@@ -4,7 +4,11 @@
 			<div class="col-md-8 col-md-offset-2 p-t-md">
 		  	<div class="row">
 		    	<div class="panel panel-default" id="content">
-				    <%= render :partial => "edit_clique", :locals => { clique: @clique } %>
+						<% if @clique.stripe_publishable_key %>
+				    	<%= render :partial => "edit_clique", :locals => { clique: @clique } %>
+						<% else %>
+							<%= render :partial => "setup_stripe" %>
+						<% end %>
 		  		</div>
 				</div>
 			</div>

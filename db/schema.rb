@@ -14,15 +14,18 @@
 ActiveRecord::Schema.define(version: 20160508001747) do
 
   create_table "cliqs", force: :cascade do |t|
+    t.string   "customer_id"
+    t.string   "stripe_secret_key"
+    t.string   "stripe_publishable_key"
     t.string   "name"
     t.text     "description"
     t.text     "thank_you_message"
-    t.decimal  "price",             precision: 8, scale: 2
+    t.decimal  "price",                  precision: 8, scale: 2
     t.integer  "owner_id"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.string   "email"
-    t.integer  "members_count",                             default: 0
+    t.integer  "members_count",                                  default: 0
   end
 
   create_table "cliqs_users", id: false, force: :cascade do |t|
@@ -165,7 +168,6 @@ ActiveRecord::Schema.define(version: 20160508001747) do
     t.string   "username"
     t.integer  "type"
     t.string   "customer_id"
-    t.string   "refresh_token"
     t.string   "profile_picture_file_name"
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"

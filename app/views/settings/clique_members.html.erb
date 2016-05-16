@@ -1,0 +1,21 @@
+<div class="page-Bottom2">
+	<div class="container">
+		<div class="col-md-8 col-md-offset-2 p-t-md">
+	  	<div class="row">
+	    	<div class="panel panel-default">
+          <div class="panel-heading panel-heading-no-bottom">
+            <div class="row" style="overflow: auto;">
+              <%= button_to "Edit Clique", clique_settings_path, :method => :get, :class => "settings-tabs" %>
+              <%= button_to "Clique Members", clique_members_path, :method => :get, :class => "settings-tabs1" %>
+            </div>
+          </div>
+          <div class="panel-body">
+            <% @clique.members.each do |m| %>
+              <%= render :partial => 'home/artist_tile', :locals => { :artist => m } %>
+            <% end %>
+          </div>
+	  		</div>
+			</div>
+		</div>
+	</div>
+</div>

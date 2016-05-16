@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Payments
+gem 'stripe'
 gem 'omniauth-stripe-connect'
 gem 'rest-client'
 # Uploading

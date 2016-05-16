@@ -1,6 +1,9 @@
 require 'rest-client'
+require 'stripe'
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   STRIPE_TOKEN_URL = "https://connect.stripe.com/oauth/token"
+  CLIQ_SUBSCRIPTION_COST = 500
 
   def facebook
     @user = User.from_omniauth(request.env["omniauth.auth"])
@@ -14,22 +17,33 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def stripe_connect
-    @user = current_user
-    access_code = request.params["code"]
-    puts "--------------ACCESS CODE-----------------"
-    puts access_code
-    # Uses access code to create token
-    response = RestClient.post(STRIPE_TOKEN_URL, {
-      :params => {
-        :client_secret => ENV['CLIQUE_STRIPE_SECRET'],
-        :grant_type => 'authorization_code',
-        :code => access_code
-      }
-    })
-    puts "---------------RESPONSE-----------------------"
-    puts response
+    # Gets the token
+    @clique = current_user.clique
+
+    uid = request.env["omniauth.auth"].uid
+    secret_key = request.env["omniauth.auth"].credentials.token
+    publishable_key = request.env["omniauth.auth"].info.stripe_publishable_key
     # Uses the token to create a Customer object
-    # Saves the customer id to the database
+    customer = Stripe::Customer.create(
+      {:description => "Customer for User ID##{current_user.id}"},
+      {:stripe_account => uid}
+    )
+    # Creates a plan
+    Stripe.api_key = secret_key
+    plan = Stripe::Plan.create(
+      :amount => CLIQ_SUBSCRIPTION_COST,
+      :interval => "month",
+      :name => @clique.name,
+      :currency => "usd",
+      :id => @clique.plan_id
+    )
+    # Saves data to Clique
+    @clique.customer_id = uid
+    @clique.stripe_secret_key = secret_key
+    @clique.stripe_publishable_key = publishable_key
+    @clique.save
+
+    redirect_to clique_settings_path
   end
 
   def failure

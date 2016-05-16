@@ -11,7 +11,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :type
       # Stripe
       t.string :customer_id
-      t.string :refresh_token
       # Pictures
       t.attachment :profile_picture
       t.attachment :cover_picture

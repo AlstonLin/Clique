@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'orders' => 'settings#orders'
   get 'edit_clique' => 'settings#edit_clique'
   get 'clique_members' => 'settings#clique_members'
-  get 'clique_orders' => 'settings#clique_orders'
+  post 'setup_payment' => 'settings#setup_payment'
   # Dashboard routes
   get "dashboard" => "dashboard#main"
   get "dashboard_monthly" => "dashboard#monthly", :path => 'dashboard/monthly'

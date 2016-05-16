@@ -1,5 +1,8 @@
+require "stripe"
+
 class CliqsController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
+  APPLICATION_FEE_PERCENTAGE = 10
   def new
     @clique = Cliq.new
   end
@@ -37,22 +40,27 @@ class CliqsController < ApplicationController
   def join
     @clique = Cliq.find(params[:cliq_id])
     raise "Already in Clique" if current_user.cliques.include? @clique
-    # Follows owner
-    @user = @clique.owner
-    if !is_following @user
-      follow = Follow.create :follower => current_user, :following => @user
+    # Checks if payment is set up
+    if current_user.customer_id
+      # Follows owner
+      @user = @clique.owner
+      if !is_following @user
+        follow = Follow.create :follower => current_user, :following => @user
+      end
+      # Payment stuff
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      # TODO: Refactor so that there's an actual subscription model instead of a join table
+      subscription = Stripe::Subscription.create(
+        :customer => current_user.customer_id,
+        :plan => @clique.plan_id
+      )
+      # Redirect
+      @clique.members << current_user
+      redirect_to @clique.owner
+    else
+      redirect_to payment_settings_path
     end
-    # Payment stuff
-    # Redirect
-    joined # TODO: Have a callback call this
   end
-
-  def joined
-    # Joins cliq and redirects
-    @clique.members << current_user
-    redirect_to @clique.owner
-  end
-
 
   def leave
     @clique = Cliq.find(params[:cliq_id])
