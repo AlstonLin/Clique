@@ -48,10 +48,11 @@ class CliqsController < ApplicationController
         follow = Follow.create :follower => current_user, :following => @user
       end
       # Payment stuff
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      Stripe.api_key = @clique.stripe_secret_key
       subscription = Stripe::Subscription.create(
         :customer => current_user.customer_id,
-        :plan => @clique.plan_id
+        :plan => @clique.plan_id,
+        :application_fee_percent => APPLICATION_FEE_PERCENTAGE
       )
       # Redirect
       Subscription.create(
