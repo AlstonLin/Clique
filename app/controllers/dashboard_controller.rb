@@ -30,7 +30,7 @@ class DashboardController < ApplicationController
 
   # -------------------------------- HELPERS -----------------------------------
   def get_top
-    @top_cliques = Cliq.order("members_count DESC").take TOP_CLIQUES
+    @top_cliques = Cliq.order("subscription_count DESC").take TOP_CLIQUES
     @top_tracks = Track.order("favourites_count DESC").take TOP_TRACKS
   end
 
@@ -44,7 +44,7 @@ class DashboardController < ApplicationController
     end
 
     if current_user.clique
-      @clique_count = current_user.clique.members_count
+      @clique_count = current_user.clique.subscription_count
     end
 
     @download_count = current_user.tracks.sum(:downloads_count)

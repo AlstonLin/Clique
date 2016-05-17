@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
   has_many :notifications, :class_name => 'Notification', :foreign_key => 'user_id'
   has_many :notifications_initiated, :class_name => 'Notification', :foreign_key => 'initiator_id'
   has_many :favourites, :class_name => 'Favourite', :foreign_key => 'favouriter_id'
+  has_many :subscriptions, :class_name => 'Subscription', :foreign_key => 'subscriber_id'
   has_and_belongs_to_many :conversations, :class_name => 'Conversation', :join_table => 'conversations_users', \
     :foreign_key => :user_id, :association_foreign_key => :conversation_id
-  has_and_belongs_to_many :cliques, :class_name => 'Cliq', :uniq => true
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
@@ -104,7 +104,7 @@ class User < ActiveRecord::Base
     tracks = self.tracks.select { |t| !t.removed }
     self.following.each do |f|
       following = f.following
-      if following.clique && following.clique.members.include?(self)
+      if following.clique && following.clique.is_subscribed?(self)
         tracks = tracks + filter_clique_only(following.tracks, nil)
       else
         tracks = tracks + filter_clique_only(following.tracks, false)
@@ -119,7 +119,7 @@ class User < ActiveRecord::Base
     posts = self.posts.select { |p| !p.removed }
     self.following.each do |f|
       following = f.following
-      if following.clique && following.clique.members.include?(self)
+      if following.clique && following.clique.is_subscribed?(self)
         posts = posts + filter_clique_only(following.posts, nil)
       else
         posts = posts + filter_clique_only(following.posts, false)

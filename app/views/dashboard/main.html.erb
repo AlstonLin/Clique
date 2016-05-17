@@ -30,7 +30,7 @@
               <% @top_cliques.each do |cliq| %>
                 <%= link_to cliq.owner, :class => "list-group-item" do %>
                   <span class="list-group-progress" style="width: 62.4%;"></span>
-                  <span class="pull-right text-muted"><%= cliq.members_count %></span>
+                  <span class="pull-right text-muted"><%= cliq.subscription_count %></span>
                   <%= cliq.name %>
                 <% end %>
               <% end %>

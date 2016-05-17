@@ -59,7 +59,7 @@
   <% end %>
   <!-- Clique-->
   <% if @user.clique %>
-    <% if current_user.cliques.include? user.clique %>
+    <% if user.clique.is_subscribed?(current_user) %>
       <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
           <%= link_to "Clique", user_clique_path(user), :method => :get %>
       </div>

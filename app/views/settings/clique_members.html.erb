@@ -10,8 +10,8 @@
             </div>
           </div>
           <div class="panel-body">
-            <% @clique.members.each do |m| %>
-              <%= render :partial => 'home/artist_tile', :locals => { :artist => m } %>
+            <% @clique.subscriptions.each do |s| %>
+              <%= render :partial => 'home/artist_tile', :locals => { :artist => s.subscriber } %>
             <% end %>
           </div>
 	  		</div>

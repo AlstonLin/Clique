@@ -3,7 +3,7 @@ class Cliq < ActiveRecord::Base
   after_create :generate_name
   # Relationships
   belongs_to :owner, :class_name => 'User'
-  has_and_belongs_to_many :members, :class_name => 'User', :uniq => true
+  has_many :subscriptions, :class_name => 'Subscription'
   # Validations
   validates :owner, :presence => true
   # validates :price, :presence => true
@@ -16,5 +16,9 @@ class Cliq < ActiveRecord::Base
 
   def plan_id
     "#{self.created_at.to_s(:number)}-#{self.id}"
+  end
+
+  def is_subscribed?(user)
+    Subscription.where(:subscriber => user).where(:clique => self).count > 0
   end
 end

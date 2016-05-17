@@ -57,9 +57,8 @@ Rails.application.routes.draw do
     post 'load_modal'
   end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
-    get 'join'
-    get 'joined'
-    get 'leave'
+    post 'join'
+    post 'leave'
   end
   resources :messages, :only => [:index, :new, :create]
   resources :conversations, :only => [:show]

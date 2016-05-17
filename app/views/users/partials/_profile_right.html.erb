@@ -35,14 +35,14 @@
     <div class="rightBlock-Body">
        <%= user.clique.description %>
     </div>
-    <% if current_user.cliques.include? user.clique %>
-      <%= link_to cliq_leave_path(user.clique) do %>
+    <% if user.clique.is_subscribed?(current_user) %>
+      <%= button_to cliq_leave_path(user.clique), :method => :post do %>
         <div class="right-Clique-Btn">
           Leave Clique
         </div>
       <% end %>
     <% else %>
-      <%= link_to cliq_join_path(user.clique) do %>
+      <%= button_to cliq_join_path(user.clique), :method => :post do %>
         <div class="right-Clique-Btn">
           Join Clique
         </div>

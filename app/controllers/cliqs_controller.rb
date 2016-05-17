@@ -32,14 +32,14 @@ class CliqsController < ApplicationController
       end
     end
   end
-
+``
   def show
     @clique = Cliq.find(params[:id])
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def join
     @clique = Cliq.find(params[:cliq_id])
-    raise "Already in Clique" if current_user.cliques.include? @clique
+    raise "Already in Clique" if @clique.is_subscribed?(current_user)
     # Checks if payment is set up
     if current_user.customer_id
       # Follows owner
@@ -55,7 +55,11 @@ class CliqsController < ApplicationController
         :plan => @clique.plan_id
       )
       # Redirect
-      @clique.members << current_user
+      Subscription.create(
+        :subscriber => current_user,
+        :clique => @clique,
+        :stripe_id => subscription.id
+      )
       redirect_to @clique.owner
     else
       redirect_to payment_settings_path
@@ -66,7 +70,7 @@ class CliqsController < ApplicationController
     @clique = Cliq.find(params[:cliq_id])
     # Payment stuff
     # Removes and redirects
-    @clique.members.delete(current_user)
+    Subscription.where(:subscriber => current_user).where(:clique => @clique).destroy_all()
     redirect_to @clique.owner
   end
 

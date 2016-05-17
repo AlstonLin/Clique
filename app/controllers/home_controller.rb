@@ -42,9 +42,9 @@ class HomeController < ApplicationController
 
   def cliques
     @content = []
-    current_user.cliques.each do |c|
-      @content = @content + c.owner.get_posts(true)
-      @content = @content + c.owner.get_tracks(true)
+    current_user.subscriptions.each do |s|
+      @content = @content + s.clique.owner.get_posts(true)
+      @content = @content + s.clique.owner.get_tracks(true)
     end
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @content = @content.first(MAX_ITEMS)
@@ -60,7 +60,7 @@ class HomeController < ApplicationController
     index
     render :action => :index
   end
-  
+
   def notifications
   end
 
