@@ -9,6 +9,27 @@
           <div class="panel-body">
             <% if current_user.subscriptions.count == 0 %>
               You're not in any Cliques!
+            <% else %>
+              <table class="table" data-sort="table">
+                <thead>
+                  <tr>
+                    <th>Subscription ID</th>
+                    <th>Cliq Name</th>
+                    <th>Artist</th>
+                    <th>Joined</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @subscriptions.each do |s| %>
+                    <tr>
+                      <td><%= s.id %></td>
+                      <td><%= s.clique.name %></td>
+                      <td><%= link_to s.clique.owner.name, s.clique.owner %></td>
+                      <td><%= s.created_at.strftime("%m/%d/%Y") %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             <% end %>
           </div>
         </div>

@@ -49,7 +49,6 @@ class CliqsController < ApplicationController
       end
       # Payment stuff
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-      # TODO: Refactor so that there's an actual subscription model instead of a join table
       subscription = Stripe::Subscription.create(
         :customer => current_user.customer_id,
         :plan => @clique.plan_id

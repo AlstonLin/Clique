@@ -34,6 +34,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       :amount => CLIQ_SUBSCRIPTION_COST,
       :interval => "month",
       :name => @clique.name,
+      :statement_descriptor => "#{@clique.name.gsub /\'/, ''}",
       :currency => "usd",
       :id => @clique.plan_id
     )

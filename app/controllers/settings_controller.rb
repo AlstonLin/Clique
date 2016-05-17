@@ -20,6 +20,7 @@ class SettingsController < ApplicationController
   end
 
   def orders
+    @subscriptions = current_user.subscriptions
   end
 
   def edit_clique

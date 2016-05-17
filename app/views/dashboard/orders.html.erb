@@ -6,7 +6,7 @@
         <div class="dashhead">
           <div class="dashhead-titles">
             <h6 class="dashhead-subtitle">Dashboards</h6>
-            <h2 class="dashhead-title">Your Orders</h2>
+            <h2 class="dashhead-title">Payments</h2>
           </div>
         </div>
 
@@ -15,7 +15,6 @@
             <table class="table" data-sort="table">
               <thead>
                 <tr>
-                  <th><input type="checkbox" class="select-all" id="selectAll"></th>
                   <th>Payment ID</th>
                   <th>Description</th>
                   <th>Date</th>
@@ -23,12 +22,14 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr>
-                  <td>#10001</td>
-                  <td>Someone's Clique</td>
-                  <td>01/01/2015</td>
-                  <td>$200.00</td>
-                </tr> -->
+                <% @charges.each do |c|%>
+                  <tr>
+                    <td><%= c.id %></td>
+                    <td><%= c.statement_descriptor %></td>
+                    <td><%= Time.at(c.created).strftime("%m/%d/%Y")  %></td>
+                    <td>$<%= c.amount / 100 %></td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
           </div>

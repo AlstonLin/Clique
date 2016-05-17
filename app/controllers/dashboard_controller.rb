@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
   TOP_CLIQUES = 10
   TOP_TRACKS = 10
+  MAX_CHARGES_SHOWN = 25
 
   def main
     @partial = "yearly"
@@ -26,6 +27,13 @@ class DashboardController < ApplicationController
   end
 
   def orders
+    if current_user.customer_id
+      charges = Stripe::Charge.list(:customer => current_user.customer_id,
+      :limit => MAX_CHARGES_SHOWN)
+      @charges = charges.data
+    else
+      @charges = []
+    end
   end
 
   # -------------------------------- HELPERS -----------------------------------
