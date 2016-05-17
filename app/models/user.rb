@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
     content = self.tracks.select { |t| !t.removed} + self.posts.select { |p| !p.removed }
     self.following.each do |f|
       following = f.following
-      if following.clique && following.clique.members.include?(self)
+      if following.clique && following.clique.is_subscribed?(self)
         content = content + filter_clique_only(following.posts + following.tracks, nil)
       else
         content = content + filter_clique_only(following.posts + following.tracks, false)

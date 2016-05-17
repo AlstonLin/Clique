@@ -68,9 +68,14 @@ class CliqsController < ApplicationController
 
   def leave
     @clique = Cliq.find(params[:cliq_id])
+    subscriptions = Subscription.where(:subscriber => current_user).where(:clique => @clique)
     # Payment stuff
+    subscriptions.each do |s|
+      sub = Stripe::Subscription.retrieve(s.stripe_id)
+      sub.delete
+    end
     # Removes and redirects
-    Subscription.where(:subscriber => current_user).where(:clique => @clique).destroy_all()
+    subscriptions.destroy_all
     redirect_to @clique.owner
   end
 
