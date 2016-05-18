@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517001117) do
+ActiveRecord::Schema.define(version: 20160518011028) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "customer_id"
@@ -107,11 +107,12 @@ ActiveRecord::Schema.define(version: 20160517001117) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
-    t.boolean  "clique_only", default: false
-    t.boolean  "removed",     default: false
+    t.boolean  "clique_only",      default: false
+    t.boolean  "removed",          default: false
     t.integer  "owner_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "favourites_count", default: 0
   end
 
   create_table "posts_users", id: false, force: :cascade do |t|

@@ -1,4 +1,5 @@
 <li class="media list-group-item p-a post-modal">
+  <!--- Poster Header -->
   <%= link_to "", post_load_modal_path(post), :remote => true, :method => :post, :class => "comments-link" %>
   <%= link_to post.owner, :class => "media-left over-comments-link" do %>
     <%= image_tag post.owner.profile_picture_url, :class => "media-object img-circle" %>
@@ -6,18 +7,26 @@
   <div class="media-body">
     <div class="media-body-text">
       <div class="media-heading">
-       <% if has_favourited post %>
-        <small class="pull-right redclass">
-        <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= post.favourites.count %></small>
-      <% else %>
-        <small class="pull-right text-muted">
-        <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= post.favourites.count %></small>
-      <% end %>
-      <%= yield :title %>
+        <!-- Favourite Count-->
+        <% if has_favourited post %>
+          <small class="pull-right redclass">
+          <span class="glyphicon glyphicon-heart glyphicon-small redclass" aria-hidden="true"></span> <%= post.favourites.count %></small>
+        <% else %>
+          <small class="pull-right text-muted">
+          <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= post.favourites.count %></small>
+        <% end %>
+        <!-- Repost Count-->
+        <% if has_reposted_post post %>
+          <small class="pull-right greenclass">
+          <span class="glyphicon glyphicon-refresh glyphicon-small greenclass" aria-hidden="true"></span><%= post.reposts.count %></small>
+        <% else %>
+          <small class="pull-right text-muted">
+          <span class="glyphicon glyphicon-refresh glyphicon-small" aria-hidden="true"></span> <%= post.reposts.count %></small>
+        <% end %>
+        <%= yield :title %>
       </div>
-      <p>
-        <%= show_mentions(post.content, post.mentions).html_safe %>
-      </p>
+      <!-- Post Content -->
+      <p><%= show_mentions(post.content, post.mentions).html_safe %></p>
     </div>
     <% if current_user %>
       <div class="button-popup ">

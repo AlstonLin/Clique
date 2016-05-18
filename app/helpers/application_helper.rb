@@ -30,4 +30,12 @@ module ApplicationHelper
   def has_favourited(favouritable)
     Favourite.where(:favouritable => favouritable, :favouriter => current_user).count > 0
   end
+
+  def has_reposted_track(track)
+    Retrack.where(:reposter => current_user, :track => track).count > 0
+  end
+
+  def has_reposted_post(post)
+    Repost.where(:reposter => current_user, :post => post).count > 0
+  end
 end

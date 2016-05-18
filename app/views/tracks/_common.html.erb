@@ -1,4 +1,5 @@
 <li class="media list-group-item p-a post-modal">
+  <!-- Poster Header -->
   <%= link_to "", track_load_modal_path(track), :remote => true, :method => :post, :class => "comments-link" %>
   <%= link_to track.owner, :class => "media-left over-comments-link" do %>
     <%= image_tag track.owner.profile_picture_url, :class => "media-object img-circle" %>
@@ -13,12 +14,17 @@
         <small class="pull-right text-muted">
         <span class="glyphicon glyphicon-heart glyphicon-small" aria-hidden="true"></span> <%= track.favourites.count %></small>
       <% end %>
-      <!--<small class="pull-right text-muted">
-        <span class="glyphicon glyphicon-play glyphicon-small" aria-hidden="true"></span> 10
-      </small>-->
+      <!-- Repost Count-->
+      <% if has_reposted_track track %>
+        <small class="pull-right greenclass">
+        <span class="glyphicon glyphicon-refresh glyphicon-small greenclass" aria-hidden="true"></span><%= track.retracks.count %></small>
+      <% else %>
+        <small class="pull-right text-muted">
+        <span class="glyphicon glyphicon-refresh glyphicon-small" aria-hidden="true"></span> <%= track.retracks.count %></small>
+      <% end %>
       <%= yield :title %>
     </div>
-
+    <!-- Player -->
     <div class="media-body-inline-grid" data-grid="images">
       <div class="post-track" style="background-image: url(<%= track.get_pic_url %>);">
         <div class="track-progress-box hide">
