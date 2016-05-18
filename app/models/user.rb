@@ -148,8 +148,10 @@ class User < ActiveRecord::Base
     end
 
     def generate_username
-      self.username = self.first_name + self.last_name + self.id.to_s
-      self.save
+      if !self.username
+        self.username = self.first_name + self.last_name + self.id.to_s
+        self.save
+      end
     end
 
     def default_values
