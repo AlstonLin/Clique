@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
     @content = get_all_content
     @partial = "all"
+    @show_right = true
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def message

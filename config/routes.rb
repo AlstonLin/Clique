@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   end
   # Home Page routes
   get "home" => "home#index"
-  get "payment" => "home#payment"
   get "all" => "home#all"
   get "explore" => "home#explore"
   get "tracks" => "home#tracks"
@@ -57,6 +56,7 @@ Rails.application.routes.draw do
     post 'load_modal'
   end
   resources :cliqs, :only => [:create, :update], :path => 'clique' do
+    get 'payment'
     post 'join'
     post 'leave'
   end

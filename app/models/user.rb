@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   MAX_ITEMS = 20
   after_initialize :default_values
-  after_create :generate_username
   after_commit :generate_urls
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
@@ -39,7 +38,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :profile_picture_url, presence: true
   validates :cover_picture_url, presence: true
-  validates :username, :uniqueness => {:case_sensitive => false}, presence: false
+  validates :username, :uniqueness => {:case_sensitive => false}, presence: true
   validates_attachment_size :profile_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_size :cover_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
@@ -80,8 +79,8 @@ class User < ActiveRecord::Base
     return tracks.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
   end
 
-  def get_favorites
-    return self.favourites.select { |f| !f.removed }.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(MAX_ITEMS)
+  def get_favorites(limit=MAX_ITEMS)
+    return self.favourites.select { |f| !f.favouritable.removed }.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}.first(limit).map(&:favouritable)
   end
 
   def get_following_all
@@ -145,13 +144,6 @@ class User < ActiveRecord::Base
 
     def filter_clique_only_retracks(retracks, clique_only)
       return retracks.select{ |e| !e.track.removed && (clique_only == nil || e.track.clique_only == clique_only) }
-    end
-
-    def generate_username
-      if !self.username
-        self.username = self.first_name + self.last_name + self.id.to_s
-        self.save
-      end
     end
 
     def default_values

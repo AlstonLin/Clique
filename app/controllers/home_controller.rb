@@ -55,7 +55,7 @@ class HomeController < ApplicationController
   end
 
   def favorites
-    @content = current_user.get_favorites
+    @content = current_user.get_favorites MAX_ITEMS
     session[:partial] = "favorites"
     index
     render :action => :index
@@ -63,10 +63,6 @@ class HomeController < ApplicationController
 
   def notifications
   end
-
-  def payment
-  end
-
 
   # -------------------- EXTERNALIZED FUNCTIONS --------------------------------
   private
