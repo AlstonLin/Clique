@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     @partial = "all"
     @user = User.find_by_username(params[:user_id])
     @content = get_all_content
+    @show_right = true
     render :action => :show
   end
 
@@ -73,6 +74,7 @@ class UsersController < ApplicationController
     @content = @user.get_tracks(true) + @user.get_posts(true)
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @partial = "clique"
+    @show_right = true
     render :action => :show
   end
 
@@ -80,6 +82,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     @tracks = @user.get_tracks(false)
     @partial = "tracks"
+    @show_right = true
     render :action => :show
   end
 
@@ -87,6 +90,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     @followers = @user.followers
     @partial = "followers"
+    @show_right = false
     render :action => :show
   end
 
@@ -94,6 +98,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     @following = @user.following
     @partial = "following"
+    @show_right = false
     render :action => :show
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------

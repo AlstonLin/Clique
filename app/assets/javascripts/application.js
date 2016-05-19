@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.pjax
 //= require bootstrap-sprockets
+//= require social-share-button
 //= require_tree .
 
 $(function() {
