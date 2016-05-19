@@ -60,7 +60,7 @@
   <% if @favorites.count > 0 %>
     <div class="panel panel-default m-b-md hidden-xs">
       <div class="panel-body">
-        <h5 class="m-t-0">Favorites  <small>· <%= link_to "See more", favorites_path, :id=>"FavSeeMore",:method => :get, :remote => true %></small></h5>
+        <h5 class="m-t-0">Favorites  <small>· <%= link_to "See more", favorites_path, :id=>"FavSeeMore", :remote => true %></small></h5>
         <ul class="media-list media-list-stream">
           <% @favorites.each do |f| %>
             <li class="media m-b">
@@ -73,7 +73,7 @@
                 <% end %>
                 <%= f.owner.name %>
                 <div class="media-body-actions">
-                  <%= button_to f, :class => "btn btn-primary-outline btn-sm", :method => :get do %>
+                  <%= button_to f, :class => "btn btn-primary-outline btn-sm" do %>
                     <span class="fa fa-add-user"></span> View
                   <% end %>
                 </div>

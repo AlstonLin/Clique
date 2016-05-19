@@ -1,50 +1,41 @@
 <!-- Content Filters -->
-<%= link_to user_all_path(user), :method => :get do %>
+<%= link_to user_all_path(user) do %>
   <div class="<%= @partial == 'all' ? 'stats2 stats-active' : 'stats2' %>">
     All Stream
   </div>
 <% end %>
-<%= link_to user_posts_path(user), :method => :get do %>
+<%= link_to user_posts_path(user) do %>
   <div class="<%= @partial == 'posts' ? 'stats2 stats-active' : 'stats2' %>">
     Posts
   </div>
 <% end %>
-<%= link_to user_tracks_path(user), :method => :get do %>
+<%= link_to user_tracks_path(user) do %>
   <div class="<%= @partial == 'tracks' ? 'stats2 stats-active' : 'stats2' %>">
     Tracks
   </div>
 <% end %>
-<%# button_to "Reposts", user_reposts_path(user), :method => :get, :remote => true %>
 <!-- Own profile -->
 <% if @user == current_user %>
   <% if @user.clique %>
-    <%= link_to user_clique_path(user), :method => :get do %>
+    <%= link_to user_clique_path(user) do %>
       <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
         Clique
       </div>
     <% end %>
   <% end %>
-  <%= link_to user_followers_path(user), :method => :get do %>
+  <%= link_to user_followers_path(user) do %>
     <div class="<%= @partial == 'followers' ? 'stats2 stats-active' : 'stats2' %>">
       Followers
     </div>
   <% end %>
-  <%= link_to user_following_path(user), :method => :get do %>
+  <%= link_to user_following_path(user) do %>
     <div class="<%= @partial == 'following' ? 'stats2 stats-active' : 'stats2' %>">
       Following
     </div>
   <% end %>
   <div class="edit-Profile">
-    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn m-r-5"  %>
+    <%= button_to "Edit Profile", edit_profile_path, :class => "btn-hollow btn m-r-5"  %>
   </div>
-
-
-  <% if !@user.clique %>
-    <!--<%= button_to "Create Clique", clique_settings_path, :method => :get, :class => "button btn btn-info btn-lg btn-primary btn" %>-->
-  <% end %>
-
-
-
 <% elsif current_user %>
 <!-- Others profile -->
   <!-- Follow -->
@@ -55,13 +46,13 @@
   <% end %>
 
   <% if is_following current_user, @user %>
-    <%= button_to "Message", user_message_path(user), :method => :get, :remote => true, :class => "btn-hollow btn "  %>
+    <%= link_to "Message", user_message_path(user), :remote => true, :class => "btn-hollow btn "  %>
   <% end %>
   <!-- Clique-->
   <% if @user.clique %>
     <% if user.clique.is_subscribed?(current_user) %>
       <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
-          <%= link_to "Clique", user_clique_path(user), :method => :get %>
+          <%= link_to "Clique", user_clique_path(user) %>
       </div>
     <% end %>
   <% end %>

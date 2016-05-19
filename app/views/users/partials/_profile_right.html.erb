@@ -42,7 +42,7 @@
         </div>
       <% end %>
     <% else %>
-      <%= link_to cliq_payment_path(user.clique), :method => :get do %>
+      <%= link_to cliq_payment_path(user.clique) do %>
         <div class="right-Clique-Btn">
           Join Clique
         </div>
@@ -51,7 +51,7 @@
   </div>
 <% elsif user == current_user && !user.clique %>
   <div class="rightBlock">
-    <%= link_to clique_settings_path, :method => :get do %>
+    <%= link_to clique_settings_path do %>
       <div class="right-Clique-Btn">
         Create your clique
       </div>
