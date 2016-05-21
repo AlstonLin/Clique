@@ -32,19 +32,12 @@ class SettingsController < ApplicationController
   def edit_profile
   end
 
-  def orders
-    @subscriptions = current_user.subscriptions
-  end
-
   def edit_clique
     @clique = current_user.clique
   end
 
   def clique_members
     @clique = current_user.clique
-  end
-
-  def clique_orders
   end
 
   def clique_settings

@@ -9,35 +9,17 @@
         <li class="<%= partial == 'orders' ? 'active' : '' %>">
           <%= link_to "Payments", dashboard_orders_path, :class => 'menu-item' %>
         </li>
-        <!-- <li >
-          <a href="order-history/index.html">Cliq</a>
+        <li class="<%= partial == 'subscriptions' ? 'active' : '' %>">
+          <%= link_to "Subscriptions", dashboard_subscriptions_path, :class => 'menu-item' %>
         </li>
-        <li>
-          <a href="fluid/index.html">Orders</a>
+        <% if current_user.clique %>
+          <li class="<%= partial == 'subscribers' ? 'active' : '' %>">
+            <%= link_to "Subscribers", dashboard_subscribers_path, :class => 'menu-item' %>
+          </li>
+        <% end %>
+        <li class="<%= partial == 'account' ? 'active' : '' %>">
+          <%= link_to "Account", dashboard_account_path, :class => 'menu-item' %>
         </li>
-        <li>
-          <a href="icon-nav/index.html">Profile</a>
-        </li>
-
-        <li class="nav-header">Settings</li>
-        <li>
-          <a href="docs/index.html">
-            Account
-          </a>
-        </li>
-        <li>
-          <a href="http://getbootstrap.com" target="blank">
-            Password
-          </a>
-        </li>
-        <li >
-          <a href="light/index.html">Notifications</a>
-        </li>
-        <li>
-          <a href="#docsModal" data-toggle="modal">
-            Payments
-          </a>
-        </li> -->
       </ul>
       <hr class="visible-xs m-t">
     </div>

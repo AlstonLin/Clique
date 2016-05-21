@@ -23,6 +23,7 @@ class CliqsController < ApplicationController
 
   def update
     @clique = Cliq.find(params[:id])
+    @clique.update_attributes(clique_params)
     # Response
     respond_to do |format|
       format.js { render 'shared/reload.js.erb' }

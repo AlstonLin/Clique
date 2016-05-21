@@ -1,0 +1,34 @@
+<div class="dashboard">
+  <div class="container">
+    <div class="row">
+      <%= render :partial => "side_bar", :locals => { :partial => "account" } %>
+      <div class="col-sm-9 content">
+        <div class="dashhead">
+          <div class="dashhead-titles">
+            <h6 class="dashhead-subtitle">Dashboards</h6>
+            <h2 class="dashhead-title">Account</h2>
+          </div>
+        </div>
+
+				<div class="row">
+			    <div class="panel panel-default" id="content">
+	            <div class="panel-heading panel-heading-no-bottom">
+								<%= link_to "Edit Profile", edit_profile_path, :class => "settings-tabs" %>
+                <% if !current_user.uid %>
+	                <%= link_to "Change Password", change_password_path, :class => "settings-tabs1" %>
+	              <% end %>
+								<%= link_to "Payment Settings", payment_settings_path, :class => "settings-tabs" %>
+								<%= link_to "Clique", clique_settings_path, :class => "settings-tabs" %>
+	            </div>
+							<% if @partial == "change_password" %>
+								<%= render :template => "passwords/edit", :locals => { :resource => current_user, :resource_name => "user" } %>
+							<% else %>
+								<%= render :partial => @partial %>
+							<% end %>
+					</div>
+				</div>
+
+      </div>
+    </div>
+  </div>
+</div>

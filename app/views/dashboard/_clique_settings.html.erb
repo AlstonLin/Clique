@@ -1,0 +1,9 @@
+<% if @clique.valid? %>
+  <% if @clique.stripe_publishable_key %>
+    <%= render :partial => "edit_clique" %>
+  <% else %>
+    <%= render :partial => "setup_stripe" %>
+  <% end %>
+<% else %>
+  <%= render :partial => "create_clique" %>
+<% end %>

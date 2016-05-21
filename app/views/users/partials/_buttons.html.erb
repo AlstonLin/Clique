@@ -34,7 +34,7 @@
     </div>
   <% end %>
   <div class="edit-Profile">
-    <%= button_to "Edit Profile", edit_profile_path, :class => "btn-hollow btn m-r-5"  %>
+    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn m-r-5"  %>
   </div>
 <% elsif current_user %>
 <!-- Others profile -->
@@ -52,7 +52,7 @@
   <% if @user.clique %>
     <% if user.clique.is_subscribed?(current_user) %>
       <div class="<%= @partial == 'clique' ? 'stats2 stats-active' : 'stats2' %>">
-          <%= link_to "Clique", user_clique_path(user) %>
+        <%= link_to "Clique", user_clique_path(user) %>
       </div>
     <% end %>
   <% end %>

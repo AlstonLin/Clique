@@ -1,11 +1,5 @@
-<div class="panel-heading panel-heading-no-bottom">
-  <div class="row" style="overflow: auto;">
-    <%= link_to "Edit Clique", clique_settings_path, :class => "settings-tabs1" %>
-    <%= link_to "Clique Members", clique_members_path, :class => "settings-tabs" %>
-  </div>
-</div>
 <div class="panel-body">
-  <%= form_for clique, :remote => true do |f| %>
+  <%= form_for @clique, :remote => true do |f| %>
     <%= f.label :name, "Clique Name" %>
     <%= f.text_field :name, :class => "form-control" %><br>
     <!-- <%= f.label :price, "Monthly Subscription Price " %>

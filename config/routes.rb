@@ -14,23 +14,20 @@ Rails.application.routes.draw do
   get "posts" => "home#posts"
   get "cliques" => "home#cliques"
   get "favorites" => "home#favorites"
-  # Settings routes
-  get 'settings' => 'settings#account_settings'
-  get 'change_password' => 'settings#account_settings'
-  get 'payment_settings' => 'settings#payment_settings'
-  get 'clique_settings' => 'settings#clique_settings'
-  get 'edit_profile' => 'settings#edit_profile'
-  get 'orders' => 'settings#orders'
-  get 'edit_clique' => 'settings#edit_clique'
-  get 'clique_members' => 'settings#clique_members'
-  post 'setup_payment' => 'settings#setup_payment'
   # Dashboard routes
   get "dashboard" => "dashboard#main"
   get "dashboard_monthly" => "dashboard#monthly", :path => 'dashboard/monthly'
   get "dashboard_daily" => "dashboard#daily", :path => 'dashboard/daily'
   get "dashboard_tracks" => "dashboard#tracks", :path => 'dashboard/tracks'
   get "dashboard_orders" => "dashboard#orders", :path => 'dashboard/orders'
-
+  get "dashboard_subscriptions" => "dashboard#subscriptions", :path => 'dashboard/subscriptions'
+  get "dashboard_subscribers" => "dashboard#subscribers", :path => 'dashboard/subscribers'
+  get 'dashboard_account' => 'dashboard#account', :path => 'dashboard/account'
+  get 'edit_profile' => 'dashboard#edit_profile', :path => 'dashboard/account'
+  get 'change_password' => 'dashboard#change_password'
+  get 'payment_settings' => 'dashboard#payment_settings'
+  get 'clique_settings' => 'dashboard#clique_settings'
+  post 'setup_payment' => 'dashboard#setup_payment'
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'

@@ -1,0 +1,39 @@
+<div class="dashboard">
+  <div class="container">
+    <div class="row">
+      <%= render :partial => "side_bar", :locals => { :partial => "subscribers" } %>
+      <div class="col-sm-9 content">
+        <div class="dashhead">
+          <div class="dashhead-titles">
+            <h6 class="dashhead-subtitle">Dashboards</h6>
+            <h2 class="dashhead-title">Subscribers</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <table class="table" data-sort="table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Date Subscribed</th>
+                <th>Total Paid</th>
+                <th>Next Payment Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @subscriptions.each do |s| %>
+                <tr>
+                  <td><%= s[:model].subscriber.username %></td>
+                  <td><%= s[:model].created_at.strftime("%m/%d/%Y") %></td>
+                  <td>$<%= s[:stripe].plan.amount * ((Time.now - s[:model].created_at) / 1.month + 1).floor / 100 %></td>
+                  <td><%= Time.at(s[:stripe].current_period_end).strftime("%m/%d/%Y") %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
