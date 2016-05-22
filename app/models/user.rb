@@ -1,3 +1,5 @@
+include ApplicationHelper
+
 class User < ActiveRecord::Base
   MAX_ITEMS = 20
   after_initialize :default_values
@@ -52,8 +54,7 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.password = Devise.friendly_token[0,20]
-      user.profile_picture_url = auth.info.image
-      # user.skip_confirmation!
+      user.profile_picture_url = convert_to_https(auth.info.image)
     end
   end
 
