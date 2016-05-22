@@ -27,10 +27,12 @@ class User < ActiveRecord::Base
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" },
+                  :s3_protocol => :https
   has_attached_file :cover_picture, :styles => { small: "640x480", med: "1280x720", large: "1920x1080",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" },
+                  :s3_protocol => :https
   # Auth
   devise :omniauthable, :database_authenticatable, :registerable, \
   :recoverable, :rememberable, :trackable, :validatable, :lockable,
