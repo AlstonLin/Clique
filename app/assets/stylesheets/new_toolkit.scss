@@ -3535,7 +3535,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-bottom: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   margin-bottom: 7px;
-  margin-top: 7px;  
+  margin-top: 7px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -6503,8 +6503,8 @@ fieldset[disabled] .btn-danger-outline.active {
 
 @font-face {
   font-family: "toolkit-entypo";
-  src: url('../fonts/toolkit-entypo.eot');
-  src: url('../fonts/toolkit-entypo.eot?#iefix') format('eot'), url('../fonts/toolkit-entypo.woff2') format('woff2'), url('../fonts/toolkit-entypo.woff') format('woff'), url('../fonts/toolkit-entypo.ttf') format('truetype');
+  src: font-url('toolkit-entypo.eot');
+  src: font-url('toolkit-entypo.eot?#iefix') format('eot'), font-url('toolkit-entypo.woff2') format('woff2'), font-url('toolkit-entypo.woff') format('woff'), font-url('toolkit-entypo.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
