@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_filter :strict_transport_security
+
+  # HSTS
+  def strict_transport_security
+    if request.ssl?
+      response.headers['Strict-Transport-Security'] = "max-age=31536000; includeSubDomains"
+    end
+  end
 
   def comment_form_id(commentable)
     return "#{commentable.class.name}-comment-form#{commentable.id}"
