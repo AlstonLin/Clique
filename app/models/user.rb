@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   MAX_ITEMS = 20
   after_initialize :default_values
   after_commit :generate_urls
+  after_create :generate_username
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
   has_many :downloaded, :class_name => 'Download', :foreign_key => 'downloader_id'
@@ -38,7 +39,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :profile_picture_url, presence: true
   validates :cover_picture_url, presence: true
-  validates :username, :uniqueness => {:case_sensitive => false}, presence: true
+  validates :username, :uniqueness => {:case_sensitive => false}, presence: false
   validates_attachment_size :profile_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_size :cover_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
@@ -152,6 +153,13 @@ class User < ActiveRecord::Base
       end
       if !self.cover_picture_url
         self.cover_picture_url = ActionController::Base.helpers.asset_path("default-cover.png")
+      end
+    end
+
+    def generate_username
+      if !self.username
+        self.username = self.first_name + self.last_name + self.id.to_s
+        self.save
       end
     end
 

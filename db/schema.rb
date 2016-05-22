@@ -115,11 +115,6 @@ ActiveRecord::Schema.define(version: 20160518011028) do
     t.integer  "favourites_count", default: 0
   end
 
-  create_table "posts_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-  end
-
   create_table "reposts", force: :cascade do |t|
     t.integer  "reposter_id"
     t.integer  "post_id"
