@@ -87,6 +87,7 @@ class DashboardController < ApplicationController
     # Resets the redirect session var
     redirect = session[:payment_setup_redirect]
     session[:payment_setup_redirect] = nil
+    raise params
     # Registers with Stripe
     customer = Stripe::Customer.create(
       :description => "Customer for User ID##{current_user.id}",
@@ -98,9 +99,12 @@ class DashboardController < ApplicationController
     # Redirects
     if redirect
       redirect_to redirect
-    else
-      redirect_to request.referer
     end
+    # Invalid Card
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+
+    redirect_to request.referer
   end
   # -------------------------------- HELPERS -----------------------------------
   def get_top
