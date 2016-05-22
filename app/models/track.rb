@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
   # Relationships
-  has_attached_file :song
-  has_attached_file :pic
+  has_attached_file :song, :s3_protocol => :https
+  has_attached_file :pic, :s3_protocol => :https
   belongs_to :owner, :class_name => 'User'
   has_many :retracks
   has_many :downloads
