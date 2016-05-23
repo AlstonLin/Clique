@@ -182,10 +182,6 @@ th {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
   a[href]:after {
     content: " (" attr(href) ")";
   }
@@ -268,20 +264,6 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-}
-a {
-  color: #1ca8dd;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  color: #137499;
-  text-decoration: underline;
-}
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
 }
 figure {
   margin: 0;
@@ -1907,12 +1889,6 @@ fieldset[disabled] .btn-link {
 .btn-link:focus,
 .btn-link:active {
   border-color: transparent;
-}
-.btn-link:hover,
-.btn-link:focus {
-  color: #137499;
-  text-decoration: underline;
-  background-color: transparent;
 }
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
@@ -4577,7 +4553,6 @@ button.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
-  padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;

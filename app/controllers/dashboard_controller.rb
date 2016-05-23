@@ -77,8 +77,9 @@ class DashboardController < ApplicationController
 
   def payment_settings
     @partial = "payment_settings"
-    if !session[:payment_setup_redirect]
-      session[:payment_setup_redirect] = payment_settings_path
+    cus_id = current_user.customer_id
+    if cus_id
+      @card = Stripe::Customer.retrieve(cus_id)[:sources][:data][0]
     end
     render :action => :account
   end
@@ -111,10 +112,7 @@ class DashboardController < ApplicationController
     current_user.country = params[:country]
     current_user.postal_code = params[:postal_code]
     current_user.save
-    # Redirects
-    if redirect
-      redirect_to redirect
-    end
+    redirect_to payment_settings_path
   end
   # -------------------------------- HELPERS -----------------------------------
   def get_top

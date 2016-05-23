@@ -23,7 +23,7 @@ $border: #dce0e0;
 $fbhover: #374F86;
 $fbblue: rgba(59, 89, 152,1);
 $dope-gray: #C6C7C7;
-$dark-primary: #F7403B;
+$dark-primary: #B83847;
 
 .comments-link {
   display: block;
@@ -557,13 +557,23 @@ position: relative;
 .right-Clique-Btn{
   width:100%;
   height:50px;
-  background-color: $primary-color;
-  color: white;
   margin-top: 10px;
   border-radius: 3px;
   text-align: center;
   line-height: 50px;
+  border:none;
+}
+
+.main-btn{
+  background-color: $primary-color;
+  color: white;
   font-weight: bold;
+  &:active{
+    background: $dark-primary;
+    outline: 0;
+    background-image: none;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
 }
 
 

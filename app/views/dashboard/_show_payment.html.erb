@@ -1,0 +1,54 @@
+<div id="payment">
+  <div class="fieldset">
+    <!-- Credit Card info -->
+    <div class="field-group field-group--has-subfields">
+      <div class="field field--required">
+        <label>Card number</label>
+        ************<%= @card[:last4] %>
+        <i class="field__icon icon icon--lock-dark has-tooltip">
+          <span class="tooltip tooltip--right-on-mobile">All transactions are secure and encrypted. Credit card information is never stored.</span>
+        </i>
+      </div>
+      <div class="field field--required">
+        <label>Expiry</label>
+        <div class="select-group">
+          <%= @card[:exp_month] %> / <%= @card[:exp_year] %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Billing Info -->
+  <h5 data-billing-address="">Billing address</h5>
+  <div class="fieldset fieldset--billing-address">
+    <div class="field-group field-group--has-subfields">
+      <!-- <div class="field field--required">
+        <%= label_tag(:first_name, "First name") %>
+        <%= text_field_tag(:first_name) %>
+      </div>
+      <div class="field field--required">
+        <%= label_tag(:last_name, "First name") %>
+        <%= text_field_tag(:last_name) %>
+      </div> -->
+      <div class="field field--required">
+        <%= label_tag :address, "Address" %>
+        <%= current_user.address %>
+      </div>
+      <div class="field field--required">
+        <%= label_tag :city, "City" %>
+        <%= current_user.city %>
+      </div>
+      <div class="field field--required">
+        <%= label_tag :country, "Country" %>
+        <%= current_user.country %>
+      </div>
+      <div class="field field--required">
+        <%= label_tag :state, "State / Province" %>
+        <%= current_user.state %>
+      </div>
+      <div class="field field--required">
+        <%= label_tag :postal_code, "ZIP / Postal code" %>
+        <%= current_user.postal_code %>
+      </div>
+    </div>
+  </div>
+</div>
