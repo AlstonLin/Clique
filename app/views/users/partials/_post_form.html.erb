@@ -2,7 +2,7 @@
   <%= form.text_area :content, :class => 'post-Input', :placeholder => "What is on your mind?" %>
   <!-- Clique Only button-->
   <% if current_user.clique %>
-    <%= form.submit "Post", :class => 'post-Btn cliq-pb' %>
+    <%= form.submit "Post", :class => 'post-Btn main-btn' %>
     <div class="floatRight">
       <%= form.label :clique_only, :class=>'clique_only-switch' do %>
         <%= form.check_box :clique_only, :class => 'switch', :name => "switcher", :data => { :state=>'true','on-text'=>'','off-text'=>''}, :'data-handle-width'=>18, :'data-label-width'=>10 %>

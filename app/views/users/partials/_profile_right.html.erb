@@ -37,13 +37,13 @@
     </div>
     <% if user.clique.is_subscribed?(current_user) %>
       <%= link_to cliq_leave_path(user.clique), :method => :post, :remote => true do %>
-        <div class="right-Clique-Btn">
+        <div class="right-Clique-Btn main-btn">
           Leave Clique
         </div>
       <% end %>
     <% else %>
       <%= link_to cliq_payment_path(user.clique) do %>
-        <div class="right-Clique-Btn">
+        <div class="right-Clique-Btn main-btn">
           Join Clique
         </div>
       <% end %>

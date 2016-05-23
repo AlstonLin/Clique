@@ -20,6 +20,10 @@ module ApplicationHelper
     return mentions.uniq
   end
 
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
+
   def show_mentions(text, mentions)
     mentions.each do |m|
       text.gsub!(/@#{m.mentioned.username}/i, link_to("@#{m.mentioned.username}", m.mentioned, :class => "stop-propagation mention-link over-comments-link"))

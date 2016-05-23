@@ -13,12 +13,12 @@
 				<div class="row">
 			    <div class="panel panel-default" id="content">
 	            <div class="panel-heading panel-heading-no-bottom">
-								<%= link_to "Edit Profile", edit_profile_path, :class => "settings-tabs" %>
+								<%= link_to "Profile", edit_profile_path, :class => "settings-tabs" %>
                 <% if !current_user.uid %>
-	                <%= link_to "Change Password", change_password_path, :class => "settings-tabs1" %>
+	                <%= link_to "Security", change_password_path, :class => "settings-tabs" %>
 	              <% end %>
-								<%= link_to "Payment Settings", payment_settings_path, :class => "settings-tabs" %>
-								<%= link_to "Clique", clique_settings_path, :class => "settings-tabs" %>
+								<%= link_to "Payment", payment_settings_path, :class => "settings-tabs" %>
+								<%= link_to "Cliq", clique_settings_path, :class => "settings-tabs" %>
 	            </div>
 							<% if @partial == "change_password" %>
 								<%= render :template => "passwords/edit", :locals => { :resource => current_user, :resource_name => "user" } %>
