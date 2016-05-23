@@ -96,9 +96,10 @@ class DashboardController < ApplicationController
       redirect_to request.referer
       return
     end
-    # Resets the redirect session var
-    redirect = session[:payment_setup_redirect]
-    session[:payment_setup_redirect] = nil
+    # If it's set up from Cliq payment
+    if params[:cliq_id]
+      @clique = Cliq.find(params[:cliq_id])
+    end
     # Registers with Stripe
     customer = Stripe::Customer.create(
       :description => "Customer for User ID##{current_user.id}",
@@ -112,7 +113,13 @@ class DashboardController < ApplicationController
     current_user.country = params[:country]
     current_user.postal_code = params[:postal_code]
     current_user.save
-    redirect_to payment_settings_path
+    # Redirect to appropriate place
+    if @clique
+      # TODO: Make this less shitty
+      join_clique @clique
+    else
+      redirect_to payment_settings_path
+    end
   end
   # -------------------------------- HELPERS -----------------------------------
   def get_top

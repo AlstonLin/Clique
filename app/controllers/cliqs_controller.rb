@@ -2,8 +2,6 @@ require "stripe"
 
 class CliqsController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
-  APPLICATION_FEE_PERCENTAGE = 10
-
   def new
     @clique = Cliq.new
   end
@@ -35,38 +33,13 @@ class CliqsController < ApplicationController
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def payment
-    # Checks if payment is set up
     @clique = Cliq.find(params[:cliq_id])
-    if !current_user.customer_id
-      session[:payment_setup_redirect] = cliq_payment_path(@clique)
-      redirect_to payment_settings_path
-    end
+    @setup = !current_user.customer_id
   end
 
   def join
     @clique = Cliq.find(params[:cliq_id])
-    raise "Already in Clique" if @clique.is_subscribed?(current_user)
-    # Follows owner
-    @user = @clique.owner
-    if !is_following @user
-      follow = Follow.create :follower => current_user, :following => @user
-    end
-    # Payment stuff
-    Stripe.api_key = @clique.stripe_secret_key
-    subscription = Stripe::Subscription.create(
-      :customer => current_user.customer_id,
-      :plan => @clique.plan_id,
-      :application_fee_percent => APPLICATION_FEE_PERCENTAGE
-    )
-    # Redirect
-    Subscription.create(
-      :subscriber => current_user,
-      :clique => @clique,
-      :stripe_id => subscription.id
-    )
-    # Sends notification to Cliq owner
-    Notification.create :notifiable => @clique, :user => @clique.owner, :initiator => current_user
-    redirect_to @clique.owner
+    join_clique @clique
   end
 
   def leave
