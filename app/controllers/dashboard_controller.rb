@@ -84,25 +84,36 @@ class DashboardController < ApplicationController
   end
 
   def setup_payment
-    if params[:stripeToken]
-      # Resets the redirect session var
-      redirect = session[:payment_setup_redirect]
-      session[:payment_setup_redirect] = nil
-      # Registers with Stripe
-      customer = Stripe::Customer.create(
-        :description => "Customer for User ID##{current_user.id}",
-        :source  => params[:stripeToken]
-      )
-      # Saves into the db
-      current_user.customer_id = customer.id
-      current_user.save
-      # Redirects
-      if redirect
-        redirect_to redirect
-      end
-    else
-      flash[:alert] = "Invalid Credit Card!"
+    # Server side validation
+    if !params[:stripeToken]
+      flash[:alert] = "Invalid credit card!"
       redirect_to request.referer
+      return
+    end
+    if params[:address].empty? || params[:city].empty? || params[:state].empty? || params[:country].empty? || params[:postal_code].empty?
+      flash[:alert] = "You're missing some information"
+      redirect_to request.referer
+      return
+    end
+    # Resets the redirect session var
+    redirect = session[:payment_setup_redirect]
+    session[:payment_setup_redirect] = nil
+    # Registers with Stripe
+    customer = Stripe::Customer.create(
+      :description => "Customer for User ID##{current_user.id}",
+      :source  => params[:stripeToken]
+    )
+    # Saves info to db
+    current_user.customer_id = customer.id
+    current_user.address = params[:address]
+    current_user.city = params[:city]
+    current_user.state = params[:state]
+    current_user.country = params[:country]
+    current_user.postal_code = params[:postal_code]
+    current_user.save
+    # Redirects
+    if redirect
+      redirect_to redirect
     end
   end
   # -------------------------------- HELPERS -----------------------------------

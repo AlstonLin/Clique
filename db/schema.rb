@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518011028) do
+ActiveRecord::Schema.define(version: 20160523170015) do
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "customer_id"
@@ -178,7 +178,6 @@ ActiveRecord::Schema.define(version: 20160518011028) do
     t.string   "cover_picture_url"
     t.string   "profile_picture_url"
     t.text     "bio"
-    t.string   "location"
     t.string   "address"
     t.string   "city"
     t.string   "country"
@@ -205,6 +204,8 @@ ActiveRecord::Schema.define(version: 20160518011028) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "preapprovalKey"
+    t.string   "state"
+    t.string   "postal_code"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

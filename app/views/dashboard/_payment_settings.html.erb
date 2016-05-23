@@ -2,6 +2,28 @@
 	<% if !current_user.customer_id %>
 		<%= form_tag setup_payment_path, :id => "payment-form" do %>
 		  <span class="payment-errors"></span>
+			<h2>Billing Address</h2>
+			<div class="form-row">
+				<%= label_tag(:address, "Address") %>
+				<%= text_field_tag(:address) %>
+			</div>
+			<div class="form-row">
+				<%= label_tag(:city, "City") %>
+				<%= text_field_tag(:city) %>
+			</div>
+			<div class="form-row">
+				<%= label_tag(:state, "State / Province") %>
+				<%= text_field_tag(:state) %>
+			</div>
+			<div class="form-row">
+				<%= label_tag(:country, "Country") %>
+				<%= text_field_tag(:country) %>
+			</div>
+			<div class="form-row">
+				<%= label_tag(:postal_code, "ZIP / Postal Code") %>
+				<%= text_field_tag(:postal_code) %>
+			</div>
+			<h2>Credit Card</h2>
 		  <div class="form-row">
 		    <label>
 		      <span>Card Number</span>
@@ -22,7 +44,7 @@
 		      <input type="text" size="4" data-stripe="cvc">
 		    </label>
 		  </div>
-		  <input type="submit" class="submit" value="Add Credit Card">
+		  <input type="submit" class="submit" value="Save Payment Information">
 		<% end %>
 	<% end %>
 </div>
