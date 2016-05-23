@@ -58,7 +58,9 @@ body{
   color: #1bc98e;
 }
 
-
+.top-1px{
+  top: 1px;
+}
 
 
 *:focus{
@@ -283,6 +285,7 @@ position: relative;
 
 #buttons{
   padding-left: 5px;
+  margin-left: -15px;
 }
 
 
@@ -477,6 +480,7 @@ position: relative;
   .glyphicon {
     margin-left: 2px;
     color: white !important;
+    top: 1px;
   }
 }
 
@@ -1441,4 +1445,16 @@ margin-bottom: 10px
 .profile-img{
   width:35px;
   height:35px;
+}
+
+
+.pull-right{
+  .glyphicon{
+    top: 1px;
+    right: -1px;
+  }
+}
+
+.pull-margin{
+  right-left:7px;
 }
