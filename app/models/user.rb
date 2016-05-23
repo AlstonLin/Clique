@@ -1,7 +1,10 @@
+include ApplicationHelper
+
 class User < ActiveRecord::Base
   MAX_ITEMS = 20
   after_initialize :default_values
   after_commit :generate_urls
+  after_create :generate_username
   # Relationships
   has_one :clique, :class_name => "Cliq", :foreign_key => 'owner_id'
   has_many :downloaded, :class_name => 'Download', :foreign_key => 'downloader_id'
@@ -24,10 +27,12 @@ class User < ActiveRecord::Base
   # Pictures
   has_attached_file :profile_picture, :styles => { small: "200x200", med: "500x500", large: "800x800",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" },
+                  :s3_protocol => :https
   has_attached_file :cover_picture, :styles => { small: "640x480", med: "1280x720", large: "1920x1080",
                   :url  => "/assets/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" }
+                  :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension" },
+                  :s3_protocol => :https
   # Auth
   devise :omniauthable, :database_authenticatable, :registerable, \
   :recoverable, :rememberable, :trackable, :validatable, :lockable,
@@ -38,7 +43,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :profile_picture_url, presence: true
   validates :cover_picture_url, presence: true
-  validates :username, :uniqueness => {:case_sensitive => false}, presence: true
+  validates :username, :uniqueness => {:case_sensitive => false}, presence: false
   validates_attachment_size :profile_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_size :cover_picture, :cover_picture, :less_than => 25.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
@@ -51,8 +56,7 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.password = Devise.friendly_token[0,20]
-      user.profile_picture_url = auth.info.image
-      # user.skip_confirmation!
+      user.profile_picture_url = convert_to_https(auth.info.image)
     end
   end
 
@@ -152,6 +156,13 @@ class User < ActiveRecord::Base
       end
       if !self.cover_picture_url
         self.cover_picture_url = ActionController::Base.helpers.asset_path("default-cover.png")
+      end
+    end
+
+    def generate_username
+      if !self.username
+        self.username = self.first_name + self.last_name + self.id.to_s
+        self.save
       end
     end
 

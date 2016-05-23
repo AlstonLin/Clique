@@ -84,21 +84,24 @@ class DashboardController < ApplicationController
   end
 
   def setup_payment
-    # Resets the redirect session var
-    redirect = session[:payment_setup_redirect]
-    session[:payment_setup_redirect] = nil
-    # Registers with Stripe
-    customer = Stripe::Customer.create(
-      :description => "Customer for User ID##{current_user.id}",
-      :source  => params[:stripeToken]
-    )
-    # Saves into the db
-    current_user.customer_id = customer.id
-    current_user.save
-    # Redirects
-    if redirect
-      redirect_to redirect
+    if params[:stripeToken]
+      # Resets the redirect session var
+      redirect = session[:payment_setup_redirect]
+      session[:payment_setup_redirect] = nil
+      # Registers with Stripe
+      customer = Stripe::Customer.create(
+        :description => "Customer for User ID##{current_user.id}",
+        :source  => params[:stripeToken]
+      )
+      # Saves into the db
+      current_user.customer_id = customer.id
+      current_user.save
+      # Redirects
+      if redirect
+        redirect_to redirect
+      end
     else
+      flash[:alert] = "Invalid Credit Card!"
       redirect_to request.referer
     end
   end

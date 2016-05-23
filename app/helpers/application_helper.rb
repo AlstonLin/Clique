@@ -42,4 +42,10 @@ module ApplicationHelper
   def has_reposted_post(post)
     Repost.where(:reposter => current_user, :post => post).count > 0
   end
+
+  def convert_to_https(url)
+    uri = URI.parse(url)
+    uri.scheme = "https"
+    return uri.to_s
+  end
 end

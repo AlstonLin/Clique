@@ -64,6 +64,8 @@ class CliqsController < ApplicationController
       :clique => @clique,
       :stripe_id => subscription.id
     )
+    # Sends notification to Cliq owner
+    Notification.create :notifiable => @clique, :user => @clique.owner, :initiator => current_user
     redirect_to @clique.owner
   end
 

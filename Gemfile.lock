@@ -177,6 +177,8 @@ GEM
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
+    pg (0.18.4)
+    pg (0.18.4-x86-mingw32)
     pjax_rails (0.4.0)
       jquery-rails
       railties (>= 3.2, < 5.0)
@@ -310,6 +312,7 @@ DEPENDENCIES
   omniauth-soundcloud
   omniauth-stripe-connect
   paperclip (~> 4.2.0)
+  pg
   pjax_rails
   rails
   rails_12factor (= 0.0.2)
