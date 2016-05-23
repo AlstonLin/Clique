@@ -27,3 +27,6 @@ public/system/*
 
 *.pem
 app/views/tracks/new.html.erb
+
+# Ignore application configuration
+/config/application.yml
