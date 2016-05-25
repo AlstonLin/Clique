@@ -48,4 +48,9 @@ module ApplicationHelper
     uri.scheme = "https"
     return uri.to_s
   end
+
+  # TODO: Add a cache counter for efficiency
+  def notification_count
+    Notification.where(:user => current_user, :read => false).count
+  end
 end

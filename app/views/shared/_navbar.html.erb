@@ -32,7 +32,9 @@
           <ul class="nav navbar-nav navbar-right m-r-5 hidden-xs">
             <li >
               <%= link_to notifications_path do %>
-                <i class="fa fa-bell-o app-notifications" aria-hidden="true"></i>
+                <i id="notification-count" class="fa fa-bell-o app-notifications" aria-hidden="true">
+                  <%= render :partial => "shared/notification_count" %>
+                </i>
               <% end %>
             </li>
             <li>
@@ -42,18 +44,17 @@
             </li>
           </ul>
 
-          <form class="navbar-form navbar-right app-search" role="search">
+          <!-- <form class="navbar-form navbar-right app-search" role="search">
             <div class="form-group">
               <input type="text" class="form-control" data-action="grow" placeholder="Search">
             </div>
-          </form>
+          </form> -->
 
           <ul class="nav navbar-nav hidden">
             <li><%= link_to "Profile", current_user, :class => 'menu-item' %></li>
             <li><%= link_to "Dashboard", dashboard_path, :class => 'menu-item' %></li>
             <li><%= link_to "Edit Profile", edit_profile_path, :class => 'menu-item' %></li>
             <div class="cdivider"></div>
-            <!-- NOTE: This is a buton because Rails is stupid and think wont work as a link -->
             <li><%= button_to 'Logout', destroy_user_session_path, :class => 'menu-item', :method => :delete %></li>
           </ul>
         <% else %>
@@ -61,11 +62,11 @@
             <li class="active"><%= link_to "Home", root_path %></li>
             <li><%= link_to "Explore", explore_path %></li>
           </ul>
-          <form class="navbar-form navbar-right app-search" role="search">
+          <!-- <form class="navbar-form navbar-right app-search" role="search">
             <div class="form-group">
               <input type="text" class="form-control" data-action="grow" placeholder="Search">
             </div>
-          </form>
+          </form> -->
 
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Login", new_user_session_path %></li>
