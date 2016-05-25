@@ -1,52 +1,48 @@
 <div class="page-Bottom3">
   <div class="container p-t-md">
-        <div class="loginform">
-          <%= link_to user_omniauth_authorize_path(:facebook) do %>
-            <div class="panel-heading fbc">
-              <i class="fa fa-facebook-official fa-2x"></i>
-              <span class="tva cwf">Log In With Facebook</span>
-              <i class="fa float-r fa-angle-right  fa-2x"></i>
-            </div>
-          <% end %>
-          <div class="panel-body">
-            <div class="form-group">
-
-            </div>
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <!-- Form Fields -->
-
-              <div class="form-group">
-                <%= f.label "Email" %><br />
-                <%= f.email_field :email, placeholder: "Email", class: "form-control big-field" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label "Password" %><br />
-                <%= f.password_field :password, placeholder: "Password", class: "form-control big-field" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :remember_me, class: "center-block" do %>
-                  <div id="remember-me">Remember Me</div>
-                  <%= f.check_box :remember_me %>
-                <% end %>
-              </div>
-
-              <div class="form-group">
-                <%= button_tag "Log In", type: 'submit', id: "loginbutton", class: "btn btn-primary secondary-background transition" %>
-                <% end %>
-              </div>
-
-              <div class="form-group">
-              </div>
-
-              <div class="form-group logoptions">
-                <%= link_to "Sign Up With an Email", "/users/sign_up",  class: "link_to", class: " btn-hollow.btn" %>
-                <%= link_to "Forgot Password", new_user_password_path, class: " btn-hollow.btn", id: "forgotbutton" %>
-              </div>
-    <%# link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %>
-            </div>
-          </div>
+    <div class="loginform">
+      <%= link_to user_omniauth_authorize_path(:facebook) do %>
+        <div class="panel-heading fbc">
+          <i class="fa fa-facebook-official fa-2x"></i>
+          <span class="tva cwf">Log In With Facebook</span>
+          <i class="fa float-r fa-angle-right  fa-2x"></i>
         </div>
+      <% end %>
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <!-- Form Fields -->
+          <div class="form-group">
+            <%= f.label "Email" %><br />
+            <%= f.email_field :email, placeholder: "Email", class: "form-control big-field" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Password" %><br />
+            <%= f.password_field :password, placeholder: "Password", class: "form-control big-field" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :remember_me, class: "center-block" do %>
+              <div id="remember-me">Remember Me</div>
+              <%= f.check_box :remember_me %>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= button_tag "Log In", type: 'submit', id: "loginbutton", class: "btn btn-primary secondary-background transition" %>
+          </div>
+        <% end %>
+        <div class="form-group logoptions">
+          <%= link_to "Sign Up With an Email", "/users/sign_up",  class: "link_to", class: " btn-hollow.btn" %>
+          <%= link_to "Forgot Password", new_user_password_path, class: " btn-hollow.btn", id: "forgotbutton" %>
+        </div>
+        <%# link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- FIXME: This is just a workaround until player refactor -->
+<script>
+$("#audioplayer").css("display", "none");
+</script>

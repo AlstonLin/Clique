@@ -48,16 +48,6 @@
             </div>
           </form>
 
-          <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-            <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Profile", current_user, :class => 'menu-item' %></li>
-            <li><a href="notifications/index.html">Notifications</a></li>
-            <li><%= link_to "Messages", messages_path, :remote => true %></li>
-            <li><%= link_to "Upload", new_track_path %></li>
-            <li><%= link_to "Explore", explore_path %></li>
-            <li><%= button_to 'Logout', destroy_user_session_path, :class => 'menu-item', :method => :delete %></li>
-          </ul>
-
           <ul class="nav navbar-nav hidden">
             <li><%= link_to "Profile", current_user, :class => 'menu-item' %></li>
             <li><%= link_to "Dashboard", dashboard_path, :class => 'menu-item' %></li>
@@ -68,12 +58,8 @@
           </ul>
         <% else %>
           <ul class="nav navbar-nav hidden-xs">
-            <li class="active">
-              <%= link_to "Home", root_path %>
-            </li>
-            <li>
-              <%= link_to "Explore", explore_path %>
-            </li>
+            <li class="active"><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Explore", explore_path %></li>
           </ul>
           <form class="navbar-form navbar-right app-search" role="search">
             <div class="form-group">
@@ -81,15 +67,9 @@
             </div>
           </form>
 
-          <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-            <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Explore", explore_path %></li>
-            <li><%= button_to 'Logout', destroy_user_session_path, :class => 'menu-item', :method => :delete %></li>
-          </ul>
-
-          <ul class="nav navbar-nav hidden">
-            <!-- NOTE: This is a buton because Rails is stupid and think wont work as a link -->
-            <li><%= button_to 'Logout', destroy_user_session_path, :class => 'menu-item', :method => :delete %></li>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
           </ul>
         <% end %>
       </div>
