@@ -72,14 +72,8 @@ function setupComments(){
 }
 
 function setupClasses(){
-  $('h5').click(function(e) {
-      e.stopPropagation();
-  });
   $(".stop-propagation").click(function(event){
     event.stopPropagation();
-  });
-  $('.post-track').click(function(e) {
-    e.stopPropagation();
   });
 
   $(".newsfeed-title1, .newsfeed-title2").click(function(){

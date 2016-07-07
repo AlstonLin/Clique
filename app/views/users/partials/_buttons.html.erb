@@ -34,7 +34,7 @@
     </div>
   <% end %>
   <div class="edit-Profile">
-    <%= button_to "Edit Profile", edit_profile_path, :method => :get, :class => "btn-hollow btn m-r-5"  %>
+    <%= link_to "Edit Profile", edit_profile_path, :class => "btn-hollow btn m-r-5"  %>
   </div>
 <% elsif current_user %>
 <!-- Others profile -->
