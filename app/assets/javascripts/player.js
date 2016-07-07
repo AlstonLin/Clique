@@ -4,14 +4,18 @@ var repeat = false;
 
 // JQuery setup
 $(document).on('ready pjax:success', function() {
-	setupPlayers();
-});
-
-var setupPlayers = function() {
-	// Handles resizing
 	$( window ).resize(function() {
 		onResize($(window));
 	});
+	setupSoundManager();
+	onResize($(window));
+});
+$(document).ready(function(){
+	setupPlayer();
+});
+
+
+var setupPlayer = function() {
 	// Progress bar
 	$("#progressBar").slider({
 		range: "min",
@@ -31,7 +35,7 @@ var setupPlayers = function() {
 		$("#volumeBuffer").toggle();
 	});
 	 $("#volumeClick #volumeBuffer").click(function(e) {
-	      e.stopPropagation();
+				e.stopPropagation();
 	 });
 	// Track control
 	$("#repeat").click(function(){
@@ -39,23 +43,27 @@ var setupPlayers = function() {
 		repeat = $(this).hasClass("repeatOn");
 	});
 	$("#playpause").click(function() {
+		console.log("PAUSE");
 		if($(this).hasClass("glyphicon-play")){//play button shown, song not playing
-			if(null !== nowPlaying){
-				nowPlaying.resume();
-			} else if(undefined !== queue[0]){
-				playNewTrack(queue[0]);
+			var track = nowPlaying;
+			if (track){
+				resumeTrack(track);
+			} else if (queue[0] !== undefined){
+				track = queue[0];
+				playNewTrack(track);
 			} else{
 				return;
 			}
 			$(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
-			nowPlaying.mySpan.removeClass("glyphicon-play").addClass("glyphicon-pause");
-		} else{//pause button shown, song playing
+			$('#' + track.spanId).removeClass("glyphicon-play").addClass("glyphicon-pause");
+		} else {//pause button shown, song playing
 			nowPlaying.pause();
 			$(this).addClass("glyphicon-play").removeClass("glyphicon-pause");
-			nowPlaying.mySpan.addClass("glyphicon-play").removeClass("glyphicon-pause");
+			$('#' + nowPlaying.spanId).addClass("glyphicon-play").removeClass("glyphicon-pause");
 		}
 	});
 	$("#next").click(function(){
+		console.log("NEXT")
 		if(nowPlaying == null || nowPlaying.myArrIndex == null)
 		return;
 		if(nowPlaying.myArrIndex == (queue.length - 1)){
@@ -90,8 +98,6 @@ var setupPlayers = function() {
 	if (nowPlaying == null){
 		$("#audioplayer").css('display', 'none'); //NOTE: Not a mistake but rather a workaround for css bug in a few browsers
 	}
-	setupSoundManager();
-	onResize($(window));
 };
 
 // HELPERS
@@ -106,7 +112,7 @@ var setupSoundManager = function(){
 			$(".playa").each(function(i, v){
 				$span = $(this).find('span');
 				var sound = createSound($(this), $span)
-				sound.mySpan = $span;
+				sound.spanId = $span.attr('id');
 				sound.myArrIndex = i;
 				queue[i] = sound;
 				setOnPlayerClick($(this));
@@ -123,7 +129,7 @@ var setupSoundManager = function(){
 			}
 			// Already playing
 			if (nowPlaying !== null) {
-				$span = $('#' + nowPlaying.mySpan.attr('id'));
+				$span = $('#' + nowPlaying.spanId);
 				$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
 				$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
 			}
@@ -148,8 +154,7 @@ var setOnPlayerClick = function($playa){
 			for (var i = 0; i < queue.length; i++){
 				if (queue[i] !== undefined && queue[i].url == $(this).attr('song')){
 					if (nowPlaying !== null && nowPlaying.id !== null && nowPlaying.id == queue[i].id) {
-						nowPlaying.mySpan = $span;
-						nowPlaying.resume();
+						resumeTrack(nowPlaying);
 					} else{
 						playNewTrack(queue[i]);
 					}
@@ -167,11 +172,19 @@ var setOnPlayerClick = function($playa){
 }
 
 var playNewTrack = function(track){
+	var $span = $('#' + track.spanId);
 	if (nowPlaying){
-		nowPlaying.mySpan.removeClass("glyphicon-pause").addClass("glyphicon-play");
+		$('#' + nowPlaying.spanId).removeClass("glyphicon-pause").addClass("glyphicon-play");
 	}
 	track.play();
-	nowPlaying.mySpan.removeClass("glyphicon-play").addClass("glyphicon-pause");
+	$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
+	$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
+}
+
+var resumeTrack = function(track){
+	var $span = $('#' + track.spanId);
+	track.resume();
+	$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
 	$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
 }
 
@@ -225,7 +238,7 @@ var createSound = function($playa, $span) {
 
 			//togglePause
 			$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
-			nowPlaying.mySpan.removeClass("glyphicon-play").addClass("glyphicon-pause");
+			$('#' + nowPlaying.spanId).removeClass("glyphicon-play").addClass("glyphicon-pause");
 		},
 		whileplaying: function(){
 			//update slider
@@ -237,9 +250,9 @@ var createSound = function($playa, $span) {
 			if (repeat){
 				playNewTrack(queue[this.myArrIndex]);
 			}else if (queue[this.myArrIndex + 1] != undefined){
-				playNewTrack(queue[this.myArrIndex + 1].play());
+				playNewTrack(queue[this.myArrIndex + 1]);
 			}else if (queue[0] != undefined){
-				playNewTrack(queue[0].play());
+				playNewTrack(queue[0]);
 			}
 		}
 	});
