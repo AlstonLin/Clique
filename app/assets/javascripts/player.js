@@ -43,13 +43,13 @@ var setupPlayers = function() {
 			if(null !== nowPlaying){
 				nowPlaying.resume();
 			} else if(undefined !== queue[0]){
-				queue[0].play();
+				playNewTrack(queue[0]);
 			} else{
 				return;
 			}
 			$(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
 			nowPlaying.mySpan.removeClass("glyphicon-play").addClass("glyphicon-pause");
-		}else{//pause button shown, song playing
+		} else{//pause button shown, song playing
 			nowPlaying.pause();
 			$(this).addClass("glyphicon-play").removeClass("glyphicon-pause");
 			nowPlaying.mySpan.addClass("glyphicon-play").removeClass("glyphicon-pause");
@@ -59,18 +59,18 @@ var setupPlayers = function() {
 		if(nowPlaying == null || nowPlaying.myArrIndex == null)
 		return;
 		if(nowPlaying.myArrIndex == (queue.length - 1)){
-			queue[0].play();
+			playNewTrack(queue[0])
 		}else{
-			queue[nowPlaying.myArrIndex + 1].play();
+			playNewTrack(queue[nowPlaying.myArrIndex + 1]);
 		}
 	});
 	$("#prev").click(function(){
 		if(nowPlaying == null || nowPlaying.myArrIndex == null)
 		return;
 		if(nowPlaying.myArrIndex == 0){
-			queue[queue.length - 1].play();
+			playNewTrack(queue[queue.length - 1]);
 		}else{
-			queue[nowPlaying.myArrIndex - 1].play();
+			playNewTrack(queue[nowPlaying.myArrIndex - 1]);
 		}
 	});
 	// Volume slider
@@ -151,14 +151,8 @@ var setOnPlayerClick = function($playa){
 						nowPlaying.mySpan = $span;
 						nowPlaying.resume();
 					} else{
-						if (nowPlaying !== null){
-							nowPlaying.mySpan.addClass("glyphicon-play").removeClass("glyphicon-pause");
-						}
-						queue[i].mySpan = $span;
-						queue[i].play();
+						playNewTrack(queue[i]);
 					}
-					$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
-					$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
 					return;
 				}
 			}
@@ -170,6 +164,15 @@ var setOnPlayerClick = function($playa){
 			$("#playpause").addClass("glyphicon-play").removeClass("glyphicon-pause");
 		}
 	});
+}
+
+var playNewTrack = function(track){
+	if (nowPlaying){
+		nowPlaying.mySpan.removeClass("glyphicon-pause").addClass("glyphicon-play");
+	}
+	track.play();
+	nowPlaying.mySpan.removeClass("glyphicon-play").addClass("glyphicon-pause");
+	$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
 }
 
 var onResize = function(doc){
@@ -192,7 +195,7 @@ var createSound = function($playa, $span) {
 		console.log("ERROR: " + song + " because: " + soundManager.canPlayURL(song));
 		return null;
 	}
-	$span.attr('id', 'soundSpan' + trackId)
+	$span.attr('id', getSpanId($playa))
 	var sound = soundManager.createSound({
 		id: 'sound' + trackId,
 		url: song,
@@ -205,8 +208,9 @@ var createSound = function($playa, $span) {
 			$("#totalTime").text(getTime(this.duration, true));
 		},
 		onplay: function(){
-			if(nowPlaying != null && nowPlaying.id != this.id)
+			if (nowPlaying != null && nowPlaying.id != this.id) {
 				soundManager.stop(nowPlaying.id);
+			}
 
 			//for global access
 			nowPlaying = this;
@@ -231,11 +235,11 @@ var createSound = function($playa, $span) {
 		},
 		onfinish: function(){
 			if (repeat){
-				queue[this.myArrIndex].play();
+				playNewTrack(queue[this.myArrIndex]);
 			}else if (queue[this.myArrIndex + 1] != undefined){
-				queue[this.myArrIndex + 1].play();
+				playNewTrack(queue[this.myArrIndex + 1].play());
 			}else if (queue[0] != undefined){
-				queue[0].play();
+				playNewTrack(queue[0].play());
 			}
 		}
 	});
@@ -246,7 +250,7 @@ var createSound = function($playa, $span) {
 }
 
 // Gets the time of the track
-function getTime(msec, useString) {
+var getTime = function(msec, useString) {
 	// convert milliseconds to hh:mm:ss, return as object literal or string
 	var nSec = Math.floor(msec/1000),
 	hh = Math.floor(nSec/3600),
@@ -254,4 +258,8 @@ function getTime(msec, useString) {
 	sec = Math.floor(nSec -(hh*3600) -(min*60));
 	// if (min === 0 && sec === 0) return null; // return 0:00 as null
 	return (useString ? ((hh ? hh + ':' : '') + (hh && min < 10 ? '0' + min : min) + ':' + ( sec < 10 ? '0' + sec : sec ) ) : { 'min': min, 'sec': sec });
+}
+
+var getSpanId = function($playa) {
+	return 'soundSpan' + $playa.attr("trackId");
 }
