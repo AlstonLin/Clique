@@ -1,5 +1,9 @@
-var queue = [];
-var nowPlaying = null;
+var trackIdQueue = [];
+var trackMap = {};
+var spanTrackIdMap = {};
+var spanIdCounter = {}; // When there are > 1 of the same tracks (reposts)
+var trackIdCounter = {}; // When there are > 1 of the same tracks (reposts)
+var currentTrackId = null;
 var repeat = false;
 
 // JQuery setup
@@ -22,8 +26,8 @@ var setupPlayer = function() {
 		min: 0,
 		max: 1000,
 		slide: function(event, ui) {
-			if(nowPlaying !== null && nowPlaying.id !== null){
-				soundManager.setPosition(nowPlaying.id, ui.value / 1000 * nowPlaying.duration);
+			if (currentTrackId !== null){
+				soundManager.setPosition(currentTrackId, ui.value / 1000 * trackMap[currentTrackId].duration);
 			} else{
 				event.stopPropagation();
 				return false;
@@ -37,49 +41,28 @@ var setupPlayer = function() {
 	 $("#volumeClick #volumeBuffer").click(function(e) {
 				e.stopPropagation();
 	 });
-	// Track control
+	// PLAYER BAR TRACK CONTROL
 	$("#repeat").click(function(){
 		$(this).toggleClass("repeatOn");
 		repeat = $(this).hasClass("repeatOn");
 	});
 	$("#playpause").click(function() {
-		console.log("PAUSE");
-		if($(this).hasClass("glyphicon-play")){//play button shown, song not playing
-			var track = nowPlaying;
+		if($(this).hasClass("glyphicon-play")){ // No track being played
+			var track = currentTrackId ? trackMap[currentTrackId] : null;
 			if (track){
-				resumeTrack(track);
-			} else if (queue[0] !== undefined){
-				track = queue[0];
-				playNewTrack(track);
-			} else{
-				return;
+				resumeCurrentTrack();
+			} else if (trackIdQueue[0] !== undefined){
+				playNewTrack(trackIdQueue[0]);
 			}
-			$(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
-			$('#' + track.spanId).removeClass("glyphicon-play").addClass("glyphicon-pause");
-		} else {//pause button shown, song playing
-			nowPlaying.pause();
-			$(this).addClass("glyphicon-play").removeClass("glyphicon-pause");
-			$('#' + nowPlaying.spanId).addClass("glyphicon-play").removeClass("glyphicon-pause");
+		} else { // Track being played
+			pauseCurrentTrack();
 		}
 	});
 	$("#next").click(function(){
-		console.log("NEXT")
-		if(nowPlaying == null || nowPlaying.myArrIndex == null)
-		return;
-		if(nowPlaying.myArrIndex == (queue.length - 1)){
-			playNewTrack(queue[0])
-		}else{
-			playNewTrack(queue[nowPlaying.myArrIndex + 1]);
-		}
+		playNextTrack();
 	});
 	$("#prev").click(function(){
-		if(nowPlaying == null || nowPlaying.myArrIndex == null)
-		return;
-		if(nowPlaying.myArrIndex == 0){
-			playNewTrack(queue[queue.length - 1]);
-		}else{
-			playNewTrack(queue[nowPlaying.myArrIndex - 1]);
-		}
+		playPrevTrack();
 	});
 	// Volume slider
 	$("#volume").slider({
@@ -88,20 +71,21 @@ var setupPlayer = function() {
 		value: 100,
 		min: 0,
 		max: 100,
-		slide: function( event, ui ) {
-			if(nowPlaying !== null && nowPlaying.id !== null){
-				soundManager.setVolume(nowPlaying.id,ui.value );
+		slide: function(event, ui) {
+			if (currentTrackId){
+				soundManager.setVolume(currentTrackId, ui.value);
 			}
 		}
 	});
-	// The play button on the actual page
-	if (nowPlaying == null){
-		$("#audioplayer").css('display', 'none'); //NOTE: Not a mistake but rather a workaround for css bug in a few browsers
+	if (!currentTrackId){
+		$("#audioplayer").css('display', 'none'); //NOTE: Workaround for css bug in some browsers
 	}
 };
 
 // HELPERS
 var setupSoundManager = function(){
+	spanIdCounter = {};
+	trackIdCounter = {};
 	soundManager.setup({
 		url: 'swfs/',
 		flashVersion: 9,
@@ -110,83 +94,100 @@ var setupSoundManager = function(){
 		onready: function(){
 			// Sets the on clicks
 			$(".playa").each(function(i, v){
-				$span = $(this).find('span');
-				var sound = createSound($(this), $span)
+				var $span = $(this).find('span');
+				var sound = createSound($(this), $span, i);
 				sound.spanId = $span.attr('id');
-				sound.myArrIndex = i;
-				queue[i] = sound;
 				setOnPlayerClick($(this));
 			});
-			// Sets initial track
-			var sound = queue[0];
-			if (sound == null){
-				$("#desc h4").text("No songs available");
-				$("#desc p").text("Follow people now!");
-			} else{
-				$("#desc img").attr("src", sound.myImage);
-				$("#desc h4").text(sound.myArtist);
-				$("#desc p").text(sound.mySongName);
-			}
-			// Already playing
-			if (nowPlaying !== null) {
-				$span = $('#' + nowPlaying.spanId);
+			if (currentTrackId) {
+				$span = $('#' + currentTrackId.spanId);
 				$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
 				$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
+			} else{
+				// Sets initial track
+				var initTrack = trackIdQueue[0] ? trackMap[trackIdQueue[0]] : null;
+				if (initTrack == null){
+					$("#desc h4").text("No songs available");
+					$("#desc p").text("Follow people now!");
+				} else{
+					$("#desc img").attr("src", initTrack.image);
+					$("#desc h4").text(initTrack.artist);
+					$("#desc p").text(initTrack.trackName);
+				}
 			}
 		},
 		ontimeout: function() {
-			console.log('SM2 init failed!');
+			console.log('Sound Manager init failed!');
 		},
 		defaultOptions: {
 			volume: 100
 		}
 	});
-}
+};
 
 var setOnPlayerClick = function($playa){
 	$playa.click(function(){
 		$span = $(this).find('span');
-		if ($span.hasClass('glyphicon-play')){
+		if ($span.hasClass('glyphicon-play')){  // Plays the track
 			if ($("#audioplayer").css('display') == 'none'){
 				$("#audioplayer").css('display', 'inline-flex');
 				onResize($(window));
 			}
-			for (var i = 0; i < queue.length; i++){
-				if (queue[i] !== undefined && queue[i].url == $(this).attr('song')){
-					if (nowPlaying !== null && nowPlaying.id !== null && nowPlaying.id == queue[i].id) {
-						resumeTrack(nowPlaying);
-					} else{
-						playNewTrack(queue[i]);
-					}
-					return;
-				}
+			var newTrackId = spanTrackIdMap[$span.attr('id')];
+			if (newTrackId == currentTrackId){
+				resumeCurrentTrack();
+			} else {
+				playNewTrack(newTrackId);
 			}
-		} else{
-			if (nowPlaying !== null){
-				nowPlaying.pause();
-			}
-			$span.addClass("glyphicon-play").removeClass("glyphicon-pause");
-			$("#playpause").addClass("glyphicon-play").removeClass("glyphicon-pause");
+		} else{ // Pauses the track
+			pauseCurrentTrack();
 		}
 	});
-}
+};
 
-var playNewTrack = function(track){
-	var $span = $('#' + track.spanId);
-	if (nowPlaying){
-		$('#' + nowPlaying.spanId).removeClass("glyphicon-pause").addClass("glyphicon-play");
-	}
-	track.play();
-	$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
-	$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
-}
+var playNewTrack = function(trackId){
+	trackMap[trackId].play();
+};
 
-var resumeTrack = function(track){
+var resumeCurrentTrack = function(){
+	var track = trackMap[currentTrackId];
 	var $span = $('#' + track.spanId);
 	track.resume();
 	$span.removeClass("glyphicon-play").addClass("glyphicon-pause");
 	$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
-}
+};
+
+var pauseCurrentTrack = function(){
+	var track = trackMap[currentTrackId];
+	var $span = $('#' + track.spanId);
+	track.pause();
+	$span.addClass("glyphicon-play").removeClass("glyphicon-pause");
+	$("#playpause").addClass("glyphicon-play").removeClass("glyphicon-pause");
+};
+
+var playNextTrack = function(){
+	if (!currentTrackId){
+		return;
+	}
+	var currIndex = trackIdQueue.indexOf(currentTrackId);
+	if (currIndex >= trackIdQueue.length - 1){ // Loops back to start
+		playNewTrack(trackIdQueue[0]);
+	} else{ // Next in queue
+		playNewTrack(trackIdQueue[currIndex + 1]);
+	}
+};
+
+var playPrevTrack = function(){
+	if (!currentTrackId){
+		return;
+	}
+	var currIndex = trackIdQueue.indexOf(currentTrackId);
+	if (currIndex <= 0){ // Loops back to start
+		playNewTrack(trackIdQueue[trackIdQueue.length - 1]);
+	} else{ // Next in queue
+		playNewTrack(trackIdQueue[currIndex - 1]);
+	}
+};
 
 var onResize = function(doc){
 	var progBGWidth = $("#status").width()-2*$('curTime').width()-75;
@@ -194,24 +195,26 @@ var onResize = function(doc){
 		progBGWidth += 60;
 	}
 	$("#progressBar").width(progBGWidth);
-}
-// Plays the track
-var createSound = function($playa, $span) {
-	var song = $playa.attr("song");
+};
+
+// Creates the track
+var createSound = function($playa, $span, i) {
+	var trackUrl = $playa.attr("song");
 	var image = $playa.attr("image");
 	var artist = $playa.attr("artist");
 	var name = $playa.attr("name")
 	var trackLink = $playa.attr("trackLink");
-	var ownerLink = $playa.attr("ownerLink")
-	var trackId = $playa.attr("trackId")
-	if (!soundManager.canPlayURL(song)){
-		console.log("ERROR: " + song + " because: " + soundManager.canPlayURL(song));
+	var ownerLink = $playa.attr("ownerLink");
+	var trackId = createTrackId($playa);
+
+	if (!soundManager.canPlayURL(trackUrl)){
+		console.log("ERROR: " + trackUrl + " because: " + soundManager.canPlayURL(song));
 		return null;
 	}
-	$span.attr('id', getSpanId($playa))
+	$span.attr('id', createSpanId($playa))
 	var sound = soundManager.createSound({
-		id: 'sound' + trackId,
-		url: song,
+		id: trackId,
+		url: trackUrl,
 		volume: 100,
 		autoload: true,
 		autoplay: false,
@@ -221,46 +224,41 @@ var createSound = function($playa, $span) {
 			$("#totalTime").text(getTime(this.duration, true));
 		},
 		onplay: function(){
-			if (nowPlaying != null && nowPlaying.id != this.id) {
-				soundManager.stop(nowPlaying.id);
+			if (currentTrackId) {
+				var oldTrack = trackMap[currentTrackId];
+				$('#' + oldTrack.spanId).removeClass("glyphicon-pause").addClass("glyphicon-play");
+				oldTrack.stop();
 			}
-
-			//for global access
-			nowPlaying = this;
-
-			//update description
+			currentTrackId = this.id;
+			// Description
 			$("#desc img").attr("src", image);
 			$("#desc h4").text(artist);
 			$("#desc p").text(name);
 			$("#desc #ptrackLink").attr('href', trackLink);
 			$("#desc #pprofileLink").attr('href', ownerLink);
 			$("#progressBar").slider("value", 0);
-
-			//togglePause
+			// Shows play button
 			$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
-			$('#' + nowPlaying.spanId).removeClass("glyphicon-play").addClass("glyphicon-pause");
+			$('#' + this.spanId).removeClass("glyphicon-play").addClass("glyphicon-pause");
 		},
 		whileplaying: function(){
 			//update slider
-			$("#progressBar").slider("value", Math.max(1000* this.position/this.durationEstimate));
+			$("#progressBar").slider("value", Math.max(1000* this.position / this.durationEstimate));
 			//update current
 			$("#curTime").text(getTime(this.position, true));
 		},
 		onfinish: function(){
-			if (repeat){
-				playNewTrack(queue[this.myArrIndex]);
-			}else if (queue[this.myArrIndex + 1] != undefined){
-				playNewTrack(queue[this.myArrIndex + 1]);
-			}else if (queue[0] != undefined){
-				playNewTrack(queue[0]);
-			}
+			playNextTrack();
 		}
 	});
-	sound.myArtist = artist;
-	sound.myImage = image;
-	sound.mySongName = name;
+	sound.artist = artist;
+	sound.image = image;
+	sound.trackName = name;
+	trackIdQueue[i] = trackId;
+	trackMap[trackId] = sound;
+	spanTrackIdMap[$span.attr('id')] = trackId;
 	return sound;
-}
+};
 
 // Gets the time of the track
 var getTime = function(msec, useString) {
@@ -271,8 +269,22 @@ var getTime = function(msec, useString) {
 	sec = Math.floor(nSec -(hh*3600) -(min*60));
 	// if (min === 0 && sec === 0) return null; // return 0:00 as null
 	return (useString ? ((hh ? hh + ':' : '') + (hh && min < 10 ? '0' + min : min) + ':' + ( sec < 10 ? '0' + sec : sec ) ) : { 'min': min, 'sec': sec });
-}
+};
 
-var getSpanId = function($playa) {
-	return 'soundSpan' + $playa.attr("trackId");
+var createSpanId = function($playa){
+	var trackId = $playa.attr("trackId");
+	if (spanIdCounter[trackId] == undefined){
+		spanIdCounter[trackId] = 0;
+	}
+	var counter = spanIdCounter[trackId]++;
+	return 'soundSpan' + trackId + "-" + counter;
+};
+
+var createTrackId = function($playa){
+	var trackId = $playa.attr("trackId");
+	if (trackIdCounter[trackId] == undefined){
+		trackIdCounter[trackId] = 0;
+	}
+	var counter = trackIdCounter[trackId]++;
+	return 'track' + trackId + "-" + counter;
 }
