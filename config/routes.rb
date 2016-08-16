@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'payment_settings' => 'dashboard#payment_settings'
   get 'clique_settings' => 'dashboard#clique_settings'
   post 'setup_payment' => 'dashboard#setup_payment'
+  # Search routes
+  get 'search' => 'search#search', :path => 'search'
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'

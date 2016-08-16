@@ -1,6 +1,8 @@
 include ApplicationHelper
 
 class User < ActiveRecord::Base
+  searchkick
+
   MAX_ITEMS = 20
   after_initialize :default_values
   after_commit :generate_urls

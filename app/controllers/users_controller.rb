@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       format.js { render 'shared/reload.js.erb' }
     end
   end
-
+  # ------------------------- Profile Tabs -------------------------------------
   def all
     @partial = "all"
     @user = User.find_by_username(params[:user_id])

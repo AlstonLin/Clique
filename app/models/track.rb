@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  searchkick
+
   # Relationships
   has_attached_file :song, :s3_protocol => :https
   has_attached_file :pic, :s3_protocol => :https
