@@ -71,8 +71,10 @@ ActiveRecord::Schema.define(version: 20160523170015) do
   create_table "follows", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "following_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "fan_ranking_points", default: 0
+    t.boolean  "active",             default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "mentions", force: :cascade do |t|

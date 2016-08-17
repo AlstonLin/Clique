@@ -44,9 +44,15 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     raise "Attempt to follow self" unless current_user != @user
     follows = Follow.where(:follower => current_user).where(:following => @user)
-    if follows.count > 0 # Unfollow
-      follows.destroy_all
-    else # Follow
+    if follows.count > 0
+      follow = follows[0]
+      if follow.active #Unfollow
+        follow.active = false
+      else # Refollow
+        follow.active = true
+      end
+      follow.save
+    else # New Follow
       Follow.create :follower => current_user, :following => @user
     end
     # Response
