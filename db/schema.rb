@@ -133,8 +133,9 @@ ActiveRecord::Schema.define(version: 20160523170015) do
     t.integer  "clique_id"
     t.integer  "subscriber_id"
     t.string   "stripe_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.boolean  "active",        default: true
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "tracks", force: :cascade do |t|

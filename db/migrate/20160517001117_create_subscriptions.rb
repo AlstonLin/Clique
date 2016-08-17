@@ -5,6 +5,7 @@ class CreateSubscriptions < ActiveRecord::Migration
       t.belongs_to :subscriber
       t.string :stripe_id
       t.datetime :created_at
+      t.boolean :active, :default => true
       t.timestamps null: false
     end
   end

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :strict_transport_security
 
   APPLICATION_FEE_PERCENTAGE = 10
-  
+
   # HSTS
   def strict_transport_security
     if request.ssl?
@@ -45,21 +45,46 @@ class ApplicationController < ActionController::Base
     # Follows owner
     @user = clique.owner
     if !is_following @user
-      follow = Follow.create :follower => current_user, :following => @user
+      Follow.create :follower => current_user, :following => @user
     end
-    # Payment stuff
-    Stripe.api_key = clique.stripe_secret_key
-    subscription = Stripe::Subscription.create(
-      :customer => current_user.customer_id,
-      :plan => clique.plan_id,
-      :application_fee_percent => APPLICATION_FEE_PERCENTAGE
-    )
-    # Redirect
-    Subscription.create(
-      :subscriber => current_user,
-      :clique => clique,
-      :stripe_id => subscription.id
-    )
+    existing = Subscription.where(:subscriber => current_user
+      ).where(:clique => clique)
+    # Previously subscribed
+    if existing.count > 0
+      existing = existing[0]
+      begin
+        stripe = Stripe::Subscription.retrieve(existing.stripe_id)
+      rescue => error
+        puts error
+      end
+      if stripe && stripe.status == 'active' # Same Billing cycle; Updates subscription
+        stripe.plan = clique.plan_id
+        stripe.save
+      else
+        Stripe.api_key = clique.stripe_secret_key
+        stripe = Stripe::Subscription.create(
+          :customer => current_user.customer_id,
+          :plan => clique.plan_id,
+          :application_fee_percent => APPLICATION_FEE_PERCENTAGE
+        )
+        existing.stripe_id = stripe.id
+      end
+      existing.active = true
+      existing.save
+    else # New Subscription
+      # Payment stuff
+      Stripe.api_key = clique.stripe_secret_key
+      subscription = Stripe::Subscription.create(
+        :customer => current_user.customer_id,
+        :plan => clique.plan_id,
+        :application_fee_percent => APPLICATION_FEE_PERCENTAGE
+      )
+      Subscription.create(
+        :subscriber => current_user,
+        :clique => clique,
+        :stripe_id => subscription.id
+      )
+    end
     # Sends notification to Cliq owner
     Notification.create :notifiable => clique, :user => clique.owner, :initiator => current_user
     redirect_to clique.owner

@@ -89,11 +89,13 @@ class DashboardController < ApplicationController
     if !params[:stripeToken]
       flash[:alert] = "Invalid credit card!"
       redirect_to request.referer
+      raise "TEST"
       return
     end
     if params[:address].empty? || params[:city].empty? || params[:state].empty? || params[:country].empty? || params[:postal_code].empty?
       flash[:alert] = "You're missing some information"
       redirect_to request.referer
+      raise "TEST"
       return
     end
     # If it's set up from Cliq payment
