@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  MAX_FAVOURITE_ARTISTS = 5
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
     @users = User.all
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
     @content = get_all_content
     @partial = "all"
+    set_profile_variables(@user)
     @show_right = true
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
@@ -66,6 +68,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     @content = get_all_content
     @show_right = true
+    set_profile_variables(@user)
     render :action => :show
   end
 
@@ -73,6 +76,8 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user_id])
     @posts = @user.get_posts(false)
     @partial = "posts"
+    @show_right = true
+    set_profile_variables(@user)
     render :action => :show
   end
 
@@ -82,6 +87,7 @@ class UsersController < ApplicationController
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @partial = "clique"
     @show_right = true
+    set_profile_variables(@user)
     render :action => :show
   end
 
@@ -90,6 +96,7 @@ class UsersController < ApplicationController
     @tracks = @user.get_tracks(false)
     @partial = "tracks"
     @show_right = true
+    set_profile_variables(@user)
     render :action => :show
   end
 
@@ -98,6 +105,7 @@ class UsersController < ApplicationController
     @followers = @user.followers
     @partial = "followers"
     @show_right = false
+    set_profile_variables(@user)
     render :action => :show
   end
 
@@ -106,6 +114,7 @@ class UsersController < ApplicationController
     @following = @user.following
     @partial = "following"
     @show_right = false
+    set_profile_variables(@user)
     render :action => :show
   end
   #---------------------EXTERNALIZED FUNCTIONS----------------------------------
@@ -120,6 +129,12 @@ class UsersController < ApplicationController
       end
       # Sort
       @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
+    end
+
+    # Sets up variables that show on all profile tabs
+    def set_profile_variables(user)
+      @top_fans = user.followers.order(:fan_ranking_points => :desc).limit(MAX_FAVOURITE_ARTISTS)
+      @top_follows = user.following.order(:fan_ranking_points => :desc).limit(MAX_FAVOURITE_ARTISTS)
     end
 
   	def user_params

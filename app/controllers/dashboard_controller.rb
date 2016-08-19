@@ -52,6 +52,11 @@ class DashboardController < ApplicationController
     end
   end
 
+  def fan_ranking
+    @top_fans = current_user.followers.order(:fan_ranking_points => :desc)
+    @top_follows = current_user.following.order(:fan_ranking_points => :desc)
+  end
+
   def account
     @partial = "edit_profile"
   end
