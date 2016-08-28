@@ -6,12 +6,11 @@
        <%= link_to "cliq", root_path, :class => "navbar-brand nav-margin" %>
      </div>
      <div class="">
-
-         <!-- Shown when signed out -->
-         <ul class="nav navbar-nav navbar-right">
-           <li><%= link_to "Log In", new_user_session_path, 'data-skip-pjax' => true %></li>
-           <li><%= link_to "Sign Up", new_user_registration_path, 'data-skip-pjax' => true %></li>
-         </ul>
+       <!-- Shown when signed out -->
+       <ul class="nav navbar-nav navbar-right">
+         <li><%= link_to "Log In", new_user_session_path, 'data-skip-pjax' => true %></li>
+         <li><%= link_to "Sign Up", access_code_form_path, 'data-skip-pjax' => true %></li>
+       </ul>
      </div>
    </div>
   </div>
@@ -25,7 +24,7 @@
   <div class="homepage-header-subtitle">
     Connect directly with your favourite artists.
   </div>
-  <%= link_to "Create acccount" , new_user_registration_path, class: "button btn primary-background", 'data-skip-pjax' => true %>
+  <%= link_to "Create acccount" , access_code_form_path, class: "button btn primary-background", 'data-skip-pjax' => true %>
 </div>
 <div class="page-Bottom">
   <div class="container p-t-md">
@@ -40,4 +39,3 @@
 </div>
 </div>
 </div>
-

@@ -3,7 +3,17 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     if verify_recaptcha
-     super
+      # TODO: Remove this logic once Access Codes are removed
+      access_code = AccessCode.where(:code => session[:access_code], :created_account => nil).first
+      if access_code != nil
+        super
+        access_code.created_account = current_user
+        access_code.save
+        session.delete(:access_code)
+      else
+        send_401
+        return
+      end
     else
      build_resource(sign_up_params)
      clean_up_passwords(resource)

@@ -33,10 +33,9 @@
           </div>
         <% end %>
         <div class="form-group logoptions">
-          <%= link_to "Sign Up With an Email", "/users/sign_up",  class: "link_to", class: " btn-hollow.btn" %>
+          <%= link_to "Sign Up", access_code_form_path,  class: "link_to", class: " btn-hollow.btn" %>
           <%= link_to "Forgot Password", new_user_password_path, class: " btn-hollow.btn", id: "forgotbutton" %>
         </div>
-        <%# link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %>
       </div>
     </div>
   </div>

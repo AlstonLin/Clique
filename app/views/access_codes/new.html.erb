@@ -1,0 +1,7 @@
+<h1>Generate an Access Code!</h1>
+<h3>Access Code:
+  <div id="access_code"></div>
+</h3>
+<%= form_for @access_code, :remote => true do |form| %>
+  <% form.submit "Generate!" %>
+<% end %>

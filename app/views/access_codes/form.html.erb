@@ -1,0 +1,8 @@
+<h1>Closed Beta</h1>
+Cliq is currently in a closed beta.<br/>
+To register, you must enter an access code<br/>
+<%= form_tag access_code_submit_path do %>
+  <%= label_tag :access_code, "Access Code" %>
+  <%= text_field_tag :access_code, nil, { :placeholder => "Access Code" } %>
+  <%= submit_tag "Continue" %>
+<% end %>

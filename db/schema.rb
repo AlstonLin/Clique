@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523170015) do
+ActiveRecord::Schema.define(version: 20160828201102) do
+
+  create_table "access_codes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "created_account_id"
+    t.string   "code"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "access_codes", ["code"], name: "index_access_codes_on_code"
 
   create_table "cliqs", force: :cascade do |t|
     t.string   "customer_id"
@@ -169,6 +179,7 @@ ActiveRecord::Schema.define(version: 20160523170015) do
     t.string   "phone"
     t.string   "username"
     t.integer  "type"
+    t.boolean  "can_generate_access_codes",    default: false
     t.string   "customer_id"
     t.string   "profile_picture_file_name"
     t.string   "profile_picture_content_type"
@@ -184,17 +195,17 @@ ActiveRecord::Schema.define(version: 20160523170015) do
     t.string   "address"
     t.string   "city"
     t.string   "country"
-    t.string   "email",                        default: "", null: false
+    t.string   "email",                        default: "",    null: false
     t.string   "soundcloud_name"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "encrypted_password",           default: "", null: false
+    t.string   "encrypted_password",           default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                default: 0,  null: false
+    t.integer  "sign_in_count",                default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

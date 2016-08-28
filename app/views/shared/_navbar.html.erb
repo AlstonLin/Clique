@@ -28,6 +28,11 @@
             <li>
               <%= link_to "Upload", new_track_path %>
             </li>
+            <% if current_user.can_generate_access_codes %>
+              <li>
+                <%= link_to "Generate Access Code", new_access_code_path %>
+              </li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right m-r-5 hidden-xs">
             <li><%= render :partial => 'shared/searchbar' %></li>

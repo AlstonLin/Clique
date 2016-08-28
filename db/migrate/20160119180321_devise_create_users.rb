@@ -9,6 +9,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :username
       t.integer :type
+      # Ability to add access codes
+      t.boolean :can_generate_access_codes, :default => :false
       # Stripe
       t.string :customer_id
       # Pictures

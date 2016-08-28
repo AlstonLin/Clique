@@ -6,7 +6,24 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   CLIQ_SUBSCRIPTION_COST = 500
 
   def facebook
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    # TODO: Remove this logic once Access Codes are removed
+    auth = request.env["omniauth.auth"]
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    if user
+      @user = user
+    else
+      access_code = AccessCode.where(:code => session[:access_code]).first
+      if access_code != nil && access_code.active
+        @user = User.from_omniauth(auth)
+        access_code.created_account = @user
+        access_code.save
+        session.delete(:access_code)
+      else
+        redirect_to access_code_form_path
+        return
+      end
+    end
+
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?

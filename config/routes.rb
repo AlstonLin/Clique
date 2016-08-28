@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: "landing_page#index"
   end
+  # Access Code
+  get "access_code_form" => "access_codes#form"
+  post "access_code_submit" => "access_codes#submit"
   # Home Page routes
   get "home" => "home#index"
   get "all" => "home#all"
@@ -67,6 +70,7 @@ Rails.application.routes.draw do
     post 'delete'
   end
   resources :downloads, :only => :create
+  resources :access_codes, :only => [:create, :new]
   # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations", :passwords => "passwords"}
