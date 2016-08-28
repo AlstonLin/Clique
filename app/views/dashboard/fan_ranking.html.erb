@@ -1,0 +1,30 @@
+<div class="dashboard">
+  <div class="container">
+    <div class="row">
+      <%= render :partial => "side_bar", :locals => { :partial => "fan_ranking" } %>
+      <div class="col-sm-9 content">
+        <div class="dashhead">
+          <div class="dashhead-titles">
+            <h6 class="dashhead-subtitle">Dashboards</h6>
+            <h2 class="dashhead-title">Fan Ranking</h2>
+          </div>
+        </div>
+        <h3>Top Fans</h3>
+        <% @top_fans.each do |follow| %>
+          <%= link_to follow.follower.name,  follow.follower %>
+          <br/>
+          <%= follow.fan_ranking_points %> Points
+          <br/> <br/>
+        <% end %>
+
+        <h3>Favourite Artists</h3>
+        <% @top_follows.each do |follow| %>
+          <%= link_to follow.following.name,  follow.following %>
+          <br/>
+          <%= follow.fan_ranking_points %> Points
+          <br/> <br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

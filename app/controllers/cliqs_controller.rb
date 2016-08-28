@@ -65,6 +65,7 @@ class CliqsController < ApplicationController
   end
 
   def leave
+    # TODO: Some kind a daemon that deletes any canceled subscriptions due to lack of payment
     @clique = Cliq.find(params[:cliq_id])
     if current_user == nil
       send_401
@@ -77,11 +78,16 @@ class CliqsController < ApplicationController
     subscriptions = Subscription.where(:subscriber => current_user).where(:clique => @clique)
     # Payment stuff
     subscriptions.each do |s|
-      sub = Stripe::Subscription.retrieve(s.stripe_id)
-      sub.delete
+      begin
+        sub = Stripe::Subscription.retrieve(s.stripe_id)
+        sub.delete :at_period_end => true
+      rescue => error
+        puts error
+      end
+      s.active = false
+      s.save
     end
     # Removes and redirects
-    subscriptions.destroy_all
     respond_to do |format|
       format.js { render 'shared/reload.js.erb' }
     end

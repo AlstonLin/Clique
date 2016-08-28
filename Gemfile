@@ -16,6 +16,8 @@ gem 'omniauth-soundcloud'
 gem 'bootstrap-sass'
 # Sharing
 gem 'social-share-button'
+# Search
+gem 'searchkick'
 # Default Gems
 gem 'rails'
 gem 'turbolinks'

@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
   MAX_ITEMS_MORE = 4
+  REPOST_FAN_RANKING_POINTS = 30
+  LIKE_FAN_RANKING_POINTS = 10
   # TODO: Don't forget to use obfuscate_id on everything for security!
 
   # ----------------------- Default RESTFUL Actions-----------------------------
@@ -69,12 +71,23 @@ class TracksController < ApplicationController
     end
 
     @retrack = Retrack.where(:track => @track).where(:reposter => current_user)
+    follow = get_follow(@track.owner)
     if @retrack.count > 0
       @retrack.first.destroy
       flash[:notice] = "Repost deleted"
+      # Removes Fan Ranking points
+      if follow
+        follow.fan_ranking_points -= REPOST_FAN_RANKING_POINTS
+        follow.save
+      end
     else
       if Retrack.create :track => @track, :reposter => current_user
         flash[:notice] = "Reposted!"
+        # Adds Fan Ranking points
+        if follow
+          follow.fan_ranking_points += REPOST_FAN_RANKING_POINTS
+          follow.save
+        end
       else
         flash[:error] = "An Error has occured"
       end
@@ -98,16 +111,27 @@ class TracksController < ApplicationController
     end
     
     favourite = Favourite.where(:favouritable => @track, :favouriter => current_user)
+    follow = get_follow(@track.owner)
     if favourite.count > 0
       if favourite[0].destroy
         flash[:notice] = "Unfavorited!"
+        # Removes Fan Ranking points
+        if follow
+          follow.fan_ranking_points -= LIKE_FAN_RANKING_POINTS
+          follow.save
+        end
       else
         flash[:error] = "An error has occured"
       end
     else
-      favourite = Favourite.new :favouritable => @track, :favouriter => current_user
+      favourite = Favourite.new(:favouritable => @track, :favouriter => current_user)
       if favourite.save
-        flash[:notice] = "Unfavorited!"
+        flash[:notice] = "Favourited!"
+        # Adds Fan Ranking points
+        if follow
+          follow.fan_ranking_points += LIKE_FAN_RANKING_POINTS
+          follow.save
+        end
       else
         flash[:error] = "An error has occured"
       end

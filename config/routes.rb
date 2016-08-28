@@ -23,11 +23,14 @@ Rails.application.routes.draw do
   get "dashboard_subscriptions" => "dashboard#subscriptions", :path => 'dashboard/subscriptions'
   get "dashboard_subscribers" => "dashboard#subscribers", :path => 'dashboard/subscribers'
   get 'dashboard_account' => 'dashboard#account', :path => 'dashboard/account'
+  get 'dashboard_fan_ranking' => 'dashboard#fan_ranking', :path => 'dashboard/ranking'
   get 'edit_profile' => 'dashboard#edit_profile', :path => 'dashboard/account'
   get 'change_password' => 'dashboard#change_password'
   get 'payment_settings' => 'dashboard#payment_settings'
   get 'clique_settings' => 'dashboard#clique_settings'
   post 'setup_payment' => 'dashboard#setup_payment'
+  # Search routes
+  get 'search' => 'search#search', :path => 'search'
   # Resources
   resources :users, :only => [:index, :show, :update], :path => 'profile' do
     post 'follow'

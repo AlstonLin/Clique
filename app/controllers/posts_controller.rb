@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  REPOST_FAN_RANKING_POINTS = 30
+  LIKE_FAN_RANKING_POINTS = 10
+
   # ----------------------- Default RESTFUL Actions-----------------------------
   def create
     if current_user == nil
@@ -98,12 +101,23 @@ class PostsController < ApplicationController
     end
 
     @repost = Repost.where(:post => @post).where(:reposter => current_user)
+    follow = get_follow(@post.owner)
     if @repost.count > 0
       @repost.first.destroy
       flash[:notice] = "Repost deleted"
+      # Removes Fan Ranking points
+      if follow
+        follow.fan_ranking_points -= REPOST_FAN_RANKING_POINTS
+        follow.save
+      end
     else
       if Repost.create :post => @post, :reposter => current_user
         flash[:notice] = "Reposted!"
+        # Adds Fan Ranking points
+        if follow
+          follow.fan_ranking_points += REPOST_FAN_RANKING_POINTS
+          follow.save
+        end
       else
         flash[:error] = "An Error has occured"
       end
@@ -127,15 +141,26 @@ class PostsController < ApplicationController
     end
 
     favourite = Favourite.where(:favouritable => @post, :favouriter => current_user)
+    follow = get_follow(@post.owner)
     if favourite.count > 0
       if favourite[0].destroy
         flash[:notice] = "Unfavorited!"
+        # Removes Fan Ranking points
+        if follow
+          follow.fan_ranking_points -= LIKE_FAN_RANKING_POINTS
+          follow.save
+        end
       else
         flash[:error] = "An error has occured"
       end
     else
       if Favourite.create :favouritable => @post, :favouriter => current_user
         flash[:notice] = "Favorited!"
+        # Adds Fan Ranking points
+        if follow
+          follow.fan_ranking_points += LIKE_FAN_RANKING_POINTS
+          follow.save
+        end
       else
         flash[:error] = "An error has occured"
       end

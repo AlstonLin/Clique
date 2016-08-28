@@ -33,6 +33,8 @@
             <li class="list-group-item media p-a">
               <%= render :partial => "retrack", :locals => { :notification => n } %>
             </li>
+          <% else %>
+            <% raise "Unhandled notifiable!" %>
           <% end %>
       <% end %>
     </ul>

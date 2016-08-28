@@ -20,6 +20,9 @@
         <li class="<%= partial == 'account' ? 'active' : '' %>">
           <%= link_to "Account", dashboard_account_path, :class => 'menu-item' %>
         </li>
+        <li class="<%= partial == 'fan_ranking' ? 'active' : '' %>">
+          <%= link_to "Fan Ranking", dashboard_fan_ranking_path, :class => 'menu-item' %>
+        </li>
       </ul>
       <hr class="visible-xs m-t">
     </div>

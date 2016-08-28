@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  COMMENT_FAN_RANKING_POINTS = 20
+
   def create
     if current_user == nil
       send_401
@@ -14,6 +16,7 @@ class CommentsController < ApplicationController
     else
       raise "parameter '#{@commentable_type}' for commentable_type is not valid!"
     end
+    follow = get_follow(@commentable.owner)
     # Creates the Comment
     @comment = Comment.new(comment_params)
     @comment.owner = current_user
@@ -22,6 +25,11 @@ class CommentsController < ApplicationController
       if !@comment.save
         flash[:error] = "An Error has occured"
       end
+      if follow
+        follow.fan_ranking_points += COMMENT_FAN_RANKING_POINTS
+        follow.save
+      end
+      # Adds Fan Ranking points
       format.js
     end
   end
@@ -42,6 +50,11 @@ class CommentsController < ApplicationController
     @comment.save
     respond_to do |format|
       @commentable = @comment.commentable
+      follow = get_follow(@commentable.owner)
+      if follow
+        follow.fan_ranking_points -= COMMENT_FAN_RANKING_POINTS
+        follow.save
+      end
       format.js
     end
   end

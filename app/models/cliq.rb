@@ -6,7 +6,6 @@ class Cliq < ActiveRecord::Base
   validates :owner, :presence => true
   validates :name, length: { maximum: 38}
   validates :name, :presence => true
-  # validates :price, :presence => true
   # ---------------------------- Helper Functions ------------------------------
 
   def plan_id
@@ -14,7 +13,7 @@ class Cliq < ActiveRecord::Base
   end
 
   def is_subscribed?(user)
-    Subscription.where(:subscriber => user).where(:clique => self).count > 0
+    Subscription.where(:subscriber => user).where(:clique => self, :active => true).count > 0
   end
 
   # def get_default_name

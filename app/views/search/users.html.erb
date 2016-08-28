@@ -1,0 +1,18 @@
+<div class="container p-t-md">
+  <div class="col-md-6">
+  	<div class="home-Subtitle">
+  		Search Results
+  	</div>
+    <ul class="list-group media-list media-list-stream">
+      <% if @results.size == 0 %>
+        <div class="no-post">
+          No Tracks to Show
+        </div>
+      <% else %>
+        <% @results.each do |artist| %>
+          <%= render :partial => 'home/artist_tile', :locals => { :artist => artist } %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

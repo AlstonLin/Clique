@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :strict_transport_security
 
+  CLIQUE_SUBSCRIPTION_FAN_RANKING_POINTS = 200
   APPLICATION_FEE_PERCENTAGE = 10
 
   # HSTS
@@ -16,19 +17,20 @@ class ApplicationController < ActionController::Base
   end
   helper_method :comment_form_id
 
-  def is_following(following, user = nil)
-    if user == nil
-      user = current_user
-    end
-    # TODO: Make this more efficient?
-    user.following.each do |f|
-      if f.following == following
-        return true
-      end
-    end
-    return false
+  def is_following(following, user=current_user)
+    return Follow.where(:following => following)
+      .where(:follower => user)
+      .where(:active => true).count > 0
   end
   helper_method :is_following
+
+  def get_follow(following, user=current_user)
+    follows = Follow.where(:following => following).where(:follower => user)
+    if follows.count == 0
+      return nil
+    end
+    return follows[0]
+  end
 
   def get_top(num)
     # TODO: There's probably a more efficient way of doing this
@@ -53,22 +55,56 @@ class ApplicationController < ActionController::Base
     raise "Already in Clique" if clique.is_subscribed?(current_user)
     # Follows owner
     @user = clique.owner
-    if !is_following @user
-      follow = Follow.create :follower => current_user, :following => @user
+    follow = get_follow(@user)
+    if follow == nil
+      follow = Follow.create(:follower => current_user, :following => @user)
     end
-    # Payment stuff
-    Stripe.api_key = clique.stripe_secret_key
-    subscription = Stripe::Subscription.create(
-      :customer => current_user.customer_id,
-      :plan => clique.plan_id,
-      :application_fee_percent => APPLICATION_FEE_PERCENTAGE
-    )
-    # Redirect
-    Subscription.create(
-      :subscriber => current_user,
-      :clique => clique,
-      :stripe_id => subscription.id
-    )
+    existing = Subscription.where(:subscriber => current_user
+      ).where(:clique => clique)
+    # Previously subscribed
+    if existing.count > 0
+      existing = existing[0]
+      begin
+        stripe = Stripe::Subscription.retrieve(existing.stripe_id)
+      rescue => error
+        puts error
+      end
+      if stripe && stripe.status == 'active' # Same Billing cycle; Updates subscription
+        stripe.plan = clique.plan_id
+        stripe.save
+      # New billing cycle; Creates a new Stripe subscription
+      else
+        Stripe.api_key = clique.stripe_secret_key
+        stripe = Stripe::Subscription.create(
+          :customer => current_user.customer_id,
+          :plan => clique.plan_id,
+          :application_fee_percent => APPLICATION_FEE_PERCENTAGE
+        )
+        existing.stripe_id = stripe.id
+        # Adds Fan Ranking points
+        follow.fan_ranking_points += CLIQUE_SUBSCRIPTION_FAN_RANKING_POINTS
+        follow.save
+      end
+      existing.active = true
+      existing.save
+    # New Subscription
+    else
+      # Payment stuff
+      Stripe.api_key = clique.stripe_secret_key
+      subscription = Stripe::Subscription.create(
+        :customer => current_user.customer_id,
+        :plan => clique.plan_id,
+        :application_fee_percent => APPLICATION_FEE_PERCENTAGE
+      )
+      Subscription.create(
+        :subscriber => current_user,
+        :clique => clique,
+        :stripe_id => subscription.id
+      )
+      # Adds Fan Ranking points
+      follow.fan_ranking_points += CLIQUE_SUBSCRIPTION_FAN_RANKING_POINTS
+      follow.save
+    end
     # Sends notification to Cliq owner
     Notification.create :notifiable => clique, :user => clique.owner, :initiator => current_user
     redirect_to clique.owner

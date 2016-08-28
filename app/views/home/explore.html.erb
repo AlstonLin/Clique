@@ -1,13 +1,8 @@
 <div class="container p-t-md">
-		<div class="home-Subtitle">
-			Discover new music and top artists
-		</div>
-
-
-
+	<div class="home-Subtitle">
+		Discover new music and top artists
+	</div>
   <% @top.each do |t| %>
     <%= render :partial => 'artist_tile', :locals => { :artist => t } %>
   <% end %>
-
-
 </div>
