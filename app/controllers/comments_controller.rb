@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
   def create
+    if current_user == nil
+      send_401
+      return
+    end
     @commentable_type = params[:comment][:commentable_type]
     @commentable_id = params[:comment][:commentable_id]
     # Finds the commentable
@@ -23,6 +27,16 @@ class CommentsController < ApplicationController
   end
 
   def delete
+    # Defensive Checks
+    if @comment == nil
+      send_404
+      return
+    end
+    if current_user != @comment.owner
+      send_401
+      return
+    end
+
     @comment = Comment.find(params[:comment_id])
     @comment.removed = true
     @comment.save

@@ -7,6 +7,10 @@ class CliqsController < ApplicationController
   end
 
   def create
+    if current_user == nil
+      send_401
+      return
+    end
     # Creates Clique
     @clique = Cliq.new(clique_params)
     @clique.owner = current_user
@@ -21,6 +25,16 @@ class CliqsController < ApplicationController
 
   def update
     @clique = Cliq.find(params[:id])
+    # Defensive checks
+    if @clique == nil
+      send_404
+      return
+    end
+    if current_user != @clique.owner
+      send_401
+      return
+    end
+    # Update
     @clique.update_attributes(clique_params)
     # Response
     respond_to do |format|
@@ -30,10 +44,18 @@ class CliqsController < ApplicationController
 
   def show
     @clique = Cliq.find(params[:id])
+    if @clique == nil
+      send_404
+      return
+    end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def payment
     @clique = Cliq.find(params[:cliq_id])
+    if @clique == nil
+      send_404
+      return
+    end
     @setup = !current_user.customer_id
   end
 
@@ -44,6 +66,14 @@ class CliqsController < ApplicationController
 
   def leave
     @clique = Cliq.find(params[:cliq_id])
+    if current_user == nil
+      send_401
+      return
+    end
+    if @clique == nil
+      send_404
+      return
+    end
     subscriptions = Subscription.where(:subscriber => current_user).where(:clique => @clique)
     # Payment stuff
     subscriptions.each do |s|

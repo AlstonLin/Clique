@@ -14,10 +14,20 @@ class PasswordsController < ApplicationController
   end
 
   def edit
+    if current_user == nil
+      send_401
+      return
+    end
+
     @user = current_user
   end
 
   def update
+    if current_user == nil
+      send_401
+      return
+    end
+
     @user = current_user
     # raise params.inspect
     if @user.update_with_password(password_params)

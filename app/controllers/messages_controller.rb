@@ -1,6 +1,11 @@
 class MessagesController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
+    if current_user == nil
+      send_401
+      return
+    end
+
     @conversations = current_user.conversations
     respond_to do |format|
       format.js
@@ -15,6 +20,11 @@ class MessagesController < ApplicationController
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
   def create
+    if current_user == nil
+      send_401
+      return
+    end
+
     if params.has_key? :username
       to = User.find_by_username params[:username]
       @conversation = get_conversation to

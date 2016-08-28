@@ -9,10 +9,21 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+
+    if @track == nil
+      send_404
+      return
+    end
+
     @more = @track.owner.tracks.select{ |t| t != @track && !t.removed }.take(MAX_ITEMS_MORE)
   end
 
   def create
+    if current_user == nil
+      send_401
+      return
+    end
+
     @track = Track.new(track_params)
     @track.owner = current_user
     if @track.save
@@ -24,6 +35,17 @@ class TracksController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def delete
     @track = Track.find_by_id(params[:track_id])
+
+    if @track == nil
+      send_404
+      return
+    end
+
+    unless @track.owner == current_user
+      send_401
+      return
+    end
+
     @track.removed = true
     @track.save
     respond_to do |format|
@@ -35,6 +57,17 @@ class TracksController < ApplicationController
   # Remark: This controller is almost the exact same as Posts. Look into externalizing code
   def repost
     @track = Track.find(params[:track_id])
+
+    if @track == nil
+      send_404
+      return
+    end
+
+    if current_user == nil
+      send_401
+      return
+    end
+
     @retrack = Retrack.where(:track => @track).where(:reposter => current_user)
     if @retrack.count > 0
       @retrack.first.destroy
@@ -53,6 +86,17 @@ class TracksController < ApplicationController
 
   def favorite
     @track = Track.find(params[:track_id])
+
+    if @track == nil
+      send_404
+      return
+    end
+
+    if current_user == nil
+      send_401
+      return
+    end
+    
     favourite = Favourite.where(:favouritable => @track, :favouriter => current_user)
     if favourite.count > 0
       if favourite[0].destroy

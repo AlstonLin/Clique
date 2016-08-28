@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :strict_transport_security
 
   APPLICATION_FEE_PERCENTAGE = 10
-  
+
   # HSTS
   def strict_transport_security
     if request.ssl?
@@ -41,6 +41,15 @@ class ApplicationController < ActionController::Base
   end
 
   def join_clique(clique)
+    # Defensive checks
+    if current_user == nil
+      send_401
+      return
+    end
+    if clique == nil
+      send_404
+      return
+    end
     raise "Already in Clique" if clique.is_subscribed?(current_user)
     # Follows owner
     @user = clique.owner
@@ -63,5 +72,13 @@ class ApplicationController < ActionController::Base
     # Sends notification to Cliq owner
     Notification.create :notifiable => clique, :user => clique.owner, :initiator => current_user
     redirect_to clique.owner
+  end
+
+  def send_401
+    render :file => "public/401.html", :status => :unauthorized
+  end
+
+  def send_404
+    render :file => "public/404.html", :status => :unauthorized
   end
 end

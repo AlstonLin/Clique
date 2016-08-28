@@ -1,7 +1,18 @@
 class PostsController < ApplicationController
   # ----------------------- Default RESTFUL Actions-----------------------------
   def create
+    if current_user == nil
+      send_401
+      return
+    end
+
     @post = Post.new(post_params)
+
+    if @post == nil
+      send_404
+      return
+    end
+
     @post.owner = current_user
     respond_to do |format|
       if @post.save
@@ -20,6 +31,18 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:post_id])
+
+    if @post == nil
+      send_404
+      return
+    end
+
+    if current_user != @post.owner
+      send_401
+      return
+    end
+
     respond_to do |format|
       if @post.update(post_params)
         flash[:notice] = "Post Updated!"
@@ -35,6 +58,17 @@ class PostsController < ApplicationController
 
   def delete
     @post = Post.find(params[:post_id])
+
+    if @post == nil
+      send_404
+      return
+    end
+
+    if current_user != @post.owner
+      send_401
+      return
+    end
+
     @post.removed = true
     respond_to do |format|
       if @post.save
@@ -52,6 +86,17 @@ class PostsController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def repost
     @post = Post.find(params[:post_id])
+
+    if @post == nil
+      send_404
+      return
+    end
+
+    if current_user == nil
+      send_401
+      return
+    end
+
     @repost = Repost.where(:post => @post).where(:reposter => current_user)
     if @repost.count > 0
       @repost.first.destroy
@@ -70,6 +115,17 @@ class PostsController < ApplicationController
 
   def favorite
     @post = Post.find(params[:post_id])
+
+    if @post == nil
+      send_404
+      return
+    end
+
+    if current_user == nil
+      send_401
+      return
+    end
+
     favourite = Favourite.where(:favouritable => @post, :favouriter => current_user)
     if favourite.count > 0
       if favourite[0].destroy
@@ -91,6 +147,12 @@ class PostsController < ApplicationController
 
   def load_modal
     @post = Post.find(params[:post_id])
+
+    if @post == nil
+      send_404
+      return
+    end
+
     respond_to do |format|
       format.js
     end

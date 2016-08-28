@@ -3,6 +3,10 @@ class HomeController < ApplicationController
   ITEMS_HOME = 4
   # ----------------------- Default RESTFUL Actions-----------------------------
   def index
+    if current_user == nil
+      send_401
+      return
+    end
     # Reloads sidebar stuff
     @top = get_top ITEMS_HOME
     @favorites = current_user.favourites.select{ |f| f.favouritable.is_a?(Track) && !f.favouritable.removed }.take(ITEMS_HOME).map(&:favouritable)
@@ -27,6 +31,11 @@ class HomeController < ApplicationController
   end
 
   def tracks
+    if current_user == nil
+      send_401
+      return
+    end
+
     @content = current_user.get_following_tracks
     session[:partial] = "tracks"
     index
@@ -34,6 +43,11 @@ class HomeController < ApplicationController
   end
 
   def posts
+    if current_user == nil
+      send_401
+      return
+    end
+
     @content = current_user.get_following_posts
     session[:partial] = "posts"
     index
@@ -41,6 +55,11 @@ class HomeController < ApplicationController
   end
 
   def cliques
+    if current_user == nil
+      send_401
+      return
+    end
+
     @content = []
     current_user.subscriptions.each do |s|
       @content = @content + s.clique.owner.get_posts(true)
@@ -55,6 +74,11 @@ class HomeController < ApplicationController
   end
 
   def favorites
+    if current_user == nil
+      send_401
+      return
+    end
+
     @content = current_user.get_favorites MAX_ITEMS
     session[:partial] = "favorites"
     index

@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if current_user == nil
+      send_404
+      return
+    end
+
     if current_user.update_attributes(user_params)
       flash[:notice] = "Successfully Updated"
       redirect_to current_user
@@ -16,6 +21,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @content = get_all_content
     @partial = "all"
     @show_right = true
@@ -23,6 +34,12 @@ class UsersController < ApplicationController
   # ----------------------- Custom RESTFUL Actions------------------------------
   def message
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @message = Message.new
     respond_to do |format|
       format.js
@@ -30,6 +47,11 @@ class UsersController < ApplicationController
   end
 
   def update_password
+    if current_user == nil
+      send_404
+      return
+    end
+
     @user = User.find(current_user.id)
     if @user.update(user_params)
       # Sign in the user by passing validation in case their password changed
@@ -42,7 +64,17 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find_by_username(params[:user_id])
+
+    if current_user == nil
+      send_401
+      return
+    end
+    if @user == nil
+      send_404
+      return
+    end
     raise "Attempt to follow self" unless current_user != @user
+
     follows = Follow.where(:follower => current_user).where(:following => @user)
     if follows.count > 0 # Unfollow
       follows.destroy_all
@@ -58,6 +90,12 @@ class UsersController < ApplicationController
   def all
     @partial = "all"
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @content = get_all_content
     @show_right = true
     render :action => :show
@@ -65,13 +103,26 @@ class UsersController < ApplicationController
 
   def posts
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @posts = @user.get_posts(false)
     @partial = "posts"
+    @show_right = true
     render :action => :show
   end
 
   def clique
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @content = @user.get_tracks(true) + @user.get_posts(true)
     @content = @content.sort {|e1, e2| e2[:created_at] <=> e1[:created_at]}
     @partial = "clique"
@@ -81,6 +132,12 @@ class UsersController < ApplicationController
 
   def tracks
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @tracks = @user.get_tracks(false)
     @partial = "tracks"
     @show_right = true
@@ -89,6 +146,12 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @followers = @user.followers
     @partial = "followers"
     @show_right = false
@@ -97,6 +160,12 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find_by_username(params[:user_id])
+
+    if @user == nil
+      send_404
+      return
+    end
+
     @following = @user.following
     @partial = "following"
     @show_right = false

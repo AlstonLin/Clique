@@ -4,12 +4,20 @@ class DashboardController < ApplicationController
   MAX_ITEMS_SHOWN = 25
 
   def main
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "yearly"
     get_stats(1.year.ago)
     get_top
   end
 
   def monthly
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "monthly"
     get_stats(1.month.ago)
     get_top
@@ -17,6 +25,10 @@ class DashboardController < ApplicationController
   end
 
   def daily
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "daily"
     get_stats(1.day.ago)
     get_top
@@ -24,9 +36,17 @@ class DashboardController < ApplicationController
   end
 
   def tracks
+    if current_user == nil
+      send_401
+      return
+    end
   end
 
   def orders
+    if current_user == nil
+      send_401
+      return
+    end
     if current_user.customer_id
       charges = Stripe::Charge.list(:customer => current_user.customer_id,
       :limit => MAX_ITEMS_SHOWN)
@@ -37,6 +57,10 @@ class DashboardController < ApplicationController
   end
 
   def subscriptions
+    if current_user == nil
+      send_401
+      return
+    end
     @subscriptions = []
     current_user.subscriptions.each do |s|
       stripe_sub = Stripe::Subscription.retrieve(s.stripe_id)
@@ -45,6 +69,10 @@ class DashboardController < ApplicationController
   end
 
   def subscribers
+    if current_user == nil
+      send_401
+      return
+    end
     @subscriptions = []
     current_user.clique.subscriptions.each do |s|
       stripe_sub = Stripe::Subscription.retrieve(s.stripe_id, :limit => MAX_ITEMS_SHOWN)
@@ -53,20 +81,36 @@ class DashboardController < ApplicationController
   end
 
   def account
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "edit_profile"
   end
 
   def edit_profile
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "edit_profile"
     render :action => :account
   end
 
   def change_password
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "change_password"
     render :action => :account
   end
 
   def clique_settings
+    if current_user == nil
+      send_401
+      return
+    end
     @clique = current_user.clique
     if !@clique
       @clique = Cliq.new
@@ -76,6 +120,10 @@ class DashboardController < ApplicationController
   end
 
   def payment_settings
+    if current_user == nil
+      send_401
+      return
+    end
     @partial = "payment_settings"
     cus_id = current_user.customer_id
     if cus_id
@@ -85,6 +133,10 @@ class DashboardController < ApplicationController
   end
 
   def setup_payment
+    if current_user == nil
+      send_401
+      return
+    end
     # Server side validation
     if !params[:stripeToken]
       flash[:alert] = "Invalid credit card!"
@@ -128,6 +180,10 @@ class DashboardController < ApplicationController
   end
 
   def get_stats(time_ago)
+    if current_user == nil
+      send_401
+      return
+    end
     @follower_count = current_user.followers.count
     if @follower_count == 0
       @follower_gain = 0
