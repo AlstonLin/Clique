@@ -55,8 +55,7 @@ class TracksController < ApplicationController
     end
   end
   # ----------------------- Custom RESTFUL Actions------------------------------
-
-  # Remark: This controller is almost the exact same as Posts. Look into externalizing code
+  # NOTE: This controller is almost the exact same as Posts. Look into externalizing code
   def repost
     @track = Track.find(params[:track_id])
 
@@ -109,7 +108,7 @@ class TracksController < ApplicationController
       send_401
       return
     end
-    
+
     favourite = Favourite.where(:favouritable => @track, :favouriter => current_user)
     follow = get_follow(@track.owner)
     if favourite.count > 0
@@ -146,6 +145,14 @@ class TracksController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  # NOTE: This is probably really prone to abuse
+  def add_play
+    @track = Track.find(params[:track_id])
+    @track.play_count += 1
+    @track.save
+    head :no_content
   end
   # --------------------------------- Other-------------------------------------
   private

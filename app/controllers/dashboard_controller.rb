@@ -208,5 +208,8 @@ class DashboardController < ApplicationController
       @download_gain = Download.where("created_at >= ?", time_ago).\
         select{ |d| d.track.owner == current_user }.count * 100 / @download_count
     end
+
+    # TODO: Make this more efficient with a counter cache
+    @play_count = current_user.tracks.sum(:play_count)
   end
 end

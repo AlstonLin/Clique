@@ -152,6 +152,7 @@ var setOnPlayerClick = function($playa){
 
 var playNewTrack = function(trackId){
 	trackMap[trackId].play();
+	$.post(trackMap[trackId].countPlayLink);
 };
 
 var resumeCurrentTrack = function(){
@@ -212,6 +213,7 @@ var createSound = function($playa, $span, i) {
 	var ownerLink = $playa.attr("ownerLink");
 	var trackId = createTrackId($playa);
 	var actualId = $playa.attr("trackId");
+	var countPlayLink = $playa.attr("countPlayLink");
 	if (!soundManager.canPlayURL(trackUrl)){
 		console.log("ERROR: " + trackUrl + " because: " + soundManager.canPlayURL(song));
 		return null;
@@ -262,6 +264,7 @@ var createSound = function($playa, $span, i) {
 	sound.artist = artist;
 	sound.image = image;
 	sound.trackName = name;
+	sound.countPlayLink = countPlayLink;
 	trackIdQueue[i] = trackId;
 	trackMap[trackId] = sound;
 	spanTrackIdMap[$span.attr('id')] = trackId;

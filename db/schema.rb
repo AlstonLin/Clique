@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828201102) do
+ActiveRecord::Schema.define(version: 20160913163028) do
 
   create_table "access_codes", force: :cascade do |t|
     t.integer  "user_id"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160828201102) do
     t.datetime "updated_at",                        null: false
     t.integer  "favourites_count",  default: 0
     t.integer  "downloads_count",   default: 0
+    t.integer  "play_count",        default: 0
   end
 
   create_table "users", force: :cascade do |t|

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     post 'repost'
     post 'favorite'
     post 'load_modal'
+    post 'add_play'
   end
   resources :posts, :only => [:create, :update] do
     post 'delete'

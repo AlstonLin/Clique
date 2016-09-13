@@ -32,7 +32,10 @@
         </div>
         <div class="player1-Name">
           <div class="player1-play">
-            <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>" artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%= track_path(track) %>" ownerLink="<%= user_path(track.owner) %>" trackId="<%= track.id %>">
+            <div class="playa" song="<%=track.song.url%>" image="<%= track.get_pic_url %>"
+              artist="<%= track.owner.name%>" name="<%=track.name%>" trackLink="<%= track_path(track) %>"
+              ownerLink="<%= user_path(track.owner) %>" trackId="<%= track.id %>"
+              countPlayLink="<%= track_add_play_path track %>">
               <div class="play-Btn">
                 <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
               </div>
