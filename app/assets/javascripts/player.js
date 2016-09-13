@@ -34,6 +34,11 @@ var setupPlayer = function() {
 			}
 		}
 	});
+	$(".trackProgressBar").slider({
+		range: "min",
+		min: 0,
+		max: 1000
+	});
 	// Volume
 	$("#volumeClick").click(function(){
 		$("#volumeBuffer").toggle();
@@ -206,7 +211,7 @@ var createSound = function($playa, $span, i) {
 	var trackLink = $playa.attr("trackLink");
 	var ownerLink = $playa.attr("ownerLink");
 	var trackId = createTrackId($playa);
-
+	var actualId = $playa.attr("trackId");
 	if (!soundManager.canPlayURL(trackUrl)){
 		console.log("ERROR: " + trackUrl + " because: " + soundManager.canPlayURL(song));
 		return null;
@@ -237,13 +242,16 @@ var createSound = function($playa, $span, i) {
 			$("#desc #ptrackLink").attr('href', trackLink);
 			$("#desc #pprofileLink").attr('href', ownerLink);
 			$("#progressBar").slider("value", 0);
+			$("#progressBar-" + actualId).slider("value", 0);
 			// Shows play button
 			$("#playpause").removeClass("glyphicon-play").addClass("glyphicon-pause");
 			$('#' + this.spanId).removeClass("glyphicon-play").addClass("glyphicon-pause");
 		},
 		whileplaying: function(){
 			//update slider
-			$("#progressBar").slider("value", Math.max(1000* this.position / this.durationEstimate));
+			var val = Math.max(1000* this.position / this.durationEstimate);
+			$("#progressBar").slider("value", val);
+			$("#progressBar-" + actualId).slider("value", val);
 			//update current
 			$("#curTime").text(getTime(this.position, true));
 		},

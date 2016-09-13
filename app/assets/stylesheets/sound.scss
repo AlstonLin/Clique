@@ -78,7 +78,7 @@ $fbblue: rgba(59, 89, 152,1);
   float:left;
 }
 
-#status #progressBar{
+#status #progressBar {
   width:505px !important;
   background:#C5C5C5;
   background:linear-gradient(
@@ -92,14 +92,28 @@ $fbblue: rgba(59, 89, 152,1);
   margin:0px 20px 0px 20px;
   cursor:pointer;
   border:none;
-
 }
 
-#status #progressBar:hover .ui-slider-handle{
+.trackProgressBar {
+  width: 100%;
+  background:#C5C5C5;
+  background:linear-gradient(
+    to bottom,
+    #F5F5F5,
+    #F5F5F5 1px,
+    #C5C5C5 3px,
+    #F5F5F5 1px
+  );
+  height:5px !important;
+  cursor:pointer;
+  border:none;
+}
+
+#status #progressBar:hover .ui-slider-handle, .trackProgressBar:hover .ui-slider-handle{
   display:block;
 }
 
-#status #progressBar .ui-slider-handle{
+#status #progressBar .ui-slider-handle, .trackProgressBar .ui-slider-handle{
   width:8px;
   height:8px;
   border:none;
@@ -110,7 +124,7 @@ $fbblue: rgba(59, 89, 152,1);
   margin-top: 2.5px;
 }
 
-#status #progressBar .ui-slider-range{
+#status #progressBar .ui-slider-range, .trackProgressBar .ui-slider-range{
   background:#fe4641;
   background:linear-gradient(
     to bottom,
