@@ -17,7 +17,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @user = User.from_omniauth(auth)
         access_code.created_account = @user
         access_code.save
-        session.delete(:access_code)
       else
         redirect_to access_code_form_path
         return
