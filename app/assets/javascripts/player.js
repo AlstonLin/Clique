@@ -258,7 +258,12 @@ var createSound = function($playa, $span, i) {
 			$("#curTime").text(getTime(this.position, true));
 		},
 		onfinish: function(){
-			playNextTrack();
+			if (repeat) {
+				var newSound = createSound($playa, $span, i);
+				newSound.play();
+			} else {
+				playNextTrack();
+			}
 		}
 	});
 	sound.artist = artist;
