@@ -135,7 +135,12 @@ $(document).on('click', '.js-msgGroup', function () {
 
 $(function () {
   function getRight() {
-    return ($(window).width() - ($('[data-toggle="popover"]').offset().left + $('[data-toggle="popover"]').outerWidth()))
+    offset = $('[data-toggle="popover"]').offset();
+    val = 0
+    if (offset != null){
+      val = (offset.left + $('[data-toggle="popover"]').outerWidth());
+    }
+    return $(window).width() - val
   }
 
   $(window).on('resize', function () {
